@@ -1,0 +1,8 @@
+.searchbar-area {
+  display: flex;
+  align-items: center;
+}
+
+.filter-unread-chats {
+  margin: 0 1rem;
+}

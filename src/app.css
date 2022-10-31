@@ -1,0 +1,54 @@
+@import-normalize;
+@import url(./components/ChatSection/chatSection.css);
+@import url(./components/FriendsListSection/friendsListSection.css);
+@import url(./components/Navbar/navbar.css);
+@import url(./components/Searchbar/searchbar.css);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-theme-color-dark: #111b21;
+  --navbar-theme-color-dark: #202c33;
+  --primary-nav-btn-color-dark: #aebac1;
+  --searchbar-text-color-dark: #d1d7db;
+}
+
+body {
+  background-color: var(--primary-theme-color-dark);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  background-color: red;
+
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 95vw;
+  height: 95vh;
+
+  display: flex;
+}
+
+.friends-list-container {
+  max-width: 450px;
+  width: 450px;
+  background-color: var(--primary-theme-color-dark);
+  overflow-y: auto;
+  border-right: 1px solid var(--primary-nav-btn-color-dark);
+}
+
+.chat-section-container {
+  flex-grow: 1;
+  background-color: var(--navbar-theme-color-dark);
+}

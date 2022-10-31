@@ -1,0 +1,31 @@
+.searchbar-wrapper {
+  position: relative;
+  left: 2%;
+
+  max-width: 450px;
+  width: 400px;
+}
+
+input {
+  border: none;
+  background-color: var(--navbar-theme-color-dark);
+  color: var(--searchbar-text-color-dark);
+  outline: none;
+
+  width: 100%;
+  margin-top: 0.2rem;
+  padding: 0.5rem 3rem;
+  border-radius: 0.6em;
+}
+
+.search-icon,
+.back-arrow {
+  position: absolute;
+  top: 20%;
+  left: 3%;
+  color: var(--searchbar-text-color-dark);
+}
+
+.back-arrow {
+  display: none;
+}
