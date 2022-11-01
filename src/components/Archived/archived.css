@@ -1,0 +1,27 @@
+.archived-section-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+}
+
+.archived-section-wrapper::before {
+  content: "";
+  border-bottom: 1px solid var(--border-color-dark);
+  position: absolute;
+  width: 87%;
+  bottom: 0;
+  right: 0;
+}
+
+.archived-logo svg {
+  color: var(--highlighted-color-dark);
+  height: 18px;
+  width: 18px;
+}
+
+.archived-text {
+  color: var(--primary-header-text-dark);
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+}

@@ -15,6 +15,9 @@
   --navbar-theme-color-dark: #202c33;
   --primary-nav-btn-color-dark: #aebac1;
   --searchbar-text-color-dark: #d1d7db;
+  --highlighted-color-dark: #00a884;
+  --primary-header-text-dark: #e9edef;
+  --border-color-dark: rgba(134, 150, 160, 0.15);
 }
 
 body {
@@ -27,6 +30,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -45,7 +49,7 @@ body {
   width: 450px;
   background-color: var(--primary-theme-color-dark);
   overflow-y: auto;
-  border-right: 1px solid var(--primary-nav-btn-color-dark);
+  /* border-right: 1px solid var(--primary-nav-btn-color-dark); */
 }
 
 .chat-section-container {
