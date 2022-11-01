@@ -17,6 +17,7 @@
   --searchbar-text-color-dark: #d1d7db;
   --highlighted-color-dark: #00a884;
   --primary-header-text-dark: #e9edef;
+  --secondary-header-text-dark: #8696a0;
   --border-color-dark: rgba(134, 150, 160, 0.15);
 }
 
@@ -48,7 +49,7 @@ body {
   max-width: 450px;
   width: 450px;
   background-color: var(--primary-theme-color-dark);
-  overflow-y: auto;
+  position: relative;
   /* border-right: 1px solid var(--primary-nav-btn-color-dark); */
 }
 

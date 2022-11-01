@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
   padding: 1rem;
 }
 
@@ -9,7 +10,7 @@
   content: "";
   border-bottom: 1px solid var(--border-color-dark);
   position: absolute;
-  width: 87%;
+  width: 85%;
   bottom: 0;
   right: 0;
 }
@@ -18,10 +19,5 @@
   color: var(--highlighted-color-dark);
   height: 18px;
   width: 18px;
-}
-
-.archived-text {
-  color: var(--primary-header-text-dark);
-  margin-left: 1.5rem;
-  font-size: 1.2rem;
+  margin-right: 0.4rem;
 }

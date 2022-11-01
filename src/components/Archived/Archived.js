@@ -1,5 +1,6 @@
 import React from "react"
 import "./archived.css"
+import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 
 export default function Archived() {
   return (
@@ -10,7 +11,6 @@ export default function Archived() {
           height="20"
           width="20"
           preserveAspectRatio="xMidYMid meet"
-          class=""
           fill="none"
         >
           <path
@@ -19,7 +19,7 @@ export default function Archived() {
           ></path>
         </svg>
       </div>
-      <div className="archived-text">Archived</div>
+      <PrimaryHeaderText headerType={"archived"} />
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.chat-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  height: 72px;
+  width: 100%;
+}
+
+.chat-wrapper:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.headers-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 1rem;
+}
