@@ -3,16 +3,8 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding: 1rem;
-}
-
-.archived-section-wrapper::before {
-  content: "";
-  border-bottom: 1px solid var(--border-color-dark);
-  position: absolute;
-  width: 85%;
-  bottom: 0;
-  right: 0;
+  cursor: pointer;
+  padding: 1rem 2rem;
 }
 
 .archived-logo svg {

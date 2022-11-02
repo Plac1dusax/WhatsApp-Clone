@@ -19,15 +19,22 @@
 
   display: flex;
   flex-direction: column;
-
-  gap: 20px;
 }
 
 .chat-section-wrapper > *::before {
   content: "";
   border-bottom: 1px solid var(--border-color-dark);
   position: absolute;
-  width: 85%;
-  bottom: 0;
+  width: 82%;
+  bottom: 0%;
+  right: 0;
+}
+
+.chat-wrapper:last-child::before {
+  content: "";
+  border-bottom: 1px solid var(--border-color-dark);
+  position: absolute;
+  width: 95%;
+  bottom: -25%;
   right: 0;
 }

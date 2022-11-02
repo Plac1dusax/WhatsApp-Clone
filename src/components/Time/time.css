@@ -1,0 +1,5 @@
+.time {
+  color: var(--secondary-header-text-dark);
+  font-size: 12px;
+  font-weight: light;
+}

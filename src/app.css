@@ -3,6 +3,10 @@
 @import url(./components/FriendsListSection/friendsListSection.css);
 @import url(./components/Navbar/navbar.css);
 @import url(./components/Searchbar/searchbar.css);
+@import url(./components/Archived/archived.css);
+@import url(./components/Message/message.css);
+@import url(./components/SearchFriend/searchFriend.css);
+@import url(./components/Time/time.css);
 
 *,
 *::before,
@@ -19,6 +23,7 @@
   --primary-header-text-dark: #e9edef;
   --secondary-header-text-dark: #8696a0;
   --border-color-dark: rgba(134, 150, 160, 0.15);
+  --primary-hover-dark: hsla(0, 0%, 50%, 0.1);
 }
 
 body {

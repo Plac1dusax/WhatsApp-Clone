@@ -3,13 +3,12 @@ import React from "react"
 export default function ProfilePhoto({ navProfilePhoto }) {
   let style = {}
 
-  console.log(navProfilePhoto)
-
   if (navProfilePhoto === "chat") {
     style = {
       borderRadius: "50%",
       width: "49px",
-      height: "49px"
+      height: "49px",
+      objectFit: "cover"
     }
   }
 
@@ -17,7 +16,8 @@ export default function ProfilePhoto({ navProfilePhoto }) {
     style = {
       borderRadius: "50%",
       width: "40px",
-      height: "40px"
+      height: "40px",
+      objectFit: "cover"
     }
   }
 
@@ -25,7 +25,8 @@ export default function ProfilePhoto({ navProfilePhoto }) {
     style = {
       borderRadius: "50%",
       width: "200px",
-      height: "200px"
+      height: "200px",
+      objectFit: "cover"
     }
   }
 

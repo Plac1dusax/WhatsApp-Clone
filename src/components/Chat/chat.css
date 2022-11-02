@@ -1,19 +1,30 @@
 .chat-wrapper {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   position: relative;
   height: 72px;
   width: 100%;
+  padding: 1rem;
 }
 
 .chat-wrapper:hover {
-  background-color: red;
+  background-color: var(--primary-hover-dark);
   cursor: pointer;
 }
 
 .headers-wrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   margin-left: 1rem;
+}
+
+.friend-name-and-time {
+  display: flex;
+  justify-content: space-between;
+
+  width: 350px;
 }
