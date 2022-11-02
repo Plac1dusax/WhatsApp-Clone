@@ -2,39 +2,31 @@
   position: fixed;
 }
 
-.archived-and-chat-wrapper {
+.chats-and-footer {
   position: absolute;
-  top: 100px;
-  width: 100%;
-  height: 615px;
-
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
+  top: 100px;
+
+  height: 500px;
 }
 
 .chat-section-wrapper {
-  position: absolute;
+  position: relative;
   top: 100px;
+  height: 615px;
+  overflow: auto;
+}
+
+.friend-list-footer {
+  position: absolute;
+  color: var(--primary-header-text-dark);
+  font-size: 0.75rem;
   width: 100%;
-
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
-.chat-section-wrapper > *::before {
-  content: "";
-  border-bottom: 1px solid var(--border-color-dark);
-  position: absolute;
-  width: 82%;
-  bottom: 0%;
-  right: 0;
-}
-
-.chat-wrapper:last-child::before {
-  content: "";
-  border-bottom: 1px solid var(--border-color-dark);
-  position: absolute;
-  width: 95%;
-  bottom: -25%;
-  right: 0;
+.footer-highlighted {
+  color: var(--highlighted-color-dark);
 }

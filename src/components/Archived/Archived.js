@@ -1,6 +1,7 @@
 import React from "react"
 import "./archived.css"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
+import FriendsListBorder from "../FriendsListBorder/FriendsListBorder"
 
 export default function Archived() {
   return (
@@ -20,6 +21,7 @@ export default function Archived() {
         </svg>
       </div>
       <PrimaryHeaderText headerType={"archived"} />
+      <FriendsListBorder border={"archived"} />
     </div>
   )
 }

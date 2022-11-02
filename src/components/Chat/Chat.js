@@ -4,18 +4,22 @@ import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import Message from "../Message/Message"
 import Time from "../Time/Time"
+import FriendsListBorder from "../FriendsListBorder/FriendsListBorder"
 
-export default function Chat() {
+export default function Chat({ wideBorder }) {
   return (
-    <div className="chat-wrapper">
-      <ProfilePhoto navProfilePhoto={"chat"} />
-      <div className="headers-wrapper">
-        <div className="friend-name-and-time">
-          <PrimaryHeaderText headerType={"chat"} text={"Random Friend"} />
-          <Time time={"Yesterday"} />
+    <>
+      <div className="chat-wrapper">
+        <ProfilePhoto navProfilePhoto={"chat"} />
+        <div className="headers-wrapper">
+          <div className="friend-name-and-time">
+            <PrimaryHeaderText headerType={"chat"} text={"Random Friend"} />
+            <Time time={"Yesterday"} />
+          </div>
+          <Message info={"seen"} headerType={"chat"} text={"Random message"} />
         </div>
-        <Message info={"seen"} headerType={"chat"} text={"Random message"} />
+        <FriendsListBorder border={"chat"} wideBorder={wideBorder} />
       </div>
-    </div>
+    </>
   )
 }
