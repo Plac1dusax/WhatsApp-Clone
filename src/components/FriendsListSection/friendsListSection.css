@@ -18,6 +18,24 @@
   overflow: auto;
 }
 
+.chat-section-wrapper > *:not(footer)::before {
+  content: "";
+  position: absolute;
+  width: 82%;
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
+.chat-section-wrapper > :not(footer):last-of-type::before {
+  content: "";
+  position: absolute;
+  width: 92%;
+  bottom: -10%;
+  right: 0;
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
 .friend-list-footer {
   position: absolute;
   color: var(--primary-header-text-dark);

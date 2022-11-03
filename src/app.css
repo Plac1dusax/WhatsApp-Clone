@@ -7,6 +7,7 @@
 @import url(./components/Message/message.css);
 @import url(./components/SearchFriend/searchFriend.css);
 @import url(./components/Time/time.css);
+@import url(./components/Archived/archived.css);
 
 *,
 *::before,
@@ -25,6 +26,7 @@
   --secondary-header-text-dark: #8696a0;
   --border-color-dark: rgba(134, 150, 160, 0.15);
   --primary-hover-dark: hsla(0, 0%, 50%, 0.1);
+  --options-button-dark: hsla(0, 0%, 100%, 0.5);
 }
 
 body {

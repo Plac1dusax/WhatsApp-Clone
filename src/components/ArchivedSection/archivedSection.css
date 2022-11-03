@@ -1,0 +1,43 @@
+.archived-section-nav {
+  position: fixed;
+  width: 450px;
+  height: 100px;
+  background-color: var(--navbar-theme-color-dark);
+  display: flex;
+  align-items: flex-end;
+}
+
+.title-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--primary-header-text-dark);
+  font-size: 19px;
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.archived-section-arrow-left {
+  cursor: pointer;
+}
+
+.archived-chats-list {
+  position: relative;
+  top: 100px;
+  height: 615px;
+  overflow: auto;
+}
+
+.archived-chats-list > *::before {
+  content: "";
+  position: absolute;
+  width: 82%;
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
+.archived-chats-list > *:last-child::before {
+  content: "";
+  border-bottom: none;
+}

@@ -28,3 +28,22 @@
 
   width: 350px;
 }
+
+.options {
+  display: none;
+}
+
+.chat-wrapper:hover .options {
+  display: block;
+  animation: slide 250ms alternate;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
