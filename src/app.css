@@ -31,6 +31,7 @@
   --options-button-dark: hsla(0, 0%, 100%, 0.5);
   --primary-button-color-dark: #00a884;
   --primary-button-hover-dark: #06cf9c;
+  --icon-gray-dark: #54656f;
 }
 
 body {

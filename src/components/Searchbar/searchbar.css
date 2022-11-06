@@ -6,7 +6,7 @@
   width: 400px;
 }
 
-input {
+.searchbar-wrapper input {
   border: none;
   background-color: var(--navbar-theme-color-dark);
   color: var(--searchbar-text-color-dark);

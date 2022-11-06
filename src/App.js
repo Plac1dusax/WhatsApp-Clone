@@ -3,6 +3,7 @@ import FriendsListSection from "./components/FriendsListSection/FriendsListSecti
 import ChatSection from "./components/ChatSection/ChatSection"
 import ArchivedSection from "./components/ArchivedSection/ArchivedSection"
 import CommunitiesSection from "./components/CommunitiesSection/CommunitiesSection"
+import StartCommunity from "./components/StartCommunity/StartCommunity"
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <div className="friends-list-container">
         {/* <FriendsListSection /> */}
         {/* <ArchivedSection /> */}
-        <CommunitiesSection />
+        {/* <CommunitiesSection /> */}
+        <StartCommunity />
       </div>
       <div className="chat-section-container">
         <ChatSection />
