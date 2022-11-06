@@ -1,11 +1,12 @@
 import React from "react"
 import Chat from "../Chat/Chat"
+import SectionHeader from "../SectionHeader/SectionHeader"
 import "./archivedSection.css"
 
 export default function ArchivedSection() {
   return (
     <div>
-      <div className="archived-section-nav">
+      {/* <div className="archived-section-nav">
         <div className="title-section">
           <div className="archived-section-arrow-left">
             <svg
@@ -26,7 +27,8 @@ export default function ArchivedSection() {
           </div>
           <div className="archive-section-title">Archived</div>
         </div>
-      </div>
+      </div> */}
+      <SectionHeader header={"Archived"} />
       <div className="archived-chats-list">
         <Chat />
         <Chat />

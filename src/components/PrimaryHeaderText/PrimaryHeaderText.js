@@ -26,5 +26,15 @@ export default function PrimaryHeaderText(props) {
     renderText = text
   }
 
+  if (headerType === "section") {
+    style = {
+      color: "var(--primary-header-text-dark)",
+      fontSize: "24px",
+      fontWeight: "bold"
+    }
+
+    renderText = text
+  }
+
   return <div style={style}>{renderText}</div>
 }

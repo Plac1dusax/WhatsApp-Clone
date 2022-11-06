@@ -1,0 +1,24 @@
+.section-header-nav {
+  position: fixed;
+  width: 450px;
+  height: 100px;
+  background-color: var(--navbar-theme-color-dark);
+  display: flex;
+  align-items: flex-end;
+}
+
+.title-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--primary-header-text-dark);
+  font-size: 19px;
+  width: 150px;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+}
+
+.section-header-arrow-left {
+  cursor: pointer;
+  margin-right: 1.5rem;
+}

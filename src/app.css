@@ -8,6 +8,8 @@
 @import url(./components/SearchFriend/searchFriend.css);
 @import url(./components/Time/time.css);
 @import url(./components/Archived/archived.css);
+@import url(./components/SectionHeader/sectionHeader.css);
+@import url(./components/CommunitiesSection/communitiesSection.css);
 
 *,
 *::before,
@@ -27,6 +29,8 @@
   --border-color-dark: rgba(134, 150, 160, 0.15);
   --primary-hover-dark: hsla(0, 0%, 50%, 0.1);
   --options-button-dark: hsla(0, 0%, 100%, 0.5);
+  --primary-button-color-dark: #00a884;
+  --primary-button-hover-dark: #06cf9c;
 }
 
 body {
