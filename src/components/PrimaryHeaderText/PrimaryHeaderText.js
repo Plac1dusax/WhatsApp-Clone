@@ -32,9 +32,17 @@ export default function PrimaryHeaderText(props) {
       fontSize: "24px",
       fontWeight: "bold"
     }
-
-    renderText = text
   }
+
+  if (headerType === "contact") {
+    style = {
+      color: "var(--primary-header-text-dark)",
+      fontSize: "16px",
+      fontWeight: "normal"
+    }
+  }
+
+  renderText = text
 
   return <div style={style}>{renderText}</div>
 }

@@ -4,6 +4,7 @@ import ChatSection from "./components/ChatSection/ChatSection"
 import ArchivedSection from "./components/ArchivedSection/ArchivedSection"
 import CommunitiesSection from "./components/CommunitiesSection/CommunitiesSection"
 import StartCommunity from "./components/StartCommunity/StartCommunity"
+import NewChat from "./components/NewChat/NewChat"
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         {/* <FriendsListSection /> */}
         {/* <ArchivedSection /> */}
         {/* <CommunitiesSection /> */}
-        <StartCommunity />
+        {/* <StartCommunity /> */}
+        <NewChat />
       </div>
       <div className="chat-section-container">
         <ChatSection />

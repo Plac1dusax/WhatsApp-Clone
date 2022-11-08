@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function ProfilePhoto({ navProfilePhoto }) {
+export default function ProfilePhoto({ navProfilePhoto, url }) {
   let style = {}
 
   if (navProfilePhoto === "chat") {

@@ -82,7 +82,7 @@ export default function StartCommunity() {
               </svg>
             </div>
           </div>
-          <input></input>
+          <input className="user-input"></input>
         </div>
         <div className="input-wrapper">
           <div className="placeholder">Community description</div>
@@ -117,7 +117,7 @@ export default function StartCommunity() {
               </svg>
             </div>
           </div>
-          <input></input>
+          <input className="user-input"></input>
         </div>
         <div className="button-wrapper">
           <div className="arrow-left">

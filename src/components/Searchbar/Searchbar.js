@@ -1,12 +1,38 @@
 import React from "react"
 import "./searchbar.css"
 
-export default function Searchbar() {
+export default function Searchbar({ type }) {
+  let placeholder = ""
+  let styleInput = {}
+  let styleArrowAndSearchbar = {}
+
+  if (type === "new chat") {
+    styleInput = {
+      border: "none",
+      backgroundColor: "var(--navbar-theme-color-dark)",
+      color: "var(--searchbar-text-color-dark)",
+      outline: "none",
+
+      width: "100%",
+      marginTop: "0.4rem",
+      padding: "0.7rem 3rem",
+      borderRadius: "0.6em"
+    }
+
+    styleArrowAndSearchbar = {
+      position: "absolute",
+      top: "25%",
+      left: "3%",
+      color: "var(--searchbar-text-color-dark)"
+    }
+
+    placeholder = "Search contacts"
+  }
   return (
     <>
       <div className="searchbar-wrapper">
-        <input placeholder="Search a chat or create a new one"></input>
-        <div className="search-icon">
+        <input style={styleInput} placeholder={placeholder}></input>
+        <div style={styleArrowAndSearchbar} className="search-icon">
           <svg
             viewBox="0 0 24 24"
             height="24"
@@ -23,7 +49,7 @@ export default function Searchbar() {
             ></path>
           </svg>
         </div>
-        <div className="back-arrow">
+        <div style={styleArrowAndSearchbar} className="back-arrow">
           <svg
             viewBox="0 0 24 24"
             height="24"

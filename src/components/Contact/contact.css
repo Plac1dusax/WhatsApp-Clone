@@ -1,0 +1,36 @@
+.contact-wrapper {
+  display: flex;
+  align-items: center;
+
+  width: 420px;
+  height: 72px;
+  padding: 1rem;
+  margin-left: -1rem;
+
+  position: relative;
+}
+
+.contact-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 79%;
+  border-top: 1px solid var(--border-color-dark);
+}
+
+.contact-wrapper:hover {
+  cursor: pointer;
+  background-color: var(--primary-hover-dark);
+}
+
+.contact-profile-photo {
+  margin-right: 1rem;
+}
+
+.contact-name-and-about {
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

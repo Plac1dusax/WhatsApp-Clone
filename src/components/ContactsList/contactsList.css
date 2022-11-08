@@ -1,0 +1,13 @@
+.contacts-list {
+  width: 420px;
+  padding: 1rem;
+}
+
+.letter {
+  color: var(--teal);
+  padding: 1rem;
+}
+
+.list:nth-child(n) {
+  border-bottom: none;
+}

@@ -10,6 +10,9 @@
 @import url(./components/Archived/archived.css);
 @import url(./components/SectionHeader/sectionHeader.css);
 @import url(./components/CommunitiesSection/communitiesSection.css);
+@import url(./components/NewChat/newChat.css);
+@import url(./components/ContactsList/contactsList.css);
+@import url(./components/Contact/contact.css);
 
 *,
 *::before,
@@ -32,6 +35,8 @@
   --primary-button-color-dark: #00a884;
   --primary-button-hover-dark: #06cf9c;
   --icon-gray-dark: #54656f;
+  --icon-white-dark: #fff;
+  --teal: #008069;
 }
 
 body {
@@ -63,7 +68,6 @@ body {
   width: 450px;
   background-color: var(--primary-theme-color-dark);
   position: relative;
-  /* border-right: 1px solid var(--primary-nav-btn-color-dark); */
 }
 
 .chat-section-container {
