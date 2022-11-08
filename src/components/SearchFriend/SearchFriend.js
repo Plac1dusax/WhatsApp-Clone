@@ -5,7 +5,7 @@ import "./searchFriend.css"
 export default function SearchFriend() {
   return (
     <div className="searchbar-area">
-      <Searchbar />
+      <Searchbar type={"search friend"} />
       <div className="nav filter-unread-chats">
         <svg
           viewBox="0 0 24 24"

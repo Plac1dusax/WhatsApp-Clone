@@ -6,6 +6,29 @@ export default function Searchbar({ type }) {
   let styleInput = {}
   let styleArrowAndSearchbar = {}
 
+  if (type === "search friend") {
+    styleInput = {
+      border: "none",
+      backgroundColor: "var(--navbar-theme-color-dark)",
+      color: "var(--searchbar-text-color-dark)",
+      outline: "none",
+
+      width: "100%",
+      marginTop: "0.2rem",
+      padding: "0.5rem 3rem",
+      borderRadius: "0.6em"
+    }
+
+    styleArrowAndSearchbar = {
+      position: "absolute",
+      top: "20%",
+      left: "3%",
+      color: "var(--searchbar-text-color-dark)"
+    }
+
+    placeholder = "Search or start a new chat"
+  }
+
   if (type === "new chat") {
     styleInput = {
       border: "none",

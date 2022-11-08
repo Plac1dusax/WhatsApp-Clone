@@ -10,11 +10,11 @@ function App() {
   return (
     <div className="wrapper">
       <div className="friends-list-container">
-        {/* <FriendsListSection /> */}
+        <FriendsListSection />
         {/* <ArchivedSection /> */}
         {/* <CommunitiesSection /> */}
         {/* <StartCommunity /> */}
-        <NewChat />
+        {/* <NewChat /> */}
       </div>
       <div className="chat-section-container">
         <ChatSection />
