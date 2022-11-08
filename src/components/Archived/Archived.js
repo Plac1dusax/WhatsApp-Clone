@@ -19,7 +19,7 @@ export default function Archived() {
           ></path>
         </svg>
       </div>
-      <PrimaryHeaderText headerType={"archived"} />
+      <PrimaryHeaderText headerType={"archived"} text={"Archived"} />
     </div>
   )
 }

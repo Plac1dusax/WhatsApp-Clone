@@ -15,34 +15,26 @@ export default function PrimaryHeaderText(props) {
     }
 
     renderText = "Archived"
-  }
-
-  if (headerType === "chat") {
+  } else if (headerType === "chat") {
     style = {
       color: "var(--primary-header-text-dark)",
       fontSize: "18px"
     }
 
     renderText = text
-  }
-
-  if (headerType === "section") {
+  } else if (headerType === "section") {
     style = {
       color: "var(--primary-header-text-dark)",
       fontSize: "24px",
       fontWeight: "bold"
     }
-  }
-
-  if (headerType === "contact") {
+  } else if (headerType === "contact") {
     style = {
       color: "var(--primary-header-text-dark)",
       fontSize: "16px",
       fontWeight: "normal"
     }
-  }
-
-  renderText = text
+  } else renderText = text
 
   return <div style={style}>{renderText}</div>
 }
