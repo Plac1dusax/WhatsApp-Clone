@@ -13,6 +13,8 @@
 @import url(./components/NewChat/newChat.css);
 @import url(./components/ContactsList/contactsList.css);
 @import url(./components/Contact/contact.css);
+@import url(./components/CustomInputArea/customInputArea.css);
+@import url(./components/Profile/profile.css);
 
 *,
 *::before,

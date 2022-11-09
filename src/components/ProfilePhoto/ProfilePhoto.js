@@ -10,18 +10,14 @@ export default function ProfilePhoto({ navProfilePhoto, url }) {
       height: "49px",
       objectFit: "cover"
     }
-  }
-
-  if (navProfilePhoto === "nav") {
+  } else if (navProfilePhoto === "nav") {
     style = {
       borderRadius: "50%",
       width: "40px",
       height: "40px",
       objectFit: "cover"
     }
-  }
-
-  if (navProfilePhoto === "user") {
+  } else if (navProfilePhoto === "user") {
     style = {
       borderRadius: "50%",
       width: "200px",

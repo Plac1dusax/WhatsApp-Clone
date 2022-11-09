@@ -34,7 +34,9 @@ export default function PrimaryHeaderText(props) {
       fontSize: "16px",
       fontWeight: "normal"
     }
-  } else renderText = text
+
+    renderText = text
+  }
 
   return <div style={style}>{renderText}</div>
 }
