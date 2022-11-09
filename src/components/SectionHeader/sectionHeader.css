@@ -12,6 +12,7 @@
   justify-content: space-around;
   align-items: center;
   color: var(--primary-header-text-dark);
+  font-weight: 500;
   font-size: 19px;
   width: 150px;
   margin-bottom: 1rem;

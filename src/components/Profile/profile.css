@@ -10,3 +10,10 @@
 .profile-photo-wrapper {
   margin-top: 1rem;
 }
+
+.information-text {
+  color: var(--secondary-header-text-dark);
+  padding: 1rem;
+  font-size: 14px;
+  margin-top: 2rem;
+}

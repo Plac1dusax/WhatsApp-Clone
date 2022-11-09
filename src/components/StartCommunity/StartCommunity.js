@@ -53,11 +53,13 @@ export default function StartCommunity() {
           counter={true}
           emoji={true}
           placeholder={"Community name"}
+          type={"community"}
         />
         <CustomInputArea
           counter={false}
           emoji={true}
           placeholder={"Community description"}
+          type={"community"}
         />
         <div className="button-wrapper">
           <div className="arrow-right">
