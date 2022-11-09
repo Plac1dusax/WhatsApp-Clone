@@ -6,6 +6,7 @@ import CommunitiesSection from "./components/CommunitiesSection/CommunitiesSecti
 import StartCommunity from "./components/StartCommunity/StartCommunity"
 import NewChat from "./components/NewChat/NewChat"
 import Profile from "./components/Profile/Profile"
+import Settings from "./components/Settings/Settings"
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         {/* <CommunitiesSection /> */}
         {/* <StartCommunity /> */}
         {/* <NewChat /> */}
-        <Profile />
+        {/* <Profile /> */}
+        <Settings />
       </div>
       <div className="chat-section-container">
         <ChatSection />
