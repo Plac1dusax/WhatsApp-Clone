@@ -7,6 +7,7 @@ import StartCommunity from "./components/StartCommunity/StartCommunity"
 import NewChat from "./components/NewChat/NewChat"
 import Profile from "./components/Profile/Profile"
 import Settings from "./components/Settings/Settings"
+import CustomCheckbox from "./components/CustomCheckbox/CustomCheckbox"
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         {/* <StartCommunity /> */}
         {/* <NewChat /> */}
         {/* <Profile /> */}
-        <Settings />
+        {/* <Settings /> */}
+        <CustomCheckbox />
       </div>
       <div className="chat-section-container">
         <ChatSection />

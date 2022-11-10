@@ -15,6 +15,7 @@
 @import url(./components/Contact/contact.css);
 @import url(./components/CustomInputArea/customInputArea.css);
 @import url(./components/Profile/profile.css);
+@import url(./components/CustomCheckbox/customCheckbox.css);
 
 *,
 *::before,
@@ -40,6 +41,9 @@
   --icon-gray-dark: #54656f;
   --icon-white-dark: #fff;
   --teal: #008069;
+  --checkbox-border-color-dark: #d1d7db;
+  --checkbox-background: #00a884;
+  --checkbox-mark-dark: #111b21;
 }
 
 body {
