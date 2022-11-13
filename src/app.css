@@ -16,6 +16,8 @@
 @import url(./components/CustomInputArea/customInputArea.css);
 @import url(./components/Profile/profile.css);
 @import url(./components/CustomCheckbox/customCheckbox.css);
+@import url(./components/Privacy/privacy.css);
+@import url(./components/MiniSectionHeader/miniSectionHeader.css);
 
 *,
 *::before,

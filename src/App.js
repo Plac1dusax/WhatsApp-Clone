@@ -8,6 +8,7 @@ import NewChat from "./components/NewChat/NewChat"
 import Profile from "./components/Profile/Profile"
 import Settings from "./components/Settings/Settings"
 import Notifications from "./components/Notifications/Notifications"
+import Privacy from "./components/Privacy/Privacy"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         {/* <Profile /> */}
         {/* <Settings /> */}
         <Notifications />
+        {/* <Privacy /> */}
       </div>
       <div className="chat-section-container">
         <ChatSection />

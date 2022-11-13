@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import SettingWithCheckbox from "../SettingWithCheckbox/SettingWithCheckbox"
+import MiniSectionHeader from "../MiniSectionHeader/MiniSectionHeader"
 import { v4 as uuidv4 } from "uuid"
 import "./notifications.css"
 
@@ -35,7 +36,7 @@ export default function Notifications() {
         <SectionHeader header={"Notifications"} />
       </div>
       <div className="notifications-body">
-        <div className="messages">MESSAGES</div>
+        <MiniSectionHeader text={"MESSAGES"} />
         {notificationSettings.map(setting => {
           return (
             <SettingWithCheckbox
