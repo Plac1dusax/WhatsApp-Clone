@@ -1,0 +1,25 @@
+.setting-with-checkbox-setting {
+  padding: 1rem 0;
+}
+
+.setting-with-checkbox-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 2rem;
+}
+
+.setting-with-checkbox-option-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.setting-with-checkbox-checkbox {
+  margin-right: 2rem;
+}
+
+.hide {
+  display: none;
+}

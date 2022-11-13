@@ -1,0 +1,14 @@
+.notifications-body {
+  position: relative;
+  top: 100px;
+  padding: 1.5rem;
+}
+
+.messages {
+  font-size: 14px;
+  color: var(--teal);
+}
+
+.hide {
+  display: none;
+}

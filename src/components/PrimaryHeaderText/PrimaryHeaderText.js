@@ -44,7 +44,14 @@ export default function PrimaryHeaderText(props) {
     }
 
     renderText = text
-  }
+  } else if (headerType === "setting-primary") {
+    style = {
+      color: "var(--primary-header-text-dark)",
+      fontSize: "15px",
+      fontWeight: "normal"
+    }
 
+    renderText = text
+  }
   return <div style={style}>{renderText}</div>
 }
