@@ -52,6 +52,15 @@ export default function PrimaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "setting-privacy") {
+    style = {
+      color: "var(--primary-header-text-dark)",
+      fontSize: "20px",
+      fontWeight: "normal"
+    }
+
+    renderText = text
   }
+
   return <div style={style}>{renderText}</div>
 }

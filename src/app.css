@@ -19,6 +19,8 @@
 @import url(./components/Privacy/privacy.css);
 @import url(./components/MiniSectionHeader/miniSectionHeader.css);
 @import url(./components/PrivacySettings/privacySettings.css);
+@import url(./components/Security/security.css);
+@import url(./components/LogoAndText/logoAndText.css);
 
 *,
 *::before,

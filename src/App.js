@@ -9,6 +9,8 @@ import Profile from "./components/Profile/Profile"
 import Settings from "./components/Settings/Settings"
 import Notifications from "./components/Notifications/Notifications"
 import Privacy from "./components/Privacy/Privacy"
+import Security from "./components/Security/Security"
+import LogoAndText from "./components/LogoAndText/LogoAndText"
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
         {/* <Profile /> */}
         {/* <Settings /> */}
         {/* <Notifications /> */}
-        <Privacy />
+        {/* <Privacy /> */}
+        <LogoAndText />
       </div>
       <div className="chat-section-container">
         <ChatSection />
