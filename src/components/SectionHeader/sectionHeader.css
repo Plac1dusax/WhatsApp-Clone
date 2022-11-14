@@ -2,6 +2,7 @@
   position: fixed;
   width: 450px;
   height: 100px;
+  z-index: 5;
   background-color: var(--navbar-theme-color-dark);
   display: flex;
   align-items: flex-end;

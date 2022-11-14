@@ -1,0 +1,55 @@
+.privacy-container {
+  height: 710px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.privacy-body {
+  position: relative;
+  top: 100px;
+  padding: 0.5rem 2rem;
+  border-left: 1px solid hsla(0, 0%, 0%, 0.1);
+}
+
+.personal-privacy-settings {
+  margin-bottom: 1.2rem;
+}
+
+.disappearing-messages {
+  padding: 0.5rem 0.1rem;
+  position: relative;
+}
+
+.disappearing-messages::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 200%;
+  left: -50%;
+  top: -10%;
+  background-color: var(--dark-background);
+}
+
+.disappearing-messages::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 120%;
+  left: -10%;
+  bottom: -10%;
+  background-color: var(--dark-background);
+}
+
+.group-settings {
+  position: relative;
+}
+
+.group-settings::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 120%;
+  left: -10%;
+  bottom: -5%;
+  background-color: var(--dark-background);
+}

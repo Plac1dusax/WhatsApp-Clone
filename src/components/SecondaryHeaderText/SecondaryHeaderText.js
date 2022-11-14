@@ -19,6 +19,14 @@ export default function SecondaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "setting-secondary-light") {
+    style = {
+      color: "var(--secondary-header-light-text-color-dark)",
+      fontSize: "14px",
+      fontWeight: "300"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

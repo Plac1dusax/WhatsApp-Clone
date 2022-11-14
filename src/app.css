@@ -18,6 +18,7 @@
 @import url(./components/CustomCheckbox/customCheckbox.css);
 @import url(./components/Privacy/privacy.css);
 @import url(./components/MiniSectionHeader/miniSectionHeader.css);
+@import url(./components/PrivacySettings/privacySettings.css);
 
 *,
 *::before,
@@ -46,6 +47,8 @@
   --checkbox-border-color-dark: #d1d7db;
   --checkbox-background: #00a884;
   --checkbox-mark-dark: #111b21;
+  --dark-background: #0a1014;
+  --secondary-header-light-text-color-dark: #667781;
 }
 
 body {

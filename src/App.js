@@ -21,8 +21,8 @@ function App() {
         {/* <NewChat /> */}
         {/* <Profile /> */}
         {/* <Settings /> */}
-        <Notifications />
-        {/* <Privacy /> */}
+        {/* <Notifications /> */}
+        <Privacy />
       </div>
       <div className="chat-section-container">
         <ChatSection />
