@@ -2,4 +2,55 @@
   position: relative;
   top: 100px;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.security-icon {
+  padding: 1rem 0;
+}
+
+.description-area {
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
+.description-area-header {
+  padding-bottom: 1rem;
+}
+
+.description-area-text {
+  padding-right: 1rem;
+  line-height: 20px;
+}
+
+.description-area-list {
+  padding: 1rem 0;
+}
+
+.learn-more {
+  color: var(--link);
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.security-option-header {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  margin-left: 1rem;
+}
+
+.security-option-description {
+  padding: 1rem 2rem;
+  line-height: 20px;
+  font-size: 14px;
+  color: var(--secondary-header-text-dark);
 }
