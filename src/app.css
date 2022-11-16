@@ -21,6 +21,10 @@
 @import url(./components/PrivacySettings/privacySettings.css);
 @import url(./components/Security/security.css);
 @import url(./components/LogoAndText/logoAndText.css);
+@import url(./components/Theme/theme.css);
+@import url(./components/ButtonPrimary/buttonPrimary.css);
+@import url(./components/ButtonSecondary/buttonSecondary.css);
+@import url(./components/CustomAlert/customAlert.css);
 
 *,
 *::before,
@@ -40,6 +44,8 @@
   --settings-icon-theme: #8696a0;
   --border-color-dark: rgba(134, 150, 160, 0.15);
   --primary-hover-dark: hsla(0, 0%, 50%, 0.1);
+  --secondary-hover-dark: rgba(233, 237, 239, 0.05);
+  --secondary-hover-text-dark: #06cf9c;
   --options-button-dark: hsla(0, 0%, 100%, 0.5);
   --primary-button-color-dark: #00a884;
   --primary-button-hover-dark: #06cf9c;
@@ -52,6 +58,12 @@
   --dark-background: #0a1014;
   --secondary-header-light-text-color-dark: #667781;
   --link: #53bdeb;
+  --primary-button-text-color-dark: #111b21;
+  --primary-button-background: #00a884;
+  --secondary-button-text-color-dark: #00a884;
+  --secondary-button-border-color: rgba(134, 150, 160, 0.15);
+  --modal-background: #3b4a54;
+  --overlay: --dark-background;
 }
 
 body {

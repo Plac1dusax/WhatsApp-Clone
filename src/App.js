@@ -10,11 +10,15 @@ import Settings from "./components/Settings/Settings"
 import Notifications from "./components/Notifications/Notifications"
 import Privacy from "./components/Privacy/Privacy"
 import Security from "./components/Security/Security"
-import OptionWithRadioButton from "./components/OptionWithRadioButton/OptionWithRadioButton"
+import Theme from "./components/Theme/Theme"
+import ButtonSecondary from "./components/ButtonSecondary/ButtonSecondary"
+import ButtonPrimary from "./components/ButtonPrimary/ButtonPrimary"
 
 function App() {
   return (
     <div className="wrapper">
+      <Theme />
+
       <div className="friends-list-container">
         {/* <FriendsListSection /> */}
         {/* <ArchivedSection /> */}
@@ -25,8 +29,7 @@ function App() {
         {/* <Settings /> */}
         {/* <Notifications /> */}
         {/* <Privacy /> */}
-        {/* <Security /> */}
-        <OptionWithRadioButton />
+        <Security />
       </div>
       <div className="chat-section-container">
         <ChatSection />

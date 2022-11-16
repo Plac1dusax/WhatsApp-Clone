@@ -3,6 +3,7 @@ import "./communitiesSection.css"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import SectionHeader from "../SectionHeader/SectionHeader"
+import ButtonPrimary from "../ButtonPrimary/ButtonPrimary"
 
 export default function CommunitiesSection() {
   const text =
@@ -209,7 +210,7 @@ export default function CommunitiesSection() {
             <SecondaryHeaderText headerType={"chat"} text={text} />
           </div>
         </div>
-        <button>START A COMMUNITY</button>
+        <ButtonPrimary buttonPrimary={"START A COMMUNITY"} />
       </div>
     </div>
   )

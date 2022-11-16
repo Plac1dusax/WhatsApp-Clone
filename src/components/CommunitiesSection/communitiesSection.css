@@ -18,20 +18,3 @@
   text-align: center;
   word-break: break-all;
 }
-
-button {
-  background: none;
-  border: none;
-  outline: none;
-  color: black;
-  font-weight: 500;
-  letter-spacing: 1.25px;
-  background-color: var(--primary-button-color-dark);
-  padding: 0.7rem 2rem;
-  border-radius: 0.2em;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: var(--primary-button-hover-dark);
-}

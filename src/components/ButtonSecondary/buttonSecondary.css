@@ -1,0 +1,15 @@
+.button-secondary {
+  padding: 1em 1em;
+  font-weight: 700;
+  border-radius: 0.3em;
+  letter-spacing: 1.25px;
+  background-color: transparent;
+  color: var(--secondary-button-text-color-dark);
+  border: 1px solid var(--secondary-button-border-color);
+}
+
+.button-secondary:hover {
+  background-color: var(--secondary-hover-dark);
+  color: var(--secondary-hover-text-dark);
+  cursor: pointer;
+}

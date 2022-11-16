@@ -1,10 +1,24 @@
 .option-with-radio-button-container {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.option-with-radio-button-container:nth-child(n) {
+  margin-bottom: 1rem;
+}
+
+.option-with-radio-button-container:last-child {
+  margin-bottom: 0;
 }
 
 .option-with-radio-button-container label {
   color: var(--primary-header-text-dark);
   margin-left: 0.5rem;
   font-size: 15px;
+  cursor: pointer;
+}
+
+.option-with-radio-button-container input {
+  cursor: pointer;
 }
