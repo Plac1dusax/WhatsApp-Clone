@@ -1,0 +1,10 @@
+.option-with-radio-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.option-with-radio-button-container label {
+  color: var(--primary-header-text-dark);
+  margin-left: 0.5rem;
+  font-size: 15px;
+}

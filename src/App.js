@@ -10,6 +10,7 @@ import Settings from "./components/Settings/Settings"
 import Notifications from "./components/Notifications/Notifications"
 import Privacy from "./components/Privacy/Privacy"
 import Security from "./components/Security/Security"
+import OptionWithRadioButton from "./components/OptionWithRadioButton/OptionWithRadioButton"
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         {/* <Settings /> */}
         {/* <Notifications /> */}
         {/* <Privacy /> */}
-        <Security />
+        {/* <Security /> */}
+        <OptionWithRadioButton />
       </div>
       <div className="chat-section-container">
         <ChatSection />
