@@ -4,12 +4,12 @@
 
 .chat-wallpaper-color:hover {
   cursor: pointer;
-  border: 3px solid var(--wallpaper-hover);
+  border: 5px solid var(--wallpaper-hover);
 }
 
 .chat-wallpaper-color:focus {
   cursor: pointer;
-  border: 3px solid var(--wallpaper-active);
+  border: 5px solid var(--wallpaper-active);
 }
 
 .standard::before {

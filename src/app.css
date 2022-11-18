@@ -26,6 +26,7 @@
 @import url(./components/ButtonSecondary/buttonSecondary.css);
 @import url(./components/CustomAlert/customAlert.css);
 @import url(./components/ChatWallpaper/chatWallpaper.css);
+@import url(./components/ChatWallpaperColor/chatWallpaperColor.css);
 
 *,
 *::before,
