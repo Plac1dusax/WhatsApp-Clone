@@ -6,9 +6,10 @@ export default function CustomCheckbox({ ischecked }) {
   const [checked, setChecked] = useState(ischecked)
 
   function handleClick(e) {
-    setChecked(!checked)
-
-    handleHiddenElements(e)
+    if (ischecked) {
+      setChecked(!checked)
+      handleHiddenElements(e)
+    }
   }
 
   function handleHiddenElements(e) {

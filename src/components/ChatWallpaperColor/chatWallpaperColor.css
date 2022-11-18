@@ -1,0 +1,24 @@
+.chat-wallpaper-color {
+  position: relative;
+}
+
+.chat-wallpaper-color:hover {
+  cursor: pointer;
+  border: 3px solid var(--wallpaper-hover);
+}
+
+.chat-wallpaper-color:focus {
+  cursor: pointer;
+  border: 3px solid var(--wallpaper-active);
+}
+
+.standard::before {
+  content: "Default";
+  color: var(--primary-header-text-dark);
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+}
