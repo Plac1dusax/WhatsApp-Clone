@@ -1,0 +1,50 @@
+.request-account-info-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.request-account-info-body {
+  position: relative;
+  top: 100px;
+  padding: 1rem;
+}
+
+.request-account-info-description {
+  padding: 1rem 0.5rem;
+  font-size: 14px;
+  color: var(--secondary-header-text-dark);
+  line-height: 20px;
+  margin-top: 1rem;
+}
+
+.request-report-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 1px solid var(--border-color-dark);
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
+.request-report-wrapper:hover {
+  cursor: pointer;
+  background-color: var(--primary-hover-dark);
+}
+
+.request-report-icon {
+  color: var(--settings-icon-theme);
+  margin-right: 1.5rem;
+  padding: 1rem;
+}
+
+.request-account-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  line-height: 20px;
+  margin-top: 1rem;
+  gap: 20px;
+}

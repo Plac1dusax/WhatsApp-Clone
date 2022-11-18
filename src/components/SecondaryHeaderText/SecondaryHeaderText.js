@@ -27,6 +27,14 @@ export default function SecondaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "request-account-secondary") {
+    style = {
+      color: "var(--secondary-header-text-dark)",
+      fontSize: "14px",
+      fontWeight: "light"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

@@ -14,6 +14,7 @@ import Theme from "./components/Theme/Theme"
 import ButtonSecondary from "./components/ButtonSecondary/ButtonSecondary"
 import ButtonPrimary from "./components/ButtonPrimary/ButtonPrimary"
 import ChatWallpaper from "./components/ChatWallpaper/ChatWallpaper"
+import RequestAccountInfo from "./components/RequestAccountInfo/RequestAccountInfo"
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
         {/* <Notifications /> */}
         {/* <Privacy /> */}
         {/* <Security /> */}
-        <ChatWallpaper />
+        {/* <ChatWallpaper /> */}
+        <RequestAccountInfo />
       </div>
       <div className="chat-section-container">
         <ChatSection />
