@@ -1,0 +1,8 @@
+.keyboard-shortcut-grid-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shortcut-keys-wrapper {
+  display: flex;
+}

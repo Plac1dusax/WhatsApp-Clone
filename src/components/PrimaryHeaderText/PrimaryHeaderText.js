@@ -84,6 +84,22 @@ export default function PrimaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "keyboard-shortcuts") {
+    style = {
+      color: "var(--primary-header-text-dull)",
+      fontSize: "20px",
+      fontWeight: "400"
+    }
+
+    renderText = text
+  } else if (headerType === "keyboard-shortcuts-key") {
+    style = {
+      color: "var(--primary-header-text-dull)",
+      fontSize: "14px",
+      fontWeight: "400"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

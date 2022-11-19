@@ -1,0 +1,39 @@
+.keyboard-shortcuts-container {
+  padding: 1rem;
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: var(--primary-theme-color-dark);
+}
+
+.keyboard-shortcuts-header {
+  margin-bottom: 2rem;
+}
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  column-gap: 40px;
+  row-gap: 25px;
+}
+
+.button {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark-background);
+  opacity: 0.3;
+  z-index: 5;
+}

@@ -28,6 +28,7 @@
 @import url(./components/ChatWallpaper/chatWallpaper.css);
 @import url(./components/ChatWallpaperColor/chatWallpaperColor.css);
 @import url(./components/RequestAccountInfo/requestAccountInfo.css);
+@import url(./components/KeyboardShortcuts/keyboardShortcuts.css);
 
 *,
 *::before,
@@ -43,6 +44,7 @@
   --searchbar-text-color-dark: #d1d7db;
   --highlighted-color-dark: #00a884;
   --primary-header-text-dark: #e9edef;
+  --primary-header-text-dull: rgba(233, 237, 239, 0.8);
   --secondary-header-text-dark: #8696a0;
   --settings-icon-theme: #8696a0;
   --border-color-dark: rgba(134, 150, 160, 0.15);
@@ -70,6 +72,7 @@
   --default-chat-wallpaper-dark: #0b141a;
   --wallpaper-active: #667781;
   --wallpaper-hover: #3b4a54;
+  --shortcut-key: #e9edef;
 }
 
 body {
@@ -86,8 +89,6 @@ body {
 }
 
 .wrapper {
-  background-color: red;
-
   max-width: 95vw;
   max-height: 95vh;
   width: 95vw;

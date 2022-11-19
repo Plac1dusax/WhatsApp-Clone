@@ -15,11 +15,13 @@ import ButtonSecondary from "./components/ButtonSecondary/ButtonSecondary"
 import ButtonPrimary from "./components/ButtonPrimary/ButtonPrimary"
 import ChatWallpaper from "./components/ChatWallpaper/ChatWallpaper"
 import RequestAccountInfo from "./components/RequestAccountInfo/RequestAccountInfo"
+import KeyboardShortcuts from "./components/KeyboardShortcuts/KeyboardShortcuts"
 
 function App() {
   return (
     <div className="wrapper">
       {/* <Theme /> */}
+      <KeyboardShortcuts />
 
       <div className="friends-list-container">
         {/* <FriendsListSection /> */}
@@ -28,12 +30,12 @@ function App() {
         {/* <StartCommunity /> */}
         {/* <NewChat /> */}
         {/* <Profile /> */}
-        {/* <Settings /> */}
+        <Settings />
         {/* <Notifications /> */}
         {/* <Privacy /> */}
         {/* <Security /> */}
         {/* <ChatWallpaper /> */}
-        <RequestAccountInfo />
+        {/* <RequestAccountInfo /> */}
       </div>
       <div className="chat-section-container">
         <ChatSection />

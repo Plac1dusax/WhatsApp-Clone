@@ -1,0 +1,11 @@
+.shortcut-key {
+  border: 1px solid rgba(209, 215, 219, 0.24);
+  background-color: rgba(209, 215, 219, 0.12);
+  color: var(--shortcut-key);
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-size: 12px;
+  margin-left: 0.3em;
+}
