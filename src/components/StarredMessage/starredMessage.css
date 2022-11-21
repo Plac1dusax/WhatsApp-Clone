@@ -1,0 +1,67 @@
+.starred-message-container {
+  border-bottom: 1px solid var(--border-color-dark);
+  padding: 1rem 0;
+}
+
+.starred-message-container:first-child {
+  padding-top: 0;
+}
+
+.starred-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.person-and-group-info-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-and-arrow-container {
+  display: flex;
+  align-items: center;
+}
+
+.starred-message-person-name {
+  color: var(--starred-message-primary);
+  margin-left: 0.4em;
+  font-size: 14px;
+}
+
+.mini-arrow-right {
+  position: relative;
+  margin: 0 0.5rem;
+  width: 10px;
+  height: 10px;
+}
+
+.mini-arrow-right::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid black;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(102, 119, 129);
+  border-right-color: transparent;
+}
+
+.starred-message-group-name {
+  color: var(--starred-message-primary);
+  font-size: 14px;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--date-color);
+}
+
+.chat-arrow {
+  margin-left: 0.5rem;
+  color: var(--date-color);
+}

@@ -5,19 +5,20 @@
   z-index: 5;
   background-color: var(--navbar-theme-color-dark);
   display: flex;
+  justify-content: space-between;
   align-items: flex-end;
 }
 
 .title-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   color: var(--primary-header-text-dark);
   font-weight: 500;
-  font-size: 19px;
   width: 150px;
+  font-size: 19px;
   margin-bottom: 1rem;
-  margin-left: 2rem;
+  margin-left: 3rem;
 }
 
 .section-header-arrow-left {
@@ -27,4 +28,11 @@
 
 .section-header-title {
   white-space: nowrap;
+}
+
+.menu-icon {
+  color: var(--primary-header-text-dark);
+  cursor: pointer;
+  transform: translateY(-50%);
+  margin-right: 30px;
 }

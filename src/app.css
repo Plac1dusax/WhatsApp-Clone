@@ -29,6 +29,9 @@
 @import url(./components/ChatWallpaperColor/chatWallpaperColor.css);
 @import url(./components/RequestAccountInfo/requestAccountInfo.css);
 @import url(./components/KeyboardShortcuts/keyboardShortcuts.css);
+@import url(./components/StarredMessages/starredMessages.css);
+@import url(./components/StarredMessage/starredMessage.css);
+@import url(./components/ChatMessage/chatMessage.css);
 
 *,
 *::before,
@@ -73,6 +76,13 @@
   --wallpaper-active: #667781;
   --wallpaper-hover: #3b4a54;
   --shortcut-key: #e9edef;
+  --starred-message-primary: #d1d7db;
+  --date-color: #667781;
+  --primary-message: #e9edef;
+  --incoming-message: #202c33;
+  --incoming-message-deeper: #1d282f;
+  --forwarded-message: hsla(0, 0%, 100%, 0.6);
+  --star-icon: hsla(0, 0%, 100%, 0.5);
 }
 
 body {

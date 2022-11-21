@@ -1,0 +1,14 @@
+.starred-messages-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.starred-messages-body {
+  position: relative;
+  top: 100px;
+  padding: 1rem;
+}
+
+.starred-messages-body *:not(:first-child) {
+  margin-top: 0.4rem;
+}

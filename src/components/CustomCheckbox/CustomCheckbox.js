@@ -9,6 +9,9 @@ export default function CustomCheckbox({ ischecked }) {
     if (ischecked) {
       setChecked(!checked)
       handleHiddenElements(e)
+    } else {
+      setChecked(!checked)
+      handleHiddenElements(e)
     }
   }
 

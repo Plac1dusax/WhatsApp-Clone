@@ -31,14 +31,19 @@ export default function ProfilePhoto({ navProfilePhoto, url }) {
       height: "82px",
       objectFit: "cover"
     }
+  } else if (navProfilePhoto === "starred") {
+    style = {
+      borderRadius: "50%",
+      width: "26px",
+      height: "26px",
+      objectFit: "cover"
+    }
   }
 
   return (
-    <div className="profile-photo-wrapper">
-      <img
-        style={style}
-        src="https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      ></img>
-    </div>
+    <img
+      style={style}
+      src="https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+    ></img>
   )
 }
