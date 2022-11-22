@@ -35,6 +35,14 @@ export default function SecondaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "chat-section-main") {
+    style = {
+      color: "var(--secondary-header-text-dark)",
+      fontSize: "14px",
+      fontWeight: "400"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

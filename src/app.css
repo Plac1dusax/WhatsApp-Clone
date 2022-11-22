@@ -37,7 +37,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -85,6 +85,8 @@
   --star-icon: hsla(0, 0%, 100%, 0.5);
   --starred-message-selected-background: #0c1317;
   --information-for-older-messages: #667781;
+  --encrypted-icon: #667781;
+  --chat-section-border: #008069;
 }
 
 body {
@@ -119,4 +121,5 @@ body {
 .chat-section-container {
   flex-grow: 1;
   background-color: var(--navbar-theme-color-dark);
+  border-left: 1px solid var(--border-color-dark);
 }

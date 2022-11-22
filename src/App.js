@@ -25,7 +25,7 @@ function App() {
       {/* <KeyboardShortcuts /> */}
 
       <div className="friends-list-container">
-        {/* <FriendsListSection /> */}
+        <FriendsListSection />
         {/* <ArchivedSection /> */}
         {/* <CommunitiesSection /> */}
         {/* <StartCommunity /> */}
@@ -37,7 +37,7 @@ function App() {
         {/* <Security /> */}
         {/* <ChatWallpaper /> */}
         {/* <RequestAccountInfo /> */}
-        <StarredMessages />
+        {/* <StarredMessages /> */}
       </div>
       <div className="chat-section-container">
         <ChatSection />

@@ -1,0 +1,35 @@
+.chat-section-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-bottom: 3px solid var(--chat-section-border);
+}
+
+.chat-section-svg {
+  margin-bottom: 30px;
+}
+
+.whatsapp-web-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  line-height: 20px;
+}
+
+.end-to-end-encrypted {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 10%;
+}
+
+.encrypted-icon svg {
+  color: var(--encrypted-icon);
+  margin-right: 5px;
+}

@@ -1,3 +1,7 @@
+.friends-list-section-wrapper {
+  position: relative;
+}
+
 .navbar-and-searchbar-wrapper {
   position: fixed;
 }

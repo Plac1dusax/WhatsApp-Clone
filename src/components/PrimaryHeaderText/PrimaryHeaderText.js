@@ -100,6 +100,14 @@ export default function PrimaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "chat-section-main") {
+    style = {
+      color: "var(--primary-header-text-dull)",
+      fontSize: "32px",
+      fontWeight: "300"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>
