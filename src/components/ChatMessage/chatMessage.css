@@ -1,4 +1,5 @@
-.chat-message-container {
+.chat-message-container,
+.chat-message-container-direct {
   max-width: 540px;
   min-width: 60px;
   width: fit-content;
@@ -10,7 +11,7 @@
 
 .chat-bubble-arrow {
   position: absolute;
-  left: -2.1%;
+  left: -2%;
   top: 0%;
   color: var(--incoming-message);
   transform: rotate(0deg);
@@ -78,6 +79,31 @@
 }
 
 .chat-message-container:hover .chat-options-icon {
+  visibility: visible;
+  animation: slide-from-right 0.3s alternate forwards;
+}
+
+.chat-options-icon-direct {
+  position: absolute;
+  right: 5%;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background-color: var(--incoming-message);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.message-container-direct {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.3em;
+}
+
+.chat-message-container-direct:hover .chat-options-icon-direct {
   visibility: visible;
   animation: slide-from-right 0.3s alternate forwards;
 }

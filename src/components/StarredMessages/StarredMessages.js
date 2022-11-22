@@ -10,14 +10,8 @@ export default function StarredMessages() {
         <SectionHeader header={"Starred messages"} menu={true} />
       </div>
       <div className="starred-messages-body">
-        <StarredMessage group={false} />
-        <StarredMessage group={true} />
-        <StarredMessage group={false} />
-        <StarredMessage group={false} />
-        <StarredMessage group={false} />
-        <StarredMessage group={false} />
-        <StarredMessage group={false} />
-        <StarredMessage group={false} />
+        <StarredMessage reply={false} />
+        <StarredMessage reply={true} />
         <div className="information-for-older-messages">
           Use WhatsApp on your phone to see older chats and messages.
         </div>

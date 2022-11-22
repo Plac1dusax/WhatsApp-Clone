@@ -3,7 +3,7 @@ import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import ChatMessage from "../ChatMessage/ChatMessage"
 import "./starredMessage.css"
 
-export default function StarredMessage(props) {
+export default function StarredMessage({ reply }) {
   return (
     <div className="starred-message-container">
       <div className="starred-message-header">
@@ -37,7 +37,7 @@ export default function StarredMessage(props) {
         </div>
       </div>
       <div className="starred-message-body">
-        <ChatMessage />
+        <ChatMessage reply={reply} />
       </div>
     </div>
   )
