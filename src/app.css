@@ -83,6 +83,8 @@
   --incoming-message-deeper: #1d282f;
   --forwarded-message: hsla(0, 0%, 100%, 0.6);
   --star-icon: hsla(0, 0%, 100%, 0.5);
+  --starred-message-selected-background: #0c1317;
+  --information-for-older-messages: #667781;
 }
 
 body {

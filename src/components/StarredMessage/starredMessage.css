@@ -1,23 +1,39 @@
 .starred-message-container {
-  border-bottom: 1px solid var(--border-color-dark);
-  padding: 1rem 0;
+  padding: 0rem 0.5rem;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.starred-message-container:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 1px;
+  right: 2%;
+  background-color: var(--border-color-dark);
+}
+
+.starred-message-container:hover {
+  background-color: var(--starred-message-selected-background);
+  cursor: pointer;
 }
 
 .starred-message-container:first-child {
-  padding-top: 0;
+  padding-top: 0.5rem;
 }
 
 .starred-message-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  padding-top: 0.5em;
   width: 100%;
 }
 
 .person-and-group-info-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .date-and-arrow-container {
@@ -64,4 +80,13 @@
 .chat-arrow {
   margin-left: 0.5rem;
   color: var(--date-color);
+}
+
+.starred-message-body {
+  margin-left: 1.5em;
+  margin-top: 0.3em;
+}
+
+.starred-message-container:last-child {
+  border: none;
 }

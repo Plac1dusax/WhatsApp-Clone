@@ -6,9 +6,14 @@
 .starred-messages-body {
   position: relative;
   top: 100px;
-  padding: 1rem;
+  height: 615px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
-.starred-messages-body *:not(:first-child) {
-  margin-top: 0.4rem;
+.information-for-older-messages {
+  padding: 1rem;
+  font-size: 14px;
+  color: var(--information-for-older-messages);
+  border-top: 1px solid var(--border-color-dark);
 }

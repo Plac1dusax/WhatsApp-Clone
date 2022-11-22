@@ -9,6 +9,19 @@ export default function ChatMessage(props) {
   if (reply) {
     return (
       <div className="chat-message-container">
+        <div className="chat-bubble-arrow">
+          <svg viewBox="0 0 8 13" width="10" height="16" class="">
+            <path
+              opacity=".13"
+              fill="#0000000"
+              d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
+            ></path>
+            <path
+              fill="currentColor"
+              d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
+            ></path>
+          </svg>
+        </div>
         <div className="chat-message-wrapper">
           <div className="replied-message-wrapper">
             <div className="chat-message-header">

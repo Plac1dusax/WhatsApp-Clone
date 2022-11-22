@@ -5,6 +5,15 @@
   background-color: var(--incoming-message);
   border-radius: 0.3em;
   padding: 0.5em;
+  position: relative;
+}
+
+.chat-bubble-arrow {
+  position: absolute;
+  left: -2.1%;
+  top: 0%;
+  color: var(--incoming-message);
+  transform: rotate(0deg);
 }
 
 .replied-message-wrapper {
@@ -61,6 +70,7 @@
 
 .star-icon {
   color: var(--star-icon);
+  margin-right: 0.5em;
 }
 
 .chat-options-icon {
