@@ -1,3 +1,7 @@
+.starred-messages-container {
+  width: 450px;
+}
+
 .starred-messages-header {
   display: flex;
   justify-content: space-between;
@@ -9,6 +13,18 @@
   height: 615px;
   overflow: hidden;
   overflow-y: auto;
+}
+
+.starred-messages-body::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.starred-messages-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.starred-messages-body::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .information-for-older-messages {

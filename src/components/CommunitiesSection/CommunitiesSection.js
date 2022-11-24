@@ -10,7 +10,7 @@ export default function CommunitiesSection() {
     "Easily organize your related groups and send announcements. Now, your communities, like neighborhoods or schools, can have their own space."
 
   return (
-    <div>
+    <div className="community-section-container">
       <SectionHeader header={"Communities"} />
       <div className="community-section-wrapper">
         <div className="start-community-logo">

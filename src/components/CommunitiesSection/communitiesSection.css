@@ -1,7 +1,11 @@
+.community-section-container {
+  width: 450px;
+}
+
 .community-section-wrapper {
   position: absolute;
   top: 100px;
-  width: 450px;
+  width: 100%;
 
   display: flex;
   flex-direction: column;

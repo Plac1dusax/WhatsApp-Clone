@@ -10,7 +10,7 @@ export default function FriendsListSection() {
       <div className="friends-list-section-wrapper">
         <div className="navbar-and-searchbar-wrapper">
           <div>
-            <Navbar />
+            <Navbar type={"friends-list"} />
           </div>
           <div>
             <SearchFriend />

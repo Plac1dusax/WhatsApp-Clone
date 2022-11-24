@@ -17,6 +17,7 @@ import ChatWallpaper from "./components/ChatWallpaper/ChatWallpaper"
 import RequestAccountInfo from "./components/RequestAccountInfo/RequestAccountInfo"
 import KeyboardShortcuts from "./components/KeyboardShortcuts/KeyboardShortcuts"
 import StarredMessages from "./components/StarredMessages/StarredMessages"
+import DirectMessage from "./components/DirectMessage/DirectMessage"
 
 function App() {
   return (
@@ -39,8 +40,9 @@ function App() {
         {/* <RequestAccountInfo /> */}
         {/* <StarredMessages /> */}
       </div>
-      <div className="chat-section-container">
-        <ChatSection />
+      <div className="direct-message-container">
+        {/* <ChatSection /> */}
+        <DirectMessage />
       </div>
     </div>
   )

@@ -1,3 +1,7 @@
+.profile-wrapper {
+  width: 450px;
+}
+
 .profile-body {
   position: relative;
   top: 100px;

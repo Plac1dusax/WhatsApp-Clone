@@ -2,6 +2,19 @@
   height: 710px;
   overflow: hidden;
   overflow-y: auto;
+  width: 450px;
+}
+
+.privacy-container::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.privacy-container::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.privacy-container::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .privacy-body {

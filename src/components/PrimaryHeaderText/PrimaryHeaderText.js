@@ -108,6 +108,14 @@ export default function PrimaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "direct-message") {
+    style = {
+      color: "var(--primary-header-text-dark)",
+      fontSize: "16px",
+      fontWeight: "500"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

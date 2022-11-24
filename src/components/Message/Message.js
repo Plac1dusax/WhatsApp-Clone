@@ -7,6 +7,7 @@ import "../Chat/chat.css"
 
 export default function Message(props) {
   const { info, headerType, text } = props
+
   return (
     <div className="message-wrapper">
       <div className="info-and-message">

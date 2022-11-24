@@ -1,7 +1,20 @@
 .new-chat-wrapper {
   height: 720px;
+  width: 450px;
   overflow: hidden;
   overflow-y: auto;
+}
+
+.new-chat-wrapper::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.new-chat-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.new-chat-wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .new-chat-header-section {

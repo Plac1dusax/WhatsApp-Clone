@@ -1,5 +1,7 @@
 .chat-message-container,
-.chat-message-container-direct {
+.chat-message-container-direct,
+.chat-message-container-incoming,
+.chat-message-container-outgoing {
   max-width: 540px;
   min-width: 60px;
   width: fit-content;
@@ -9,12 +11,24 @@
   position: relative;
 }
 
+.chat-message-container-outgoing {
+  background-color: var(--outgoing-message);
+}
+
 .chat-bubble-arrow {
   position: absolute;
   left: -2%;
   top: 0%;
   color: var(--incoming-message);
   transform: rotate(0deg);
+}
+
+.chat-bubble-arrow-outgoing {
+  position: absolute;
+  right: -2.5%;
+  top: -10%;
+  color: var(--outgoing-message);
+  transform: rotate(270deg);
 }
 
 .replied-message-wrapper {

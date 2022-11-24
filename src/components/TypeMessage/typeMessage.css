@@ -1,0 +1,34 @@
+.type-message-container {
+  background-color: var(--navbar-theme-color-dark);
+  padding: 1rem;
+}
+
+.type-message-text-area {
+  display: flex;
+  align-items: center;
+}
+
+.emoji-attach {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.emoji-icon,
+.attach-icon,
+.microphone-icon {
+  color: var(--default-icon-theme);
+  cursor: pointer;
+}
+
+.type-message {
+  flex-grow: 10;
+}
+
+.microphone-icon {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

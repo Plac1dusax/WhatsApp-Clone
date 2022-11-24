@@ -25,7 +25,20 @@
   position: relative;
   top: 100px;
   height: 615px;
-  overflow: auto;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.archived-chats-list::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.archived-chats-list::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.archived-chats-list::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .archived-chats-list > *::before {

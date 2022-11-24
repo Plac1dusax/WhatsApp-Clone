@@ -28,3 +28,33 @@
   color: var(--primary-nav-btn-color-dark);
   cursor: pointer;
 }
+
+.direct-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navbar-theme-color-dark);
+  height: 64px;
+  padding: 1rem;
+}
+
+.profile-photo-and-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-button-and-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--primary-nav-btn-color-dark);
+}
+
+.search-icon-wrapper {
+  cursor: pointer;
+}
+
+.menu {
+  cursor: pointer;
+}

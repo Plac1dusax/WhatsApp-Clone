@@ -32,6 +32,9 @@
 @import url(./components/StarredMessages/starredMessages.css);
 @import url(./components/StarredMessage/starredMessage.css);
 @import url(./components/ChatMessage/chatMessage.css);
+@import url(./components/DirectMessage/directMessage.css);
+@import url(./components/TypeMessage/typeMessage.css);
+@import url(./components/InputText/inputText.css);
 
 *,
 *::before,
@@ -45,11 +48,13 @@
   --navbar-theme-color-dark: #202c33;
   --primary-nav-btn-color-dark: #aebac1;
   --searchbar-text-color-dark: #d1d7db;
+  --primary-input-text-color: #d1d7db;
   --highlighted-color-dark: #00a884;
   --primary-header-text-dark: #e9edef;
   --primary-header-text-dull: rgba(233, 237, 239, 0.8);
   --secondary-header-text-dark: #8696a0;
   --settings-icon-theme: #8696a0;
+  --default-icon-theme: #8696a0;
   --border-color-dark: rgba(134, 150, 160, 0.15);
   --primary-hover-dark: hsla(0, 0%, 50%, 0.1);
   --secondary-hover-dark: rgba(233, 237, 239, 0.05);
@@ -81,12 +86,16 @@
   --primary-message: #e9edef;
   --incoming-message: #202c33;
   --incoming-message-deeper: #1d282f;
+  --outgoing-message: #005c4b;
   --forwarded-message: hsla(0, 0%, 100%, 0.6);
   --star-icon: hsla(0, 0%, 100%, 0.5);
   --starred-message-selected-background: #0c1317;
   --information-for-older-messages: #667781;
   --encrypted-icon: #667781;
   --chat-section-border: #008069;
+  --placeholder: #d1d7db;
+  --input-background: #2a3942;
+  --scrollbar-color: rgba(134, 150, 160, 0.35);
 }
 
 body {
@@ -118,7 +127,7 @@ body {
   position: relative;
 }
 
-.chat-section-container {
+.direct-message-container {
   flex-grow: 1;
   background-color: var(--navbar-theme-color-dark);
   border-left: 1px solid var(--border-color-dark);

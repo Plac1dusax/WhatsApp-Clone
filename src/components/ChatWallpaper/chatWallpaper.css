@@ -1,6 +1,19 @@
 .chat-wallpaper-container {
   overflow: hidden;
   overflow-y: auto;
+  width: 450px;
+}
+
+.chat-wallpaper-container::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.chat-wallpaper-container::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.chat-wallpaper-container::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .chat-wallpaper-body {

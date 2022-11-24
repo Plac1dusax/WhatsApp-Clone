@@ -1,3 +1,7 @@
+.notifications-container {
+  width: 450px;
+}
+
 .notifications-body {
   position: relative;
   top: 100px;

@@ -1,3 +1,7 @@
+.request-account-info-container {
+  width: 450px;
+}
+
 .request-account-info-icon {
   display: flex;
   justify-content: center;

@@ -5,24 +5,22 @@ import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import Message from "../Message/Message"
 import Time from "../Time/Time"
 
-export default function Chat({ wideBorder }) {
+export default function Chat() {
   return (
-    <>
-      <div className="chat-wrapper">
-        <ProfilePhoto
-          navProfilePhoto={"chat"}
-          url={
-            "https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-          }
-        />
-        <div className="headers-wrapper">
-          <div className="friend-name-and-time">
-            <PrimaryHeaderText headerType={"chat"} text={"Random Friend"} />
-            <Time time={"Yesterday"} />
-          </div>
-          <Message info={"seen"} headerType={"chat"} text={"Random message"} />
+    <div className="chat-wrapper">
+      <ProfilePhoto
+        navProfilePhoto={"chat"}
+        url={
+          "https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+        }
+      />
+      <div className="headers-wrapper">
+        <div className="friend-name-and-time">
+          <PrimaryHeaderText headerType={"chat"} text={"Random Friend"} />
+          <Time time={"Yesterday"} />
         </div>
+        <Message info={"seen"} headerType={"chat"} text={"Random message"} />
       </div>
-    </>
+    </div>
   )
 }

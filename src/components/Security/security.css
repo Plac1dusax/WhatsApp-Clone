@@ -1,3 +1,7 @@
+.security-container {
+  width: 450px;
+}
+
 .security-body {
   position: relative;
   top: 100px;
