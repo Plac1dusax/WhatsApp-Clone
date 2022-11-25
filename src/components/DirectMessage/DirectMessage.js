@@ -9,57 +9,68 @@ const messages = [
   {
     id: 1,
     message: "lkgdflsgklsdfgkfsdgkdfs",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "true"
   },
   {
     id: 2,
     message: "reyghjorıhjdfshkdflshg",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "false"
   },
   {
     id: 3,
     message: "reyghjodsgdfshgdfjdrgjrıhjdfshkdflshg",
-    origin: "outgoing"
+    origin: "outgoing",
+    starred: "true"
   },
   {
     id: 4,
     message: "dfgldfkghdgdfjdrgjrıhjdfshkdflshg",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "false"
   },
   {
     id: 5,
     message: "reyghjodsgdfshgdfjdrgjrıhjdfshkdflshg",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "false"
   },
   {
     id: 6,
     message: "dfbgdgfhgkjl",
-    origin: "outgoing"
+    origin: "outgoing",
+    starred: "false"
   },
   {
     id: 7,
     message: "reygghfjflshg",
-    origin: "outgoing"
+    origin: "outgoing",
+    starred: "false"
   },
   {
     id: 8,
     message: "reyghvghjgfhjkdflshg",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "false"
   },
   {
     id: 9,
     message: "reygfsghfjfghkgşçhjdfshkdflshg",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "false"
   },
   {
     id: 10,
     message: "reyggfjfghjkhjgşhşdfshkdflshg",
-    origin: "incoming"
+    origin: "incoming",
+    starred: "false"
   },
   {
     id: 11,
     message: "reyghjodsgddfshkdflshg",
-    origin: "outgoing"
+    origin: "outgoing",
+    starred: "false"
   }
 ]
 
@@ -77,6 +88,7 @@ export default function DirectMessage() {
                 <ChatMessage
                   origin={message.origin}
                   message={message.message}
+                  starred={message.starred}
                 />
               </div>
             )
@@ -84,9 +96,9 @@ export default function DirectMessage() {
             return (
               <div className={"outgoing-message"} key={uuidv4()}>
                 <ChatMessage
-                  className={"outgoing-message"}
                   origin={message.origin}
                   message={message.message}
+                  starred={message.starred}
                 />
               </div>
             )

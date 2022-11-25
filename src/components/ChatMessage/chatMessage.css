@@ -78,7 +78,7 @@
 .star-icon-and-time {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   margin-left: 1em;
   margin-top: 0.5em;
 }
