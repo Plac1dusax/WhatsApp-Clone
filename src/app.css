@@ -89,6 +89,8 @@
   --outgoing-message: #005c4b;
   --forwarded-message: hsla(0, 0%, 100%, 0.6);
   --star-icon: hsla(0, 0%, 100%, 0.5);
+  --reaction-button: rgba(233, 237, 239, 0.5);
+  --reaction-button-background: rgba(0, 0, 0, 0.7);
   --starred-message-selected-background: #0c1317;
   --information-for-older-messages: #667781;
   --encrypted-icon: #667781;
