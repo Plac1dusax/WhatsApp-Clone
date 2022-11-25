@@ -102,7 +102,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
             </svg>
           </div>
           <div className="chat-message-wrapper-direct">
-            <div className="chat-options-icon-direct">
+            <div className="chat-options-icon-direct-outgoing">
               <svg
                 viewBox="0 0 18 18"
                 height="18"

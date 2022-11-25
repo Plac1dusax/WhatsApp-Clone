@@ -108,7 +108,8 @@
   animation: slide-from-right 0.3s alternate forwards;
 }
 
-.chat-options-icon-direct {
+.chat-options-icon-direct,
+.chat-options-icon-direct-outgoing {
   position: absolute;
   right: 5%;
   top: 0;
@@ -120,6 +121,10 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+}
+
+.chat-options-icon-direct-outgoing {
+  background-color: var(--outgoing-message);
 }
 
 .message-container-direct {
@@ -171,6 +176,18 @@
 
 .chat-message-container-outgoing:hover .emojis-outgoing {
   visibility: visible;
+}
+
+.chat-message-container-outgoing:hover .chat-options-icon-direct-outgoing {
+  visibility: visible;
+  cursor: pointer;
+  animation: slide-from-right 0.3s alternate forwards;
+}
+
+.chat-message-container-incoming:hover .chat-options-icon-direct {
+  visibility: visible;
+  cursor: pointer;
+  animation: slide-from-right 0.3s alternate forwards;
 }
 
 @keyframes slide-from-right {
