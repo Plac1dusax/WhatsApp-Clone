@@ -5,7 +5,7 @@ import "./archivedSection.css"
 
 export default function ArchivedSection() {
   return (
-    <div>
+    <div className="archived-section-container">
       <SectionHeader header={"Archived"} />
       <div className="archived-chats-list">
         <Chat />
