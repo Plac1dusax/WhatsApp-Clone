@@ -27,9 +27,7 @@ export default function Searchbar({ type }) {
     }
 
     placeholder = "Search or start a new chat"
-  }
-
-  if (type === "new chat") {
+  } else if (type === "new chat") {
     styleInput = {
       border: "none",
       backgroundColor: "var(--navbar-theme-color-dark)",
@@ -50,6 +48,22 @@ export default function Searchbar({ type }) {
     }
 
     placeholder = "Search contacts"
+  } else if (type === "reaction-search") {
+    styleInput = {
+      border: "none",
+      outline: "none",
+      margin: "0",
+      padding: "10px 5px",
+      width: "950px",
+      borderRadius: "0.2em",
+      backgroundColor: "var(--panel-background)"
+    }
+
+    styleArrowAndSearchbar = {
+      display: "none"
+    }
+
+    placeholder = "Search Emoji"
   }
   return (
     <>

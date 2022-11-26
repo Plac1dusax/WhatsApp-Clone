@@ -6,24 +6,39 @@
 .type-message-text-area {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
-.emoji-attach {
+.icons-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-grow: 1;
+  flex-grow: 2;
+}
+
+.emoji-attach {
+  margin-right: 10px;
 }
 
 .emoji-icon,
 .attach-icon-wrapper,
-.microphone-icon {
+.microphone-icon,
+.close-icon,
+.sticker-icon,
+.gif-icon {
   color: var(--default-icon-theme);
   cursor: pointer;
 }
 
 .type-message {
-  flex-grow: 10;
+  flex-grow: 20;
+}
+
+.close-icon,
+.sticker-icon,
+.gif-icon {
+  transform: scale(0) scaleY(0);
+  position: absolute;
 }
 
 .microphone-icon {
@@ -65,6 +80,32 @@
   animation: scale 500ms alternate;
 }
 
+.icons-active {
+  transform: scale(1) scaleY(1);
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+
+.icons-deactive {
+  animation: deactive-icons alternate 250ms;
+}
+
+.reactions-container {
+  width: 100%;
+  position: relative;
+}
+
+.reaction-icons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.reaction-icon {
+  color: var(--default-icon-theme);
+}
+
 @keyframes grow {
   0% {
     opacity: 1;
@@ -86,5 +127,21 @@
 
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes deactive-icons {
+  0% {
+    transform: scale(1) scaleY(1);
+    transition: transform 250ms ease-in-out;
+  }
+
+  50% {
+    transform: scale(0) scaleY(0);
+    transition: transform 250ms ease-in-out;
+  }
+
+  100% {
+    position: absolute;
   }
 }
