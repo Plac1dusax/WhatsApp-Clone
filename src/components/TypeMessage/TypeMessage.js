@@ -81,6 +81,22 @@ export default function TypeMessage() {
     }
   }
 
+  let lastScrollTop = 0
+
+  function handleEmojiScroll(e) {
+    const emojisContainer = document.querySelector(".emojis-container")
+
+    if (lastScrollTop < emojisContainer.scrollTop) {
+      console.log("scroll up")
+    } else {
+      console.log("scroll down")
+    }
+
+    console.log(emojisContainer.scrollTop)
+    console.log(lastScrollTop)
+    lastScrollTop = lastScrollTop + emojisContainer.scrollTop
+  }
+
   return (
     <div className="type-message-container">
       <div className="reactions-container">
@@ -182,7 +198,7 @@ export default function TypeMessage() {
         <div className="reaction-search">
           <Searchbar type={"reaction-search"} />
         </div>
-        <div className="emojis-container">
+        <div onScroll={handleEmojiScroll} className="emojis-container">
           <EmojiGrid
             emojiSectionName={"recent-emojis"}
             emojiHeader={"Recent"}
@@ -190,8 +206,38 @@ export default function TypeMessage() {
           />
           <EmojiGrid
             emojiSectionName={"smiley-and-people-emojis"}
-            emojiHeader={"Smiley & People"}
-            emojiArray={smileyAndPeople}
+            emojiHeader={"Smileys & People"}
+            emojiArray={smileyAndPeopleEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"animal-and-nature-emojis"}
+            emojiHeader={"Animals & Nature"}
+            emojiArray={animalsAndNatureEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"activity-emojis"}
+            emojiHeader={"Activity"}
+            emojiArray={activityEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"travel-and-places-emojis"}
+            emojiHeader={"Travel & Places"}
+            emojiArray={travelAndPlacesEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"object-emojis"}
+            emojiHeader={"Travel & Places"}
+            emojiArray={objectEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"symbol-emojis"}
+            emojiHeader={"Travel & Places"}
+            emojiArray={symbolEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"flag-emojis"}
+            emojiHeader={"Flags"}
+            emojiArray={flagEmojis}
           />
         </div>
       </div>
@@ -477,7 +523,7 @@ const recentEmojis = [
   }
 ]
 
-const smileyAndPeople = [
+const smileyAndPeopleEmojis = [
   {
     emojiName: "angry",
     emoji: "😡"
@@ -573,5 +619,111 @@ const smileyAndPeople = [
   {
     emojiName: "alien",
     emoji: "👽"
+  }
+]
+
+const animalsAndNatureEmojis = [
+  {
+    emojiName: "horse",
+    emoji: "🐎"
+  },
+  {
+    emojiName: "cat",
+    emoji: "🐱"
+  },
+  {
+    emojiName: "dog",
+    emoji: "🐶"
+  },
+  {
+    emojiName: "panda",
+    emoji: "🐼"
+  },
+  {
+    emojiName: "tiger",
+    emoji: "🐯"
+  },
+  {
+    emojiName: "cow",
+    emoji: "🐄"
+  }
+]
+
+const activityEmojis = [
+  {
+    emojiName: "football",
+    emoji: "⚽"
+  },
+  {
+    emojiName: "basketball",
+    emoji: "🏀"
+  },
+  {
+    emojiName: "gaming",
+    emoji: "🎮"
+  }
+]
+
+const travelAndPlacesEmojis = [
+  {
+    emojiName: "formula 1 car",
+    emoji: "🏎️"
+  },
+  {
+    emojiName: "helicopter",
+    emoji: "🚁"
+  },
+  {
+    emojiName: "plane",
+    emoji: "✈️"
+  }
+]
+
+const objectEmojis = [
+  {
+    emojiName: "watch",
+    emoji: "⌚"
+  },
+  {
+    emojiName: "mouse",
+    emoji: "🖱️"
+  },
+  {
+    emojiName: "cellphone",
+    emoji: "📱"
+  }
+]
+
+const symbolEmojis = [
+  {
+    emojiName: "red heart",
+    emoji: "❤️"
+  },
+  {
+    emojiName: "trident",
+    emoji: "🔱"
+  },
+  {
+    emojiName: "red question mark",
+    emoji: "❓"
+  },
+  {
+    emojiName: "SOS",
+    emoji: "🆘"
+  }
+]
+
+const flagEmojis = [
+  {
+    emojiName: "white flag",
+    emoji: "🏳️"
+  },
+  {
+    emojiName: "black flag",
+    emoji: "🏴"
+  },
+  {
+    emojiName: "chequered flag",
+    emoji: "🏁"
   }
 ]
