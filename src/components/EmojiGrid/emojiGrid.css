@@ -1,0 +1,21 @@
+.emoji-grid-container {
+  margin-bottom: 40px;
+}
+
+.emoji-grid-container:last-child {
+  margin-bottom: 0;
+}
+
+.emojis-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.emojis-grid {
+  display: grid;
+  grid-template-columns: repeat(23, 1fr);
+  grid-template-rows: auto;
+  row-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

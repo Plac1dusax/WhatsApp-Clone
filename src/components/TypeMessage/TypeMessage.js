@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react"
 import InputText from "../InputText/InputText"
 import Searchbar from "../Searchbar/Searchbar"
+import EmojiGrid from "../EmojiGrid/EmojiGrid"
 import "./typeMessage.css"
 
 export default function TypeMessage() {
@@ -176,9 +177,22 @@ export default function TypeMessage() {
               ></path>
             </svg>
           </div>
+          <div className="reaction-icon-border"></div>
         </div>
         <div className="reaction-search">
           <Searchbar type={"reaction-search"} />
+        </div>
+        <div className="emojis-container">
+          <EmojiGrid
+            emojiSectionName={"recent-emojis"}
+            emojiHeader={"Recent"}
+            emojiArray={recentEmojis}
+          />
+          <EmojiGrid
+            emojiSectionName={"smiley-and-people-emojis"}
+            emojiHeader={"Smiley & People"}
+            emojiArray={smileyAndPeople}
+          />
         </div>
       </div>
       <div className="type-message-text-area">
@@ -451,3 +465,113 @@ export default function TypeMessage() {
     </div>
   )
 }
+
+const recentEmojis = [
+  {
+    emojiName: "laugh",
+    emoji: "😀"
+  },
+  {
+    emojiName: "sickened",
+    emoji: "🤢"
+  }
+]
+
+const smileyAndPeople = [
+  {
+    emojiName: "angry",
+    emoji: "😡"
+  },
+  {
+    emojiName: "cry",
+    emoji: "😭"
+  },
+  {
+    emojiName: "cool",
+    emoji: "😎"
+  },
+  {
+    emojiName: "thumb-up",
+    emoji: "👍"
+  },
+  {
+    emojiName: "thumb-down",
+    emoji: "👎"
+  },
+  {
+    emojiName: "evil-smile",
+    emoji: "😈"
+  },
+  {
+    emojiName: "evil-upset",
+    emoji: "👿"
+  },
+  {
+    emojiName: "curse",
+    emoji: "🤬"
+  },
+  {
+    emojiName: "inspector",
+    emoji: "🧐"
+  },
+  {
+    emojiName: "nerd",
+    emoji: "🤓"
+  },
+  {
+    emojiName: "sorrowful",
+    emoji: "🥺"
+  },
+  {
+    emojiName: "dead",
+    emoji: "😵"
+  },
+  {
+    emojiName: "vomit",
+    emoji: "🤮"
+  },
+  {
+    emojiName: "sickened",
+    emoji: "🤢"
+  },
+  {
+    emojiName: "laugh",
+    emoji: "😀"
+  },
+  {
+    emojiName: "sick",
+    emoji: "🤧"
+  },
+  {
+    emojiName: "cautious",
+    emoji: "😷"
+  },
+  {
+    emojiName: "party",
+    emoji: "🥳"
+  },
+  {
+    emojiName: "mind-blow",
+    emoji: "🤯"
+  },
+  {
+    emojiName: "frostbite",
+    emoji: "🥶"
+  },
+  {
+    emojiName: "ghost",
+    emoji: "👻"
+  },
+  {
+    emojiName: "skull",
+    emoji: "💀"
+  },
+  {
+    emojiName: "crossbones",
+    emoji: "☠️"
+  },
+  {
+    emojiName: "alien",
+    emoji: "👽"
+  }
+]
