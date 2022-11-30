@@ -35,6 +35,7 @@
 @import url(./components/DirectMessage/directMessage.css);
 @import url(./components/TypeMessage/typeMessage.css);
 @import url(./components/InputText/inputText.css);
+@import url(./components/ReactionsContainer/reactionsContainer.css);
 
 *,
 *::before,

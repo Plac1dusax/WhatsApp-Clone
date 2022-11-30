@@ -56,7 +56,8 @@ export default function Searchbar({ type }) {
       padding: "10px 5px",
       width: "950px",
       borderRadius: "0.2em",
-      backgroundColor: "var(--panel-background)"
+      backgroundColor: "var(--panel-background)",
+      position: "relative"
     }
 
     styleArrowAndSearchbar = {

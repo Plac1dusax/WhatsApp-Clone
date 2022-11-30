@@ -90,54 +90,16 @@
   animation: deactive-icons alternate 250ms;
 }
 
-.reactions-container {
-  width: 100%;
-  position: relative;
-}
-
 .reaction-search {
   margin-top: 20px;
 }
 
-.reaction-icons-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 10px;
-  position: relative;
+.show-reactions {
+  animation: show-reactions alternate 0.25s forwards;
 }
 
-.reaction-icon {
-  color: var(--default-icon-theme);
-  cursor: pointer;
-}
-
-.reaction-icon-border {
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  width: 50px;
-  height: 5px;
-  background-color: var(--teal);
-  border-radius: 20px;
-}
-
-.emojis-container {
-  max-height: 220px;
-  overflow: hidden;
-  overflow-y: auto;
-}
-
-.emojis-container::-webkit-scrollbar {
-  width: 0.5vw;
-}
-
-.emojis-container::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-color);
-}
-
-.emojis-container::-webkit-scrollbar-track {
-  background-color: transparent;
+.hide-reactions {
+  animation: hide-reactions alternate 0.25s forwards;
 }
 
 @keyframes grow {
@@ -177,5 +139,53 @@
 
   100% {
     position: absolute;
+  }
+}
+
+@keyframes hide-reactions {
+  0% {
+    height: 400px;
+  }
+
+  25% {
+    height: 350px;
+  }
+
+  50% {
+    height: 300px;
+  }
+
+  75% {
+    height: 150px;
+  }
+
+  100% {
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@keyframes show-reactions {
+  0% {
+    height: 0px;
+  }
+
+  25% {
+    height: 200px;
+  }
+
+  50% {
+    height: 300px;
+  }
+
+  75% {
+    height: 350px;
+  }
+
+  100% {
+    height: 400px;
+    opacity: 1;
   }
 }
