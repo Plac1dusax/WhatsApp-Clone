@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Searchbar from "../Searchbar/Searchbar"
 import EmojiGrid from "../EmojiGrid/EmojiGrid"
 import "./reactionsContainer.css"
 
-function ReactionsContainer({ showReactions }) {
+function ReactionsContainer() {
   const [scrollY, setScrollY] = useState(0)
+  const [searchedEmojis, setSearchedEmojis] = useState([])
+  const searchedEmojisArray = [...searchedEmojis]
 
   function handleEmojiScroll(e) {
     const container = e.target.closest(".type-message-container")
@@ -40,8 +42,13 @@ function ReactionsContainer({ showReactions }) {
     // 500
     // 600
     reactionIconBorder.style.transform = `translateX(${value}px)`
-    console.log(scrollValue)
   }
+
+  // useEffect(() => {
+  //   setSearchedEmojis(prevSearchedEmojis => {
+  //     return []
+  //   })
+  // }, [searchedEmojis])
 
   return (
     <div className="reactions-container ">
@@ -141,7 +148,17 @@ function ReactionsContainer({ showReactions }) {
         <div className="reaction-icon-border"></div>
       </div>
       <div className="reaction-search">
-        <Searchbar type={"reaction-search"} />
+        <Searchbar
+          setSearchedEmojis={searchedEmojis}
+          type={"reaction-search"}
+        />
+      </div>
+      <div className="searched-emojis">
+        <EmojiGrid
+          emojiSectionName={""}
+          emojiHeader={""}
+          emojiArray={searchedEmojis}
+        />
       </div>
       <div onScroll={handleEmojiScroll} className="emojis-container">
         <EmojiGrid

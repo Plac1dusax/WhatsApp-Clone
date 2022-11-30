@@ -57,20 +57,20 @@
   animation: searchbar-show alternate 0.25s forwards;
 }
 
-.reactions-hide {
+.searched-emojis {
+  display: grid;
+  grid-template-columns: repeat(23, 1fr);
+  grid-template-rows: auto;
+  row-gap: 10px;
+  margin-top: 10px;
 }
 
-.reactions-show {
-  animation: show-reactions 0.25s alternate forwards;
+.hide-emoji {
+  display: none;
 }
 
-.reactions-show {
-  transform: translateY(0);
-  opacity: 1;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s;
+.hide-emoji-grids {
+  display: none;
 }
 
 @keyframes searchbar-hide {
