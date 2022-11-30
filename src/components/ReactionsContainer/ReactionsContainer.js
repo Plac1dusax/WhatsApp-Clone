@@ -31,16 +31,16 @@ function ReactionsContainer({ showReactions }) {
   }
 
   function handleReactionIconBorder(emojisContainer) {
-    // const reactionIconBorder = document.querySelector(".reaction-icon-border")
-    // const scrollValue = emojisContainer.scrollTop
-    // const value = emojisContainer.scrollTop
-    // //  100
-    // // 300
-    // // 400
-    // // 500
-    // // 600
-    // reactionIconBorder.style.transform = `translateX(${value}px)`
-    // console.log(scrollValue)
+    const reactionIconBorder = document.querySelector(".reaction-icon-border")
+    const scrollValue = emojisContainer.scrollTop
+    const value = emojisContainer.scrollTop
+    //  100
+    // 300
+    // 400
+    // 500
+    // 600
+    reactionIconBorder.style.transform = `translateX(${value}px)`
+    console.log(scrollValue)
   }
 
   return (

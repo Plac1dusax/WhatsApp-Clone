@@ -3,6 +3,8 @@
   position: relative;
   flex-grow: 1;
   height: 0;
+  opacity: 0;
+  z-index: -1;
 }
 
 .reaction-icons-wrapper {
