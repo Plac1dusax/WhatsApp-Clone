@@ -100,6 +100,8 @@
   --input-background: #2a3942;
   --scrollbar-color: rgba(134, 150, 160, 0.35);
   --panel-background: #222e35;
+  --emoji-icon-default: rgba(233, 237, 239, 0.32);
+  --emoji-icon-highlighted: #8696a0;
 }
 
 body {

@@ -16,7 +16,7 @@
 }
 
 .reaction-icon {
-  color: var(--default-icon-theme);
+  color: var(--emoji-icon-default);
   cursor: pointer;
 }
 

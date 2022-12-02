@@ -8,7 +8,6 @@ import Emoji from "../Emoji/Emoji"
 function ReactionsContainer() {
   const [scrollY, setScrollY] = useState(0)
   const [searchedEmojis, setSearchedEmojis] = useState([])
-  const searchedItems = document.querySelector(".searched-emojis")
 
   function handleEmojiScroll(e) {
     const container = e.target.closest(".type-message-container")
@@ -37,25 +36,76 @@ function ReactionsContainer() {
   function handleReactionIconBorder(emojisContainer) {
     const reactionIconBorder = document.querySelector(".reaction-icon-border")
     const scrollValue = emojisContainer.scrollTop
-    console.log(scrollValue)
+    const recentEmojisLogo = document.querySelector(".recent")
+    const smileysPeopleEmojisLogo = document.querySelector(".smileys-people")
+    const animalsNatureEmojisLogo = document.querySelector(".animals-nature")
+    const foodDrinksEmojisLogo = document.querySelector(".food-drink")
+    const activityEmojisLogo = document.querySelector(".activity")
+    const travelPlacesEmojisLogo = document.querySelector(".travel-places")
+    const objectsEmojisLogo = document.querySelector(".objects")
+    const symbolsEmojisLogo = document.querySelector(".symbols")
+    const flagsEmojisLogo = document.querySelector(".flags")
+
     if (scrollValue === 0) {
+      highlightEmojiSection(recentEmojisLogo)
       reactionIconBorder.style.transform = `translateX(0px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
     }
     if (scrollValue >= 100) {
+      highlightEmojiSection(smileysPeopleEmojisLogo)
       reactionIconBorder.style.transform = `translateX(120px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
     }
-    if (scrollValue >= 300) {
+    if (scrollValue >= 257) {
+      highlightEmojiSection(animalsNatureEmojisLogo)
       reactionIconBorder.style.transform = `translateX(240px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
     }
-    if (scrollValue >= 400) {
+    if (scrollValue >= 364) {
+      highlightEmojiSection(foodDrinksEmojisLogo)
       reactionIconBorder.style.transform = `translateX(360px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
     }
-    if (scrollValue >= 500) {
-      reactionIconBorder.style.transform = `translateX(480px)`
+    if (scrollValue >= 444) {
+      highlightEmojiSection(activityEmojisLogo)
+      reactionIconBorder.style.transform = `translateX(485px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
     }
-    if (scrollValue >= 690) {
-      reactionIconBorder.style.transform = `translateX(600px)`
+    if (scrollValue >= 545) {
+      highlightEmojiSection(travelPlacesEmojisLogo)
+      reactionIconBorder.style.transform = `translateX(605px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
     }
+    if (scrollValue >= 662) {
+      highlightEmojiSection(objectsEmojisLogo)
+      reactionIconBorder.style.transform = `translateX(725px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 752) {
+      highlightEmojiSection(symbolsEmojisLogo)
+      reactionIconBorder.style.transform = `translateX(850px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 796) {
+      highlightEmojiSection(flagsEmojisLogo)
+      reactionIconBorder.style.transform = `translateX(970px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+  }
+
+  function highlightEmojiSection(element) {
+    const recentEmojisLogo = document.querySelector(".recent")
+    const reactionIcons = [...document.querySelectorAll(".reaction-icon")]
+    recentEmojisLogo.style.color = "var(--emoji-icon-highlighted)"
+    const nonSelected = reactionIcons.filter(icon => {
+      return icon !== element
+    })
+
+    nonSelected.forEach(item => {
+      item.style.color = "var(--emoji-icon-default)"
+    })
+
+    element.style.color = "var(--emoji-icon-highlighted)"
   }
 
   function renderSearchedEmojis() {
