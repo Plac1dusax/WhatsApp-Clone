@@ -37,13 +37,25 @@ function ReactionsContainer() {
   function handleReactionIconBorder(emojisContainer) {
     const reactionIconBorder = document.querySelector(".reaction-icon-border")
     const scrollValue = emojisContainer.scrollTop
-    const value = emojisContainer.scrollTop
-    //  100
-    // 300
-    // 400
-    // 500
-    // 600
-    reactionIconBorder.style.transform = `translateX(${value}px)`
+    console.log(scrollValue)
+    if (scrollValue === 0) {
+      reactionIconBorder.style.transform = `translateX(0px)`
+    }
+    if (scrollValue >= 100) {
+      reactionIconBorder.style.transform = `translateX(120px)`
+    }
+    if (scrollValue >= 300) {
+      reactionIconBorder.style.transform = `translateX(240px)`
+    }
+    if (scrollValue >= 400) {
+      reactionIconBorder.style.transform = `translateX(360px)`
+    }
+    if (scrollValue >= 500) {
+      reactionIconBorder.style.transform = `translateX(480px)`
+    }
+    if (scrollValue >= 690) {
+      reactionIconBorder.style.transform = `translateX(600px)`
+    }
   }
 
   function renderSearchedEmojis() {
@@ -171,6 +183,11 @@ function ReactionsContainer() {
           emojiSectionName={"animal-and-nature-emojis"}
           emojiHeader={"Animals & Nature"}
           emojiArray={animalsAndNatureEmojis}
+        />
+        <EmojiGrid
+          emojiSectionName={"food-and-drink-emojis"}
+          emojiHeader={"Food & Drink"}
+          emojiArray={foodAndDrinkEmojis}
         />
         <EmojiGrid
           emojiSectionName={"activity-emojis"}
@@ -338,6 +355,53 @@ const animalsAndNatureEmojis = [
   {
     emojiName: "cow",
     emoji: "🐄"
+  }
+]
+
+const foodAndDrinkEmojis = [
+  {
+    emojiName: "red apple",
+    emoji: "🍎"
+  },
+  {
+    emojiName: "green apple",
+    emoji: "🍏"
+  },
+  {
+    emojiName: "orange",
+    emoji: "🍊"
+  },
+  {
+    emojiName: "pizza slice",
+    emoji: "🍕"
+  },
+  {
+    emojiName: "hamburger",
+    emoji: "🍔"
+  },
+  {
+    emojiName: "popcorn",
+    emoji: "🍿"
+  },
+  {
+    emojiName: "hotdog",
+    emoji: "🌭"
+  },
+  {
+    emojiName: "donut",
+    emoji: "🍩"
+  },
+  {
+    emojiName: "cookie",
+    emoji: "🍪"
+  },
+  {
+    emojiName: "ice cream",
+    emoji: "🍦"
+  },
+  {
+    emojiName: "birthday cake",
+    emoji: "🎂"
   }
 ]
 
