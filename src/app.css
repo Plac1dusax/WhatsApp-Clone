@@ -133,6 +133,8 @@ body {
 
 .direct-message-container {
   flex-grow: 1;
+  min-width: 1050px;
+  max-width: 1050px;
   background-color: var(--navbar-theme-color-dark);
   border-left: 1px solid var(--border-color-dark);
 }

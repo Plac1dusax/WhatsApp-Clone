@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useState } from "react"
+import EmojiGrid from "../EmojiGrid/EmojiGrid"
 import "./searchbar.css"
 
 export default function Searchbar({ type, setSearchedEmojis }) {
@@ -83,19 +84,21 @@ export default function Searchbar({ type, setSearchedEmojis }) {
       searchedEmojisContainer.style.display = "grid"
     }
 
-    const matchedValues = emojis.filter(emoji => {
-      const attribute = emoji.getAttribute("emojiname")
-      return attribute.includes(value)
-    })
+    const matchedValues = emojis
+      .filter(emoji => {
+        const attribute = emoji.getAttribute("emojiname")
+        return attribute?.includes?.(value)
+      })
+      .map(value => {
+        const valueAttribute = value.getAttribute("emojiname")
 
-    const searchedEmojis = matchedValues.map(value => {
-      const valueAttribute = value.getAttribute("emojiname")
-      return { emoji: value.textContent, emojiName: valueAttribute }
-    })
+        return {
+          emoji: value.textContent,
+          emojiName: valueAttribute
+        }
+      })
 
-    setSearchedEmojis(prevStateEmojis => {
-      return [...searchedEmojis]
-    })
+    setSearchedEmojis([...matchedValues])
   }
 
   return (
