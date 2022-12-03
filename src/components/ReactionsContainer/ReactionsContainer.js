@@ -119,39 +119,23 @@ function ReactionsContainer() {
     const emojisContainer = document.querySelector(".emojis-container")
 
     if (e.target.classList.contains("recent-icon-svg")) {
-      emojisContainer.scrollTop = 0
-    }
-
-    if (e.target.classList.contains("smileys-people-icon-svg")) {
-      emojisContainer.scrollTop = 101
-    }
-
-    if (e.target.classList.contains("animals-nature-icon-svg")) {
-      emojisContainer.scrollTop = 258
-    }
-
-    if (e.target.classList.contains("food-drink-icon-svg")) {
-      emojisContainer.scrollTop = 365
-    }
-
-    if (e.target.classList.contains("activity-icon-svg")) {
-      emojisContainer.scrollTop = 445
-    }
-
-    if (e.target.classList.contains("travel-places-icon-svg")) {
-      emojisContainer.scrollTop = 546
-    }
-
-    if (e.target.classList.contains("objects-icon-svg")) {
-      emojisContainer.scrollTop = 663
-    }
-
-    if (e.target.classList.contains("symbols-icon-svg")) {
-      emojisContainer.scrollTop = 753
-    }
-
-    if (e.target.classList.contains("flags-icon-svg")) {
-      emojisContainer.scrollTop = 796
+      return (emojisContainer.scrollTop = 0)
+    } else if (e.target.classList.contains("smileys-people-icon-svg")) {
+      return (emojisContainer.scrollTop = 101)
+    } else if (e.target.classList.contains("animals-nature-icon-svg")) {
+      return (emojisContainer.scrollTop = 258)
+    } else if (e.target.classList.contains("food-drink-icon-svg")) {
+      return (emojisContainer.scrollTop = 365)
+    } else if (e.target.classList.contains("activity-icon-svg")) {
+      return (emojisContainer.scrollTop = 445)
+    } else if (e.target.classList.contains("travel-places-icon-svg")) {
+      return (emojisContainer.scrollTop = 546)
+    } else if (e.target.classList.contains("objects-icon-svg")) {
+      return (emojisContainer.scrollTop = 663)
+    } else if (e.target.classList.contains("symbols-icon-svg")) {
+      return (emojisContainer.scrollTop = 753)
+    } else if (e.target.classList.contains("flags-icon-svg")) {
+      return (emojisContainer.scrollTop = 796)
     }
   }
 

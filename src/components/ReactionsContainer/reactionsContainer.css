@@ -75,6 +75,10 @@
   display: none;
 }
 
+path {
+  pointer-events: none;
+}
+
 @keyframes searchbar-hide {
   0% {
     transform: translateX(30px);
