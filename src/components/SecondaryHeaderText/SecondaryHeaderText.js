@@ -51,6 +51,14 @@ export default function SecondaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "gif-header") {
+    style = {
+      color: "var(--secondary-header-text-dark)",
+      fontSize: "13px",
+      fontWeight: "bold"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

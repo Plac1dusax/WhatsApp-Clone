@@ -1,0 +1,9 @@
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  column-gap: 5px;
+  row-gap: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

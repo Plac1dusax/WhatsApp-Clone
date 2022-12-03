@@ -41,6 +41,14 @@ export default function TypeMessage() {
     const closeIcon = container.querySelector(".close-icon")
     const gifIcon = container.querySelector(".gif-icon")
     const stickerIcon = container.querySelector(".sticker-icon")
+    const emojisContainer = document.querySelector(".reaction-emoji")
+    const gifsContainer = document.querySelector(".reaction-gif")
+
+    gifsContainer.style.display = "none"
+    emojisContainer.style.display = "block"
+
+    gifIcon.style.color = "var(--default-icon-theme)"
+    emojiIcon.style.color = "var(--teal)"
 
     if (icons === "false") {
       closeIcon.classList.remove("icons-deactive")
@@ -107,6 +115,19 @@ export default function TypeMessage() {
     reactionsContainer.classList.add("hide-reactions")
   }
 
+  function handleGifIconClick(e) {
+    const container = e.target.closest(".type-message-container")
+    const emojisContainer = document.querySelector(".reaction-emoji")
+    const gifsContainer = document.querySelector(".reaction-gif")
+    const emojiIcon = container.querySelector(".emoji-icon")
+    const gifIcon = container.querySelector(".gif-icon")
+
+    gifIcon.style.color = "var(--teal)"
+    emojiIcon.style.color = "var(--default-icon-theme)"
+
+    emojisContainer.style.display = "none"
+    gifsContainer.style.display = "block"
+  }
   return (
     <div onClick={changeState} className="type-message-container">
       <ReactionsContainer showReactions={showReactions} />
@@ -133,7 +154,7 @@ export default function TypeMessage() {
               ></path>
             </svg>
           </div>
-          <div className="gif-icon">
+          <div onClick={handleGifIconClick} className="gif-icon">
             <svg viewBox="0 0 24 24" width="24" height="24">
               <path
                 fill="currentColor"
