@@ -36,6 +36,9 @@
 @import url(./components/TypeMessage/typeMessage.css);
 @import url(./components/InputText/inputText.css);
 @import url(./components/ReactionsContainer/reactionsContainer.css);
+@import url(./components/EmojiGrid/emojiGrid.css);
+@import url(./components/GifGrid/gifGrid.css);
+@import url(./components/StickerGrid/stickerGrid.css);
 
 *,
 *::before,
@@ -102,6 +105,9 @@
   --panel-background: #222e35;
   --emoji-icon-default: rgba(233, 237, 239, 0.32);
   --emoji-icon-highlighted: #8696a0;
+  --sticker-button-background: #26353d;
+  --sticker-button-text: #d1d7db;
+  --sticker-button-border: rgba(134, 150, 160, 0.15);
 }
 
 body {

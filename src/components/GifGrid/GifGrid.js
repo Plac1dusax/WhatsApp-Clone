@@ -6,7 +6,7 @@ export default function GifGrid({ gifArray }) {
   return (
     <div className="gif-grid">
       {gifArray.map(link => {
-        return <img key={uuidv4()} src={link.link} />
+        return <img className="gif-img" key={uuidv4()} src={link.link} />
       })}
     </div>
   )

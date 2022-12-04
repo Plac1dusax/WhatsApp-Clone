@@ -8,7 +8,8 @@
 }
 
 .reaction-icons-wrapper,
-.gif-headers-wrapper {
+.gif-headers-wrapper,
+.sticker-headers-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +18,8 @@
 }
 
 .reaction-icon,
-.gif-header {
+.gif-header,
+.sticker-header {
   color: var(--emoji-icon-default);
   cursor: pointer;
 }
@@ -27,7 +29,8 @@
 }
 
 .reaction-icon-border,
-.gif-header-border {
+.gif-header-border,
+.sticker-header-border {
   position: absolute;
   left: 0;
   bottom: -12px;
@@ -37,7 +40,8 @@
   border-radius: 20px;
 }
 
-.tv {
+.tv,
+.sticker-store-stickers {
   margin-right: 16px;
 }
 
@@ -45,7 +49,9 @@
   width: 90px;
 }
 
-.emojis-container {
+.emojis-container,
+.gif-container,
+.sticker-container {
   position: relative;
   max-height: 250px;
   overflow: hidden;
@@ -82,7 +88,7 @@
   max-height: 500px;
 }
 
-.hide-gif-container {
+.hide-content {
   display: none;
 }
 

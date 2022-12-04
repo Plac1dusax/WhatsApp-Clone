@@ -43,11 +43,14 @@ export default function TypeMessage() {
     const stickerIcon = container.querySelector(".sticker-icon")
     const emojisContainer = document.querySelector(".reaction-emoji")
     const gifsContainer = document.querySelector(".reaction-gif")
+    const stickersContainer = document.querySelector(".reaction-sticker")
 
     gifsContainer.style.display = "none"
+    stickersContainer.style.display = "none"
     emojisContainer.style.display = "block"
 
     gifIcon.style.color = "var(--default-icon-theme)"
+    stickerIcon.style.color = "var(--default-icon-theme)"
     emojiIcon.style.color = "var(--teal)"
 
     if (icons === "false") {
@@ -119,15 +122,38 @@ export default function TypeMessage() {
     const container = e.target.closest(".type-message-container")
     const emojisContainer = document.querySelector(".reaction-emoji")
     const gifsContainer = document.querySelector(".reaction-gif")
+    const stickersContainer = document.querySelector(".reaction-sticker")
     const emojiIcon = container.querySelector(".emoji-icon")
     const gifIcon = container.querySelector(".gif-icon")
+    const stickerIcon = container.querySelector(".sticker-icon")
 
     gifIcon.style.color = "var(--teal)"
     emojiIcon.style.color = "var(--default-icon-theme)"
+    stickerIcon.style.color = "var(--default-icon-theme)"
 
     emojisContainer.style.display = "none"
+    stickersContainer.style.display = "none"
     gifsContainer.style.display = "block"
   }
+
+  function handleStickerIconClick(e) {
+    const container = e.target.closest(".type-message-container")
+    const emojisContainer = document.querySelector(".reaction-emoji")
+    const gifsContainer = document.querySelector(".reaction-gif")
+    const stickersContainer = document.querySelector(".reaction-sticker")
+    const emojiIcon = container.querySelector(".emoji-icon")
+    const gifIcon = container.querySelector(".gif-icon")
+    const stickerIcon = container.querySelector(".sticker-icon")
+
+    gifIcon.style.color = "var(--default-icon-theme)"
+    emojiIcon.style.color = "var(--default-icon-theme)"
+    stickerIcon.style.color = "var(--teal)"
+
+    emojisContainer.style.display = "none"
+    stickersContainer.style.display = "block"
+    gifsContainer.style.display = "none"
+  }
+
   return (
     <div onClick={changeState} className="type-message-container">
       <ReactionsContainer showReactions={showReactions} />
@@ -162,7 +188,7 @@ export default function TypeMessage() {
               ></path>
             </svg>
           </div>
-          <div className="sticker-icon">
+          <div onClick={handleStickerIconClick} className="sticker-icon">
             <svg viewBox="0 0 24 24" width="24" height="24">
               <path
                 fill="currentColor"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Searchbar from "../Searchbar/Searchbar"
 import EmojiGrid from "../EmojiGrid/EmojiGrid"
 import GifGrid from "../GifGrid/GifGrid"
+import StickerGrid from "../StickerGrid/StickerGrid"
 import { v4 as uuidv4 } from "uuid"
 import "./reactionsContainer.css"
 import Emoji from "../Emoji/Emoji"
@@ -146,13 +147,14 @@ function ReactionsContainer() {
     const gifGrids = [...document.querySelectorAll(".gif-grid-container")]
     const selectedHeader = e.target.closest(".gif-header")
 
-    hideGridContainers(gifGrids, selectedHeader, "trending", gifHeaderBorder)
-    hideGridContainers(gifGrids, selectedHeader, "haha", gifHeaderBorder)
-    hideGridContainers(gifGrids, selectedHeader, "sad", gifHeaderBorder)
-    hideGridContainers(gifGrids, selectedHeader, "love", gifHeaderBorder)
-    hideGridContainers(gifGrids, selectedHeader, "reactions", gifHeaderBorder)
-    hideGridContainers(gifGrids, selectedHeader, "sports", gifHeaderBorder)
-    hideGridContainers(gifGrids, selectedHeader, "tv", gifHeaderBorder)
+    hideReactionContainer(gifGrids, selectedHeader, "trending")
+    hideReactionContainer(gifGrids, selectedHeader, "haha")
+    hideReactionContainer(gifGrids, selectedHeader, "sad")
+    hideReactionContainer(gifGrids, selectedHeader, "love")
+    hideReactionContainer(gifGrids, selectedHeader, "reactions")
+    hideReactionContainer(gifGrids, selectedHeader, "sports")
+    hideReactionContainer(gifGrids, selectedHeader, "tv")
+
     if (selectedHeader.classList.contains("trending")) {
       gifHeaderBorder.style.transform = "translateX(0px)"
       gifHeaderBorder.style.transition = "transform 0.1s"
@@ -177,19 +179,64 @@ function ReactionsContainer() {
     }
   }
 
-  function hideGridContainers(gifGrids, selectedHeader, className) {
+  function handleStickerHeaders(e) {
+    const stickerHeaderBorder = document.querySelector(".sticker-header-border")
+    const stickerGrids = [
+      ...document.querySelectorAll(".sticker-grid-container")
+    ]
+    const selectedHeader = e.target.closest(".sticker-header")
+
+    hideReactionContainer(stickerGrids, selectedHeader, "recent")
+    hideReactionContainer(stickerGrids, selectedHeader, "love")
+    hideReactionContainer(stickerGrids, selectedHeader, "greetings")
+    hideReactionContainer(stickerGrids, selectedHeader, "happy")
+    hideReactionContainer(stickerGrids, selectedHeader, "sad")
+    hideReactionContainer(stickerGrids, selectedHeader, "angry")
+    hideReactionContainer(stickerGrids, selectedHeader, "celebrate")
+    hideReactionContainer(stickerGrids, selectedHeader, "sticker-store")
+
+    if (selectedHeader.classList.contains("recent")) {
+      stickerHeaderBorder.style.transform = "translateX(0px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("love")) {
+      stickerHeaderBorder.style.transform = "translateX(120px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("greetings")) {
+      stickerHeaderBorder.style.transform = "translateX(265px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("happy")) {
+      stickerHeaderBorder.style.transform = "translateX(420px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("sad")) {
+      stickerHeaderBorder.style.transform = "translateX(545px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("angry")) {
+      stickerHeaderBorder.style.transform = "translateX(680px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("celebrate")) {
+      stickerHeaderBorder.style.transform = "translateX(830px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    } else if (selectedHeader.classList.contains("sticker-store")) {
+      stickerHeaderBorder.style.transform = "translateX(970px)"
+      stickerHeaderBorder.style.transition = "transform 0.1s"
+    }
+  }
+
+  function hideReactionContainer(grids, selectedHeader, className) {
     if (selectedHeader.classList.contains(className)) {
-      gifGrids.forEach(grid => {
+      grids.forEach(grid => {
         if (grid.classList.contains(`${className}-gif`)) {
-          return grid.classList.remove("hide-gif-container")
+          return grid.classList.remove("hide-content")
+        } else if (grid.classList.contains(`${className}-stickers`)) {
+          return grid.classList.remove("hide-content")
         }
-        grid.classList.add("hide-gif-container")
+        grid.classList.add("hide-content")
       })
     }
   }
 
   return (
-    <div className="reactions-container ">
+    <div className="reactions-container">
       <div className="reaction-emoji">
         <div className="reaction-icons-wrapper">
           <div
@@ -448,23 +495,124 @@ function ReactionsContainer() {
           <div className="trending-gif gif-grid-container">
             <GifGrid gifArray={trendingGifs} />
           </div>
-          <div className="haha-gif gif-grid-container  hide-gif-container">
+          <div className="haha-gif gif-grid-container  hide-content">
             <GifGrid gifArray={hahaGifs} />
           </div>
-          <div className="sad-gif gif-grid-container  hide-gif-container">
+          <div className="sad-gif gif-grid-container  hide-content">
             <GifGrid gifArray={sadGifs} />
           </div>
-          <div className="love-gif gif-grid-container  hide-gif-container">
+          <div className="love-gif gif-grid-container  hide-content">
             <GifGrid gifArray={loveGifs} />
           </div>
-          <div className="reactions-gif gif-grid-container  hide-gif-container">
+          <div className="reactions-gif gif-grid-container  hide-content">
             <GifGrid gifArray={reactionsGif} />
           </div>
-          <div className="sports-gif gif-grid-container  hide-gif-container">
+          <div className="sports-gif gif-grid-container  hide-content">
             <GifGrid gifArray={sportsGif} />
           </div>
-          <div className="tv-gif gif-grid-container  hide-gif-container">
+          <div className="tv-gif gif-grid-container  hide-content">
             <GifGrid gifArray={tvGifs} />
+          </div>
+        </div>
+      </div>
+      <div className="reaction-sticker">
+        <div className="sticker-headers-wrapper">
+          <div className="sticker-header recent" onClick={handleStickerHeaders}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className="recent-icon-svg"
+            >
+              <path
+                d="M20.538 11.975a8.563 8.563 0 1 0-17.126 0 8.563 8.563 0 0 0 17.126 0Zm1.412 0c0 5.509-4.466 9.975-9.975 9.975C6.465 21.95 2 17.484 2 11.975 2 6.465 6.466 2 11.975 2c5.509 0 9.975 4.466 9.975 9.975Zm-9.832-5.27v5.692l4.386 2.627a.706.706 0 1 1-.725 1.212l-5.073-3.04v-6.49a.706.706 0 1 1 1.412 0Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <div className="sticker-header love" onClick={handleStickerHeaders}>
+            <SecondaryHeaderText headerType={"sticker-header"} text={"LOVE"} />
+          </div>
+          <div
+            className="sticker-header greetings"
+            onClick={handleStickerHeaders}
+          >
+            <SecondaryHeaderText
+              headerType={"sticker-header"}
+              text={"GREETINGS"}
+            />
+          </div>
+          <div className="sticker-header happy" onClick={handleStickerHeaders}>
+            <SecondaryHeaderText headerType={"sticker-header"} text={"HAPPY"} />
+          </div>
+          <div className="sticker-header sad" onClick={handleStickerHeaders}>
+            <SecondaryHeaderText headerType={"sticker-header"} text={"SAD"} />
+          </div>
+          <div className="sticker-header angry" onClick={handleStickerHeaders}>
+            <SecondaryHeaderText headerType={"sticker-header"} text={"ANGRY"} />
+          </div>
+          <div
+            className="sticker-header celebrate"
+            onClick={handleStickerHeaders}
+          >
+            <SecondaryHeaderText
+              headerType={"sticker-header"}
+              text={"CELEBRATE"}
+            />
+          </div>
+          <div
+            className="sticker-header sticker-store"
+            onClick={handleStickerHeaders}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              height="24"
+              width="24"
+              preserveAspectRatio="xMidYMid meet"
+              fill="none"
+              className="sticker-store-icon"
+            >
+              <path
+                d="M20.5847 12C20.5847 7.2588 16.7412 3.41533 12 3.41533C7.2588 3.41533 3.41533 7.2588 3.41533 12C3.41533 16.7412 7.2588 20.5847 12     20.5847C16.7412 20.5847 20.5847 16.7412 20.5847 12ZM22 12C22 17.5229 17.5229 22 12 22C6.47713 22 2 17.5229 2 12C2 6.47713 6.47713 2 12     2C17.5229 2 22 6.47713 22 12Z"
+                fill="currentColor"
+              ></path>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12 7C12.3866 7 12.7 7.31025 12.7 7.70318L12.6988 11.3H16.2968C16.6463 11.3 16.9363 11.563     16.9908 11.8892L17 12C17 12.3866 16.6898 12.7 16.2968 12.7L12.6988 12.6988L12.7 16.2968C12.7 16.6463 12.437 16.9363 12.1108 16.9908L12     17C11.6134 17 11.3 16.6898 11.3 16.2968V12.6988L7.70318 12.7C7.35366 12.7 7.0637 12.437 7.0092 12.1108L7 12C7 11.6134 7.31025 11.3 7.70318     11.3H11.3V7.70318C11.3 7.35366 11.563 7.0637 11.8892 7.0092L12 7Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <div className="sticker-header-border"></div>
+        </div>
+        <div className="reaction-search">
+          <Searchbar
+            setSearchedEmojis={setSearchedEmojis}
+            type={"reaction-search"}
+          />
+        </div>
+        <div className="stickers-container">
+          <div className="recent-stickers sticker-grid-container">
+            <StickerGrid stickerArray={[]} create={true} />
+          </div>
+          <div className="love-stickers sticker-grid-container hide-content">
+            <StickerGrid stickerArray={loveStickers} create={false} />
+          </div>
+          <div className="greetings-stickers sticker-grid-container hide-content">
+            <StickerGrid stickerArray={greetingsStickers} create={false} />
+          </div>
+          <div className="happy-stickers sticker-grid-container hide-content">
+            <StickerGrid stickerArray={happyStickers} create={false} />
+          </div>
+          <div className="sad-stickers sticker-grid-container hide-content">
+            <StickerGrid stickerArray={sadStickers} create={false} />
+          </div>
+          <div className="angry-stickers sticker-grid-container hide-content">
+            <StickerGrid stickerArray={angryStickers} create={false} />
+          </div>
+          <div className="celebrate-stickers sticker-grid-container hide-content">
+            <StickerGrid stickerArray={celebrateStickers} create={false} />
           </div>
         </div>
       </div>
@@ -963,5 +1111,41 @@ const sportsGif = [
 const tvGifs = [
   {
     link: "https://media.tenor.co/9O0URkk1kjYAAAAc/spongebob-squarepants-patrick-star.gif"
+  }
+]
+
+const loveStickers = [
+  {
+    link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/lovely-rabbit-4b/sticker_11.gif?f238b6b60456e6d322a68a491e3d48bf"
+  }
+]
+
+const greetingsStickers = [
+  {
+    link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/amway-christmas-greetings-sticker/sticker_2.gif?1e4c0294db406c9ba056ed9fdfd0a014"
+  }
+]
+
+const happyStickers = [
+  {
+    link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/b-f-happy-new-year/sticker_8.gif?5b9b702f6a8307e92eddb2cad7c3651e"
+  }
+]
+
+const sadStickers = [
+  {
+    link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/sad-cats/sticker_4.webp?8abdd1ce6d0c03fc94510badeefefe02&d=200x200"
+  }
+]
+
+const angryStickers = [
+  {
+    link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/angry-panda/sticker_3.png?9986db51ff0190a0a086266df31a42e9&d=200x200"
+  }
+]
+
+const celebrateStickers = [
+  {
+    link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/brown-friends-celebrate-eng/sticker_14.gif?98660dee34d08d11204e85fb2fc7124d"
   }
 ]
