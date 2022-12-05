@@ -39,6 +39,7 @@
 @import url(./components/EmojiGrid/emojiGrid.css);
 @import url(./components/GifGrid/gifGrid.css);
 @import url(./components/StickerGrid/stickerGrid.css);
+@import url(./components/Gif/gif.css);
 
 *,
 *::before,

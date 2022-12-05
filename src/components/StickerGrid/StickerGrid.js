@@ -1,4 +1,5 @@
 import React from "react"
+import Sticker from "../Sticker/Sticker"
 import { v4 as uuidv4 } from "uuid"
 import "./stickerGrid.css"
 
@@ -37,7 +38,13 @@ export default function StickerGrid({ stickerArray, create }) {
     <div className="sticker-grid">
       {renderCreateStickerButton()}
       {stickerArray.map(sticker => {
-        return <img className="sticker-img" key={uuidv4()} src={sticker.link} />
+        return (
+          <Sticker
+            key={uuidv4()}
+            stickername={sticker.stickerName}
+            link={sticker.link}
+          />
+        )
       })}
     </div>
   )

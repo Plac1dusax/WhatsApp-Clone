@@ -7,11 +7,14 @@ import { v4 as uuidv4 } from "uuid"
 import "./reactionsContainer.css"
 import Emoji from "../Emoji/Emoji"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
+import Gif from "../Gif/Gif"
+import Sticker from "../Sticker/Sticker"
 
 function ReactionsContainer() {
   const [scrollY, setScrollY] = useState(0)
   const [searchedEmojis, setSearchedEmojis] = useState([])
   const [searchedGifs, setSearchedGifs] = useState([])
+  const [searchedStickers, setSearchedStickers] = useState([])
 
   function handleEmojiScroll(e) {
     const container = e.target.closest(".type-message-container")
@@ -116,6 +119,24 @@ function ReactionsContainer() {
   function renderSearchedEmojis() {
     return searchedEmojis.map(i => {
       return <Emoji key={uuidv4()} emoji={i.emoji} />
+    })
+  }
+
+  function renderSearchedGifs() {
+    return searchedGifs.map(gif => {
+      return <Gif key={uuidv4()} gifname={gif.gifName} link={gif.link} />
+    })
+  }
+
+  function renderSearchedStickers() {
+    return searchedStickers.map(sticker => {
+      return (
+        <Sticker
+          key={uuidv4()}
+          stickername={sticker.gifName}
+          link={sticker.link}
+        />
+      )
     })
   }
 
@@ -235,8 +256,6 @@ function ReactionsContainer() {
       })
     }
   }
-
-  function renderSearchedGifs() {}
 
   return (
     <div className="reactions-container">
@@ -411,7 +430,7 @@ function ReactionsContainer() {
         <div className="reaction-search">
           <Searchbar
             setSearchedEmojis={setSearchedEmojis}
-            type={"reaction-search"}
+            type={"emoji-search"}
           />
         </div>
         <div className="searched-emojis">{renderSearchedEmojis()}</div>
@@ -489,10 +508,7 @@ function ReactionsContainer() {
           <div className="gif-header-border"></div>
         </div>
         <div className="reaction-search">
-          <Searchbar
-            setSearchedEmojis={setSearchedEmojis}
-            type={"reaction-search"}
-          />
+          <Searchbar setSearchedGifs={setSearchedGifs} type={"gif-search"} />
         </div>
         <div className="searched-gifs">{renderSearchedGifs()}</div>
         <div className="gifs-container">
@@ -592,10 +608,11 @@ function ReactionsContainer() {
         </div>
         <div className="reaction-search">
           <Searchbar
-            setSearchedEmojis={setSearchedEmojis}
-            type={"reaction-search"}
+            setSearchedStickers={setSearchedStickers}
+            type={"sticker-search"}
           />
         </div>
+        <div className="searched-stickers">{renderSearchedStickers()}</div>
         <div className="stickers-container">
           <div className="recent-stickers sticker-grid-container">
             <StickerGrid stickerArray={[]} create={true} />
@@ -1127,36 +1144,42 @@ const tvGifs = [
 
 const loveStickers = [
   {
+    stickerName: "loving bunny",
     link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/lovely-rabbit-4b/sticker_11.gif?f238b6b60456e6d322a68a491e3d48bf"
   }
 ]
 
 const greetingsStickers = [
   {
+    stickerName: "merry christmas",
     link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/amway-christmas-greetings-sticker/sticker_2.gif?1e4c0294db406c9ba056ed9fdfd0a014"
   }
 ]
 
 const happyStickers = [
   {
+    stickerName: "cheering bunny",
     link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/b-f-happy-new-year/sticker_8.gif?5b9b702f6a8307e92eddb2cad7c3651e"
   }
 ]
 
 const sadStickers = [
   {
+    stickerName: "sad cat",
     link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/sad-cats/sticker_4.webp?8abdd1ce6d0c03fc94510badeefefe02&d=200x200"
   }
 ]
 
 const angryStickers = [
   {
+    stickerName: "angry panda",
     link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/angry-panda/sticker_3.png?9986db51ff0190a0a086266df31a42e9&d=200x200"
   }
 ]
 
 const celebrateStickers = [
   {
+    stickerName: "party",
     link: "https://s3.getstickerpack.com/storage/uploads/sticker-pack/brown-friends-celebrate-eng/sticker_14.gif?98660dee34d08d11204e85fb2fc7124d"
   }
 ]

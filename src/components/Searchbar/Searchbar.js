@@ -1,8 +1,12 @@
+import { calculateNewValue } from "@testing-library/user-event/dist/utils"
 import React, { useState } from "react"
 import EmojiGrid from "../EmojiGrid/EmojiGrid"
 import "./searchbar.css"
 
-export default function Searchbar({ type, setSearchedEmojis }) {
+export default function Searchbar(props) {
+  const { type, setSearchedEmojis, setSearchedGifs, setSearchedStickers } =
+    props
+
   let placeholder = ""
   let styleInput = {}
   let styleArrowAndSearchbar = {}
@@ -49,7 +53,7 @@ export default function Searchbar({ type, setSearchedEmojis }) {
     }
 
     placeholder = "Search contacts"
-  } else if (type === "reaction-search") {
+  } else if (type === "emoji-search") {
     styleInput = {
       border: "none",
       outline: "none",
@@ -66,6 +70,40 @@ export default function Searchbar({ type, setSearchedEmojis }) {
     }
 
     placeholder = "Search Emoji"
+  } else if (type === "gif-search") {
+    styleInput = {
+      border: "none",
+      outline: "none",
+      margin: "0",
+      padding: "10px 5px",
+      width: "950px",
+      borderRadius: "0.2em",
+      backgroundColor: "var(--panel-background)",
+      position: "relative"
+    }
+
+    styleArrowAndSearchbar = {
+      display: "none"
+    }
+
+    placeholder = "Search GIFs via Tenor"
+  } else if (type === "sticker-search") {
+    styleInput = {
+      border: "none",
+      outline: "none",
+      margin: "0",
+      padding: "10px 5px",
+      width: "950px",
+      borderRadius: "0.2em",
+      backgroundColor: "var(--panel-background)",
+      position: "relative"
+    }
+
+    styleArrowAndSearchbar = {
+      display: "none"
+    }
+
+    placeholder = "Search  via WhatsApp sticker store"
   }
 
   function handleEmojiSearch(e) {
@@ -101,10 +139,95 @@ export default function Searchbar({ type, setSearchedEmojis }) {
     setSearchedEmojis([...matchedValues])
   }
 
+  function handleGifSearch(e) {
+    const reactionsContainer = document.querySelector(".reactions-container")
+    const emojiContainer = reactionsContainer.querySelector(".gifs-container")
+    const searchedGifsContainer =
+      reactionsContainer.querySelector(".searched-gifs")
+    const value = e.target.value.toLowerCase()
+    const gifs = [...document.querySelectorAll(".gif-img")]
+
+    if (value !== "") {
+      emojiContainer.style.display = "none"
+      searchedGifsContainer.style.display = "block"
+    } else {
+      searchedGifsContainer.style.display = "none"
+      emojiContainer.style.display = "block"
+    }
+
+    const array = []
+
+    const matchedValues = gifs.filter(gif => {
+      const attribute = gif.getAttribute("gifname")
+      return attribute?.includes?.(value)
+    })
+
+    matchedValues.map(value => {
+      const valueAttribute = value.getAttribute("gifname").toLowerCase()
+      const gif = {
+        gifName: valueAttribute,
+        link: value.src
+      }
+
+      if (array.some(item => item.gifName === gif.gifName)) return
+
+      array.push(gif)
+    })
+
+    console.log(array)
+    setSearchedGifs([...array])
+  }
+
+  function handleStickerSearch(e) {
+    const reactionsContainer = document.querySelector(".reactions-container")
+    const stickersContainer = reactionsContainer.querySelector(
+      ".stickers-container"
+    )
+    const searchedStickersContainer =
+      reactionsContainer.querySelector(".searched-stickers")
+    const value = e.target.value.toLowerCase()
+    const stickers = [...document.querySelectorAll(".sticker-img")]
+
+    if (value !== "") {
+      stickersContainer.style.display = "none"
+      searchedStickersContainer.style.display = "block"
+    } else {
+      searchedStickersContainer.style.display = "none"
+      stickersContainer.style.display = "block"
+    }
+
+    const array = []
+
+    const matchedValues = stickers.filter(sticker => {
+      const attribute = sticker.getAttribute("stickername")
+      return attribute?.includes?.(value)
+    })
+
+    matchedValues.map(value => {
+      const valueAttribute = value.getAttribute("stickername").toLowerCase()
+
+      const sticker = {
+        stickerName: valueAttribute,
+        link: value.src
+      }
+
+      if (array.some(item => item.stickerName === sticker.stickerName)) return
+
+      array.push(sticker)
+    })
+    setSearchedStickers([...array])
+  }
+
   return (
     <div
       onInput={e => {
-        handleEmojiSearch(e)
+        if (type === "emoji-search") {
+          handleEmojiSearch(e)
+        } else if (type === "gif-search") {
+          handleGifSearch(e)
+        } else if (type === "sticker-search") {
+          handleStickerSearch(e)
+        }
       }}
       className="searchbar-wrapper"
     >
