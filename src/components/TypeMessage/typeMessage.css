@@ -1,6 +1,7 @@
 .type-message-container {
   background-color: var(--navbar-theme-color-dark);
   padding: 1rem;
+  overflow: hidden;
 }
 
 .type-message-text-area {

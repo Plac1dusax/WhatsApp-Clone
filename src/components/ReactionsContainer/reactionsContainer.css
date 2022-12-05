@@ -40,6 +40,27 @@
   border-radius: 20px;
 }
 
+.gif-header-border::before {
+  content: "";
+  width: 1049px;
+  height: 1px;
+  background-color: var(--border-color-dark);
+  position: absolute;
+  left: -20%;
+  bottom: 0%;
+}
+
+.gif-header-border::after {
+  content: "";
+  width: 1049px;
+  height: 1px;
+  background-color: var(--teal);
+  position: absolute;
+  left: -20%;
+  bottom: 0%;
+  animation: slide-border cubic-bezier(0.22, 0.59, 1, 0.26) 3s infinite;
+}
+
 .tv,
 .sticker-store-stickers {
   margin-right: 16px;
@@ -133,5 +154,15 @@ path {
     opacity: 1;
     pointer-events: auto;
     transition: transform 0.2s ease-in;
+  }
+}
+
+@keyframes slide-border {
+  0% {
+    transform: translateX(-1500px);
+  }
+
+  100% {
+    transform: translateX(1500px);
   }
 }
