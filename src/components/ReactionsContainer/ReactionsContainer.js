@@ -11,6 +11,7 @@ import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 function ReactionsContainer() {
   const [scrollY, setScrollY] = useState(0)
   const [searchedEmojis, setSearchedEmojis] = useState([])
+  const [searchedGifs, setSearchedGifs] = useState([])
 
   function handleEmojiScroll(e) {
     const container = e.target.closest(".type-message-container")
@@ -234,6 +235,8 @@ function ReactionsContainer() {
       })
     }
   }
+
+  function renderSearchedGifs() {}
 
   return (
     <div className="reactions-container">
@@ -491,6 +494,7 @@ function ReactionsContainer() {
             type={"reaction-search"}
           />
         </div>
+        <div className="searched-gifs">{renderSearchedGifs()}</div>
         <div className="gifs-container">
           <div className="trending-gif gif-grid-container">
             <GifGrid gifArray={trendingGifs} />
@@ -1074,42 +1078,49 @@ const flagEmojis = [
 
 const trendingGifs = [
   {
+    gifName: "jerry needs food",
     link: "https://media.tenor.co/et7zQsg-djgAAAAc/korjik.gif"
   }
 ]
 
 const hahaGifs = [
   {
+    gifName: "happy cat",
     link: "https://media.tenor.co/OnKQNX5oChUAAAAc/haha-lol.gif"
   }
 ]
 
 const sadGifs = [
   {
+    gifName: "crying",
     link: "https://media.tenor.co/zwuefXVe4mEAAAAc/sad-face.gif"
   }
 ]
 
 const loveGifs = [
   {
+    gifName: "lovely bear",
     link: "https://media.tenor.co/6qh0LogjmtkAAAAc/joy.gif"
   }
 ]
 
 const reactionsGif = [
   {
+    gifName: "disappointed dog",
     link: "https://media.tenor.co/RHbqk0f8XVoAAAAc/me-reaction-really-funny-animals.gif"
   }
 ]
 
 const sportsGif = [
   {
+    gifName: "Ferrari SF70",
     link: "https://media.tenor.co/V1zMYJPYwEUAAAAc/arabpunkz-habibi.gif"
   }
 ]
 
 const tvGifs = [
   {
+    gifName: "sponge bob and patrick",
     link: "https://media.tenor.co/9O0URkk1kjYAAAAc/spongebob-squarepants-patrick-star.gif"
   }
 ]

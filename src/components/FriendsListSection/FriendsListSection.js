@@ -22,6 +22,34 @@ export default function FriendsListSection() {
           <Chat />
           <Chat />
           <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
+          <Chat />
           <footer className="friend-list-footer">
             Your personal messages are{" "}
             <span className="footer-highlighted">end-to-end encrypted</span>

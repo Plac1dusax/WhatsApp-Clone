@@ -35,6 +35,18 @@
   overflow-y: auto;
 }
 
+.chat-section-wrapper::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.chat-section-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.chat-section-wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 .chat-section-wrapper > *:not(footer)::before {
   content: "";
   position: absolute;
