@@ -109,6 +109,8 @@
   --sticker-button-background: #26353d;
   --sticker-button-text: #d1d7db;
   --sticker-button-border: rgba(134, 150, 160, 0.15);
+  --reaction-emoji-chat-background: #233138;
+  --more-emoji-button-background: #667781;
 }
 
 body {
