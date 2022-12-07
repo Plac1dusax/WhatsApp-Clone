@@ -82,7 +82,6 @@ function ReactionEmojiContainer({ type }) {
     const objectsEmojisLogo = document.querySelector(".objects-text")
     const symbolsEmojisLogo = document.querySelector(".symbols-text")
     const flagsEmojisLogo = document.querySelector(".flags-text")
-    console.log(objectsEmojisLogo)
 
     if (scrollValue === 0) {
       highlightEmojiSection(recentEmojisLogo)
@@ -391,7 +390,7 @@ function ReactionEmojiContainer({ type }) {
           <div className="reaction-icons-wrapper-message-chat">
             <div
               onClick={handleReactionIconClick}
-              className="recent-chat reaction-icon"
+              className="recent-chat reaction-icon-chat"
             >
               <svg
                 width="24"
@@ -407,7 +406,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="smileys-people reaction-icon"
+              className="smileys-people-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -427,7 +426,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="animals-nature reaction-icon"
+              className="animals-nature-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -443,7 +442,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="food-drink reaction-icon"
+              className="food-drink-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -463,7 +462,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="activity reaction-icon"
+              className="activity-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -483,7 +482,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="travel-places reaction-icon"
+              className="travel-places-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -499,7 +498,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="objects reaction-icon"
+              className="objects-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -519,7 +518,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="symbols reaction-icon"
+              className="symbols-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -539,7 +538,7 @@ function ReactionEmojiContainer({ type }) {
             </div>
             <div
               onClick={handleReactionIconClick}
-              className="flags reaction-icon"
+              className="flags-chat reaction-icon-chat"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -553,12 +552,12 @@ function ReactionEmojiContainer({ type }) {
                 ></path>
               </svg>
             </div>
-            <div className="reaction-icon-border"></div>
+            <div className="reaction-icon-border-chat"></div>
           </div>
-          <div className="reaction-search">
+          <div className="reaction-search-chat">
             <Searchbar
               setSearchedEmojis={setSearchedEmojis}
-              type={"emoji-search"}
+              type={"emoji-search-reaction"}
             />
           </div>
           <div className="searched-emojis">{renderSearchedEmojis()}</div>

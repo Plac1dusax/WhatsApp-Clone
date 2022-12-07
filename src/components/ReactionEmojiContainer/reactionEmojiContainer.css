@@ -6,7 +6,8 @@
   position: relative;
 }
 
-.reaction-icon-text {
+.reaction-icon-text,
+.reaction-icon-chat {
   color: var(--emoji-icon-default);
   cursor: pointer;
 }
@@ -41,13 +42,58 @@
 }
 
 .reaction-emoji-chat {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 375px;
+  background-color: var(--reaction-emoji-chat-background);
+  border-radius: 10px;
+  padding: 0.2em;
+  position: absolute;
 }
 
 .reaction-icons-wrapper-message-chat {
-  width: 250px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3em;
+  position: relative;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color-dark);
+}
+
+.emojis-container-message-chat {
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.emojis-container-message-chat::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.emojis-container-message-chat::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.emojis-container-message-chat::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.reaction-emoji-chat::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.reaction-emoji-chat::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.reaction-emoji-chat::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.reaction-search-chat {
+  background-color: "var(--panel-background)";
+  position: relative;
+  max-width: 375px;
+  overflow: hidden;
 }
 
 .reaction-icon-border-text {
@@ -56,6 +102,16 @@
   bottom: -12px;
   width: 50px;
   height: 5px;
+  background-color: var(--teal);
+  border-radius: 20px;
+}
+
+.reaction-icon-border-chat {
+  position: absolute;
+  width: 30px;
+  height: 5px;
+  left: 2px;
+  bottom: 0;
   background-color: var(--teal);
   border-radius: 20px;
 }

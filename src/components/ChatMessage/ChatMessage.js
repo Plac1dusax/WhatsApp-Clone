@@ -301,6 +301,9 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 </div>
               </div>
             </div>
+            <div className="emojis-list">
+              <ReactionEmojiContainer type={"reaction"} />
+            </div>
           </div>
         </div>
       </div>

@@ -59,7 +59,7 @@ export default function Searchbar(props) {
       outline: "none",
       margin: "0",
       padding: "10px 5px",
-      width: "950px",
+      width: "1000px",
       borderRadius: "0.2em",
       backgroundColor: "var(--panel-background)",
       position: "relative"
@@ -104,6 +104,22 @@ export default function Searchbar(props) {
     }
 
     placeholder = "Search  via WhatsApp sticker store"
+  } else if (type === "emoji-search-reaction") {
+    styleInput = {
+      border: "none",
+      outline: "none",
+      margin: "0",
+      padding: "10px 5px",
+      width: "375px",
+      borderRadius: "0.2em",
+      position: "relative"
+    }
+
+    styleArrowAndSearchbar = {
+      display: "none"
+    }
+
+    placeholder = "Search Reaction"
   }
 
   function handleEmojiSearch(e) {

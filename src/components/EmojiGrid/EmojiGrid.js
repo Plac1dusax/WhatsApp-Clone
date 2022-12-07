@@ -14,8 +14,8 @@ export default function EmojiGrid(props) {
       display: "grid",
       gridTemplateColumns: "repeat(8,1fr)",
       gridTemplateRows: "auto",
-      rowGap: "10px",
-      columnGap: "10px",
+      rowGap: "5px",
+      columnGap: "2px",
       marginBottom: "10px"
     }
   } else if (type === "text") {
