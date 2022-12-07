@@ -122,6 +122,8 @@ export default function Searchbar(props) {
       searchedEmojisContainer.style.display = "grid"
     }
 
+    const array = []
+
     const matchedValues = emojis
       .filter(emoji => {
         const attribute = emoji.getAttribute("emojiname")
@@ -130,13 +132,16 @@ export default function Searchbar(props) {
       .map(value => {
         const valueAttribute = value.getAttribute("emojiname")
 
-        return {
+        const em = {
           emoji: value.textContent,
           emojiName: valueAttribute
         }
+
+        if (array.some(emoji => emoji.emojiName === em.emojiName)) return
+        array.push(em)
       })
 
-    setSearchedEmojis([...matchedValues])
+    setSearchedEmojis([...array])
   }
 
   function handleGifSearch(e) {

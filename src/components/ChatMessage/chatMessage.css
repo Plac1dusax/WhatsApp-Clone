@@ -249,6 +249,10 @@
   cursor: pointer;
 }
 
+.more-emojis-icon-wrapper > svg {
+  pointer-events: none;
+}
+
 path {
   pointer-events: none;
 }

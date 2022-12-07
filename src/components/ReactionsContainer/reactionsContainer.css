@@ -7,7 +7,6 @@
   z-index: -1;
 }
 
-.reaction-icons-wrapper,
 .gif-headers-wrapper,
 .sticker-headers-wrapper {
   display: flex;
@@ -17,18 +16,16 @@
   position: relative;
 }
 
-.reaction-icon,
 .gif-header,
 .sticker-header {
   color: var(--emoji-icon-default);
   cursor: pointer;
 }
 
-.reaction-gif {
+.gif {
   position: relative;
 }
 
-.reaction-icon-border,
 .gif-header-border,
 .sticker-header-border {
   position: absolute;
@@ -70,7 +67,6 @@
   width: 90px;
 }
 
-.emojis-container,
 .gif-container,
 .sticker-container {
   position: relative;
@@ -79,34 +75,12 @@
   overflow-y: auto;
 }
 
-.emojis-container::-webkit-scrollbar {
-  width: 0.5vw;
-}
-
-.emojis-container::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-color);
-}
-
-.emojis-container::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
 .searchbar-hide {
   animation: searchbar-hide alternate 0.25s forwards;
 }
 
 .searhbar-show {
   animation: searchbar-show alternate 0.25s forwards;
-}
-
-.searched-emojis {
-  display: grid;
-  grid-template-columns: repeat(23, 1fr);
-  grid-template-rows: auto;
-  row-gap: 10px;
-  margin-top: 10px;
-  overflow: hidden;
-  max-height: 500px;
 }
 
 .hide-content {
