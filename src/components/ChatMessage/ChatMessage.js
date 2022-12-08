@@ -9,83 +9,173 @@ export default function ChatMessage({ reply, origin, message, starred }) {
   let currentColor = "var(--star-icon)"
 
   function handleEmojiIconClick(e) {
-    handleIncomingMessageReaction(e)
-    handleOutgoingMessageReaction(e)
+    //   handleIncomingMessageReaction(e)
+    //   handleOutgoingMessageReaction(e)
+    //   if (e.target.matches(".more-emojis-icon-wrapper")) {
+    //     handleEmojiGrid(e)
+    //   }
+  }
 
-    if (e.target.matches(".more-emojis-icon-wrapper")) {
-      handleEmojiGrid(e)
+  // function handleIncomingMessageReaction(e) {
+  //   if (e.target.matches(".incoming-message-reaction-icon")) {
+  //     const container = e.currentTarget.closest(".direct-message-body")
+  //     const messageContainer = e.target.closest(
+  //       ".chat-message-container-incoming"
+  //     )
+  //     const reactionsWrapper = messageContainer.querySelector(
+  //       ".emoji-reactions-wrapper"
+  //     )
+  //     const allReactionWrappers = document.querySelectorAll(
+  //       ".emoji-reactions-wrapper"
+  //     )
+
+  //     allReactionWrappers.forEach(wrapper => {
+  //       if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
+  //         wrapper.classList.remove("show-wrapper-bottom-incoming")
+  //       } else if (wrapper.classList.contains("show-wrapper-top-incoming")) {
+  //         wrapper.classList.remove("show-wrapper-top-incoming")
+  //       }
+  //     })
+
+  //     let bounds = container.getBoundingClientRect()
+  //     let y = e.clientY - bounds.top
+
+  //     if (y <= 109) {
+  //       reactionsWrapper.classList.add("show-wrapper-bottom-incoming")
+  //       reactionsWrapper.classList.add("active-reaction")
+  //     } else if (y > 109) {
+  //       reactionsWrapper.classList.add("show-wrapper-top-incoming")
+  //       reactionsWrapper.classList.add("active-reaction")
+  //     }
+  //   }
+  // }
+
+  // function handleOutgoingMessageReaction(e) {
+  //   if (e.target.matches(".outgoing-message-reaction-icon")) {
+  //     const container = e.currentTarget.closest(".direct-message-body")
+  //     const messageContainer = e.target.closest(
+  //       ".chat-message-container-outgoing"
+  //     )
+  //     const reactionsWrapper = messageContainer.querySelector(
+  //       ".emoji-reactions-wrapper"
+  //     )
+  //     const allReactionWrappers = document.querySelectorAll(
+  //       ".emoji-reactions-wrapper"
+  //     )
+
+  //     allReactionWrappers.forEach(wrapper => {
+  //       if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
+  //         wrapper.classList.remove("show-wrapper-bottom-incoming")
+  //       } else if (wrapper.classList.contains("show-wrapper-top-incoming")) {
+  //         wrapper.classList.remove("show-wrapper-top-incoming")
+  //       }
+  //     })
+
+  //     let bounds = container.getBoundingClientRect()
+  //     let y = e.clientY - bounds.top
+
+  //     if (y <= 109) {
+  //       reactionsWrapper.classList.add("show-wrapper-bottom-incoming")
+  //       reactionsWrapper.classList.add("active-reaction")
+  //     } else if (y > 109) {
+  //       reactionsWrapper.classList.add("show-wrapper-top-incoming")
+  //       reactionsWrapper.classList.add("active-reaction")
+  //     }
+  //   }
+  // }
+
+  function handleEmojiGrid(e) {}
+
+  function showEmojiWrapper(e) {
+    if (e.target.matches(".incoming-message-reaction-icon")) {
+      console.log("hi")
+      handleIncomingMessageReaction(e)
+    } else if (e.target.matches(".outgoing-message-reaction-icon")) {
+      handleOngoingMessageReaction(e)
     }
   }
 
   function handleIncomingMessageReaction(e) {
-    if (e.target.matches(".incoming-message-reaction-icon")) {
-      const container = e.currentTarget.closest(".direct-message-body")
-      const messageContainer = e.target.closest(
-        ".chat-message-container-incoming"
-      )
-      const reactionsWrapper = messageContainer.querySelector(
-        ".emoji-reactions-wrapper"
-      )
-      const allReactionWrappers = document.querySelectorAll(
-        ".emoji-reactions-wrapper"
-      )
+    const mainContainer = e.target.closest(".direct-message-body")
+    const container = e.target.closest(".chat-message-container-incoming")
+    const emojisWrapper = container.querySelector(".emoji-reactions-wrapper")
+    const type = "incoming"
 
-      allReactionWrappers.forEach(wrapper => {
-        if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
-          wrapper.classList.remove("show-wrapper-bottom-incoming")
-        } else if (wrapper.classList.contains("show-wrapper-top-incoming")) {
-          wrapper.classList.remove("show-wrapper-top-incoming")
-        }
-      })
-
-      let bounds = container.getBoundingClientRect()
-      let y = e.clientY - bounds.top
-
-      if (y <= 109) {
-        reactionsWrapper.classList.add("show-wrapper-bottom-incoming")
-        reactionsWrapper.classList.add("active-reaction")
-      } else if (y > 109) {
-        reactionsWrapper.classList.add("show-wrapper-top-incoming")
-        reactionsWrapper.classList.add("active-reaction")
-      }
+    if (emojisWrapper.classList.contains("wrapper-active")) {
+      emojisWrapper.classList.remove("show-wrapper-top-incoming")
+      emojisWrapper.classList.remove("show-wrapper-bottom-incoming")
+      emojisWrapper.classList.remove("wrapper-active")
+    } else {
+      handleWrapperLocation(e, mainContainer, emojisWrapper, type)
     }
   }
 
-  function handleOutgoingMessageReaction(e) {
-    if (e.target.matches(".outgoing-message-reaction-icon")) {
-      const container = e.currentTarget.closest(".direct-message-body")
-      const messageContainer = e.target.closest(
-        ".chat-message-container-outgoing"
-      )
-      const reactionsWrapper = messageContainer.querySelector(
-        ".emoji-reactions-wrapper"
-      )
-      const allReactionWrappers = document.querySelectorAll(
-        ".emoji-reactions-wrapper"
-      )
+  function handleOngoingMessageReaction(e) {
+    const mainContainer = e.target.closest(".direct-message-body")
+    const container = e.target.closest(".chat-message-container-outgoing")
+    const emojisWrapper = container.querySelector(".emoji-reactions-wrapper")
+    const type = "outgoing"
 
-      allReactionWrappers.forEach(wrapper => {
-        if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
-          wrapper.classList.remove("show-wrapper-bottom-incoming")
-        } else if (wrapper.classList.contains("show-wrapper-top-incoming")) {
-          wrapper.classList.remove("show-wrapper-top-incoming")
-        }
-      })
-
-      let bounds = container.getBoundingClientRect()
-      let y = e.clientY - bounds.top
-
-      if (y <= 109) {
-        reactionsWrapper.classList.add("show-wrapper-bottom-incoming")
-        reactionsWrapper.classList.add("active-reaction")
-      } else if (y > 109) {
-        reactionsWrapper.classList.add("show-wrapper-top-incoming")
-        reactionsWrapper.classList.add("active-reaction")
-      }
+    if (emojisWrapper.classList.contains("wrapper-active")) {
+      emojisWrapper.classList.remove("show-wrapper-top-outgoing")
+      emojisWrapper.classList.remove("show-wrapper-bottom-outgoing")
+      emojisWrapper.classList.remove("wrapper-active")
+    } else {
+      handleWrapperLocation(e, mainContainer, emojisWrapper, type)
     }
   }
 
-  function handleEmojiGrid(e) {}
+  function handleWrapperLocation(e, mainContainer, emojisWrapper, type) {
+    let bounds = mainContainer.getBoundingClientRect()
+    let y = e.clientY - bounds.top
+
+    if (type === "incoming") {
+      if (y <= 109) {
+        emojisWrapper.classList.add("show-wrapper-bottom-incoming")
+        emojisWrapper.classList.add("active-reaction")
+        emojisWrapper.classList.add("wrapper-active")
+      } else if (y > 109) {
+        emojisWrapper.classList.add("show-wrapper-top-incoming")
+        emojisWrapper.classList.add("active-reaction")
+        emojisWrapper.classList.add("wrapper-active")
+      }
+    } else if (type === "outgoing") {
+      if (y <= 109) {
+        emojisWrapper.classList.add("show-wrapper-bottom-outgoing")
+        emojisWrapper.classList.add("wrapper-active")
+      } else if (y > 109) {
+        emojisWrapper.classList.add("show-wrapper-top-outgoing")
+        emojisWrapper.classList.add("wrapper-active")
+      }
+    }
+
+    hideOtherWrappers(e, emojisWrapper, type)
+  }
+
+  function hideOtherWrappers(e, emojisWrapper, type) {
+    const allWrappers = [
+      ...document.querySelectorAll(".emoji-reactions-wrapper")
+    ]
+    const unusedWrappers = allWrappers.filter(wrapper => {
+      return emojisWrapper != wrapper
+    })
+
+    if (type === "incoming") {
+      unusedWrappers.forEach(wrapper => {
+        wrapper.classList.remove("show-wrapper-top-incoming")
+        wrapper.classList.remove("show-wrapper-bottom-incoming")
+        wrapper.classList.remove("wrapper-active")
+        wrapper.classList.add("hide-emojis-wrapper")
+      })
+    } else if (type === "outgoing") {
+      unusedWrappers.forEach(wrapper => {
+        wrapper.classList.remove("show-wrapper-top-outgoing")
+        wrapper.classList.remove("show-wrapper-bottom-outgoing")
+        wrapper.classList.remove("wrapper-active")
+        wrapper.classList.add("hide-emojis-wrapper")
+      })
+    }
+  }
 
   if (origin === "incoming") {
     return (
@@ -149,7 +239,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
           </div>
           <div onClick={handleEmojiIconClick} className="emojis-incoming">
             <div className="emojis-incoming-content">
-              <div className="show-emojis-button">
+              <div onClick={showEmojiWrapper} className="show-emojis-button">
                 <svg
                   viewBox="0 0 15 15"
                   width="15"
@@ -261,7 +351,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
           </div>
           <div onClick={handleEmojiIconClick} className="emojis-outgoing">
             <div className="emojis-outgoing-content">
-              <div className="show-emojis-button">
+              <div onClick={showEmojiWrapper} className="show-emojis-button">
                 <svg
                   viewBox="0 0 15 15"
                   width="15"

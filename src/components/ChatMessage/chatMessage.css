@@ -218,8 +218,15 @@
   pointer-events: none;
 }
 
+.hide-emojis-wrapper {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .show-wrapper-top-incoming,
-.show-wrapper-bottom-incoming {
+.show-wrapper-bottom-incoming,
+.show-wrapper-bottom-outgoing,
+.show-wrapper-top-outgoing {
   visibility: visible;
   pointer-events: auto;
 }
@@ -231,6 +238,18 @@
 }
 
 .show-wrapper-bottom-incoming {
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.show-wrapper-top-outgoing {
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.show-wrapper-bottom-outgoing {
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
