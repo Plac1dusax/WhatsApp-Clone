@@ -147,15 +147,6 @@
 .emojis-incoming,
 .emojis-outgoing {
   position: absolute;
-  background-color: var(--reaction-button-background);
-  padding: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  visibility: hidden;
-  cursor: pointer;
-  z-index: 5;
 }
 
 .emojis-incoming {
@@ -174,22 +165,43 @@
   position: relative;
 }
 
-.show-emojis-button {
+.emojis-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--reaction-button-background);
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  visibility: hidden;
+  cursor: pointer;
+  z-index: 5;
 }
 
-.show-emojis-button svg {
+.show-emojis-button {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hide-emojis-button {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.emojis-button svg {
   color: var(--reaction-button);
 }
 
-.chat-message-container-incoming:hover .emojis-incoming {
+.chat-message-container-incoming:hover .emojis-button {
   visibility: visible;
+  pointer-events: auto;
 }
 
-.chat-message-container-outgoing:hover .emojis-outgoing {
+.chat-message-container-outgoing:hover .emojis-button {
   visibility: visible;
+  pointer-events: auto;
 }
 
 .chat-message-container-outgoing:hover .chat-options-icon-direct-outgoing {
@@ -213,7 +225,6 @@
   border-radius: 999999999999999999999px;
   background-color: var(--reaction-emoji-chat-background);
   position: absolute;
-  z-index: 10;
   visibility: hidden;
   pointer-events: none;
 }
@@ -269,6 +280,11 @@
 }
 
 .more-emojis-icon-wrapper > svg {
+  pointer-events: none;
+}
+
+.emojis-list {
+  visibility: hidden;
   pointer-events: none;
 }
 

@@ -87,11 +87,33 @@ export default function ChatMessage({ reply, origin, message, starred }) {
   function handleEmojiGrid(e) {}
 
   function showEmojiWrapper(e) {
+    const container = e.target.closest(".chat-message")
+    const clickedButton = e.target.closest(".emojis-button")
+    const emojiWrapper = container.querySelector(".emoji-reactions-wrapper")
     if (e.target.matches(".incoming-message-reaction-icon")) {
-      console.log("hi")
-      handleIncomingMessageReaction(e)
+      handleIncomingMessageReaction(e, clickedButton)
     } else if (e.target.matches(".outgoing-message-reaction-icon")) {
-      handleOngoingMessageReaction(e)
+      handleOngoingMessageReaction(e, clickedButton)
+    }
+
+    showEmojiButtonIcon(clickedButton, emojiWrapper)
+  }
+
+  function showEmojiButtonIcon(clickedButton, emojiWrapper) {
+    const emojiButtons = [...document.querySelectorAll(".emojis-button")]
+    emojiButtons.forEach(button => {
+      button.classList.add("hide-emojis-button")
+    })
+
+    clickedButton.classList.remove("hide-emojis-button")
+    clickedButton.classList.add("show-emojis-button")
+
+    if (emojiWrapper.classList.contains("wrapper-active")) {
+      clickedButton.classList.remove("hide-emojis-button")
+      clickedButton.classList.add("show-emojis-button")
+    } else {
+      clickedButton.classList.remove("show-emojis-button")
+      clickedButton.classList.add("hide-emojis-button")
     }
   }
 
@@ -119,6 +141,8 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     if (emojisWrapper.classList.contains("wrapper-active")) {
       emojisWrapper.classList.remove("show-wrapper-top-outgoing")
       emojisWrapper.classList.remove("show-wrapper-bottom-outgoing")
+      emojisWrapper.classList.remove("show-wrapper-top-incoming")
+      emojisWrapper.classList.remove("show-wrapper-bottom-incoming")
       emojisWrapper.classList.remove("wrapper-active")
     } else {
       handleWrapperLocation(e, mainContainer, emojisWrapper, type)
@@ -164,11 +188,15 @@ export default function ChatMessage({ reply, origin, message, starred }) {
       unusedWrappers.forEach(wrapper => {
         wrapper.classList.remove("show-wrapper-top-incoming")
         wrapper.classList.remove("show-wrapper-bottom-incoming")
+        wrapper.classList.remove("show-wrapper-top-outgoing")
+        wrapper.classList.remove("show-wrapper-top-outgoing")
         wrapper.classList.remove("wrapper-active")
         wrapper.classList.add("hide-emojis-wrapper")
       })
     } else if (type === "outgoing") {
       unusedWrappers.forEach(wrapper => {
+        wrapper.classList.remove("show-wrapper-top-incoming")
+        wrapper.classList.remove("show-wrapper-bottom-incoming")
         wrapper.classList.remove("show-wrapper-top-outgoing")
         wrapper.classList.remove("show-wrapper-bottom-outgoing")
         wrapper.classList.remove("wrapper-active")
@@ -179,7 +207,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
 
   if (origin === "incoming") {
     return (
-      <div className="chat-message-container-incoming">
+      <div className="chat-message chat-message-container-incoming">
         <div className="chat-message-incoming-wrapper">
           <div className="chat-bubble-arrow">
             <svg viewBox="0 0 8 13" width="10" height="16">
@@ -239,13 +267,13 @@ export default function ChatMessage({ reply, origin, message, starred }) {
           </div>
           <div onClick={handleEmojiIconClick} className="emojis-incoming">
             <div className="emojis-incoming-content">
-              <div onClick={showEmojiWrapper} className="show-emojis-button">
+              <div onClick={showEmojiWrapper} className="emojis-button">
                 <svg
                   viewBox="0 0 15 15"
                   width="15"
                   preserveAspectRatio="xMidYMid meet"
                   fill="none"
-                  className="incoming-message-reaction-icon"
+                  className="incoming-message-reaction-icon reaction-button-icon"
                 >
                   <path
                     fillRule="evenodd"
@@ -288,7 +316,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     )
   } else if (origin === "outgoing") {
     return (
-      <div className="chat-message-container-outgoing">
+      <div className="chat-message chat-message-container-outgoing">
         <div className="chat-message-outgoing-wrapper">
           <div className="chat-bubble-arrow-outgoing">
             <svg viewBox="0 0 8 13" width="10" height="16">
@@ -351,13 +379,13 @@ export default function ChatMessage({ reply, origin, message, starred }) {
           </div>
           <div onClick={handleEmojiIconClick} className="emojis-outgoing">
             <div className="emojis-outgoing-content">
-              <div onClick={showEmojiWrapper} className="show-emojis-button">
+              <div onClick={showEmojiWrapper} className="emojis-button">
                 <svg
                   viewBox="0 0 15 15"
                   width="15"
                   preserveAspectRatio="xMidYMid meet"
                   fill="none"
-                  className="outgoing-message-reaction-icon"
+                  className="outgoing-message-reaction-icon reaction-button-icon"
                 >
                   <path
                     fillRule="evenodd"
