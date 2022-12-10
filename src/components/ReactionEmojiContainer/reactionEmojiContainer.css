@@ -43,6 +43,9 @@
 
 .reaction-emoji-chat {
   max-width: 375px;
+  height: fit-content;
+  max-height: 300px;
+  overflow: hidden;
   background-color: var(--reaction-emoji-chat-background);
   border-radius: 10px;
   padding: 0.2em;
@@ -60,7 +63,7 @@
 }
 
 .emojis-container-message-chat {
-  max-height: 300px;
+  max-height: 200px;
   overflow: hidden;
   overflow-y: auto;
 }

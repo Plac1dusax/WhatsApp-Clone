@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Time from "../Time/Time"
 import MessageInfo from "../MessageInfo/MessageInfo"
 import Emoji from "../Emoji/Emoji"
@@ -7,84 +7,8 @@ import "./chatMessage.css"
 
 export default function ChatMessage({ reply, origin, message, starred }) {
   let currentColor = "var(--star-icon)"
-
-  function handleEmojiIconClick(e) {
-    //   handleIncomingMessageReaction(e)
-    //   handleOutgoingMessageReaction(e)
-    //   if (e.target.matches(".more-emojis-icon-wrapper")) {
-    //     handleEmojiGrid(e)
-    //   }
-  }
-
-  // function handleIncomingMessageReaction(e) {
-  //   if (e.target.matches(".incoming-message-reaction-icon")) {
-  //     const container = e.currentTarget.closest(".direct-message-body")
-  //     const messageContainer = e.target.closest(
-  //       ".chat-message-container-incoming"
-  //     )
-  //     const reactionsWrapper = messageContainer.querySelector(
-  //       ".emoji-reactions-wrapper"
-  //     )
-  //     const allReactionWrappers = document.querySelectorAll(
-  //       ".emoji-reactions-wrapper"
-  //     )
-
-  //     allReactionWrappers.forEach(wrapper => {
-  //       if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
-  //         wrapper.classList.remove("show-wrapper-bottom-incoming")
-  //       } else if (wrapper.classList.contains("show-wrapper-top-incoming")) {
-  //         wrapper.classList.remove("show-wrapper-top-incoming")
-  //       }
-  //     })
-
-  //     let bounds = container.getBoundingClientRect()
-  //     let y = e.clientY - bounds.top
-
-  //     if (y <= 109) {
-  //       reactionsWrapper.classList.add("show-wrapper-bottom-incoming")
-  //       reactionsWrapper.classList.add("active-reaction")
-  //     } else if (y > 109) {
-  //       reactionsWrapper.classList.add("show-wrapper-top-incoming")
-  //       reactionsWrapper.classList.add("active-reaction")
-  //     }
-  //   }
-  // }
-
-  // function handleOutgoingMessageReaction(e) {
-  //   if (e.target.matches(".outgoing-message-reaction-icon")) {
-  //     const container = e.currentTarget.closest(".direct-message-body")
-  //     const messageContainer = e.target.closest(
-  //       ".chat-message-container-outgoing"
-  //     )
-  //     const reactionsWrapper = messageContainer.querySelector(
-  //       ".emoji-reactions-wrapper"
-  //     )
-  //     const allReactionWrappers = document.querySelectorAll(
-  //       ".emoji-reactions-wrapper"
-  //     )
-
-  //     allReactionWrappers.forEach(wrapper => {
-  //       if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
-  //         wrapper.classList.remove("show-wrapper-bottom-incoming")
-  //       } else if (wrapper.classList.contains("show-wrapper-top-incoming")) {
-  //         wrapper.classList.remove("show-wrapper-top-incoming")
-  //       }
-  //     })
-
-  //     let bounds = container.getBoundingClientRect()
-  //     let y = e.clientY - bounds.top
-
-  //     if (y <= 109) {
-  //       reactionsWrapper.classList.add("show-wrapper-bottom-incoming")
-  //       reactionsWrapper.classList.add("active-reaction")
-  //     } else if (y > 109) {
-  //       reactionsWrapper.classList.add("show-wrapper-top-incoming")
-  //       reactionsWrapper.classList.add("active-reaction")
-  //     }
-  //   }
-  // }
-
-  function handleEmojiGrid(e) {}
+  const [positionX, setPositionX] = useState()
+  const [positionY, setPositionY] = useState()
 
   function showEmojiWrapper(e) {
     const container = e.target.closest(".chat-message")
@@ -205,6 +129,47 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     }
   }
 
+  function handleGridVisibility(e) {
+    const container = e.target.closest(".chat-message")
+    const emojisGridWrapper = container.querySelector(".emojis-list")
+    const xValue = e.pageX
+    const yValue = e.pageY
+
+    setPositionX(xValue)
+    setPositionY(yValue)
+
+    // emojisGridWrapper.classList.toggle("show-emojis-list")
+    handleGridPosition(xValue, yValue, emojisGridWrapper)
+  }
+
+  function handleGridPosition(xValue, yValue, emojisGridWrapper) {
+    if (xValue < 1100) {
+      if (yValue >= 336) {
+        emojisGridWrapper.classList.remove("show-emojis-list-top-left")
+        emojisGridWrapper.classList.remove("show-emojis-list-bottom-left")
+        emojisGridWrapper.classList.remove("show-emojis-list-bottom-right")
+        emojisGridWrapper.classList.toggle("show-emojis-list-top-right")
+      } else if (yValue < 336) {
+        emojisGridWrapper.classList.remove("show-emojis-list-top-left")
+        emojisGridWrapper.classList.remove("show-emojis-list-bottom-left")
+        emojisGridWrapper.classList.remove("show-emojis-list-top-right")
+        emojisGridWrapper.classList.toggle("show-emojis-list-bottom-right")
+      }
+    } else if (xValue >= 1100) {
+      if (yValue >= 336) {
+        emojisGridWrapper.classList.remove("show-emojis-list-top-right")
+        emojisGridWrapper.classList.remove("show-emojis-list-bottom-left")
+        emojisGridWrapper.classList.remove("show-emojis-list-bottom-right")
+        emojisGridWrapper.classList.toggle("show-emojis-list-top-left")
+      } else if (yValue < 336) {
+        emojisGridWrapper.classList.remove("show-emojis-list-top-left")
+        emojisGridWrapper.classList.remove("show-emojis-list-top-right")
+        emojisGridWrapper.classList.remove("show-emojis-list-bottom-right")
+        emojisGridWrapper.classList.toggle("show-emojis-list-bottom-left")
+      }
+    }
+  }
+
   if (origin === "incoming") {
     return (
       <div className="chat-message chat-message-container-incoming">
@@ -265,7 +230,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
               </div>
             </div>
           </div>
-          <div onClick={handleEmojiIconClick} className="emojis-incoming">
+          <div className="emojis-incoming">
             <div className="emojis-incoming-content">
               <div onClick={showEmojiWrapper} className="emojis-button">
                 <svg
@@ -290,7 +255,10 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 <Emoji emojiName={"surprised"} emoji={"😮"} />
                 <Emoji emojiName={"sad"} emoji={"😢"} />
                 <Emoji emojiName={"high five"} emoji={"🙏"} />
-                <div className="more-emojis-button">
+                <div
+                  onClick={handleGridVisibility}
+                  className="more-emojis-button"
+                >
                   <div className="more-emojis-icon-wrapper">
                     <svg
                       viewBox="0 0 18 18"
@@ -377,7 +345,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
               </div>
             </div>
           </div>
-          <div onClick={handleEmojiIconClick} className="emojis-outgoing">
+          <div className="emojis-outgoing">
             <div className="emojis-outgoing-content">
               <div onClick={showEmojiWrapper} className="emojis-button">
                 <svg
@@ -402,7 +370,10 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 <Emoji emojiName={"surprised"} emoji={"😮"} />
                 <Emoji emojiName={"sad"} emoji={"😢"} />
                 <Emoji emojiName={"high five"} emoji={"🙏"} />
-                <div className="more-emojis-button">
+                <div
+                  onClick={handleGridVisibility}
+                  className="more-emojis-button"
+                >
                   <div className="more-emojis-icon-wrapper">
                     <svg
                       viewBox="0 0 18 18"

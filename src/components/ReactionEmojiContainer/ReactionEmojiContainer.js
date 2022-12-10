@@ -10,28 +10,24 @@ function ReactionEmojiContainer({ type }) {
   const [searchedEmojis, setSearchedEmojis] = useState([])
 
   function handleEmojiScroll(e) {
-    const container = e.target.closest(".type-message-container")
-    const emojisContainer = document.querySelector(".emojis-container")
-    const searchbar = container.querySelector(".searchbar-wrapper")
-    const searchbarInput = searchbar.querySelector("input")
-
-    setScrollY(prevScrollY => (prevScrollY = emojisContainer.scrollTop))
-
-    if (scrollY > emojisContainer.scrollTop) {
-      searchbar.classList.remove("searchbar-hide")
-      searchbar.classList.add("searchbar-show")
-      searchbarInput.style.backgroundColor = "var(--teal)"
-    } else if (scrollY < emojisContainer.scrollTop) {
-      searchbar.classList.remove("searchbar-show")
-      searchbar.classList.add("searchbar-hide")
-    }
-
-    setTimeout(handleInputColor, 500)
-    function handleInputColor() {
-      searchbarInput.style.backgroundColor = "var(--panel-background)"
-    }
-
-    handleReactionIconBorder(emojisContainer)
+    // const container = e.target.closest(".type-message-container")
+    // const emojisContainer = document.querySelector(".emojis-container")
+    // const searchbar = container.querySelector(".searchbar-wrapper")
+    // const searchbarInput = searchbar.querySelector("input")
+    // setScrollY(prevScrollY => (prevScrollY = emojisContainer.scrollTop))
+    // if (scrollY > emojisContainer.scrollTop) {
+    //   searchbar.classList.remove("searchbar-hide")
+    //   searchbar.classList.add("searchbar-show")
+    //   searchbarInput.style.backgroundColor = "var(--teal)"
+    // } else if (scrollY < emojisContainer.scrollTop) {
+    //   searchbar.classList.remove("searchbar-show")
+    //   searchbar.classList.add("searchbar-hide")
+    // }
+    // setTimeout(handleInputColor, 500)
+    // function handleInputColor() {
+    //   searchbarInput.style.backgroundColor = "var(--panel-background)"
+    // }
+    // handleReactionIconBorder(emojisContainer)
   }
 
   function renderSearchedEmojis() {
@@ -381,9 +377,7 @@ function ReactionEmojiContainer({ type }) {
         </div>
       </div>
     )
-  }
-
-  if (type === "reaction") {
+  } else if (type === "reaction") {
     return (
       <div>
         <div className="reaction-emoji-chat">

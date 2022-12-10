@@ -147,6 +147,7 @@
 .emojis-incoming,
 .emojis-outgoing {
   position: absolute;
+  z-index: 10;
 }
 
 .emojis-incoming {
@@ -286,6 +287,59 @@
 .emojis-list {
   visibility: hidden;
   pointer-events: none;
+  transform: scale(0);
+  position: absolute;
+}
+
+.show-emojis-list {
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 10;
+  transform: scale(1);
+  transform-origin: top left;
+  transition: transform ease-in-out 0.5s;
+}
+
+.show-emojis-list-bottom-right {
+  visibility: visible;
+  pointer-events: auto;
+  left: 20px;
+  z-index: 10;
+  transform: scale(1);
+  transform-origin: bottom right;
+  transition: transform ease-in-out 0.5s;
+}
+
+.show-emojis-list-bottom-left {
+  visibility: visible;
+  pointer-events: auto;
+  left: -370px;
+  z-index: 10;
+  transform: scale(1);
+  transform-origin: 370px;
+  transition: transform ease-in-out 0.5s;
+}
+
+.show-emojis-list-top-right {
+  visibility: visible;
+  pointer-events: auto;
+  left: 20px;
+  top: -300px;
+  z-index: 10;
+  transform: scale(1);
+  transform-origin: 0 300px;
+  transition: transform ease-in-out 0.5s;
+}
+
+.show-emojis-list-top-left {
+  visibility: visible;
+  pointer-events: auto;
+  left: -370px;
+  top: -300px;
+  z-index: 10;
+  transform: scale(1);
+  transform-origin: 300px 300px;
+  transition: transform ease-in-out 0.5s;
 }
 
 path {
