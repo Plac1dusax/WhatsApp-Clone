@@ -29,8 +29,19 @@ export default function EmojiGrid(props) {
     }
   }
 
+  function handleEmojisClick(e) {
+    const mainContainer = e.target.closest(".direct-message-container")
+    const userInput = mainContainer.querySelector(".dm-input")
+
+    if (e.target.classList.contains("emoji-wrapper")) {
+      userInput.value = `${userInput.value}${e.target.textContent}`
+    }
+
+    return userInput
+  }
+
   return (
-    <div className="emoji-grid-container">
+    <div onClick={handleEmojisClick} className="emoji-grid-container">
       <div className={emojiSectionName}>
         <div className="emojis-header">
           <EmojiContainerHeader emojiHeader={emojiHeader} />

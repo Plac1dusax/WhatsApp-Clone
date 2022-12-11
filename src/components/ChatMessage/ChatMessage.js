@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Time from "../Time/Time"
 import MessageInfo from "../MessageInfo/MessageInfo"
 import Emoji from "../Emoji/Emoji"
@@ -7,13 +7,12 @@ import "./chatMessage.css"
 
 export default function ChatMessage({ reply, origin, message, starred }) {
   let currentColor = "var(--star-icon)"
-  const [positionX, setPositionX] = useState()
-  const [positionY, setPositionY] = useState()
 
   function showEmojiWrapper(e) {
     const container = e.target.closest(".chat-message")
     const clickedButton = e.target.closest(".emojis-button")
     const emojiWrapper = container.querySelector(".emoji-reactions-wrapper")
+    const emojiGrids = [...document.querySelectorAll(".emojis-list")]
     if (e.target.matches(".incoming-message-reaction-icon")) {
       handleIncomingMessageReaction(e, clickedButton)
     } else if (e.target.matches(".outgoing-message-reaction-icon")) {
@@ -21,6 +20,13 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     }
 
     showEmojiButtonIcon(clickedButton, emojiWrapper)
+
+    emojiGrids.forEach(grid => {
+      grid.classList.remove("show-emojis-list-top-left")
+      grid.classList.remove("show-emojis-list-bottom-left")
+      grid.classList.remove("show-emojis-list-bottom-right")
+      grid.classList.remove("show-emojis-list-top-right")
+    })
   }
 
   function showEmojiButtonIcon(clickedButton, emojiWrapper) {
@@ -105,7 +111,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
       ...document.querySelectorAll(".emoji-reactions-wrapper")
     ]
     const unusedWrappers = allWrappers.filter(wrapper => {
-      return emojisWrapper != wrapper
+      return emojisWrapper !== wrapper
     })
 
     if (type === "incoming") {
@@ -113,7 +119,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
         wrapper.classList.remove("show-wrapper-top-incoming")
         wrapper.classList.remove("show-wrapper-bottom-incoming")
         wrapper.classList.remove("show-wrapper-top-outgoing")
-        wrapper.classList.remove("show-wrapper-top-outgoing")
+        wrapper.classList.remove("show-wrapper-bottom-outgoing")
         wrapper.classList.remove("wrapper-active")
         wrapper.classList.add("hide-emojis-wrapper")
       })
@@ -135,14 +141,11 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     const xValue = e.pageX
     const yValue = e.pageY
 
-    setPositionX(xValue)
-    setPositionY(yValue)
-
-    // emojisGridWrapper.classList.toggle("show-emojis-list")
     handleGridPosition(xValue, yValue, emojisGridWrapper)
   }
 
   function handleGridPosition(xValue, yValue, emojisGridWrapper) {
+    hideWrappersAndGrids(emojisGridWrapper)
     if (xValue < 1100) {
       if (yValue >= 336) {
         emojisGridWrapper.classList.remove("show-emojis-list-top-left")
@@ -168,6 +171,102 @@ export default function ChatMessage({ reply, origin, message, starred }) {
         emojisGridWrapper.classList.toggle("show-emojis-list-bottom-left")
       }
     }
+  }
+
+  function hideWrappersAndGrids(emojisGridWrapper) {
+    const emojiWrappers = document.querySelectorAll(".emoji-reactions-wrapper")
+    const emojiGrids = [...document.querySelectorAll(".emojis-list")]
+    const unnecessaryGrids = emojiGrids.filter(grid => {
+      return grid !== emojisGridWrapper
+    })
+
+    emojiWrappers.forEach(wrapper => {
+      wrapper.classList.remove("show-wrapper-top-incoming")
+      wrapper.classList.remove("show-wrapper-bottom-incoming")
+      wrapper.classList.remove("show-wrapper-top-outgoing")
+      wrapper.classList.remove("show-wrapper-top-outgoing")
+      wrapper.classList.remove("wrapper-active")
+      wrapper.classList.add("hide-emojis-wrapper")
+    })
+
+    unnecessaryGrids.forEach(grid => {
+      grid.classList.remove("show-emojis-list-top-left")
+      grid.classList.remove("show-emojis-list-bottom-left")
+      grid.classList.remove("show-emojis-list-bottom-right")
+      grid.classList.remove("show-emojis-list-top-right")
+    })
+  }
+
+  function handleReactionClick(e) {
+    const mainContainer = e.target.closest(".chat-message")
+    const reactionsWrapper = mainContainer.querySelector(
+      ".emoji-reactions-wrapper"
+    )
+    const reactionsWrapperEmojis = [
+      ...reactionsWrapper.querySelectorAll(".emoji-wrapper")
+    ]
+    const reactionArea = mainContainer.querySelector(".message-reaction")
+    const emojisButton = mainContainer.querySelector(".emojis-button")
+    const previousSelectedEmoji = mainContainer.querySelector(".emoji-selected")
+
+    if (previousSelectedEmoji) {
+      previousSelectedEmoji.classList.remove("emoji-selected")
+    }
+
+    if (e.target.classList.contains("emoji-wrapper")) {
+      const emoji = e.target.textContent
+      if (emoji === reactionArea.textContent) {
+        reactionArea.textContent = ""
+      } else {
+        reactionArea.textContent = emoji
+        e.target.classList.add("emoji-selected")
+      }
+    }
+
+    reactionsWrapper.classList.remove("show-wrapper-top-incoming")
+    reactionsWrapper.classList.remove("show-wrapper-bottom-incoming")
+    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
+    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
+    reactionsWrapper.classList.remove("wrapper-active")
+    reactionsWrapper.classList.add("hide-emojis-wrapper")
+
+    emojisButton.classList.remove("show-emojis-button")
+    emojisButton.classList.add("hide-emojis-button")
+  }
+
+  function handleEmojiGrid(e) {
+    const mainContainer = e.target.closest(".chat-message")
+    const reactionsWrapper = mainContainer.querySelector(
+      ".emoji-reactions-wrapper"
+    )
+    const reactionsWrapperEmojis = [
+      ...reactionsWrapper.querySelectorAll(".emoji-wrapper")
+    ]
+    const reactionArea = mainContainer.querySelector(".message-reaction")
+    const emojisButton = mainContainer.querySelector(".emojis-button")
+    const emojisList = mainContainer.querySelector(".emojis-list")
+    const gridEmojis = [...emojisList.querySelectorAll(".emoji-wrapper")]
+    const moreEmojisButton = mainContainer.querySelector(".more-emojis-button")
+
+    if (e.target.classList.contains("emoji-wrapper")) {
+      const emoji = e.target.textContent
+      reactionArea.textContent = emoji
+    }
+
+    reactionsWrapper.classList.remove("show-wrapper-top-incoming")
+    reactionsWrapper.classList.remove("show-wrapper-bottom-incoming")
+    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
+    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
+    reactionsWrapper.classList.remove("wrapper-active")
+    reactionsWrapper.classList.add("hide-emojis-wrapper")
+
+    emojisButton.classList.remove("show-emojis-button")
+    emojisButton.classList.add("hide-emojis-button")
+
+    emojisList.classList.remove("show-emojis-list-top-left")
+    emojisList.classList.remove("show-emojis-list-bottom-left")
+    emojisList.classList.remove("show-emojis-list-bottom-right")
+    emojisList.classList.remove("show-emojis-list-top-right")
   }
 
   if (origin === "incoming") {
@@ -229,6 +328,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 <Time time={"22:50"} />
               </div>
             </div>
+            <div className="message-reaction message-reaction-incoming"></div>
           </div>
           <div className="emojis-incoming">
             <div className="emojis-incoming-content">
@@ -248,7 +348,10 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                   ></path>
                 </svg>
               </div>
-              <div className="emoji-reactions-wrapper">
+              <div
+                onClick={handleReactionClick}
+                className="emoji-reactions-wrapper"
+              >
                 <Emoji emojiName={"thumb up"} emoji={"👍"} />
                 <Emoji emojiName={"red heart"} emoji={"❤️"} />
                 <Emoji emojiName={"cry from laughing"} emoji={"😂"} />
@@ -275,7 +378,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 </div>
               </div>
             </div>
-            <div className="emojis-list">
+            <div onClick={handleEmojiGrid} className="emojis-list">
               <ReactionEmojiContainer type={"reaction"} />
             </div>
           </div>
@@ -344,6 +447,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 </div>
               </div>
             </div>
+            <div className="message-reaction message-reaction-outgoing"></div>
           </div>
           <div className="emojis-outgoing">
             <div className="emojis-outgoing-content">
@@ -363,7 +467,10 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                   ></path>
                 </svg>
               </div>
-              <div className="emoji-reactions-wrapper">
+              <div
+                onClick={handleReactionClick}
+                className="emoji-reactions-wrapper"
+              >
                 <Emoji emojiName={"thumb up"} emoji={"👍"} />
                 <Emoji emojiName={"red heart"} emoji={"❤️"} />
                 <Emoji emojiName={"cry from laughing"} emoji={"😂"} />
@@ -390,7 +497,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 </div>
               </div>
             </div>
-            <div className="emojis-list">
+            <div onClick={handleEmojiGrid} className="emojis-list">
               <ReactionEmojiContainer type={"reaction"} />
             </div>
           </div>
