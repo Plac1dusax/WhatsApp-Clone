@@ -7,27 +7,124 @@ import "./reactionEmojiContainer.css"
 
 function ReactionEmojiContainer({ type }) {
   const [scrollY, setScrollY] = useState(0)
+  const [scrollReactionY, setScrollReactionY] = useState(0)
   const [searchedEmojis, setSearchedEmojis] = useState([])
 
   function handleEmojiScroll(e) {
-    // const container = e.target.closest(".type-message-container")
-    // const emojisContainer = document.querySelector(".emojis-container")
-    // const searchbar = container.querySelector(".searchbar-wrapper")
-    // const searchbarInput = searchbar.querySelector("input")
-    // setScrollY(prevScrollY => (prevScrollY = emojisContainer.scrollTop))
-    // if (scrollY > emojisContainer.scrollTop) {
-    //   searchbar.classList.remove("searchbar-hide")
-    //   searchbar.classList.add("searchbar-show")
-    //   searchbarInput.style.backgroundColor = "var(--teal)"
-    // } else if (scrollY < emojisContainer.scrollTop) {
-    //   searchbar.classList.remove("searchbar-show")
-    //   searchbar.classList.add("searchbar-hide")
-    // }
-    // setTimeout(handleInputColor, 500)
-    // function handleInputColor() {
-    //   searchbarInput.style.backgroundColor = "var(--panel-background)"
-    // }
-    // handleReactionIconBorder(emojisContainer)
+    const container = e.target.closest(".type-message-container")
+    const emojisContainer = document.querySelector(".emojis-container")
+    const searchbar = container.querySelector(".searchbar-wrapper")
+    const searchbarInput = searchbar.querySelector("input")
+    setScrollY(prevScrollY => (prevScrollY = emojisContainer.scrollTop))
+    if (scrollY > emojisContainer.scrollTop) {
+      searchbar.classList.remove("searchbar-hide")
+      searchbar.classList.add("searchbar-show")
+      searchbarInput.style.backgroundColor = "var(--teal)"
+    } else if (scrollY < emojisContainer.scrollTop) {
+      searchbar.classList.remove("searchbar-show")
+      searchbar.classList.add("searchbar-hide")
+    }
+    setTimeout(handleInputColor, 500)
+    function handleInputColor() {
+      searchbarInput.style.backgroundColor = "var(--panel-background)"
+    }
+    handleReactionIconBorder(emojisContainer)
+  }
+
+  function handleEmojiScrollReaction(e) {
+    const container = e.target.closest(".reaction-emoji-chat")
+    const emojisContainer = container.querySelector(
+      ".emojis-container-message-chat"
+    )
+    const searchbar = container.querySelector(".searchbar-wrapper")
+    const searchbarInput = searchbar.querySelector("input")
+
+    setScrollReactionY(
+      prevScrollReactionY => (prevScrollReactionY = emojisContainer.scrollTop)
+    )
+    if (scrollReactionY > emojisContainer.scrollTop) {
+      searchbar.classList.remove("searchbar-hide")
+      searchbar.classList.add("searchbar-show")
+      searchbarInput.style.backgroundColor = "var(--teal)"
+    } else if (scrollReactionY < emojisContainer.scrollTop) {
+      searchbar.classList.remove("searchbar-show")
+      searchbar.classList.add("searchbar-hide")
+    }
+
+    setTimeout(handleInputColor, 500)
+    function handleInputColor() {
+      searchbarInput.style.backgroundColor = "var(--panel-background)"
+    }
+
+    handleChatReactionIconBorder(emojisContainer, container)
+  }
+
+  function handleChatReactionIconBorder(emojisContainer, container) {
+    const reactionIconBorder = container.querySelector(
+      ".reaction-icon-border-chat"
+    )
+    const scrollValue = emojisContainer.scrollTop
+    const recentEmojisLogo = container.querySelector(".recent-chat")
+    const smileysPeopleEmojisLogo = container.querySelector(
+      ".smileys-people-chat"
+    )
+    const animalsNatureEmojisLogo = container.querySelector(
+      ".animals-nature-chat"
+    )
+    const foodDrinksEmojisLogo = container.querySelector(".food-drink-chat")
+    const activityEmojisLogo = container.querySelector(".activity-chat")
+    const travelPlacesEmojisLogo = container.querySelector(
+      ".travel-places-chat"
+    )
+    const objectsEmojisLogo = container.querySelector(".objects-chat")
+    const symbolsEmojisLogo = container.querySelector(".symbols-chat")
+    const flagsEmojisLogo = container.querySelector(".flags-chat")
+
+    if (scrollValue === 0) {
+      highlightChatEmojiSection(recentEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(0px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 102) {
+      highlightChatEmojiSection(smileysPeopleEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(41px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 333) {
+      highlightChatEmojiSection(animalsNatureEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(83px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 446) {
+      highlightChatEmojiSection(foodDrinksEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(123px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 590) {
+      highlightChatEmojiSection(activityEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(166px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 682) {
+      highlightChatEmojiSection(travelPlacesEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(208px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 790) {
+      highlightChatEmojiSection(objectsEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(250px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 974) {
+      highlightChatEmojiSection(symbolsEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(292px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
+    if (scrollValue >= 1082) {
+      highlightChatEmojiSection(flagsEmojisLogo, container)
+      reactionIconBorder.style.transform = `translateX(334px)`
+      reactionIconBorder.style.transition = "transform 0.1s"
+    }
   }
 
   function renderSearchedEmojis() {
@@ -124,6 +221,21 @@ function ReactionEmojiContainer({ type }) {
       reactionIconBorder.style.transform = `translateX(970px)`
       reactionIconBorder.style.transition = "transform 0.1s"
     }
+  }
+
+  function highlightChatEmojiSection(element, container) {
+    const recentEmojisLogo = container.querySelector(".recent-chat")
+    const reactionIcons = [...container.querySelectorAll(".reaction-icon-chat")]
+    recentEmojisLogo.style.color = "var(--emoji-icon-highlighted)"
+    const nonSelected = reactionIcons.filter(icon => {
+      return icon !== element
+    })
+
+    nonSelected.forEach(item => {
+      item.style.color = "var(--emoji-icon-default)"
+    })
+
+    element.style.color = "var(--emoji-icon-highlighted)"
   }
 
   function highlightEmojiSection(element) {
@@ -556,7 +668,7 @@ function ReactionEmojiContainer({ type }) {
           </div>
           <div className="searched-emojis">{renderSearchedEmojis()}</div>
           <div
-            onScroll={handleEmojiScroll}
+            onScroll={handleEmojiScrollReaction}
             className="emojis-container-message-chat"
           >
             <EmojiGrid
