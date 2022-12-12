@@ -647,24 +647,40 @@ const smileyAndPeopleEmojis = [
     emoji: "😎"
   },
   {
-    emojiName: "thumb-up",
+    emojiName: "thumb up",
     emoji: "👍"
   },
   {
-    emojiName: "thumb-down",
+    emojiName: "thumb down",
     emoji: "👎"
   },
   {
-    emojiName: "evil-smile",
+    emojiName: "high five",
+    emoji: "🙏"
+  },
+  {
+    emojiName: "evil smile",
     emoji: "😈"
   },
   {
-    emojiName: "evil-upset",
+    emojiName: "evil upset",
     emoji: "👿"
   },
   {
     emojiName: "curse",
     emoji: "🤬"
+  },
+  {
+    emojiName: "cry from laughing",
+    emoji: "😂"
+  },
+  {
+    emojiName: "surprised",
+    emoji: "😮"
+  },
+  {
+    emojiName: "sad",
+    emoji: "😢"
   },
   {
     emojiName: "inspector",
@@ -707,7 +723,7 @@ const smileyAndPeopleEmojis = [
     emoji: "🥳"
   },
   {
-    emojiName: "mind-blow",
+    emojiName: "mind blow",
     emoji: "🤯"
   },
   {
@@ -793,14 +809,17 @@ const foodAndDrinkEmojis = [
     emoji: "🍩"
   },
   {
+    id: uuidv4(),
     emojiName: "cookie",
     emoji: "🍪"
   },
   {
+    id: uuidv4(),
     emojiName: "ice cream",
     emoji: "🍦"
   },
   {
+    id: uuidv4(),
     emojiName: "birthday cake",
     emoji: "🎂"
   }
@@ -808,14 +827,17 @@ const foodAndDrinkEmojis = [
 
 const activityEmojis = [
   {
+    id: uuidv4(),
     emojiName: "football",
     emoji: "⚽"
   },
   {
+    id: uuidv4(),
     emojiName: "basketball",
     emoji: "🏀"
   },
   {
+    id: uuidv4(),
     emojiName: "gaming",
     emoji: "🎮"
   }
@@ -823,14 +845,17 @@ const activityEmojis = [
 
 const travelAndPlacesEmojis = [
   {
+    id: uuidv4(),
     emojiName: "formula 1 car",
     emoji: "🏎️"
   },
   {
+    id: uuidv4(),
     emojiName: "helicopter",
     emoji: "🚁"
   },
   {
+    id: uuidv4(),
     emojiName: "plane",
     emoji: "✈️"
   }
@@ -838,108 +863,132 @@ const travelAndPlacesEmojis = [
 
 const objectEmojis = [
   {
+    id: uuidv4(),
     emojiName: "watch",
     emoji: "⌚"
   },
   {
+    id: uuidv4(),
     emojiName: "mouse",
     emoji: "🖱️"
   },
   {
+    id: uuidv4(),
     emojiName: "cellphone",
     emoji: "📱"
   },
   {
+    id: uuidv4(),
     emojiName: "bomb",
     emoji: "💣"
   },
   {
+    id: uuidv4(),
     emojiName: "knife",
     emoji: "🔪"
   },
   {
+    id: uuidv4(),
     emojiName: "sword",
     emoji: "🗡️"
   },
   {
+    id: uuidv4(),
     emojiName: "lock",
     emoji: "🔒"
   },
   {
+    id: uuidv4(),
     emojiName: "pencil",
     emoji: "🖊️"
   },
   {
+    id: uuidv4(),
     emojiName: "notebook",
     emoji: "📕"
   },
   {
+    id: uuidv4(),
     emojiName: "telescope",
     emoji: "🔭"
   },
   {
+    id: uuidv4(),
     emojiName: "microscope",
     emoji: "🔬"
   },
   {
+    id: uuidv4(),
     emojiName: "key",
     emoji: "🔑"
   },
   {
+    id: uuidv4(),
     emojiName: "scissor",
     emoji: "✂️"
   },
   {
+    id: uuidv4(),
     emojiName: "printer",
     emoji: "🖨️"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "candle",
     emoji: "🕯️"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "shield",
     emoji: "🛡️"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "door",
     emoji: "🚪"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "chair",
     emoji: "🪑"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "calendar",
     emoji: "📆"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "bed",
     emoji: "🛏️"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "mail",
     emoji: "✉️"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "newspaper",
     emoji: "📰"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "fire extinguisher",
     emoji: "🧯"
   },
   ,
   {
+    id: uuidv4(),
     emojiName: "water gun",
     emoji: "🔫"
   }
@@ -947,111 +996,138 @@ const objectEmojis = [
 
 const symbolEmojis = [
   {
+    id: uuidv4(),
     emojiName: "red heart",
     emoji: "❤️"
   },
   {
+    id: uuidv4(),
     emojiName: "orange heart",
     emoji: "🧡"
   },
   {
+    id: uuidv4(),
     emojiName: "yellow heart",
     emoji: "💛"
   },
   {
+    id: uuidv4(),
     emojiName: "green heart",
     emoji: "💚"
   },
   {
+    id: uuidv4(),
     emojiName: "blue heart",
     emoji: "💙"
   },
   {
+    id: uuidv4(),
     emojiName: "purple heart",
     emoji: "💜"
   },
   {
+    id: uuidv4(),
     emojiName: "black heart",
     emoji: "🖤"
   },
   {
+    id: uuidv4(),
     emojiName: "white heart",
     emoji: "🤍"
   },
   {
+    id: uuidv4(),
     emojiName: "brown heart",
     emoji: "🤎"
   },
   {
+    id: uuidv4(),
     emojiName: "broken heart",
     emoji: "💔"
   },
   {
+    id: uuidv4(),
     emojiName: "stop sign",
     emoji: "⛔"
   },
   {
+    id: uuidv4(),
     emojiName: "confirm",
     emoji: "✅"
   },
   {
+    id: uuidv4(),
     emojiName: "decline",
     emoji: "❎"
   },
   {
+    id: uuidv4(),
     emojiName: "play button",
     emoji: "▶️"
   },
   {
+    id: uuidv4(),
     emojiName: "pause button",
     emoji: "⏸️"
   },
   {
+    id: uuidv4(),
     emojiName: "red ball",
     emoji: "🔴"
   },
   {
+    id: uuidv4(),
     emojiName: "yellow ball",
     emoji: "🟡"
   },
   {
+    id: uuidv4(),
     emojiName: "orange ball",
     emoji: "🟠"
   },
   {
+    id: uuidv4(),
     emojiName: "green ball",
     emoji: "🟢"
   },
   {
+    id: uuidv4(),
     emojiName: "blue ball",
     emoji: "🔵"
   },
   {
+    id: uuidv4(),
     emojiName: "purple ball",
     emoji: "🟣"
   },
   {
+    id: uuidv4(),
     emojiName: "black ball",
     emoji: "⚫"
   },
   {
+    id: uuidv4(),
     emojiName: "white ball",
     emoji: "⚪"
   },
   {
+    id: uuidv4(),
     emojiName: "brown ball",
     emoji: "🟤"
   },
 
   {
+    id: uuidv4(),
     emojiName: "trident",
     emoji: "🔱"
   },
   {
+    id: uuidv4(),
     emojiName: "red question mark",
     emoji: "❓"
   },
   {
+    id: uuidv4(),
     emojiName: "SOS",
     emoji: "🆘"
   }
@@ -1059,14 +1135,17 @@ const symbolEmojis = [
 
 const flagEmojis = [
   {
+    id: uuidv4(),
     emojiName: "white flag",
     emoji: "🏳️"
   },
   {
+    id: uuidv4(),
     emojiName: "black flag",
     emoji: "🏴"
   },
   {
+    id: uuidv4(),
     emojiName: "chequered flag",
     emoji: "🏁"
   }

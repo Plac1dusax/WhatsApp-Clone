@@ -1,12 +1,38 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Time from "../Time/Time"
 import MessageInfo from "../MessageInfo/MessageInfo"
 import Emoji from "../Emoji/Emoji"
 import ReactionEmojiContainer from "../ReactionEmojiContainer/ReactionEmojiContainer"
+import { v4 as uuidv4 } from "uuid"
 import "./chatMessage.css"
 
 export default function ChatMessage({ reply, origin, message, starred }) {
   let currentColor = "var(--star-icon)"
+  const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
+
+  useEffect(() => {
+    if (commonEmojis.length === 7) {
+      const attributeName = commonEmojis[6].emojiName
+
+      const reactionWrappers = [
+        ...document.querySelectorAll(".emoji-reactions-wrapper")
+      ]
+
+      const selectedEmoji = reactionWrappers.filter(wrapper => {
+        const emojiWrappers = [...wrapper.querySelectorAll(".emoji-wrapper")]
+
+        const checkWrappers = [
+          ...emojiWrappers.filter(emojiWrap => {
+            return emojiWrap.getAttribute("emojiname") === attributeName
+          })
+        ]
+
+        checkWrappers.forEach(wrap => {
+          wrap.classList.add("emoji-selected")
+        })
+      })
+    }
+  }, [commonEmojis])
 
   function showEmojiWrapper(e) {
     const container = e.target.closest(".chat-message")
@@ -202,9 +228,6 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     const reactionsWrapper = mainContainer.querySelector(
       ".emoji-reactions-wrapper"
     )
-    const reactionsWrapperEmojis = [
-      ...reactionsWrapper.querySelectorAll(".emoji-wrapper")
-    ]
     const reactionArea = mainContainer.querySelector(".message-reaction")
     const emojisButton = mainContainer.querySelector(".emojis-button")
     const previousSelectedEmoji = mainContainer.querySelector(".emoji-selected")
@@ -245,8 +268,23 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     const reactionArea = mainContainer.querySelector(".message-reaction")
     const emojisButton = mainContainer.querySelector(".emojis-button")
     const emojisList = mainContainer.querySelector(".emojis-list")
-    const gridEmojis = [...emojisList.querySelectorAll(".emoji-wrapper")]
     const moreEmojisButton = mainContainer.querySelector(".more-emojis-button")
+    const commonEmojiNames = [
+      "thumb up",
+      "red heart",
+      "cry from laughing",
+      "surprised",
+      "sad",
+      "high five"
+    ]
+
+    commonEmojiNames.forEach(name => {
+      handleCommonEmojis(e, reactionsWrapperEmojis, name, reactionArea)
+    })
+
+    if (!commonEmojiNames.includes(e.target.getAttribute("emojiname"))) {
+      handleDifferentEmojis(e, moreEmojisButton)
+    }
 
     if (e.target.classList.contains("emoji-wrapper")) {
       const emoji = e.target.textContent
@@ -267,6 +305,39 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     emojisList.classList.remove("show-emojis-list-bottom-left")
     emojisList.classList.remove("show-emojis-list-bottom-right")
     emojisList.classList.remove("show-emojis-list-top-right")
+  }
+
+  function handleCommonEmojis(
+    e,
+    reactionsWrapperEmojis,
+    className,
+    reactionArea
+  ) {
+    if (e.target.getAttribute("emojiname") === className) {
+      const commonEmoji = reactionsWrapperEmojis.filter(emoji => {
+        return emoji.getAttribute("emojiname") === className
+      })
+
+      reactionsWrapperEmojis.map(emoji => {
+        emoji.classList.remove("emoji-selected")
+      })
+
+      commonEmoji[0].classList.add("emoji-selected")
+      reactionArea.textContent = commonEmoji[0].textContent
+    }
+  }
+
+  function handleDifferentEmojis(e, moreEmojisButton) {
+    const emojiName = e.target.getAttribute("emojiname")
+    const emoji = e.target.textContent
+    const newEmoji = { emojiName: emojiName, emoji: emoji }
+
+    moreEmojisButton.style.display = "none"
+
+    if (commonEmojis.length > 6) {
+      setCommonEmojis(commonEmojis.pop())
+    }
+    setCommonEmojis([...commonEmojis, newEmoji])
   }
 
   if (origin === "incoming") {
@@ -352,12 +423,15 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 onClick={handleReactionClick}
                 className="emoji-reactions-wrapper"
               >
-                <Emoji emojiName={"thumb up"} emoji={"👍"} />
-                <Emoji emojiName={"red heart"} emoji={"❤️"} />
-                <Emoji emojiName={"cry from laughing"} emoji={"😂"} />
-                <Emoji emojiName={"surprised"} emoji={"😮"} />
-                <Emoji emojiName={"sad"} emoji={"😢"} />
-                <Emoji emojiName={"high five"} emoji={"🙏"} />
+                {commonEmojis.map(emoji => {
+                  return (
+                    <Emoji
+                      key={uuidv4()}
+                      emojiName={emoji.emojiName}
+                      emoji={emoji.emoji}
+                    />
+                  )
+                })}
                 <div
                   onClick={handleGridVisibility}
                   className="more-emojis-button"
@@ -471,12 +545,15 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                 onClick={handleReactionClick}
                 className="emoji-reactions-wrapper"
               >
-                <Emoji emojiName={"thumb up"} emoji={"👍"} />
-                <Emoji emojiName={"red heart"} emoji={"❤️"} />
-                <Emoji emojiName={"cry from laughing"} emoji={"😂"} />
-                <Emoji emojiName={"surprised"} emoji={"😮"} />
-                <Emoji emojiName={"sad"} emoji={"😢"} />
-                <Emoji emojiName={"high five"} emoji={"🙏"} />
+                {commonEmojis.map(emoji => {
+                  return (
+                    <Emoji
+                      key={uuidv4()}
+                      emojiName={emoji.emojiName}
+                      emoji={emoji.emoji}
+                    />
+                  )
+                })}
                 <div
                   onClick={handleGridVisibility}
                   className="more-emojis-button"
@@ -636,3 +713,30 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     )
   }
 }
+
+const wrapperEmojis = [
+  {
+    emojiName: "thumb up",
+    emoji: "👍"
+  },
+  {
+    emojiName: "red heart",
+    emoji: "❤️"
+  },
+  {
+    emojiName: "cry from laughing",
+    emoji: "😂"
+  },
+  {
+    emojiName: "surprised",
+    emoji: "😮"
+  },
+  {
+    emojiName: "sad",
+    emoji: "😢"
+  },
+  {
+    emojiName: "high five",
+    emoji: "🙏"
+  }
+]
