@@ -18,7 +18,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
         ...document.querySelectorAll(".emoji-reactions-wrapper")
       ]
 
-      const selectedEmoji = reactionWrappers.filter(wrapper => {
+      reactionWrappers.filter(wrapper => {
         const emojiWrappers = [...wrapper.querySelectorAll(".emoji-wrapper")]
 
         const checkWrappers = [
@@ -243,6 +243,28 @@ export default function ChatMessage({ reply, origin, message, starred }) {
       } else {
         reactionArea.textContent = emoji
         e.target.classList.add("emoji-selected")
+      }
+    }
+
+    if (e.target.classList.contains("emoji-wrapper")) {
+      const moreEmojisButton = reactionsWrapper.querySelector(
+        ".more-emojis-button"
+      )
+      if (moreEmojisButton.style.display === "none") {
+        const emojiWrappers = [
+          ...reactionsWrapper.querySelectorAll(".emoji-wrapper")
+        ]
+        emojiWrappers.pop()
+
+        const newWrapper = emojiWrappers.map(wrapper => {
+          const emojiName = wrapper.getAttribute("emojiname")
+
+          return { emojiName: emojiName, emoji: wrapper.textContent }
+        })
+
+        setCommonEmojis([...newWrapper])
+
+        moreEmojisButton.style.display = "block"
       }
     }
 
