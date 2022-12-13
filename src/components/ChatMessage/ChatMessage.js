@@ -280,53 +280,57 @@ export default function ChatMessage({ reply, origin, message, starred }) {
   }
 
   function handleEmojiGrid(e) {
-    const mainContainer = e.target.closest(".chat-message")
-    const reactionsWrapper = mainContainer.querySelector(
-      ".emoji-reactions-wrapper"
-    )
-    const reactionsWrapperEmojis = [
-      ...reactionsWrapper.querySelectorAll(".emoji-wrapper")
-    ]
-    const reactionArea = mainContainer.querySelector(".message-reaction")
-    const emojisButton = mainContainer.querySelector(".emojis-button")
-    const emojisList = mainContainer.querySelector(".emojis-list")
-    const moreEmojisButton = mainContainer.querySelector(".more-emojis-button")
-    const commonEmojiNames = [
-      "thumb up",
-      "red heart",
-      "cry from laughing",
-      "surprised",
-      "sad",
-      "high five"
-    ]
+    if (e.target.matches(".emoji-wrapper")) {
+      const mainContainer = e.target.closest(".chat-message")
+      const reactionsWrapper = mainContainer.querySelector(
+        ".emoji-reactions-wrapper"
+      )
+      const reactionsWrapperEmojis = [
+        ...reactionsWrapper.querySelectorAll(".emoji-wrapper")
+      ]
+      const reactionArea = mainContainer.querySelector(".message-reaction")
+      const emojisButton = mainContainer.querySelector(".emojis-button")
+      const emojisList = mainContainer.querySelector(".emojis-list")
+      const moreEmojisButton = mainContainer.querySelector(
+        ".more-emojis-button"
+      )
+      const commonEmojiNames = [
+        "thumb up",
+        "red heart",
+        "cry from laughing",
+        "surprised",
+        "sad",
+        "high five"
+      ]
 
-    commonEmojiNames.forEach(name => {
-      handleCommonEmojis(e, reactionsWrapperEmojis, name, reactionArea)
-    })
+      commonEmojiNames.forEach(name => {
+        handleCommonEmojis(e, reactionsWrapperEmojis, name, reactionArea)
+      })
 
-    if (!commonEmojiNames.includes(e.target.getAttribute("emojiname"))) {
-      handleDifferentEmojis(e, moreEmojisButton)
+      if (!commonEmojiNames.includes(e.target.getAttribute("emojiname"))) {
+        handleDifferentEmojis(e, moreEmojisButton)
+      }
+
+      if (e.target.classList.contains("emoji-wrapper")) {
+        const emoji = e.target.textContent
+        reactionArea.textContent = emoji
+      }
+
+      reactionsWrapper.classList.remove("show-wrapper-top-incoming")
+      reactionsWrapper.classList.remove("show-wrapper-bottom-incoming")
+      reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
+      reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
+      reactionsWrapper.classList.remove("wrapper-active")
+      reactionsWrapper.classList.add("hide-emojis-wrapper")
+
+      emojisButton.classList.remove("show-emojis-button")
+      emojisButton.classList.add("hide-emojis-button")
+
+      emojisList.classList.remove("show-emojis-list-top-left")
+      emojisList.classList.remove("show-emojis-list-bottom-left")
+      emojisList.classList.remove("show-emojis-list-bottom-right")
+      emojisList.classList.remove("show-emojis-list-top-right")
     }
-
-    if (e.target.classList.contains("emoji-wrapper")) {
-      const emoji = e.target.textContent
-      reactionArea.textContent = emoji
-    }
-
-    reactionsWrapper.classList.remove("show-wrapper-top-incoming")
-    reactionsWrapper.classList.remove("show-wrapper-bottom-incoming")
-    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
-    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
-    reactionsWrapper.classList.remove("wrapper-active")
-    reactionsWrapper.classList.add("hide-emojis-wrapper")
-
-    emojisButton.classList.remove("show-emojis-button")
-    emojisButton.classList.add("hide-emojis-button")
-
-    emojisList.classList.remove("show-emojis-list-top-left")
-    emojisList.classList.remove("show-emojis-list-bottom-left")
-    emojisList.classList.remove("show-emojis-list-bottom-right")
-    emojisList.classList.remove("show-emojis-list-top-right")
   }
 
   function handleCommonEmojis(
