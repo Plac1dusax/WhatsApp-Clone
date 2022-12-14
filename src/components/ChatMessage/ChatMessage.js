@@ -368,34 +368,82 @@ export default function ChatMessage({ reply, origin, message, starred }) {
   }
 
   function handleChatOptions(e) {
-    if (origin === "incoming") {
-      const body = e.target.closest(".direct-message-body")
-      const container = e.target.closest(".chat-message")
-      const optionsMenu = container.querySelector("[data-option-menu]")
-      const clickPositionY = e.clientY
-      const containerHeight = body.clientHeight
-      const yPositionCalc = containerHeight / clickPositionY
+    const body = e.target.closest(".direct-message-body")
+    const container = e.target.closest(".chat-message")
+    const optionsMenu = container.querySelector("[data-option-menu]")
+    const clickPositionY = e.clientY
+    const containerHeight = body.clientHeight
+    const yPositionCalc = containerHeight / clickPositionY
+    const allOptionsMenu = [...document.querySelectorAll("[data-option-menu]")]
+    const differentMenus = allOptionsMenu.filter(menu => {
+      return menu !== optionsMenu
+    })
 
+    differentMenus.map(menu => {
+      handleHideOptionMenus(menu)
+    })
+
+    if (origin === "incoming") {
       if (yPositionCalc >= 1.5) {
-        optionsMenu.classList.toggle("options-menu-incoming-down")
+        optionsMenu.classList.remove("options-menu")
+        if (optionsMenu.classList.contains("options-menu-incoming-down")) {
+          optionsMenu.classList.remove("options-menu-incoming-down")
+          optionsMenu.classList.add("options-menu-incoming-down-hide")
+        } else {
+          optionsMenu.classList.remove("options-menu-incoming-down-hide")
+          optionsMenu.classList.add("options-menu-incoming-down")
+        }
       } else if (yPositionCalc < 1.5) {
-        optionsMenu.classList.toggle("options-menu-incoming-up")
+        optionsMenu.classList.remove("options-menu")
+        if (optionsMenu.classList.contains("options-menu-incoming-up")) {
+          optionsMenu.classList.remove("options-menu-incoming-up")
+          optionsMenu.classList.add("options-menu-incoming-up-hide")
+        } else {
+          optionsMenu.classList.remove("options-menu-incoming-up-hide")
+          optionsMenu.classList.add("options-menu-incoming-up")
+        }
       }
     }
 
     if (origin === "outgoing") {
-      const body = e.target.closest(".direct-message-body")
-      const container = e.target.closest(".chat-message")
-      const optionsMenu = container.querySelector("[data-option-menu]")
-      const clickPositionY = e.clientY
-      const containerHeight = body.clientHeight
-      const yPositionCalc = containerHeight / clickPositionY
-
       if (yPositionCalc >= 1.5) {
-        optionsMenu.classList.toggle("options-menu-outgoing-down")
+        optionsMenu.classList.remove("options-menu")
+        if (optionsMenu.classList.contains("options-menu-outgoing-down")) {
+          optionsMenu.classList.remove("options-menu-outgoing-down")
+          optionsMenu.classList.add("options-menu-outgoing-down-hide")
+        } else {
+          optionsMenu.classList.remove("options-menu-outgoing-down-hide")
+          optionsMenu.classList.add("options-menu-outgoing-down")
+        }
       } else if (yPositionCalc < 1.5) {
-        optionsMenu.classList.toggle("options-menu-outgoing-up")
+        optionsMenu.classList.remove("options-menu")
+        if (optionsMenu.classList.contains("options-menu-outgoing-up")) {
+          optionsMenu.classList.remove("options-menu-outgoing-up")
+          optionsMenu.classList.add("options-menu-outgoing-up-hide")
+        } else {
+          optionsMenu.classList.remove("options-menu-outgoing-up-hide")
+          optionsMenu.classList.add("options-menu-outgoing-up")
+        }
       }
+    }
+  }
+
+  function handleHideOptionMenus(menu) {
+    if (menu.classList.contains("options-menu-incoming-up")) {
+      menu.classList.remove("options-menu-incoming-up")
+      menu.classList.add("options-menu-incoming-up-hide")
+    }
+    if (menu.classList.contains("options-menu-incoming-down")) {
+      menu.classList.remove("options-menu-incoming-down")
+      menu.classList.add("options-menu-incoming-down-hide")
+    }
+    if (menu.classList.contains("options-menu-outgoing-up")) {
+      menu.classList.remove("options-menu-outgoing-up")
+      menu.classList.add("options-menu-outgoing-up-hide")
+    }
+    if (menu.classList.contains("options-menu-outgoing-down")) {
+      menu.classList.remove("options-menu-outgoing-down")
+      menu.classList.add("options-menu-outgoing-down-hide")
     }
   }
 

@@ -378,6 +378,7 @@
   visibility: hidden;
   pointer-events: none;
   position: absolute;
+  transform: scale(0);
   z-index: 100;
 }
 
@@ -387,6 +388,10 @@
   top: -240px;
   visibility: visible;
   pointer-events: auto;
+  transform: scale(1);
+  transform-origin: bottom left;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
 }
 
 .options-menu-incoming-down {
@@ -395,6 +400,10 @@
   top: 60px;
   visibility: visible;
   pointer-events: auto;
+  transform: scale(1);
+  transform-origin: top left;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
 }
 
 .options-menu-outgoing-up {
@@ -403,6 +412,10 @@
   right: 20px;
   visibility: visible;
   pointer-events: auto;
+  transform: scale(1);
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
 }
 
 .options-menu-outgoing-down {
@@ -411,6 +424,58 @@
   right: 20px;
   visibility: visible;
   pointer-events: auto;
+  transform: scale(1);
+  transform-origin: top right;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
+}
+
+.options-menu-incoming-up-hide {
+  position: absolute;
+  right: -180px;
+  top: -240px;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
+}
+
+.options-menu-incoming-down-hide {
+  position: absolute;
+  right: -180px;
+  top: 60px;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(0);
+  transform-origin: top left;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
+}
+
+.options-menu-outgoing-up-hide {
+  position: absolute;
+  top: -240px;
+  right: 20px;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
+}
+
+.options-menu-outgoing-down-hide {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.2s ease-in-out;
+  z-index: 100;
 }
 
 path {
