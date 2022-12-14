@@ -9,6 +9,7 @@ function ReactionEmojiContainer({ type }) {
   const [scrollY, setScrollY] = useState(0)
   const [scrollReactionY, setScrollReactionY] = useState(0)
   const [searchedEmojis, setSearchedEmojis] = useState([])
+  const [searchedChatEmojis, setSearchedChatEmojis] = useState([])
 
   function handleEmojiScroll(e) {
     const container = e.target.closest(".type-message-container")
@@ -128,9 +129,15 @@ function ReactionEmojiContainer({ type }) {
   }
 
   function renderSearchedEmojis() {
-    return searchedEmojis.map(i => {
-      return <Emoji key={uuidv4()} emoji={i.emoji} />
-    })
+    if (searchedEmojis.length > 0) {
+      return searchedEmojis.map(i => {
+        return <Emoji key={uuidv4()} emoji={i.emoji} />
+      })
+    } else if (searchedChatEmojis.length > 0) {
+      return searchedChatEmojis.map(i => {
+        return <Emoji key={uuidv4()} emoji={i.emoji} />
+      })
+    }
   }
 
   function handleReactionIconClick(e) {
@@ -252,6 +259,33 @@ function ReactionEmojiContainer({ type }) {
     })
 
     element.style.color = "var(--emoji-icon-highlighted)"
+  }
+
+  function handleReactionIconChatClick(e) {
+    const container = e.target.closest(".reaction-emoji-chat")
+    const emojisContainer = container.querySelector(
+      ".emojis-container-message-chat"
+    )
+
+    if (e.target.classList.contains("recent-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 0)
+    } else if (e.target.classList.contains("smileys-people-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 103)
+    } else if (e.target.classList.contains("animals-nature-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 334)
+    } else if (e.target.classList.contains("food-drink-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 447)
+    } else if (e.target.classList.contains("activity-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 591)
+    } else if (e.target.classList.contains("travel-places-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 683)
+    } else if (e.target.classList.contains("objects-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 791)
+    } else if (e.target.classList.contains("symbols-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 975)
+    } else if (e.target.classList.contains("flags-icon-svg-chat")) {
+      return (emojisContainer.scrollTop = 1083)
+    }
   }
 
   if (type === "text") {
@@ -495,7 +529,7 @@ function ReactionEmojiContainer({ type }) {
         <div className="reaction-emoji-chat">
           <div className="reaction-icons-wrapper-message-chat">
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="recent-chat reaction-icon-chat"
             >
               <svg
@@ -511,7 +545,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="smileys-people-chat reaction-icon-chat"
             >
               <svg
@@ -531,7 +565,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="animals-nature-chat reaction-icon-chat"
             >
               <svg
@@ -547,7 +581,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="food-drink-chat reaction-icon-chat"
             >
               <svg
@@ -567,7 +601,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="activity-chat reaction-icon-chat"
             >
               <svg
@@ -587,7 +621,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="travel-places-chat reaction-icon-chat"
             >
               <svg
@@ -603,7 +637,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="objects-chat reaction-icon-chat"
             >
               <svg
@@ -623,7 +657,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="symbols-chat reaction-icon-chat"
             >
               <svg
@@ -643,7 +677,7 @@ function ReactionEmojiContainer({ type }) {
               </svg>
             </div>
             <div
-              onClick={handleReactionIconClick}
+              onClick={handleReactionIconChatClick}
               className="flags-chat reaction-icon-chat"
             >
               <svg
@@ -663,10 +697,11 @@ function ReactionEmojiContainer({ type }) {
           <div className="reaction-search-chat">
             <Searchbar
               setSearchedEmojis={setSearchedEmojis}
+              setSearchedChatEmojis={setSearchedChatEmojis}
               type={"emoji-search-reaction"}
             />
           </div>
-          <div className="searched-emojis">{renderSearchedEmojis()}</div>
+          <div className="searched-emojis-chat">{renderSearchedEmojis()}</div>
           <div
             onScroll={handleEmojiScrollReaction}
             className="emojis-container-message-chat"

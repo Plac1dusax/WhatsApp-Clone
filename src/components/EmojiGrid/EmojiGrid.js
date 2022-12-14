@@ -30,14 +30,17 @@ export default function EmojiGrid(props) {
   }
 
   function handleEmojisClick(e) {
-    const mainContainer = e.target.closest(".direct-message-container")
-    const userInput = mainContainer.querySelector(".dm-input")
+    if (type === "text") {
+      const mainContainer = e.target.closest(".direct-message-container")
 
-    if (e.target.classList.contains("emoji-wrapper")) {
-      userInput.value = `${userInput.value}${e.target.textContent}`
+      const userInput = mainContainer.querySelector(".dm-input")
+
+      if (e.target.classList.contains("emoji-wrapper")) {
+        userInput.value = `${userInput.value}${e.target.textContent}`
+      }
+
+      return userInput
     }
-
-    return userInput
   }
 
   return (

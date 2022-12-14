@@ -4,8 +4,13 @@ import EmojiGrid from "../EmojiGrid/EmojiGrid"
 import "./searchbar.css"
 
 export default function Searchbar(props) {
-  const { type, setSearchedEmojis, setSearchedGifs, setSearchedStickers } =
-    props
+  const {
+    type,
+    setSearchedEmojis,
+    setSearchedGifs,
+    setSearchedStickers,
+    setSearchedChatEmojis
+  } = props
 
   let placeholder = ""
   let styleInput = {}
@@ -195,7 +200,6 @@ export default function Searchbar(props) {
       array.push(gif)
     })
 
-    console.log(array)
     setSearchedGifs([...array])
   }
 
@@ -239,6 +243,44 @@ export default function Searchbar(props) {
     setSearchedStickers([...array])
   }
 
+  function handleEmojiReactionSearch(e) {
+    const container = e.target.closest(".emojis-list")
+    const reactionEmojiChat = container.querySelector(".reaction-emoji-chat")
+    const emojisContainer = container.querySelector(
+      ".emojis-container-message-chat"
+    )
+    const searchedEmojisContainer = container.querySelector(
+      ".searched-emojis-chat"
+    )
+    const value = e.target.value.toLowerCase()
+    const emojis = [...document.querySelectorAll(".emoji-wrapper")]
+
+    if (e.target.value === "") {
+      emojisContainer.style.display = "block"
+      searchedEmojisContainer.style.display = "none"
+    } else {
+      emojisContainer.style.display = "none"
+      searchedEmojisContainer.style.display = "grid"
+    }
+
+    const array = []
+    const matchedValues = emojis
+      .filter(emoji => {
+        const attribute = emoji.getAttribute("emojiname")
+        return attribute?.includes?.(value)
+      })
+      .map(value => {
+        const valueAttribute = value.getAttribute("emojiname")
+        const em = {
+          emoji: value.textContent,
+          emojiName: valueAttribute
+        }
+        if (array.some(emoji => emoji.emojiName === em.emojiName)) return
+        array.push(em)
+      })
+    setSearchedChatEmojis([...array])
+  }
+
   return (
     <div
       onInput={e => {
@@ -248,6 +290,8 @@ export default function Searchbar(props) {
           handleGifSearch(e)
         } else if (type === "sticker-search") {
           handleStickerSearch(e)
+        } else if (type === "emoji-search-reaction") {
+          handleEmojiReactionSearch(e)
         }
       }}
       className="searchbar-wrapper"
