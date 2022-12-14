@@ -1,0 +1,10 @@
+.options-menu-container {
+  background-color: var(--option-menu-background);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  z-index: 100;
+}

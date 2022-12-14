@@ -67,6 +67,14 @@ export default function SecondaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "option") {
+    style = {
+      color: "var(--primary-input-text-color)",
+      fontSize: "14.5px",
+      fontWeight: "normal"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

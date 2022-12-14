@@ -1,0 +1,10 @@
+.option-wrapper {
+  padding: 16px 20px;
+  width: 100%;
+  background-color: var(--option-menu-background);
+}
+
+.option-wrapper:hover {
+  background-color: var(--option-hover-color);
+  cursor: pointer;
+}

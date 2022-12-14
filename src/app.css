@@ -40,6 +40,8 @@
 @import url(./components/GifGrid/gifGrid.css);
 @import url(./components/StickerGrid/stickerGrid.css);
 @import url(./components/Gif/gif.css);
+@import url(./components/OptionsMenu/optionsMenu.css);
+@import url(./components/Option/option.css);
 
 *,
 *::before,
@@ -111,6 +113,8 @@
   --sticker-button-border: rgba(134, 150, 160, 0.15);
   --reaction-emoji-chat-background: #233138;
   --more-emoji-button-background: #667781;
+  --option-menu-background: #233138;
+  --option-hover-color: #202c33;
 }
 
 body {

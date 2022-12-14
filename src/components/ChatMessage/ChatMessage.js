@@ -4,6 +4,7 @@ import MessageInfo from "../MessageInfo/MessageInfo"
 import Emoji from "../Emoji/Emoji"
 import ReactionEmojiContainer from "../ReactionEmojiContainer/ReactionEmojiContainer"
 import { v4 as uuidv4 } from "uuid"
+import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import "./chatMessage.css"
 
 export default function ChatMessage({ reply, origin, message, starred }) {
@@ -366,6 +367,38 @@ export default function ChatMessage({ reply, origin, message, starred }) {
     setCommonEmojis([...commonEmojis, newEmoji])
   }
 
+  function handleChatOptions(e) {
+    if (origin === "incoming") {
+      const body = e.target.closest(".direct-message-body")
+      const container = e.target.closest(".chat-message")
+      const optionsMenu = container.querySelector("[data-option-menu]")
+      const clickPositionY = e.clientY
+      const containerHeight = body.clientHeight
+      const yPositionCalc = containerHeight / clickPositionY
+
+      if (yPositionCalc >= 1.5) {
+        optionsMenu.classList.toggle("options-menu-incoming-down")
+      } else if (yPositionCalc < 1.5) {
+        optionsMenu.classList.toggle("options-menu-incoming-up")
+      }
+    }
+
+    if (origin === "outgoing") {
+      const body = e.target.closest(".direct-message-body")
+      const container = e.target.closest(".chat-message")
+      const optionsMenu = container.querySelector("[data-option-menu]")
+      const clickPositionY = e.clientY
+      const containerHeight = body.clientHeight
+      const yPositionCalc = containerHeight / clickPositionY
+
+      if (yPositionCalc >= 1.5) {
+        optionsMenu.classList.toggle("options-menu-outgoing-down")
+      } else if (yPositionCalc < 1.5) {
+        optionsMenu.classList.toggle("options-menu-outgoing-up")
+      }
+    }
+  }
+
   if (origin === "incoming") {
     return (
       <div className="chat-message chat-message-container-incoming">
@@ -384,7 +417,10 @@ export default function ChatMessage({ reply, origin, message, starred }) {
             </svg>
           </div>
           <div className="chat-message-wrapper-direct">
-            <div className="chat-options-icon-direct">
+            <div
+              onClick={handleChatOptions}
+              className="chat-options-icon-direct"
+            >
               <svg
                 viewBox="0 0 18 18"
                 height="18"
@@ -482,6 +518,9 @@ export default function ChatMessage({ reply, origin, message, starred }) {
               <ReactionEmojiContainer type={"reaction"} />
             </div>
           </div>
+          <div data-option-menu className="options-menu">
+            <OptionsMenu menuArray={chatOptionsIncoming} />
+          </div>
         </div>
       </div>
     )
@@ -503,7 +542,10 @@ export default function ChatMessage({ reply, origin, message, starred }) {
             </svg>
           </div>
           <div className="chat-message-wrapper-direct">
-            <div className="chat-options-icon-direct-outgoing">
+            <div
+              onClick={handleChatOptions}
+              className="chat-options-icon-direct-outgoing"
+            >
               <svg
                 viewBox="0 0 18 18"
                 height="18"
@@ -603,6 +645,9 @@ export default function ChatMessage({ reply, origin, message, starred }) {
             <div onClick={handleEmojiGrid} className="emojis-list">
               <ReactionEmojiContainer type={"reaction"} />
             </div>
+          </div>
+          <div data-option-menu className="options-menu">
+            <OptionsMenu menuArray={chatOptionsIncoming} />
           </div>
         </div>
       </div>
@@ -765,4 +810,22 @@ const wrapperEmojis = [
     emojiName: "high five",
     emoji: "🙏"
   }
+]
+
+const chatOptionsIncoming = [
+  "Reply",
+  "React to message",
+  "Forward message",
+  "Star message",
+  "Report",
+  "Delete message"
+]
+const chatOptionsOutgoing = [
+  "Message info",
+  "Reply",
+  "React to message",
+  "Forward message",
+  "Star message",
+  "Report",
+  "Delete message"
 ]
