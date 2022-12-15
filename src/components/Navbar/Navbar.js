@@ -1,9 +1,32 @@
 import React from "react"
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
+import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import "./navbar.css"
 
 export default function Navbar({ type }) {
+  function handleMoreOptionsNav(e) {
+    const container = e.target.closest(".navbar-container")
+    const moreOptionsButton = container.querySelector(".more-options-btn")
+    const optionsMenu = container.querySelector("[data-options]")
+
+    if (!moreOptionsButton.classList.contains("more-options-btn-selected")) {
+      moreOptionsButton.classList.remove("more-options-btn-not-selected")
+      moreOptionsButton.classList.add("more-options-btn-selected")
+    } else {
+      moreOptionsButton.classList.remove("more-options-btn-selected")
+      moreOptionsButton.classList.add("more-options-btn-not-selected")
+    }
+
+    if (!optionsMenu.classList.contains("more-options-btn-options-show")) {
+      optionsMenu.classList.remove("more-options-btn-options-hide")
+      optionsMenu.classList.add("more-options-btn-options-show")
+    } else {
+      optionsMenu.classList.remove("more-options-btn-options-show")
+      optionsMenu.classList.add("more-options-btn-options-hide")
+    }
+  }
+
   if (type === "friends-list") {
     return (
       <div className="navbar-container">
@@ -65,7 +88,7 @@ export default function Navbar({ type }) {
               ></path>
             </svg>
           </div>
-          <div className="nav more-options-btn">
+          <div onClick={handleMoreOptionsNav} className="nav more-options-btn">
             <svg
               viewBox="0 0 24 24"
               height="24"
@@ -81,6 +104,9 @@ export default function Navbar({ type }) {
                 d="M12,7c1.104,0,2-0.896,2-2c0-1.105-0.895-2-2-2c-1.104,0-2,0.894-2,2 C10,6.105,10.895,7,12,7z M12,9c-1.104,0-2,0.894-2,2c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2C13.999,9.895,13.104,9,12,9z M12,15 c-1.104,0-2,0.894-2,2c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2C13.999,15.894,13.104,15,12,15z"
               ></path>
             </svg>
+          </div>
+          <div data-options>
+            <OptionsMenu menuArray={friendsListNavOptions} />
           </div>
         </div>
       </div>
@@ -135,3 +161,11 @@ export default function Navbar({ type }) {
     )
   }
 }
+
+const friendsListNavOptions = [
+  "New group",
+  "New community",
+  "Starred messages",
+  "Settings",
+  "Log out"
+]

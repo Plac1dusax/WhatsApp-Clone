@@ -27,6 +27,7 @@
 .nav {
   color: var(--primary-nav-btn-color-dark);
   cursor: pointer;
+  padding: 8px;
 }
 
 .direct-message-header {
@@ -57,4 +58,44 @@
 
 .menu {
   cursor: pointer;
+}
+
+.more-options-btn-selected {
+  padding: 8px;
+  background-color: var(--nav-more-options-btn-selected);
+  border-radius: 50%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.more-options-btn-not-selected {
+  padding: 8px;
+  background-color: none;
+  border-radius: 50%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+[data-options] {
+  position: absolute;
+  z-index: 100;
+  bottom: -170px;
+  right: 40px;
+  transform: scale(0);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.more-options-btn-options-show {
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+  transform-origin: top right;
+  transition: transform 0.2s ease-in-out;
+}
+
+.more-options-btn-options-hide {
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.2s ease-in-out;
+  visibility: visible;
+  pointer-events: none;
 }

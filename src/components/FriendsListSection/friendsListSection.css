@@ -4,6 +4,7 @@
 
 .navbar-and-searchbar-wrapper {
   position: fixed;
+  z-index: 100;
 }
 
 .chats-and-footer {

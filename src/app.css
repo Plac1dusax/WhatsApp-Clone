@@ -115,6 +115,7 @@
   --more-emoji-button-background: #667781;
   --option-menu-background: #233138;
   --option-hover-color: #202c33;
+  --nav-more-options-btn-selected: hsla(0, 0%, 100%, 0.1);
 }
 
 body {
@@ -152,4 +153,5 @@ body {
   max-width: 1050px;
   background-color: var(--navbar-theme-color-dark);
   border-left: 1px solid var(--border-color-dark);
+  z-index: 1000;
 }
