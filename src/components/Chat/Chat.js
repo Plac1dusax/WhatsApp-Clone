@@ -4,6 +4,7 @@ import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import Message from "../Message/Message"
 import Time from "../Time/Time"
+import OptionsMenu from "../OptionsMenu/OptionsMenu"
 
 export default function Chat() {
   return (
@@ -21,6 +22,17 @@ export default function Chat() {
         </div>
         <Message info={"seen"} headerType={"chat"} text={"Random message"} />
       </div>
+      <div data-chat-options>
+        <OptionsMenu menuArray={chatOptions} />
+      </div>
     </div>
   )
 }
+
+const chatOptions = [
+  "Archive chat",
+  "Mute notifications",
+  "Delete chat",
+  "Pin chat",
+  "Mark as unread"
+]

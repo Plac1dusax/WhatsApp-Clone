@@ -153,5 +153,5 @@ body {
   max-width: 1050px;
   background-color: var(--navbar-theme-color-dark);
   border-left: 1px solid var(--border-color-dark);
-  z-index: 1000;
+  z-index: 100;
 }
