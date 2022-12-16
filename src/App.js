@@ -1,3 +1,4 @@
+import React from "react"
 import "./app.css"
 import FriendsListSection from "./components/FriendsListSection/FriendsListSection"
 import ChatSection from "./components/ChatSection/ChatSection"
@@ -18,33 +19,38 @@ import RequestAccountInfo from "./components/RequestAccountInfo/RequestAccountIn
 import KeyboardShortcuts from "./components/KeyboardShortcuts/KeyboardShortcuts"
 import StarredMessages from "./components/StarredMessages/StarredMessages"
 import DirectMessage from "./components/DirectMessage/DirectMessage"
+import chatHistory from "./chatHistory.json"
+
+export const DatabaseContext = React.createContext()
 
 function App() {
   return (
-    <div className="wrapper">
-      {/* <Theme /> */}
-      {/* <KeyboardShortcuts /> */}
+    <DatabaseContext.Provider value={chatHistory}>
+      <div className="wrapper">
+        {/* <Theme /> */}
+        {/* <KeyboardShortcuts /> */}
 
-      <div className="friends-list-container">
-        <FriendsListSection />
-        {/* <ArchivedSection /> */}
-        {/* <CommunitiesSection /> */}
-        {/* <StartCommunity /> */}
-        {/* <NewChat /> */}
-        {/* <Profile /> */}
-        {/* <Settings /> */}
-        {/* <Notifications /> */}
-        {/* <Privacy /> */}
-        {/* <Security /> */}
-        {/* <ChatWallpaper /> */}
-        {/* <RequestAccountInfo /> */}
-        {/* <StarredMessages /> */}
+        <div className="friends-list-container">
+          <FriendsListSection />
+          {/* <ArchivedSection /> */}
+          {/* <CommunitiesSection /> */}
+          {/* <StartCommunity /> */}
+          {/* <NewChat /> */}
+          {/* <Profile /> */}
+          {/* <Settings /> */}
+          {/* <Notifications /> */}
+          {/* <Privacy /> */}
+          {/* <Security /> */}
+          {/* <ChatWallpaper /> */}
+          {/* <RequestAccountInfo /> */}
+          {/* <StarredMessages /> */}
+        </div>
+        <div className="direct-message-container">
+          {/* <ChatSection /> */}
+          <DirectMessage />
+        </div>
       </div>
-      <div className="direct-message-container">
-        {/* <ChatSection /> */}
-        <DirectMessage />
-      </div>
-    </div>
+    </DatabaseContext.Provider>
   )
 }
 

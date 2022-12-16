@@ -7,7 +7,11 @@ export default function SecondaryHeaderText(props) {
   if (headerType === "chat") {
     style = {
       color: "var(--secondary-header-text-dark)",
-      fontSize: "14px"
+      fontSize: "14px",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      maxWidth: "270px",
+      textOverflow: "ellipsis "
     }
 
     renderText = text

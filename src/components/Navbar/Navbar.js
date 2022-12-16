@@ -30,7 +30,12 @@ export default function Navbar({ type }) {
   if (type === "friends-list") {
     return (
       <div className="navbar-container">
-        <ProfilePhoto navProfilePhoto={"nav"} />
+        <ProfilePhoto
+          navProfilePhoto={"nav"}
+          url={
+            "https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+          }
+        />
         <div className="navigation-buttons-container">
           <div className="nav community-btn">
             <svg

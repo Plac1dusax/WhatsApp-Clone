@@ -1,0 +1,154 @@
+[
+  {
+    "id": "1",
+    "userName": "Random Friend",
+    "userNumber": "+0123456789",
+    "userProfilePhoto": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
+    "messages": [
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia ipsum magni aliquam eum nostrum. Beatae sequi saepe delectus illum nulla.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "12:30",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet.",
+        "status": "seen",
+        "type": "incoming",
+        "time": "12:52",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, necessitatibus.",
+        "status": "seen",
+        "type": "incoming",
+        "time": "12:52",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis consectetur libero magni quas laboriosam voluptatibus, asperiores iste exercitationem dolore similique perspiciatis obcaecati, molestiae, voluptate dolor incidunt quisquam quasi atque? Tenetur!",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "13:22",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, temporibus.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "13:24",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem!",
+        "status": "seen",
+        "type": "incoming",
+        "time": "13:40",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, unde?",
+        "status": "seen",
+        "type": "incoming",
+        "time": "13:41",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, nostrum.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "14:12",
+        "date": "16.12.2022",
+        "starred": "false"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "userName": "Random Friend 2",
+    "userNumber": "+0987654321",
+    "userProfilePhoto": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80",
+    "messages": [
+      {
+        "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, inventore.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "16:12",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam officia in architecto sed quisquam exercitationem modi et. Rem, nisi odio.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "16:13",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque obcaecati sapiente autem enim facere laudantium fugiat cupiditate placeat quas dolor?",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "16:14",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ipsa, itaque laborum commodi et obcaecati.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "16:14",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, veniam.",
+        "status": "seen",
+        "type": "incoming",
+        "time": "16:19",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ex!",
+        "status": "seen",
+        "type": "incoming",
+        "time": "16:21",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias, commodi.",
+        "status": "seen",
+        "type": "incoming",
+        "time": "16:22",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, itaque.",
+        "status": "seen",
+        "type": "outgoing",
+        "time": "16:30",
+        "date": "16.12.2022",
+        "starred": "false"
+      },
+      {
+        "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci velit fuga perferendis, ad commodi consequuntur cum sint consectetur suscipit voluptas.",
+        "status": null,
+        "type": "incoming",
+        "time": "16:34",
+        "date": "16.12.2022",
+        "starred": "false"
+      }
+    ]
+  }
+]

@@ -6,21 +6,17 @@ import Message from "../Message/Message"
 import Time from "../Time/Time"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 
-export default function Chat() {
+export default function Chat(props) {
+  const { userProfilePhoto, userName, lastMessage, info, time } = props
   return (
     <div className="chat-wrapper">
-      <ProfilePhoto
-        navProfilePhoto={"chat"}
-        url={
-          "https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        }
-      />
+      <ProfilePhoto navProfilePhoto={"chat"} url={userProfilePhoto} />
       <div className="headers-wrapper">
         <div className="friend-name-and-time">
-          <PrimaryHeaderText headerType={"chat"} text={"Random Friend"} />
-          <Time time={"Yesterday"} />
+          <PrimaryHeaderText headerType={"chat"} text={userName} />
+          <Time time={time} />
         </div>
-        <Message info={"seen"} headerType={"chat"} text={"Random message"} />
+        <Message info={info} headerType={"chat"} text={lastMessage} />
       </div>
       <div data-chat-options>
         <OptionsMenu menuArray={chatOptions} />
