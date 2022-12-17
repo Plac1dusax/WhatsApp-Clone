@@ -43,7 +43,7 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
     if (e.target.matches(".incoming-message-reaction-icon")) {
       handleIncomingMessageReaction(e, clickedButton)
     } else if (e.target.matches(".outgoing-message-reaction-icon")) {
-      handleOngoingMessageReaction(e, clickedButton)
+      handleOutgoingMessageReaction(e, clickedButton)
     }
 
     showEmojiButtonIcon(clickedButton, emojiWrapper)
@@ -89,7 +89,7 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
     }
   }
 
-  function handleOngoingMessageReaction(e) {
+  function handleOutgoingMessageReaction(e) {
     const mainContainer = e.target.closest(".direct-message-body")
     const container = e.target.closest(".chat-message-container-outgoing")
     const emojisWrapper = container.querySelector(".emoji-reactions-wrapper")
@@ -447,6 +447,33 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
     }
   }
 
+  function handleOptions(e) {
+    const menu = e.target.closest("[data-option-menu]")
+
+    switch (e.target.textContent) {
+      case "Reply":
+        console.log("reply")
+        break
+      case "React to message":
+        handleReactOption(e)
+        break
+    }
+
+    handleHideOptionMenus(menu)
+  }
+
+  function handleReactOption(e) {
+    const container = e.target.closest(".chat-message")
+
+    if (container.classList.contains("chat-message-container-incoming")) {
+      handleIncomingMessageReaction(e)
+    }
+
+    if (container.classList.contains("chat-message-container-outgoing")) {
+      handleOutgoingMessageReaction(e)
+    }
+  }
+
   if (origin === "incoming") {
     return (
       <div className="chat-message chat-message-container-incoming">
@@ -566,7 +593,11 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
               <ReactionEmojiContainer type={"reaction"} />
             </div>
           </div>
-          <div data-option-menu className="options-menu">
+          <div
+            onClick={handleOptions}
+            data-option-menu
+            className="options-menu"
+          >
             <OptionsMenu menuArray={chatOptionsIncoming} />
           </div>
         </div>
@@ -694,7 +725,11 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
               <ReactionEmojiContainer type={"reaction"} />
             </div>
           </div>
-          <div data-option-menu className="options-menu">
+          <div
+            onClick={handleOptions}
+            data-option-menu
+            className="options-menu"
+          >
             <OptionsMenu menuArray={chatOptionsIncoming} />
           </div>
         </div>

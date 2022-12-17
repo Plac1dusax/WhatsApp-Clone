@@ -33,8 +33,6 @@ export default function FriendsListSection({
             const profilePhotoUrl = data.userProfilePhoto
             const id = data.id
 
-            console.log(lastMessageTime)
-
             return (
               <Chat
                 key={uuidv4()}
