@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import ChatMessage from "../ChatMessage/ChatMessage"
 import Navbar from "../Navbar/Navbar"
 import TypeMessage from "../TypeMessage/TypeMessage"
@@ -16,9 +16,16 @@ export default function DirectMessage({ directMessage }) {
   const selectedUser = selectedMessage.find(
     message => message.id === directMessage
   )
+
+  const starredMessages = selectedUser.messages.filter(message => {
+    return message.starred === "true"
+  })
+
   const userProfilePhotoURL = selectedUser.userProfilePhoto
 
   const messagesArray = [...selectedUser.messages].reverse()
+
+  const [starredMessage, setStarredMessage] = useState(starredMessages)
 
   return (
     <div className="direct-message-container">
@@ -34,10 +41,14 @@ export default function DirectMessage({ directMessage }) {
             return (
               <div className={"incoming-message"} key={uuidv4()}>
                 <ChatMessage
+                  id={message.id}
                   origin={message.type}
                   message={message.message}
                   starred={message.starred}
                   time={message.time}
+                  directMessage={directMessage}
+                  directMessages={directMessages}
+                  setStarredMessage={setStarredMessage}
                 />
               </div>
             )
@@ -45,10 +56,14 @@ export default function DirectMessage({ directMessage }) {
             return (
               <div className={"outgoing-message"} key={uuidv4()}>
                 <ChatMessage
+                  id={message.id}
                   origin={message.type}
                   message={message.message}
                   starred={message.starred}
                   time={message.time}
+                  directMessage={directMessage}
+                  directMessages={directMessages}
+                  setStarredMessage={setStarredMessage}
                 />
               </div>
             )

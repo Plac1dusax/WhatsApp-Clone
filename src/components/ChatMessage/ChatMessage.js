@@ -7,9 +7,21 @@ import { v4 as uuidv4 } from "uuid"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import "./chatMessage.css"
 
-export default function ChatMessage({ reply, origin, message, starred, time }) {
+export default function ChatMessage(props) {
+  const {
+    reply,
+    id,
+    origin,
+    message,
+    starred,
+    time,
+    directMessage,
+    directMessages,
+    setStarredMessage
+  } = props
   let currentColor = "var(--star-icon)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
+  const [star, setStar] = useState(starred)
 
   useEffect(() => {
     if (commonEmojis.length === 7) {
@@ -457,6 +469,9 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
       case "React to message":
         handleReactOption(e)
         break
+      case "Star message":
+        handleStarOption(e)
+        break
     }
 
     handleHideOptionMenus(menu)
@@ -474,9 +489,30 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
     }
   }
 
+  function handleStarOption(e) {
+    const container = e.target.closest(".chat-message")
+    const selectedUserMessages = directMessages.filter(user => {
+      return user.id === directMessage
+    })
+
+    const starredMessage = selectedUserMessages[0]?.messages?.filter?.(
+      message => {
+        return message.id === container.id
+      }
+    )
+
+    if (starredMessage[0].starred === "false") {
+      starredMessage[0].starred = "true"
+      setStar(prevStar => (prevStar = "true"))
+    } else {
+      starredMessage[0].starred = "false"
+      setStar(prevStar => (prevStar = "false"))
+    }
+  }
+
   if (origin === "incoming") {
     return (
-      <div className="chat-message chat-message-container-incoming">
+      <div id={id} className="chat-message chat-message-container-incoming">
         <div className="chat-message-incoming-wrapper">
           <div className="chat-bubble-arrow">
             <svg viewBox="0 0 8 13" width="10" height="16">
@@ -515,7 +551,7 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
             <div className="message-container-direct">
               <div className="message">{message}</div>
               <div className="star-icon-and-time">
-                {starred === "true" ? (
+                {star === "true" ? (
                   <svg
                     viewBox="0 0 16 15"
                     height="15"
@@ -605,7 +641,7 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
     )
   } else if (origin === "outgoing") {
     return (
-      <div className="chat-message chat-message-container-outgoing">
+      <div id={id} className="chat-message chat-message-container-outgoing">
         <div className="chat-message-outgoing-wrapper">
           <div className="chat-bubble-arrow-outgoing">
             <svg viewBox="0 0 8 13" width="10" height="16">
@@ -644,7 +680,7 @@ export default function ChatMessage({ reply, origin, message, starred, time }) {
             <div className="message-container-direct">
               <div className="message">{message}</div>
               <div className="star-icon-and-time">
-                {starred === "true" ? (
+                {star === "true" ? (
                   <svg
                     viewBox="0 0 16 15"
                     height="15"
