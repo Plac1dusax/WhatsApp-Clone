@@ -359,13 +359,13 @@
 }
 
 .message-reaction-incoming {
-  top: 30px;
-  right: 20px;
+  bottom: -5px;
+  right: 15px;
 }
 
 .message-reaction-outgoing {
-  top: 33px;
-  right: 40px;
+  bottom: -5px;
+  right: 35px;
 }
 
 .emoji-selected {
