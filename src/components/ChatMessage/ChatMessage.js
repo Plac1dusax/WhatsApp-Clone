@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import "./chatMessage.css"
 
-export default function ChatMessage({ reply, origin, message, starred }) {
+export default function ChatMessage({ reply, origin, message, starred, time }) {
   let currentColor = "var(--star-icon)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
 
@@ -506,7 +506,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                   </svg>
                 ) : null}
 
-                <Time time={"22:50"} />
+                <Time time={time} />
               </div>
             </div>
             <div className="message-reaction message-reaction-incoming"></div>
@@ -631,7 +631,7 @@ export default function ChatMessage({ reply, origin, message, starred }) {
                   </svg>
                 ) : null}
 
-                <Time time={"22:50"} />
+                <Time time={time} />
                 <div className="message-status">
                   <MessageInfo info={"seen"} />
                 </div>

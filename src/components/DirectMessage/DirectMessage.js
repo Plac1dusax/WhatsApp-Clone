@@ -18,7 +18,7 @@ export default function DirectMessage({ directMessage }) {
   )
   const userProfilePhotoURL = selectedUser.userProfilePhoto
 
-  const messagesArray = selectedUser.messages
+  const messagesArray = [...selectedUser.messages].reverse()
 
   return (
     <div className="direct-message-container">
@@ -37,6 +37,7 @@ export default function DirectMessage({ directMessage }) {
                   origin={message.type}
                   message={message.message}
                   starred={message.starred}
+                  time={message.time}
                 />
               </div>
             )
@@ -47,6 +48,7 @@ export default function DirectMessage({ directMessage }) {
                   origin={message.type}
                   message={message.message}
                   starred={message.starred}
+                  time={message.time}
                 />
               </div>
             )

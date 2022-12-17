@@ -37,7 +37,7 @@ export default function Chat(props) {
       return el.getAttribute("data-id") === directMessage
     })
 
-    selectedElement[0]?.setAttribute("data-active", "true")
+    selectedElement[0]?.setAttribute?.("data-active", "true")
   }, [directMessage])
 
   return (
