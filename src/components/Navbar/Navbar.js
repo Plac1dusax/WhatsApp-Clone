@@ -4,7 +4,7 @@ import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import "./navbar.css"
 
-export default function Navbar({ type }) {
+export default function Navbar({ type, userProfilePhoto }) {
   function handleMoreOptionsNav(e) {
     const container = e.target.closest(".navbar-container")
     const moreOptionsButton = container.querySelector(".more-options-btn")
@@ -120,7 +120,7 @@ export default function Navbar({ type }) {
     return (
       <div className="direct-message-header">
         <div className="profile-photo-and-name-wrapper">
-          <ProfilePhoto navProfilePhoto={"nav"} />
+          <ProfilePhoto navProfilePhoto={"nav"} url={userProfilePhoto} />
           <PrimaryHeaderText
             headerType={"direct-message"}
             text={"Random Friend"}

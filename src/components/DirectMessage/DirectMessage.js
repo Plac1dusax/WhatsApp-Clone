@@ -1,102 +1,50 @@
-import React from "react"
+import React, { useContext } from "react"
 import ChatMessage from "../ChatMessage/ChatMessage"
 import Navbar from "../Navbar/Navbar"
 import TypeMessage from "../TypeMessage/TypeMessage"
 import { v4 as uuidv4 } from "uuid"
+import { DatabaseContext } from "../../App"
 import "./directMessage.css"
 
-const messages = [
-  {
-    id: 1,
-    message: "lkgdflsgklsdfgkfsdgkdfs",
-    origin: "incoming",
-    starred: "true"
-  },
-  {
-    id: 2,
-    message: "reyghjorıhjdfshkdflshg",
-    origin: "incoming",
-    starred: "false"
-  },
-  {
-    id: 3,
-    message: "reyghjodsgdfshgdfjdrgjrıhjdfshkdflshg",
-    origin: "outgoing",
-    starred: "true"
-  },
-  {
-    id: 4,
-    message: "dfgldfkghdgdfjdrgjrıhjdfshkdflshg",
-    origin: "incoming",
-    starred: "false"
-  },
-  {
-    id: 5,
-    message: "reyghjodsgdfshgdfjdrgjrıhjdfshkdflshg",
-    origin: "incoming",
-    starred: "false"
-  },
-  {
-    id: 6,
-    message: "dfbgdgfhgkjl",
-    origin: "outgoing",
-    starred: "false"
-  },
-  {
-    id: 7,
-    message: "reygghfjflshg",
-    origin: "outgoing",
-    starred: "false"
-  },
-  {
-    id: 8,
-    message: "reyghvghjgfhjkdflshg",
-    origin: "incoming",
-    starred: "false"
-  },
-  {
-    id: 9,
-    message: "reygfsghfjfghkgşçhjdfshkdflshg",
-    origin: "incoming",
-    starred: "false"
-  },
-  {
-    id: 10,
-    message: "reyggfjfghjkhjgşhşdfshkdflshg",
-    origin: "incoming",
-    starred: "false"
-  },
-  {
-    id: 11,
-    message: "reyghjodsgddfshkdflshg",
-    origin: "outgoing",
-    starred: "false"
-  }
-]
+export default function DirectMessage({ directMessage }) {
+  const directMessages = useContext(DatabaseContext)
 
-export default function DirectMessage() {
+  const selectedMessage = directMessages.filter(messages => {
+    return messages.id === directMessage
+  })
+
+  const selectedUser = selectedMessage.find(
+    message => message.id === directMessage
+  )
+  const userProfilePhotoURL = selectedUser.userProfilePhoto
+
+  const messagesArray = selectedUser.messages
+
   return (
     <div className="direct-message-container">
       <div className="direct-message-header-wrapper">
-        <Navbar type={"direct-message"} />
+        <Navbar
+          type={"direct-message"}
+          userProfilePhoto={userProfilePhotoURL}
+        />
       </div>
       <div className="direct-message-body">
-        {messages.map(message => {
-          if (message.origin === "incoming") {
+        {messagesArray.map(message => {
+          if (message.type === "incoming") {
             return (
               <div className={"incoming-message"} key={uuidv4()}>
                 <ChatMessage
-                  origin={message.origin}
+                  origin={message.type}
                   message={message.message}
                   starred={message.starred}
                 />
               </div>
             )
-          } else if (message.origin === "outgoing") {
+          } else if (message.type === "outgoing") {
             return (
               <div className={"outgoing-message"} key={uuidv4()}>
                 <ChatMessage
-                  origin={message.origin}
+                  origin={message.type}
                   message={message.message}
                   starred={message.starred}
                 />

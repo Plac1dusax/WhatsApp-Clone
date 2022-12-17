@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useState, useContext } from "react"
 import Navbar from "../Navbar/Navbar"
 import Archived from "../Archived/Archived"
 import SearchFriend from "../SearchFriend/SearchFriend"
@@ -6,7 +6,10 @@ import Chat from "../Chat/Chat"
 import { DatabaseContext } from "../../App"
 import { v4 as uuidv4 } from "uuid"
 
-export default function FriendsListSection() {
+export default function FriendsListSection({
+  directMessage,
+  setDirectMessage
+}) {
   const database = useContext(DatabaseContext)
 
   return (
@@ -28,15 +31,19 @@ export default function FriendsListSection() {
             const lastMessageTime = data.messages[data.messages.length - 1].time
             const userName = data.userName
             const profilePhotoUrl = data.userProfilePhoto
+            const id = data.id
 
             return (
               <Chat
                 key={uuidv4()}
+                id={id}
                 userProfilePhoto={profilePhotoUrl}
                 userName={userName}
                 lastMessage={lastMessage}
                 info={messageStatus}
                 time={lastMessageTime}
+                directMessage={directMessage}
+                setDirectMessage={setDirectMessage}
               />
             )
           })}

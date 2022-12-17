@@ -8,7 +8,12 @@
   padding: 1rem;
 }
 
-.chat-wrapper:hover {
+[data-active="true"] {
+  cursor: pointer;
+  background-color: var(--chat-active);
+}
+
+[data-active="false"]:hover {
   background-color: var(--primary-hover-dark);
   cursor: pointer;
 }

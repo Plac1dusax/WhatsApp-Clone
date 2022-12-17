@@ -116,6 +116,7 @@
   --option-menu-background: #233138;
   --option-hover-color: #202c33;
   --nav-more-options-btn-selected: hsla(0, 0%, 100%, 0.1);
+  --chat-active: #2a3942;
 }
 
 body {

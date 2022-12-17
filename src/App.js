@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import "./app.css"
 import FriendsListSection from "./components/FriendsListSection/FriendsListSection"
 import ChatSection from "./components/ChatSection/ChatSection"
@@ -24,6 +24,8 @@ import chatHistory from "./chatHistory.json"
 export const DatabaseContext = React.createContext()
 
 function App() {
+  const [directMessage, setDirectMessage] = useState(null)
+
   return (
     <DatabaseContext.Provider value={chatHistory}>
       <div className="wrapper">
@@ -31,7 +33,10 @@ function App() {
         {/* <KeyboardShortcuts /> */}
 
         <div className="friends-list-container">
-          <FriendsListSection />
+          <FriendsListSection
+            directMessage={directMessage}
+            setDirectMessage={setDirectMessage}
+          />
           {/* <ArchivedSection /> */}
           {/* <CommunitiesSection /> */}
           {/* <StartCommunity /> */}
@@ -46,8 +51,11 @@ function App() {
           {/* <StarredMessages /> */}
         </div>
         <div className="direct-message-container">
-          {/* <ChatSection /> */}
-          <DirectMessage />
+          {directMessage ? (
+            <DirectMessage directMessage={directMessage} />
+          ) : (
+            <ChatSection />
+          )}
         </div>
       </div>
     </DatabaseContext.Provider>

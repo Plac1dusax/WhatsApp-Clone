@@ -3,6 +3,7 @@ import React from "react"
 export default function OptionsArrow() {
   return (
     <svg
+      data-options-arrow
       viewBox="0 0 18 18"
       height="18"
       width="18"
