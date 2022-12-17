@@ -14,7 +14,9 @@
 .direct-message-body {
   display: flex;
   flex-direction: column-reverse;
-  background-color: #0b141a;
+  background: #0b141a url(../../wpBackgroundDoodle/wp-background-doodle.png)
+    repeat;
+  background-blend-mode: overlay;
   position: relative;
   padding: 40px;
   gap: 20px;

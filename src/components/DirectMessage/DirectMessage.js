@@ -36,6 +36,7 @@ export default function DirectMessage({ directMessage }) {
         />
       </div>
       <div className="direct-message-body">
+        <div className="doodle"></div>
         {messagesArray.map(message => {
           if (message.type === "incoming") {
             return (
