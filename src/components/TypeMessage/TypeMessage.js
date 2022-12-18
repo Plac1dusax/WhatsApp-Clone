@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react"
 import InputText from "../InputText/InputText"
 import ReactionsContainer from "../ReactionsContainer/ReactionsContainer"
+import RepliedMessage from "../RepliedMessage/RepliedMessage"
+import { v4 as uuidv4 } from "uuid"
 import "./typeMessage.css"
 
-export default function TypeMessage() {
+export default function TypeMessage({ replyMessage, setReplyMessage }) {
   const [attach, setAttach] = useState("false")
   const [icons, setIcons] = useState("false")
   const [showReactions, setShowReactions] = useState("false")
@@ -156,6 +158,18 @@ export default function TypeMessage() {
 
   return (
     <div onClick={changeState} className="type-message-container">
+      <div className="reply-message">
+        {replyMessage.map(message => {
+          return (
+            <RepliedMessage
+              key={uuidv4()}
+              name={message.name}
+              message={message.message}
+              setReplyMessage={setReplyMessage}
+            />
+          )
+        })}
+      </div>
       <ReactionsContainer showReactions={showReactions} />
       <div className="type-message-text-area">
         <div className="icons-wrapper">

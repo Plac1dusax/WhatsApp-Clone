@@ -42,6 +42,7 @@
 @import url(./components/Gif/gif.css);
 @import url(./components/OptionsMenu/optionsMenu.css);
 @import url(./components/Option/option.css);
+@import url(./components/RepliedMessage/repliedMessage.css);
 
 *,
 *::before,
@@ -117,6 +118,7 @@
   --option-hover-color: #202c33;
   --nav-more-options-btn-selected: hsla(0, 0%, 100%, 0.1);
   --chat-active: #2a3942;
+  --reply-message-background: rgb(11, 20, 26);
 }
 
 body {

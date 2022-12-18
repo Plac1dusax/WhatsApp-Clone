@@ -12,7 +12,8 @@
         "type": "outgoing",
         "time": "12:30",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "a515a385-6420-41e5-be51-e380c91a4166",
@@ -21,7 +22,8 @@
         "type": "incoming",
         "time": "12:52",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "9bca1121-8778-4ba7-a397-3419100237ad",
@@ -30,7 +32,8 @@
         "type": "incoming",
         "time": "12:52",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "f27167f6-66ed-46c8-9ea2-ea97b639fd75",
@@ -39,7 +42,8 @@
         "type": "outgoing",
         "time": "13:22",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "ad41c2c2-a030-4282-aef5-6309bc4d44c1",
@@ -48,7 +52,8 @@
         "type": "outgoing",
         "time": "13:24",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "d402e8a1-33d7-479d-9309-478a84c687ca",
@@ -57,7 +62,8 @@
         "type": "incoming",
         "time": "13:40",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "28ac0b39-02ea-4968-a657-78ac47e1c75a",
@@ -66,7 +72,8 @@
         "type": "incoming",
         "time": "13:41",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "426a872b-cc48-4683-a463-740e21da891b",
@@ -75,7 +82,8 @@
         "type": "outgoing",
         "time": "14:12",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       }
     ]
   },
@@ -92,7 +100,8 @@
         "type": "outgoing",
         "time": "16:12",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "15cae532-5600-444f-80a8-6b4bb67e40ff",
@@ -101,7 +110,8 @@
         "type": "outgoing",
         "time": "16:13",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "de15f598-a1f4-448c-b0e4-2c882643b8ab",
@@ -110,7 +120,8 @@
         "type": "outgoing",
         "time": "16:14",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "78dd9a1b-6615-4eba-9b5e-fd970f02e64e",
@@ -119,7 +130,8 @@
         "type": "outgoing",
         "time": "16:14",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "dcdf1b6b-8aca-419a-86cb-5828d059e028",
@@ -128,7 +140,8 @@
         "type": "incoming",
         "time": "16:19",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "e607f21c-b8f6-4215-97cc-841c38f395e6",
@@ -137,7 +150,8 @@
         "type": "incoming",
         "time": "16:21",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "ef3b7b36-b313-4622-b216-50f4955564a9",
@@ -146,7 +160,8 @@
         "type": "incoming",
         "time": "16:22",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "ca0ae92f-1196-4a3a-9357-09c9469f4ff3",
@@ -155,7 +170,8 @@
         "type": "outgoing",
         "time": "16:30",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       },
       {
         "id": "5fb98209-6fd7-440d-b70a-81a714ac5630",
@@ -164,7 +180,8 @@
         "type": "incoming",
         "time": "16:34",
         "date": "16.12.2022",
-        "starred": "false"
+        "starred": "false",
+        "reply": "false"
       }
     ]
   }

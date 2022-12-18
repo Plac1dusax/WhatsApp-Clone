@@ -5,6 +5,7 @@ import Emoji from "../Emoji/Emoji"
 import ReactionEmojiContainer from "../ReactionEmojiContainer/ReactionEmojiContainer"
 import { v4 as uuidv4 } from "uuid"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
+import RepliedMessage from "../RepliedMessage/RepliedMessage"
 import "./chatMessage.css"
 
 export default function ChatMessage(props) {
@@ -15,8 +16,10 @@ export default function ChatMessage(props) {
     message,
     starred,
     time,
+    setReplyMessage,
     directMessage,
     directMessages,
+    selectedUserName,
     setStarredMessage
   } = props
   let currentColor = "var(--star-icon)"
@@ -510,9 +513,32 @@ export default function ChatMessage(props) {
     }
   }
 
+  function handleChatReply(e) {
+    const body = e.target.closest(".direct-message-container")
+    const messageContainer = e.target.closest(".chat-message")
+    const messageWrapper = messageContainer.querySelector(
+      ".chat-message-wrapper-direct"
+    )
+
+    if (messageWrapper.contains(e.target)) return
+
+    const replyArea = body.querySelector(".reply-message")
+
+    const message = messageContainer.querySelector(".message").textContent
+    const name = selectedUserName
+
+    const replyMessageInfo = { name: name, message: message }
+
+    setReplyMessage([replyMessageInfo])
+  }
+
   if (origin === "incoming") {
     return (
-      <div id={id} className="chat-message chat-message-container-incoming">
+      <div
+        id={id}
+        onDoubleClick={handleChatReply}
+        className="chat-message chat-message-container-incoming"
+      >
         <div className="chat-message-incoming-wrapper">
           <div className="chat-bubble-arrow">
             <svg viewBox="0 0 8 13" width="10" height="16">
@@ -788,33 +814,7 @@ export default function ChatMessage(props) {
           </svg>
         </div>
         <div className="chat-message-wrapper">
-          <div className="replied-message-wrapper">
-            <div className="chat-message-header">
-              <div className="user-name">Random name</div>
-              <div className="chat-options-icon">
-                <svg
-                  viewBox="0 0 18 18"
-                  height="18"
-                  width="18"
-                  preserveAspectRatio="xMidYMid meet"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  enableBackground="new 0 0 18 18"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <div className="replied-message-container">
-              <div className="replied-message">
-                Random message from random friend
-              </div>
-            </div>
-          </div>
+          <RepliedMessage />
           <div className="message-container">
             <div className="message">
               Random message from another random friend

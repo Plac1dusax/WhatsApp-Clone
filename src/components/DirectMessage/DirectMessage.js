@@ -7,6 +7,7 @@ import { DatabaseContext } from "../../App"
 import "./directMessage.css"
 
 export default function DirectMessage({ directMessage }) {
+  const [replyMessage, setReplyMessage] = useState([])
   const directMessages = useContext(DatabaseContext)
 
   const selectedMessage = directMessages.filter(messages => {
@@ -20,6 +21,8 @@ export default function DirectMessage({ directMessage }) {
   const starredMessages = selectedUser.messages.filter(message => {
     return message.starred === "true"
   })
+
+  const selectedUserName = selectedUser.userName
 
   const userProfilePhotoURL = selectedUser.userProfilePhoto
 
@@ -47,6 +50,9 @@ export default function DirectMessage({ directMessage }) {
                   message={message.message}
                   starred={message.starred}
                   time={message.time}
+                  reply={message.reply}
+                  setReplyMessage={setReplyMessage}
+                  selectedUserName={selectedUserName}
                   directMessage={directMessage}
                   directMessages={directMessages}
                   setStarredMessage={setStarredMessage}
@@ -62,6 +68,8 @@ export default function DirectMessage({ directMessage }) {
                   message={message.message}
                   starred={message.starred}
                   time={message.time}
+                  reply={message.reply}
+                  setReplyMessage={setReplyMessage}
                   directMessage={directMessage}
                   directMessages={directMessages}
                   setStarredMessage={setStarredMessage}
@@ -72,7 +80,11 @@ export default function DirectMessage({ directMessage }) {
         })}
       </div>
       <div className="type-area">
-        <TypeMessage key={uuidv4()} />
+        <TypeMessage
+          replyMessage={replyMessage}
+          setReplyMessage={setReplyMessage}
+          key={uuidv4()}
+        />
       </div>
     </div>
   )
