@@ -14,11 +14,10 @@ export default function InputText({
         id: uuidv4(),
         message: e.target.value,
         time: "00:00",
-        status: "sent",
+        status: "delivered",
         type: "outgoing"
       }
 
-      console.log(messageHistory)
       const newMessageHistory = [...messageHistory]
 
       const selectedPerson = newMessageHistory.find(history => {

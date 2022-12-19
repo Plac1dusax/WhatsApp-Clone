@@ -14,6 +14,7 @@ export default function ChatMessage(props) {
     id,
     origin,
     message,
+    status,
     starred,
     time,
     setReplyMessage,
@@ -726,7 +727,7 @@ export default function ChatMessage(props) {
 
                 <Time time={time} />
                 <div className="message-status">
-                  <MessageInfo info={"seen"} />
+                  <MessageInfo info={status} />
                 </div>
               </div>
             </div>

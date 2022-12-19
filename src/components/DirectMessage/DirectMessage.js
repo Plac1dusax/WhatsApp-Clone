@@ -54,6 +54,7 @@ export default function DirectMessage() {
         <div className="doodle"></div>
         {renderMessages.map(message => {
           if (message.type === "incoming") {
+            console.log(message.status)
             return (
               <div className={"incoming-message"} key={uuidv4()}>
                 <ChatMessage
@@ -63,6 +64,7 @@ export default function DirectMessage() {
                   starred={message.starred}
                   time={message.time}
                   reply={message.reply}
+                  status={message.status}
                   setReplyMessage={setReplyMessage}
                   selectedUserName={selectedUserName}
                   userId={userId}
@@ -81,6 +83,7 @@ export default function DirectMessage() {
                   starred={message.starred}
                   time={message.time}
                   reply={message.reply}
+                  status={message.status}
                   setReplyMessage={setReplyMessage}
                   userId={userId}
                   database={database}
