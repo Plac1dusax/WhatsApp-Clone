@@ -14,8 +14,8 @@ export default function Chat(props) {
     lastMessage,
     info,
     time,
-    directMessage,
-    setDirectMessage
+    userId,
+    setUserId
   } = props
 
   function handleChatClick(e) {
@@ -27,18 +27,18 @@ export default function Chat(props) {
         return chat !== chatWrapper
       })
 
-      setDirectMessage(id)
+      setUserId(id)
     }
   }
 
   useEffect(() => {
     const elements = [...document.querySelectorAll("[data-id]")]
     const selectedElement = elements.filter(el => {
-      return el.getAttribute("data-id") === directMessage
+      return el.getAttribute("data-id") === userId
     })
 
     selectedElement[0]?.setAttribute?.("data-active", "true")
-  }, [directMessage])
+  }, [userId])
 
   return (
     <div

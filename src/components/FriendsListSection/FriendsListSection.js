@@ -6,11 +6,8 @@ import Chat from "../Chat/Chat"
 import { DatabaseContext } from "../../App"
 import { v4 as uuidv4 } from "uuid"
 
-export default function FriendsListSection({
-  directMessage,
-  setDirectMessage
-}) {
-  const database = useContext(DatabaseContext)
+export default function FriendsListSection() {
+  const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
 
   return (
     <>
@@ -42,8 +39,8 @@ export default function FriendsListSection({
                 lastMessage={lastMessage}
                 info={messageStatus}
                 time={lastMessageTime}
-                directMessage={directMessage}
-                setDirectMessage={setDirectMessage}
+                userId={userId}
+                setUserId={setUserId}
               />
             )
           })}

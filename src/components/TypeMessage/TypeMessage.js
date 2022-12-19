@@ -5,7 +5,13 @@ import RepliedMessage from "../RepliedMessage/RepliedMessage"
 import { v4 as uuidv4 } from "uuid"
 import "./typeMessage.css"
 
-export default function TypeMessage({ replyMessage, setReplyMessage }) {
+export default function TypeMessage({
+  selectedUserId,
+  replyMessage,
+  setReplyMessage,
+  messageHistory,
+  setMessageHistory
+}) {
   const [attach, setAttach] = useState("false")
   const [icons, setIcons] = useState("false")
   const [showReactions, setShowReactions] = useState("false")
@@ -418,7 +424,12 @@ export default function TypeMessage({ replyMessage, setReplyMessage }) {
         </div>
 
         <div className="type-message">
-          <InputText type={"dm"} />
+          <InputText
+            selectedUserId={selectedUserId}
+            messageHistory={messageHistory}
+            setMessageHistory={setMessageHistory}
+            type={"dm"}
+          />
         </div>
         <div className="microphone-icon">
           <svg

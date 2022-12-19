@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import ChatMessage from "../ChatMessage/ChatMessage"
 import Navbar from "../Navbar/Navbar"
 import TypeMessage from "../TypeMessage/TypeMessage"
@@ -6,17 +6,19 @@ import { v4 as uuidv4 } from "uuid"
 import { DatabaseContext } from "../../App"
 import "./directMessage.css"
 
-export default function DirectMessage({ directMessage }) {
+export default function DirectMessage() {
   const [replyMessage, setReplyMessage] = useState([])
-  const directMessages = useContext(DatabaseContext)
+  const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
 
-  const selectedMessage = directMessages.filter(messages => {
-    return messages.id === directMessage
+  const [messageHistory, setMessageHistory] = useState([...database])
+
+  const selectedMessage = database.filter(messages => {
+    return messages.id === userId
   })
 
-  const selectedUser = selectedMessage.find(
-    message => message.id === directMessage
-  )
+  const selectedUserId = selectedMessage[0].id
+
+  const selectedUser = selectedMessage.find(message => message.id === userId)
 
   const starredMessages = selectedUser.messages.filter(message => {
     return message.starred === "true"
@@ -26,9 +28,19 @@ export default function DirectMessage({ directMessage }) {
 
   const userProfilePhotoURL = selectedUser.userProfilePhoto
 
-  const messagesArray = [...selectedUser.messages].reverse()
+  const [renderMessages, setRenderMessages] = useState([
+    ...selectedUser.messages
+  ])
 
   const [starredMessage, setStarredMessage] = useState(starredMessages)
+
+  useEffect(() => {
+    setRenderMessages([...selectedUser.messages])
+  }, [userId])
+
+  useEffect(() => {
+    setRenderMessages([...selectedUser.messages])
+  }, [messageHistory])
 
   return (
     <div className="direct-message-container">
@@ -40,7 +52,7 @@ export default function DirectMessage({ directMessage }) {
       </div>
       <div className="direct-message-body">
         <div className="doodle"></div>
-        {messagesArray.map(message => {
+        {renderMessages.map(message => {
           if (message.type === "incoming") {
             return (
               <div className={"incoming-message"} key={uuidv4()}>
@@ -53,8 +65,8 @@ export default function DirectMessage({ directMessage }) {
                   reply={message.reply}
                   setReplyMessage={setReplyMessage}
                   selectedUserName={selectedUserName}
-                  directMessage={directMessage}
-                  directMessages={directMessages}
+                  userId={userId}
+                  database={database}
                   setStarredMessage={setStarredMessage}
                 />
               </div>
@@ -70,8 +82,8 @@ export default function DirectMessage({ directMessage }) {
                   time={message.time}
                   reply={message.reply}
                   setReplyMessage={setReplyMessage}
-                  directMessage={directMessage}
-                  directMessages={directMessages}
+                  userId={userId}
+                  database={database}
                   setStarredMessage={setStarredMessage}
                 />
               </div>
@@ -81,8 +93,11 @@ export default function DirectMessage({ directMessage }) {
       </div>
       <div className="type-area">
         <TypeMessage
+          selectedUserId={selectedUserId}
           replyMessage={replyMessage}
           setReplyMessage={setReplyMessage}
+          messageHistory={messageHistory}
+          setMessageHistory={setMessageHistory}
           key={uuidv4()}
         />
       </div>

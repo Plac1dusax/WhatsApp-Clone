@@ -24,19 +24,19 @@ import chatHistory from "./chatHistory.json"
 export const DatabaseContext = React.createContext()
 
 function App() {
-  const [directMessage, setDirectMessage] = useState(null)
+  const [database, setDatabase] = useState([...chatHistory])
+  const [userId, setUserId] = useState(null)
+
+  const value = [database, setDatabase, userId, setUserId]
 
   return (
-    <DatabaseContext.Provider value={chatHistory}>
+    <DatabaseContext.Provider value={value}>
       <div className="wrapper">
         {/* <Theme /> */}
         {/* <KeyboardShortcuts /> */}
 
         <div className="friends-list-container">
-          <FriendsListSection
-            directMessage={directMessage}
-            setDirectMessage={setDirectMessage}
-          />
+          <FriendsListSection />
           {/* <ArchivedSection /> */}
           {/* <CommunitiesSection /> */}
           {/* <StartCommunity /> */}
@@ -51,11 +51,7 @@ function App() {
           {/* <StarredMessages /> */}
         </div>
         <div className="direct-message-container">
-          {directMessage ? (
-            <DirectMessage directMessage={directMessage} />
-          ) : (
-            <ChatSection />
-          )}
+          {userId ? <DirectMessage /> : <ChatSection />}
         </div>
       </div>
     </DatabaseContext.Provider>
