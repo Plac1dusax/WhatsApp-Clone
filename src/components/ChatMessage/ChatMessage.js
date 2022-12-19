@@ -18,8 +18,8 @@ export default function ChatMessage(props) {
     starred,
     time,
     setReplyMessage,
-    directMessage,
-    directMessages,
+    userId,
+    database,
     selectedUserName,
     setStarredMessage
   } = props
@@ -495,9 +495,11 @@ export default function ChatMessage(props) {
 
   function handleStarOption(e) {
     const container = e.target.closest(".chat-message")
-    const selectedUserMessages = directMessages.filter(user => {
-      return user.id === directMessage
+    const selectedUserMessages = database.filter(user => {
+      return user.id === userId
     })
+
+    console.log(selectedUserMessages)
 
     const starredMessage = selectedUserMessages[0]?.messages?.filter?.(
       message => {
@@ -793,7 +795,7 @@ export default function ChatMessage(props) {
             data-option-menu
             className="options-menu"
           >
-            <OptionsMenu menuArray={chatOptionsIncoming} />
+            <OptionsMenu menuArray={chatOptionsOutgoing} />
           </div>
         </div>
       </div>

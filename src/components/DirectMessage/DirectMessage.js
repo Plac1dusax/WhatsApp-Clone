@@ -54,7 +54,6 @@ export default function DirectMessage() {
         <div className="doodle"></div>
         {renderMessages.map(message => {
           if (message.type === "incoming") {
-            console.log(message.status)
             return (
               <div className={"incoming-message"} key={uuidv4()}>
                 <ChatMessage
