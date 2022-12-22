@@ -6,16 +6,34 @@ export default function InputText({
   type,
   selectedUserId,
   messageHistory,
+  replyMessage,
+  setReplyMessage,
   setMessageHistory
 }) {
   function handleMessageSend(e) {
     if (e.key === "Enter") {
-      const message = {
-        id: uuidv4(),
-        message: e.target.value,
-        time: "00:00",
-        status: "delivered",
-        type: "outgoing"
+      let message
+
+      if (replyMessage.length > 0) {
+        message = {
+          id: uuidv4(),
+          message: e.target.value,
+          time: "00:00",
+          status: "delivered",
+          type: "outgoing",
+          reply: "true",
+          repliedMessage: replyMessage[0].message,
+          contactName: replyMessage[0].name
+        }
+      } else {
+        message = {
+          id: uuidv4(),
+          message: e.target.value,
+          time: "00:00",
+          status: "delivered",
+          type: "outgoing",
+          reply: "false"
+        }
       }
 
       const newMessageHistory = [...messageHistory]
@@ -31,6 +49,7 @@ export default function InputText({
       }).messages = selectedPerson.messages
 
       setMessageHistory(newMessageHistory)
+      setReplyMessage([])
 
       e.target.value = ""
     }

@@ -53,6 +53,7 @@ export default function DirectMessage() {
       <div className="direct-message-body">
         <div className="doodle"></div>
         {renderMessages.map(message => {
+          console.log(message)
           if (message.type === "incoming") {
             return (
               <div className={"incoming-message"} key={uuidv4()}>
@@ -64,6 +65,9 @@ export default function DirectMessage() {
                   time={message.time}
                   reply={message.reply}
                   status={message.status}
+                  repliedMessage={message.repliedMessage}
+                  contactName={message.contactName}
+                  replyMessage={replyMessage}
                   setReplyMessage={setReplyMessage}
                   selectedUserName={selectedUserName}
                   userId={userId}
@@ -83,6 +87,9 @@ export default function DirectMessage() {
                   time={message.time}
                   reply={message.reply}
                   status={message.status}
+                  repliedMessage={message.repliedMessage}
+                  contactName={message.contactName}
+                  replyMessage={replyMessage}
                   setReplyMessage={setReplyMessage}
                   userId={userId}
                   database={database}

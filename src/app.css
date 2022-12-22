@@ -118,7 +118,8 @@
   --option-hover-color: #202c33;
   --nav-more-options-btn-selected: hsla(0, 0%, 100%, 0.1);
   --chat-active: #2a3942;
-  --reply-message-background: rgb(11, 20, 26);
+  --reply-message-background-text: rgb(11, 20, 26);
+  --reply-message-background-chat: #025144;
 }
 
 body {

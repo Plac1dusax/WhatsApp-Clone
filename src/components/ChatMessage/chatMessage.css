@@ -17,6 +17,14 @@
   position: relative;
 }
 
+.chat-message-container-reply-outgoing {
+  max-width: 540px;
+  border-radius: 0.3em;
+  padding: 0;
+  width: fit-content;
+  background-color: var(--outgoing-message);
+}
+
 .chat-message-outgoing-wrapper {
   margin-right: 0;
   margin-left: auto;

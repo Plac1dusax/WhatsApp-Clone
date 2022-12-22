@@ -427,6 +427,8 @@ export default function TypeMessage({
           <InputText
             selectedUserId={selectedUserId}
             messageHistory={messageHistory}
+            replyMessage={replyMessage}
+            setReplyMessage={setReplyMessage}
             setMessageHistory={setMessageHistory}
             type={"dm"}
           />
