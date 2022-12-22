@@ -6,7 +6,6 @@ export default function RepliedMessage({
   name,
   message,
   setReplyMessage
-  // userName
 }) {
   function handleReplyClose() {
     setReplyMessage([])
