@@ -108,7 +108,7 @@ export default function ChatMessage(props) {
 
   function handleOutgoingMessageReaction(e) {
     const mainContainer = e.target.closest(".direct-message-body")
-    const container = e.target.closest(".chat-message-container-outgoing")
+    const container = e.target.closest("[data-outgoing]")
     const emojisWrapper = container.querySelector(".emoji-reactions-wrapper")
     const type = "outgoing"
 
@@ -495,7 +495,7 @@ export default function ChatMessage(props) {
   }
 
   function handleStarOption(e) {
-    const container = e.target.closest(".chat-message")
+    const container = e.target.closest("[data-chat-message-container]")
     const selectedUserMessages = database.filter(user => {
       return user.id === userId
     })
@@ -536,17 +536,12 @@ export default function ChatMessage(props) {
     setReplyMessage([replyMessageInfo])
   }
 
-  const person = database?.filter(person => {
-    return person.id === userId
-  })
-
-  const userName = person?.[0]?.userName
-
   if (origin === "incoming") {
     return (
       <div
         id={id}
         onDoubleClick={handleChatReply}
+        data-chat-message-container
         className="chat-message chat-message-container-incoming"
       >
         <div className="chat-message-incoming-wrapper">
@@ -610,7 +605,7 @@ export default function ChatMessage(props) {
             </div>
             <div className="message-reaction message-reaction-incoming"></div>
           </div>
-          <div className="emojis-incoming">
+          <div data-emojis className="emojis-incoming">
             <div className="emojis-incoming-content">
               <div onClick={showEmojiWrapper} className="emojis-button">
                 <svg
@@ -680,57 +675,82 @@ export default function ChatMessage(props) {
       {
         return (
           <div
+            id={id}
+            data-chat-message-container
+            data-outgoing
             onDoubleClick={handleChatReply}
-            className="chat-message-container chat-message-container-reply-outgoing"
+            className="chat-message chat-message-container chat-message-container-outgoing chat-message-container-reply-outgoing"
           >
-            <div className="chat-bubble-arrow-outgoing">
-              <svg viewBox="0 0 8 13" width="10" height="16">
-                <path
-                  opacity=".13"
-                  fill="#0000000"
-                  d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                ></path>
-                <path
-                  fill="currentColor"
-                  d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                ></path>
-              </svg>
-            </div>
-            <div className="chat-message-wrapper">
+            <div className="chat-message-wrapper  chat-message">
               <RepliedMessage
                 type={"chat-section"}
                 name={contactName}
                 message={repliedMessage}
               />
-              <div className="message-container">
-                <div className="message">{message}</div>
-                <div className="star-icon-and-time">
-                  {star === "true" ? (
-                    <svg
-                      viewBox="0 0 16 15"
-                      height="15"
-                      width="16"
-                      preserveAspectRatio="xMidYMid meet"
-                      version="1.1"
-                      x="0px"
-                      y="0px"
-                      enableBackground="new 0 0 16 15"
-                    >
-                      <path
-                        fill={currentColor}
-                        d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                      ></path>
-                    </svg>
-                  ) : null}
+              <div className="chat-bubble-arrow-outgoing">
+                <svg viewBox="0 0 8 13" width="10" height="16">
+                  <path
+                    opacity=".13"
+                    fill="#0000000"
+                    d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
+                  ></path>
+                  <path
+                    fill="currentColor"
+                    d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
+                  ></path>
+                </svg>
+              </div>
+              <div className="chat-message-wrapper-direct replied-ongoing-message">
+                <div
+                  onClick={handleChatOptions}
+                  className="chat-options-icon-direct-outgoing"
+                >
+                  <svg
+                    viewBox="0 0 18 18"
+                    height="18"
+                    width="18"
+                    preserveAspectRatio="xMidYMid meet"
+                    version="1.1"
+                    x="0px"
+                    y="0px"
+                    enableBackground="new 0 0 18 18"
+                  >
+                    <path
+                      fill={currentColor}
+                      d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
+                    ></path>
+                  </svg>
+                </div>
+                <div className="message-container-direct">
+                  <div className="message">{message}</div>
+                  <div className="star-icon-and-time">
+                    {star === "true" ? (
+                      <svg
+                        viewBox="0 0 16 15"
+                        height="15"
+                        width="16"
+                        preserveAspectRatio="xMidYMid meet"
+                        version="1.1"
+                        x="0px"
+                        y="0px"
+                        enableBackground="new 0 0 16 15"
+                      >
+                        <path
+                          fill={currentColor}
+                          d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
+                        ></path>
+                      </svg>
+                    ) : null}
 
-                  <Time time={time} />
-                  <div className="message-status">
-                    <MessageInfo info={status} />
+                    <Time time={time} />
+                    <div className="message-status">
+                      <MessageInfo info={status} />
+                    </div>
                   </div>
                 </div>
                 <div className="message-reaction message-reaction-outgoing"></div>
               </div>
-              <div className="emojis-outgoing">
+              <div data-emojis className="emojis-outgoing">
                 <div className="emojis-outgoing-content">
                   <div onClick={showEmojiWrapper} className="emojis-button">
                     <svg
@@ -799,8 +819,10 @@ export default function ChatMessage(props) {
     } else {
       return (
         <div
-          onDoubleClick={handleChatReply}
           id={id}
+          data-outgoing
+          data-chat-message-container
+          onDoubleClick={handleChatReply}
           className="chat-message chat-message-container-outgoing"
         >
           <div className="chat-message-outgoing-wrapper">
@@ -867,7 +889,7 @@ export default function ChatMessage(props) {
               </div>
               <div className="message-reaction message-reaction-outgoing"></div>
             </div>
-            <div className="emojis-outgoing">
+            <div data-emojis className="emojis-outgoing">
               <div className="emojis-outgoing-content">
                 <div onClick={showEmojiWrapper} className="emojis-button">
                   <svg

@@ -22,6 +22,7 @@ export default function InputText({
           status: "delivered",
           type: "outgoing",
           reply: "true",
+          starred: "false",
           repliedMessage: replyMessage[0].message,
           contactName: replyMessage[0].name
         }
@@ -32,7 +33,8 @@ export default function InputText({
           time: "00:00",
           status: "delivered",
           type: "outgoing",
-          reply: "false"
+          reply: "false",
+          starred: "false"
         }
       }
 

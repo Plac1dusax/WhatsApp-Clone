@@ -167,6 +167,14 @@
   z-index: 5;
 }
 
+[data-emojis] {
+  user-select: none;
+}
+
+.reaction-button-icon {
+  user-select: none;
+}
+
 .show-emojis-button {
   visibility: visible;
   pointer-events: auto;
@@ -181,12 +189,21 @@
   color: var(--reaction-button);
 }
 
+.replied-ongoing-message {
+  margin: 5px 0;
+}
+
 .chat-message-container-incoming:hover .emojis-button {
   visibility: visible;
   pointer-events: auto;
 }
 
 .chat-message-container-outgoing:hover .emojis-button {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.chat-message-wrapper:hover .emojis-button {
   visibility: visible;
   pointer-events: auto;
 }
