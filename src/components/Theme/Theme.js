@@ -23,21 +23,16 @@ const optionsList = [
   }
 ]
 
-const buttonNames = [
-  {
-    buttonPrimary: "OK"
-  },
-  {
-    buttonSecondary: "CANCEL"
-  }
-]
-
 export default function Theme() {
   return (
     <>
-      <div className="overlay"></div>
       <div className="theme-container">
-        <CustomAlert optionsList={optionsList} />
+        <CustomAlert
+          optionsList={optionsList}
+          header={"Choose theme"}
+          buttonPrimary={"OK"}
+          buttonSecondary={"CANCEL"}
+        />
       </div>
     </>
   )

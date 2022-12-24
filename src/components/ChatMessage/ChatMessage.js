@@ -6,6 +6,7 @@ import ReactionEmojiContainer from "../ReactionEmojiContainer/ReactionEmojiConta
 import { v4 as uuidv4 } from "uuid"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import RepliedMessage from "../RepliedMessage/RepliedMessage"
+import CustomAlert from "../CustomAlert/CustomAlert"
 import "./chatMessage.css"
 
 export default function ChatMessage(props) {
@@ -477,6 +478,28 @@ export default function ChatMessage(props) {
       case "Star message":
         handleStarOption(e)
         break
+      case "Delete message":
+        handleDeleteOption(e)
+        break
+    }
+
+    function handleDeleteOption(e) {
+      const container = e.target.closest(".chat-message")
+      console.log(container)
+
+      if (container.getAttribute("data-outgoing") === "true") {
+        const alert = container.querySelector(".custom-alert")
+        const overlay = container.querySelector(".overlay")
+
+        alert.classList.add("custom-alert-show")
+        overlay.style.display = "block"
+      } else if (container.getAttribute("data-incoming") === "true") {
+        const alert = container.querySelector(".custom-alert")
+        const overlay = container.querySelector(".overlay")
+
+        alert.classList.add("custom-alert-show")
+        overlay.style.display = "block"
+      }
     }
 
     handleHideOptionMenus(menu)
@@ -541,6 +564,7 @@ export default function ChatMessage(props) {
       <div
         id={id}
         onDoubleClick={handleChatReply}
+        data-incoming
         data-chat-message-container
         className="chat-message chat-message-container-incoming"
       >
@@ -668,6 +692,12 @@ export default function ChatMessage(props) {
             <OptionsMenu menuArray={chatOptionsIncoming} />
           </div>
         </div>
+        <CustomAlert
+          type={"delete-message-incoming"}
+          header={"Delete message?"}
+          buttonPrimary={"DELETE FOR ME"}
+          buttonSecondary={"CANCEL"}
+        />
       </div>
     )
   } else if (origin === "outgoing") {
@@ -681,7 +711,7 @@ export default function ChatMessage(props) {
             onDoubleClick={handleChatReply}
             className="chat-message chat-message-container chat-message-container-outgoing chat-message-container-reply-outgoing"
           >
-            <div className="chat-message-wrapper  chat-message">
+            <div data-outgoing className="chat-message-wrapper  chat-message">
               <RepliedMessage
                 type={"chat-section"}
                 name={contactName}
@@ -812,6 +842,13 @@ export default function ChatMessage(props) {
               >
                 <OptionsMenu menuArray={chatOptionsOutgoing} />
               </div>
+              <CustomAlert
+                type={"delete-message-outgoing"}
+                header={"Delete message?"}
+                buttonPrimary={"DELETE FOR ME"}
+                buttonSecondary={"CANCEL"}
+                buttonTertiary={"DELETE FOR EVERYONE"}
+              />
             </div>
           </div>
         )
@@ -952,6 +989,13 @@ export default function ChatMessage(props) {
               <OptionsMenu menuArray={chatOptionsOutgoing} />
             </div>
           </div>
+          <CustomAlert
+            type={"delete-message-outgoing"}
+            header={"Delete message?"}
+            buttonPrimary={"DELETE FOR ME"}
+            buttonSecondary={"CANCEL"}
+            buttonTertiary={"DELETE FOR EVERYONE"}
+          />
         </div>
       )
     }

@@ -90,7 +90,7 @@ const keyboardShortcuts = [
 export default function KeyboardShortcuts() {
   return (
     <>
-      <div className="overlay"></div>
+      <div className="overlay-keyboard-shortcuts"></div>
       <div className="keyboard-shortcuts-container">
         <div className="keyboard-shortcuts-header">
           <PrimaryHeaderText

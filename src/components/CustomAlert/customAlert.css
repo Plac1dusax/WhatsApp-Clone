@@ -1,8 +1,48 @@
-.custom-alert-container {
+.custom-alert {
   height: 100%;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: var(--modal-background);
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  height: 240px;
+  z-index: 2001;
+  padding: 1rem;
+  border-radius: 0.2em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.custom-alert-show {
+  transform: translateX(-50%) translateY(-50%) scale(1);
+  transition: transform 0.2s ease-in-out;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.custom-alert-hide {
+  transform: translateX(-50%) translateY(-50%) scale(0);
+  transition: transform 0.2s ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.overlay {
+  position: fixed;
+  pointer-events: all;
+  background-color: var(--dark-background);
+  opacity: 0.7;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  z-index: 2000;
 }
 
 .custom-alert-header {
@@ -17,4 +57,11 @@
 .buttons-container {
   justify-self: flex-end;
   align-self: flex-end;
+}
+
+.buttons-container-outgoing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
 }
