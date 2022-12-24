@@ -7,6 +7,7 @@ export default function ButtonSecondary({ buttonSecondary }) {
       case "CANCEL":
         handleCancelButton(e)
         break
+      case "DELETE FOR ME":
     }
   }
 

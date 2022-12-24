@@ -12,7 +12,9 @@ export default function CustomAlert({
   header,
   buttonPrimary,
   buttonSecondary,
-  buttonTertiary
+  buttonTertiary,
+  messageHistory,
+  setMessageHistory
 }) {
   if (type === "theme") {
     return (
@@ -50,9 +52,21 @@ export default function CustomAlert({
             <SecondaryHeaderText headerType={"alert"} text={header} />
           </div>
           <div className="buttons-container-outgoing">
-            <ButtonSecondary buttonSecondary={buttonTertiary} />
-            <ButtonSecondary buttonSecondary={buttonPrimary} />
-            <ButtonSecondary buttonSecondary={buttonSecondary} />
+            <ButtonSecondary
+              messageHistory={messageHistory}
+              setMessageHistory={setMessageHistory}
+              buttonSecondary={buttonTertiary}
+            />
+            <ButtonSecondary
+              messageHistory={messageHistory}
+              setMessageHistory={setMessageHistory}
+              buttonSecondary={buttonPrimary}
+            />
+            <ButtonSecondary
+              messageHistory={messageHistory}
+              setMessageHistory={setMessageHistory}
+              buttonSecondary={buttonSecondary}
+            />
           </div>
         </div>
       </>
@@ -66,8 +80,16 @@ export default function CustomAlert({
             <SecondaryHeaderText headerType={"alert"} text={header} />
           </div>
           <div className="buttons-container">
-            <ButtonSecondary buttonSecondary={buttonSecondary} />
-            <ButtonPrimary buttonPrimary={buttonPrimary} />
+            <ButtonSecondary
+              messageHistory={messageHistory}
+              setMessageHistory={setMessageHistory}
+              buttonSecondary={buttonSecondary}
+            />
+            <ButtonPrimary
+              messageHistory={messageHistory}
+              setMessageHistory={setMessageHistory}
+              buttonPrimary={buttonPrimary}
+            />
           </div>
         </div>
       </>

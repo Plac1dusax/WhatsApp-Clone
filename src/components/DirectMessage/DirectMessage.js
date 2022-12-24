@@ -72,6 +72,8 @@ export default function DirectMessage() {
                   userId={userId}
                   database={database}
                   setStarredMessage={setStarredMessage}
+                  messageHistory={messageHistory}
+                  setMessageHistory={setMessageHistory}
                 />
               </div>
             )
@@ -93,6 +95,8 @@ export default function DirectMessage() {
                   userId={userId}
                   database={database}
                   setStarredMessage={setStarredMessage}
+                  messageHistory={messageHistory}
+                  setMessageHistory={setMessageHistory}
                 />
               </div>
             )

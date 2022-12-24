@@ -23,7 +23,9 @@ export default function ChatMessage(props) {
     setReplyMessage,
     userId,
     database,
-    selectedUserName
+    selectedUserName,
+    messageHistory,
+    setMessageHistory
   } = props
   let currentColor = "var(--star-icon)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
@@ -485,7 +487,6 @@ export default function ChatMessage(props) {
 
     function handleDeleteOption(e) {
       const container = e.target.closest(".chat-message")
-      console.log(container)
 
       if (container.getAttribute("data-outgoing") === "true") {
         const alert = container.querySelector(".custom-alert")
@@ -697,6 +698,8 @@ export default function ChatMessage(props) {
           header={"Delete message?"}
           buttonPrimary={"DELETE FOR ME"}
           buttonSecondary={"CANCEL"}
+          messageHistory={messageHistory}
+          setMessageHistory={setMessageHistory}
         />
       </div>
     )
@@ -848,6 +851,8 @@ export default function ChatMessage(props) {
                 buttonPrimary={"DELETE FOR ME"}
                 buttonSecondary={"CANCEL"}
                 buttonTertiary={"DELETE FOR EVERYONE"}
+                messageHistory={messageHistory}
+                setMessageHistory={setMessageHistory}
               />
             </div>
           </div>
@@ -995,6 +1000,8 @@ export default function ChatMessage(props) {
             buttonPrimary={"DELETE FOR ME"}
             buttonSecondary={"CANCEL"}
             buttonTertiary={"DELETE FOR EVERYONE"}
+            messageHistory={messageHistory}
+            setMessageHistory={setMessageHistory}
           />
         </div>
       )
