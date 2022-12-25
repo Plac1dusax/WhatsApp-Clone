@@ -64,6 +64,7 @@ export default function DirectMessage() {
                   time={message.time}
                   reply={message.reply}
                   status={message.status}
+                  deleted={message.delete}
                   repliedMessage={message.repliedMessage}
                   contactName={message.contactName}
                   replyMessage={replyMessage}
@@ -88,6 +89,7 @@ export default function DirectMessage() {
                   time={message.time}
                   reply={message.reply}
                   status={message.status}
+                  deleted={message.delete}
                   repliedMessage={message.repliedMessage}
                   contactName={message.contactName}
                   replyMessage={replyMessage}

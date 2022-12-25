@@ -481,6 +481,14 @@
   z-index: 100;
 }
 
+.deleted-message-wrapper {
+  display: flex;
+  align-items: center;
+  font-style: italic;
+  font-size: 14.2px;
+  color: var(--deleted-message);
+}
+
 path {
   pointer-events: none;
 }
