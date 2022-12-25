@@ -388,7 +388,7 @@
 .options-menu-incoming-up {
   position: absolute;
   right: -180px;
-  top: -240px;
+  top: -300px;
   visibility: visible;
   pointer-events: auto;
   transform: scale(1);
@@ -400,7 +400,7 @@
 .options-menu-incoming-down {
   position: absolute;
   right: -180px;
-  top: 60px;
+  top: 20px;
   visibility: visible;
   pointer-events: auto;
   transform: scale(1);
@@ -411,7 +411,7 @@
 
 .options-menu-outgoing-up {
   position: absolute;
-  top: -260px;
+  bottom: 20px;
   right: 50px;
   visibility: visible;
   pointer-events: auto;
@@ -423,7 +423,7 @@
 
 .options-menu-outgoing-down {
   position: absolute;
-  top: 90px;
+  top: 20px;
   right: 40px;
   visibility: visible;
   pointer-events: auto;
@@ -436,7 +436,7 @@
 .options-menu-incoming-up-hide {
   position: absolute;
   right: -180px;
-  top: -240px;
+  top: -300px;
   visibility: visible;
   pointer-events: auto;
   transform: scale(0);
@@ -448,7 +448,7 @@
 .options-menu-incoming-down-hide {
   position: absolute;
   right: -180px;
-  top: 60px;
+  top: 20px;
   visibility: visible;
   pointer-events: auto;
   transform: scale(0);
@@ -459,7 +459,7 @@
 
 .options-menu-outgoing-up-hide {
   position: absolute;
-  top: -260px;
+  bottom: 20px;
   right: 50px;
   visibility: visible;
   pointer-events: auto;
@@ -471,7 +471,7 @@
 
 .options-menu-outgoing-down-hide {
   position: absolute;
-  top: 90px;
+  top: 20px;
   right: 40px;
   visibility: visible;
   pointer-events: auto;
@@ -483,10 +483,19 @@
 
 .deleted-message-wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   font-style: italic;
   font-size: 14.2px;
+  padding: 0.5em;
+  width: fit-content;
+  height: fit-content;
+  max-height: 40px;
   color: var(--deleted-message);
+}
+
+.deleted-message {
+  align-self: center;
+  margin: 0 8px;
 }
 
 path {

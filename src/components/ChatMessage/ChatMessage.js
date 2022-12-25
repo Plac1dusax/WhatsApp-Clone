@@ -32,7 +32,6 @@ export default function ChatMessage(props) {
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
   const [star, setStar] = useState(starred)
 
-
   useEffect(() => {
     if (commonEmojis.length === 7) {
       const attributeName = commonEmojis[6].emojiName
@@ -487,9 +486,14 @@ export default function ChatMessage(props) {
         break
     }
 
-    function handleDeleteOption(e) {
-      const container = e.target.closest(".chat-message")
+    handleHideOptionMenus(menu)
+  }
 
+  function handleDeleteOption(e) {
+    const container = e.target.closest(".chat-message")
+    const message = container.querySelector(".message")
+
+    if (message != null) {
       if (container.getAttribute("data-outgoing") === "true") {
         const alert = container.querySelector(".custom-alert")
         const overlay = container.querySelector(".overlay")
@@ -503,9 +507,40 @@ export default function ChatMessage(props) {
         alert.classList.add("custom-alert-show")
         overlay.style.display = "block"
       }
+    } else {
+      handleDeleteCompletely(e)
     }
+  }
 
-    handleHideOptionMenus(menu)
+  function handleDeleteCompletely(e) {
+    const container = e.target.closest(".chat-message")
+    const id = container.getAttribute("id")
+
+    const selectedMessage = messageHistory
+      .map(history => {
+        return history.messages.find(message => {
+          return message.id === id
+        })
+      })
+      .find(items => {
+        return items != undefined
+      })
+    const selectedMessageIndex = messageHistory.map(history => {
+      return history.messages.indexOf(selectedMessage)
+    })
+    const validIndex = selectedMessageIndex.find(index => {
+      return index > 0
+    })
+    const newMessageHistory = messageHistory.map(history => {
+      if (history.messages.includes(selectedMessage)) {
+        history.messages.splice(validIndex, 1)
+        return history
+      } else {
+        return history
+      }
+    })
+
+    setMessageHistory(newMessageHistory)
   }
 
   function handleReactOption(e) {
@@ -716,12 +751,14 @@ export default function ChatMessage(props) {
             onDoubleClick={handleChatReply}
             className="chat-message chat-message-container chat-message-container-outgoing chat-message-container-reply-outgoing"
           >
-            <div data-outgoing className="chat-message-wrapper  chat-message">
-              <RepliedMessage
-                type={"chat-section"}
-                name={contactName}
-                message={repliedMessage}
-              />
+            <div data-outgoing className="chat-message-wrapper">
+              {deleted === "true" ? null : (
+                <RepliedMessage
+                  type={"chat-section"}
+                  name={contactName}
+                  message={repliedMessage}
+                />
+              )}
               <div className="chat-bubble-arrow-outgoing">
                 <svg viewBox="0 0 8 13" width="10" height="16">
                   <path
@@ -778,6 +815,7 @@ export default function ChatMessage(props) {
                       <div className="deleted-message">
                         You deleted this message
                       </div>
+                      <Time time={"00:00"} />
                     </div>
                   </div>
                 ) : (
@@ -802,7 +840,7 @@ export default function ChatMessage(props) {
                         </svg>
                       ) : null}
 
-                      <Time time={time} />
+                      {deleted === "true" ? null : <Time time={time} />}
                       <div className="message-status">
                         <MessageInfo info={status} />
                       </div>
@@ -866,13 +904,23 @@ export default function ChatMessage(props) {
                   <ReactionEmojiContainer type={"reaction"} />
                 </div>
               </div>
-              <div
-                onClick={handleOptions}
-                data-option-menu
-                className="options-menu"
-              >
-                <OptionsMenu menuArray={chatOptionsOutgoing} />
-              </div>
+              {deleted === "true" ? (
+                <div
+                  onClick={handleOptions}
+                  data-option-menu
+                  className="options-menu"
+                >
+                  <OptionsMenu menuArray={chatOptionsDeleted} />
+                </div>
+              ) : (
+                <div
+                  onClick={handleOptions}
+                  data-option-menu
+                  className="options-menu"
+                >
+                  <OptionsMenu menuArray={chatOptionsOutgoing} />
+                </div>
+              )}
               <CustomAlert
                 type={"delete-message-outgoing"}
                 header={"Delete message?"}
@@ -949,9 +997,10 @@ export default function ChatMessage(props) {
                         ></path>
                       </svg>
                     </div>
-                    <div className="deleted-message">
+                    <div data-delete className="deleted-message">
                       You deleted this message
                     </div>
+                    <Time time={time} />
                   </div>
                 </div>
               ) : (
@@ -976,7 +1025,7 @@ export default function ChatMessage(props) {
                       </svg>
                     ) : null}
 
-                    <Time time={time} />
+                    {deleted === "true" ? null : <Time time={time} />}
                     <div className="message-status">
                       <MessageInfo info={status} />
                     </div>
@@ -986,60 +1035,79 @@ export default function ChatMessage(props) {
               <div className="message-reaction message-reaction-outgoing"></div>
             </div>
             <div data-emojis className="emojis-outgoing">
-              <div className="emojis-outgoing-content">
-                <div onClick={showEmojiWrapper} className="emojis-button">
-                  <svg
-                    viewBox="0 0 15 15"
-                    width="15"
-                    preserveAspectRatio="xMidYMid meet"
-                    fill="none"
-                    className="outgoing-message-reaction-icon reaction-button-icon"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 7.5C0 11.6305 3.36946 15 7.5 15C11.6527 15 15 11.6305 15 7.5C15 3.36946 11.6305 0 7.5 0C3.36946 0 0 3.36946 0 7.5ZM10.995 8.69333C11.1128 8.67863 11.2219 8.66503 11.3211 8.65309C11.61 8.63028 11.8076 8.91918 11.6784 9.13965C10.8573 10.6374 9.29116 11.793 7.50455 11.793C5.71794 11.793 4.15181 10.6602 3.33072 9.16246C3.18628 8.91918 3.37634 8.63028 3.66524 8.65309C3.79123 8.66749 3.93521 8.68511 4.09426 8.70457C4.94292 8.80842 6.22074 8.96479 7.48174 8.96479C8.81855 8.96479 10.1378 8.80025 10.995 8.69333ZM5.41405 7.37207C6.05761 7.37207 6.60923 6.72851 6.60923 6.02978C6.60923 5.30348 6.05761 4.6875 5.41405 4.6875C4.77048 4.6875 4.21886 5.33106 4.21886 6.02978C4.20967 6.75609 4.77048 7.37207 5.41405 7.37207ZM10.7807 6.05619C10.7807 6.74114 10.24 7.37201 9.60912 7.37201C8.97825 7.37201 8.4375 6.76818 8.4375 6.05619C8.4375 5.37124 8.97825 4.74037 9.60912 4.74037C10.24 4.74037 10.7807 5.34421 10.7807 6.05619Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                </div>
-                <div
-                  onClick={handleReactionClick}
-                  className="emoji-reactions-wrapper"
-                >
-                  {commonEmojis.map(emoji => {
-                    return (
-                      <Emoji
-                        key={uuidv4()}
-                        emojiName={emoji.emojiName}
-                        emoji={emoji.emoji}
-                      />
-                    )
-                  })}
+              {deleted === "true" ? null : (
+                <div className="emojis-outgoing-content">
+                  <div onClick={showEmojiWrapper} className="emojis-button">
+                    <svg
+                      viewBox="0 0 15 15"
+                      width="15"
+                      preserveAspectRatio="xMidYMid meet"
+                      fill="none"
+                      className="outgoing-message-reaction-icon reaction-button-icon"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M0 7.5C0 11.6305 3.36946 15 7.5 15C11.6527 15 15 11.6305 15 7.5C15 3.36946 11.6305 0 7.5 0C3.36946 0 0 3.36946 0 7.5ZM10.995 8.69333C11.1128 8.67863 11.2219 8.66503 11.3211 8.65309C11.61 8.63028 11.8076 8.91918 11.6784 9.13965C10.8573 10.6374 9.29116 11.793 7.50455 11.793C5.71794 11.793 4.15181 10.6602 3.33072 9.16246C3.18628 8.91918 3.37634 8.63028 3.66524 8.65309C3.79123 8.66749 3.93521 8.68511 4.09426 8.70457C4.94292 8.80842 6.22074 8.96479 7.48174 8.96479C8.81855 8.96479 10.1378 8.80025 10.995 8.69333ZM5.41405 7.37207C6.05761 7.37207 6.60923 6.72851 6.60923 6.02978C6.60923 5.30348 6.05761 4.6875 5.41405 4.6875C4.77048 4.6875 4.21886 5.33106 4.21886 6.02978C4.20967 6.75609 4.77048 7.37207 5.41405 7.37207ZM10.7807 6.05619C10.7807 6.74114 10.24 7.37201 9.60912 7.37201C8.97825 7.37201 8.4375 6.76818 8.4375 6.05619C8.4375 5.37124 8.97825 4.74037 9.60912 4.74037C10.24 4.74037 10.7807 5.34421 10.7807 6.05619Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
                   <div
-                    onClick={handleGridVisibility}
-                    className="more-emojis-button"
+                    onClick={handleReactionClick}
+                    className="emoji-reactions-wrapper"
                   >
-                    <div className="more-emojis-icon-wrapper">
-                      <svg
-                        viewBox="0 0 18 18"
-                        width="18"
-                        preserveAspectRatio="xMidYMid meet"
-                        fill="none"
-                      >
-                        <path
-                          d="M0.779492 9.77945C0.345435 9.34539 0.354642 8.64524 0.789127 8.21075C1.00194 7.99794 1.27674 7.88259 1.57806 7.90017L7.88829 7.87934L7.90025 1.57797C7.89154 1.26779 7.99803 1.00185 8.21083 0.789044C8.64532 0.354559 9.32774 0.363086 9.7618 0.797143C9.99211 1.02746 10.0895 1.2667 10.0805 1.59463L10.0862 7.89598L16.4053 7.90173C16.7598 7.90156 16.9991 7.99893 17.2116 8.21153C17.6457 8.64558 17.6542 9.34573 17.2197 9.78022C17.0069 9.99302 16.7499 10.0906 16.4308 10.0908L10.1117 10.1028L10.0998 16.4041C10.1085 16.7143 10.002 16.9803 9.78031 17.2019C9.34582 17.6364 8.64567 17.6456 8.20275 17.2027C7.97244 16.9724 7.87508 16.6977 7.8841 16.3875L7.8872 10.095L1.60356 10.107C1.27564 10.116 1.00981 10.0098 0.779492 9.77945Z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
+                    {commonEmojis.map(emoji => {
+                      return (
+                        <Emoji
+                          key={uuidv4()}
+                          emojiName={emoji.emojiName}
+                          emoji={emoji.emoji}
+                        />
+                      )
+                    })}
+                    <div
+                      onClick={handleGridVisibility}
+                      className="more-emojis-button"
+                    >
+                      <div className="more-emojis-icon-wrapper">
+                        <svg
+                          viewBox="0 0 18 18"
+                          width="18"
+                          preserveAspectRatio="xMidYMid meet"
+                          fill="none"
+                        >
+                          <path
+                            d="M0.779492 9.77945C0.345435 9.34539 0.354642 8.64524 0.789127 8.21075C1.00194 7.99794 1.27674 7.88259 1.57806 7.90017L7.88829 7.87934L7.90025 1.57797C7.89154 1.26779 7.99803 1.00185 8.21083 0.789044C8.64532 0.354559 9.32774 0.363086 9.7618 0.797143C9.99211 1.02746 10.0895 1.2667 10.0805 1.59463L10.0862 7.89598L16.4053 7.90173C16.7598 7.90156 16.9991 7.99893 17.2116 8.21153C17.6457 8.64558 17.6542 9.34573 17.2197 9.78022C17.0069 9.99302 16.7499 10.0906 16.4308 10.0908L10.1117 10.1028L10.0998 16.4041C10.1085 16.7143 10.002 16.9803 9.78031 17.2019C9.34582 17.6364 8.64567 17.6456 8.20275 17.2027C7.97244 16.9724 7.87508 16.6977 7.8841 16.3875L7.8872 10.095L1.60356 10.107C1.27564 10.116 1.00981 10.0098 0.779492 9.77945Z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
               <div onClick={handleEmojiGrid} className="emojis-list">
                 <ReactionEmojiContainer type={"reaction"} />
               </div>
             </div>
+            {deleted === "true" ? (
+              <div
+                onClick={handleOptions}
+                data-option-menu
+                className="options-menu"
+              >
+                <OptionsMenu menuArray={chatOptionsDeleted} />
+              </div>
+            ) : (
+              <div
+                onClick={handleOptions}
+                data-option-menu
+                className="options-menu"
+              >
+                <OptionsMenu menuArray={chatOptionsOutgoing} />
+              </div>
+            )}
             <div
               onClick={handleOptions}
               data-option-menu
@@ -1107,3 +1175,5 @@ const chatOptionsOutgoing = [
   "Report",
   "Delete message"
 ]
+
+const chatOptionsDeleted = ["Delete message"]
