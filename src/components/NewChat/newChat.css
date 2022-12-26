@@ -3,6 +3,10 @@
   width: 450px;
   overflow: hidden;
   overflow-y: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-theme-color-dark);
 }
 
 .new-chat-wrapper::-webkit-scrollbar {

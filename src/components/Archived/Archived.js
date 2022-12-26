@@ -2,9 +2,16 @@ import React from "react"
 import "./archived.css"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 
-export default function Archived() {
+export default function Archived({ archivedActive, setArchivedActive }) {
+  function handleShowArchivedSection() {
+    if (!archivedActive) return setArchivedActive(!archivedActive)
+  }
+
   return (
-    <div className="archived-section-wrapper">
+    <div
+      onClick={handleShowArchivedSection}
+      className="archived-section-wrapper"
+    >
       <div className="archived-logo">
         <svg
           viewBox="0 0 20 20"

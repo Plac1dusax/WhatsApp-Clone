@@ -1,16 +1,27 @@
 import React from "react"
 import "./buttonPrimary.css"
 
-export default function ButtonPrimary({
-  buttonPrimary,
-  messageHistory,
-  setMessageHistory
-}) {
+export default function ButtonPrimary(props) {
+  const {
+    buttonPrimary,
+    messageHistory,
+    setMessageHistory,
+    startCommunityActive,
+    setStartCommunityActive
+  } = props
+
   function handleButtonClick(e) {
     switch (e.target.textContent) {
       case "DELETE FOR ME":
         handleDeleteForMe(e)
+      case "START A COMMUNITY":
+        handleStartCommunityVisibility()
+        break
     }
+  }
+
+  function handleStartCommunityVisibility() {
+    setStartCommunityActive(!startCommunityActive)
   }
 
   function handleDeleteForMe(e) {

@@ -1,12 +1,45 @@
 import React from "react"
 import "./sectionHeader.css"
 
-export default function SectionHeader({ header, menu }) {
+export default function SectionHeader(props) {
+  const {
+    header,
+    menu,
+    archivedActive,
+    setArchivedActive,
+    communityTabActive,
+    setCommunityTabActive,
+    startCommunityActive,
+    setStartCommunityActive,
+    newChatActive,
+    setNewChatActive
+  } = props
+
+  function handleSectionVisibility() {
+    switch (header) {
+      case "Archived":
+        setArchivedActive(!archivedActive)
+        break
+      case "Communities":
+        setCommunityTabActive(!communityTabActive)
+        break
+      case "New community":
+        setStartCommunityActive(!startCommunityActive)
+        break
+      case "New chat":
+        setNewChatActive(!newChatActive)
+        break
+    }
+  }
+
   if (!menu) {
     return (
       <div className="section-header-nav">
         <div className="title-section">
-          <div className="section-header-arrow-left">
+          <div
+            onClick={handleSectionVisibility}
+            className="section-header-arrow-left"
+          >
             <svg
               viewBox="0 0 24 24"
               height="24"

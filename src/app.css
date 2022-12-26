@@ -126,7 +126,6 @@
 body {
   background-color: var(--primary-theme-color-dark);
   margin: 0;
-  padding: 0;
   width: 100vw;
   height: 100vh;
 
@@ -147,7 +146,10 @@ body {
 
 .friends-list-container {
   max-width: 450px;
+  min-width: 450px;
   width: 450px;
+  flex-grow: 1;
+  overflow: hidden;
   background-color: var(--primary-theme-color-dark);
   position: relative;
 }
@@ -159,4 +161,19 @@ body {
   background-color: var(--navbar-theme-color-dark);
   border-left: 1px solid var(--border-color-dark);
   z-index: 100;
+}
+
+.section-deactivate {
+  position: absolute;
+  transform: translateX(-110%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  animation: hide-section 0.3s alternate forwards;
+}
+
+.section-active {
+  position: absolute;
+  transform: translateX(0%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
 }

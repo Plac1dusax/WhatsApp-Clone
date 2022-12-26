@@ -77,8 +77,8 @@
 [data-options] {
   position: absolute;
   z-index: 100;
-  bottom: -170px;
-  right: 40px;
+  bottom: -220px;
+  right: 30px;
   transform: scale(0);
   visibility: hidden;
   pointer-events: none;

@@ -1,5 +1,5 @@
 .section-header-nav {
-  position: fixed;
+  position: absolute;
   width: 450px;
   height: 100px;
   z-index: 5;
@@ -7,6 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  top: 0;
+  left: 0;
 }
 
 .title-section {
@@ -19,6 +21,7 @@
   font-size: 19px;
   margin-bottom: 1rem;
   margin-left: 3rem;
+  position: absolute;
 }
 
 .section-header-arrow-left {

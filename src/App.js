@@ -26,6 +26,10 @@ export const DatabaseContext = React.createContext()
 function App() {
   const [database, setDatabase] = useState([...chatHistory])
   const [userId, setUserId] = useState(null)
+  const [archivedActive, setArchivedActive] = useState(false)
+  const [communityTabActive, setCommunityTabActive] = useState(false)
+  const [startCommunityActive, setStartCommunityActive] = useState(false)
+  const [newChatActive, setNewChatActive] = useState(false)
 
   const value = [database, setDatabase, userId, setUserId]
 
@@ -36,11 +40,34 @@ function App() {
         {/* <KeyboardShortcuts /> */}
 
         <div className="friends-list-container">
-          <FriendsListSection />
-          {/* <ArchivedSection /> */}
-          {/* <CommunitiesSection /> */}
-          {/* <StartCommunity /> */}
-          {/* <NewChat /> */}
+          <FriendsListSection
+            archivedActive={archivedActive}
+            setArchivedActive={setArchivedActive}
+            communityTabActive={communityTabActive}
+            setCommunityTabActive={setCommunityTabActive}
+            startCommunityActive={startCommunityActive}
+            setStartCommunityActive={setStartCommunityActive}
+            newChatActive={newChatActive}
+            setNewChatActive={setNewChatActive}
+          />
+          <ArchivedSection
+            archivedActive={archivedActive}
+            setArchivedActive={setArchivedActive}
+          />
+          <CommunitiesSection
+            communityTabActive={communityTabActive}
+            setCommunityTabActive={setCommunityTabActive}
+            startCommunityActive={startCommunityActive}
+            setStartCommunityActive={setStartCommunityActive}
+          />
+          <StartCommunity
+            startCommunityActive={startCommunityActive}
+            setStartCommunityActive={setStartCommunityActive}
+          />
+          <NewChat
+            newChatActive={newChatActive}
+            setNewChatActive={setNewChatActive}
+          />
           {/* <Profile /> */}
           {/* <Settings /> */}
           {/* <Notifications /> */}

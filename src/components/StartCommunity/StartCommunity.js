@@ -1,12 +1,37 @@
-import React from "react"
+import React, { useRef } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import "./startCommunity.css"
 import CustomInputArea from "../CustomInputArea/CustomInputArea"
 
-export default function StartCommunity() {
+export default function StartCommunity({
+  startCommunityActive,
+  setStartCommunityActive
+}) {
+  const startCommunitySection = useRef()
+
+  function handleCommunitySectionVisibility() {
+    if (!startCommunityActive) {
+      startCommunitySection?.current?.classList?.remove("section-active")
+      startCommunitySection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (startCommunityActive) {
+      startCommunitySection?.current?.classList?.remove("section-deactivate")
+      startCommunitySection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleCommunitySectionVisibility()
   return (
-    <>
-      <SectionHeader header={"New community"} />
+    <div
+      ref={startCommunitySection}
+      className="start-community-container section-deactivate"
+    >
+      <SectionHeader
+        startCommunityActive={startCommunityActive}
+        setStartCommunityActive={setStartCommunityActive}
+        header={"New community"}
+      />
       <div className="new-community-wrapper">
         <div className="icons-wrapper">
           <div className="add-community-background-icon">
@@ -82,6 +107,6 @@ export default function StartCommunity() {
           <div className="button-background"></div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

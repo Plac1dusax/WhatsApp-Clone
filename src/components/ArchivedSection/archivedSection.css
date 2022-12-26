@@ -1,3 +1,10 @@
+.archived-section-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-theme-color-dark);
+}
+
 .archived-section-nav {
   position: fixed;
   width: 450px;

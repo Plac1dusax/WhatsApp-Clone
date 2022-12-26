@@ -1,17 +1,36 @@
-import React from "react"
+import React, { useRef } from "react"
 import "./newChat.css"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import Searchbar from "../Searchbar/Searchbar"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import ContactsList from "../ContactsList/ContactsList"
 
-export default function NewChat() {
+export default function NewChat({ newChatActive, setNewChatActive }) {
+  const newChatSection = useRef()
+
+  function handleNewChatSectionVisibility() {
+    if (!newChatActive) {
+      newChatSection?.current?.classList?.remove("section-active")
+      newChatSection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (newChatActive) {
+      newChatSection?.current?.classList?.remove("section-deactivate")
+      newChatSection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleNewChatSectionVisibility()
   return (
     <>
-      <div className="new-chat-wrapper">
+      <div ref={newChatSection} className="new-chat-wrapper section-deactivate">
         <div className="new-chat-header-section">
           <div className="searchbar-wrapper">
-            <SectionHeader header={"New chat"} />
+            <SectionHeader
+              newChatActive={newChatActive}
+              setNewChatActive={setNewChatActive}
+              header={"New chat"}
+            />
           </div>
           <div className="contacts-section">
             <div className="searchbar-wrapper">

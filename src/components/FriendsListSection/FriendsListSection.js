@@ -6,7 +6,16 @@ import Chat from "../Chat/Chat"
 import { DatabaseContext } from "../../App"
 import { v4 as uuidv4 } from "uuid"
 
-export default function FriendsListSection() {
+export default function FriendsListSection(props) {
+  const {
+    archivedActive,
+    setArchivedActive,
+    communityTabActive,
+    setCommunityTabActive,
+    newChatActive,
+    setNewChatActive
+  } = props
+
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
 
   return (
@@ -14,14 +23,23 @@ export default function FriendsListSection() {
       <div className="friends-list-section-wrapper">
         <div className="navbar-and-searchbar-wrapper">
           <div>
-            <Navbar type={"friends-list"} />
+            <Navbar
+              communityTabActive={communityTabActive}
+              setCommunityTabActive={setCommunityTabActive}
+              newChatActive={newChatActive}
+              setNewChatActive={setNewChatActive}
+              type={"friends-list"}
+            />
           </div>
           <div>
             <SearchFriend />
           </div>
         </div>
         <div className="chat-section-wrapper">
-          <Archived />
+          <Archived
+            archivedActive={archivedActive}
+            setArchivedActive={setArchivedActive}
+          />
           {database.map(data => {
             const lastMessage = data.messages[data.messages.length - 1].message
             const messageStatus = data.messages[data.messages.length - 1].status

@@ -4,7 +4,16 @@ import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import "./navbar.css"
 
-export default function Navbar({ type, userProfilePhoto }) {
+export default function Navbar(props) {
+  const {
+    type,
+    userProfilePhoto,
+    communityTabActive,
+    setCommunityTabActive,
+    newChatActive,
+    setNewChatActive
+  } = props
+
   function handleMoreOptionsNav(e) {
     const container = e.target.closest(".navbar-container")
     const moreOptionsButton = container.querySelector(".more-options-btn")
@@ -27,6 +36,14 @@ export default function Navbar({ type, userProfilePhoto }) {
     }
   }
 
+  function handleShowCommunitySection() {
+    setCommunityTabActive(!communityTabActive)
+  }
+
+  function handleShowNewChat() {
+    setNewChatActive(!newChatActive)
+  }
+
   if (type === "friends-list") {
     return (
       <div className="navbar-container">
@@ -37,7 +54,10 @@ export default function Navbar({ type, userProfilePhoto }) {
           }
         />
         <div className="navigation-buttons-container">
-          <div className="nav community-btn">
+          <div
+            onClick={handleShowCommunitySection}
+            className="nav community-btn"
+          >
             <svg
               viewBox="0 0 28 28"
               height="28"
@@ -75,7 +95,7 @@ export default function Navbar({ type, userProfilePhoto }) {
               ></path>
             </svg>
           </div>
-          <div className="nav new-chat-btn">
+          <div onClick={handleShowNewChat} className="nav new-chat-btn">
             <svg
               viewBox="0 0 24 24"
               height="24"
