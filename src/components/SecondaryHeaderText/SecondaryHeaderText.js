@@ -8,9 +8,7 @@ export default function SecondaryHeaderText(props) {
     style = {
       color: "var(--secondary-header-text-dark)",
       fontSize: "14px",
-      whiteSpace: "nowrap",
       overflow: "hidden",
-      maxWidth: "270px",
       textOverflow: "ellipsis "
     }
 
@@ -84,6 +82,17 @@ export default function SecondaryHeaderText(props) {
       color: "var(--primary-input-text-color)",
       fontSize: "14.2px",
       fontWeight: "normal"
+    }
+
+    renderText = text
+  } else if (headerType === "message") {
+    style = {
+      color: "var(--secondary-header-text-dark)",
+      fontSize: "14px",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      maxWidth: "270px",
+      textOverflow: "ellipsis "
     }
 
     renderText = text

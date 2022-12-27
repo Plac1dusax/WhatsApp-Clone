@@ -26,7 +26,7 @@ export default function StarredMessage({ reply }) {
               version="1.1"
               x="0px"
               y="0px"
-              enable-background="new 0 0 10 21"
+              enableBackground="new 0 0 10 21"
             >
               <path
                 fill="currentColor"

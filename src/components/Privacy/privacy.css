@@ -1,8 +1,11 @@
 .privacy-container {
   height: 710px;
-  overflow: hidden;
-  overflow-y: auto;
+
   width: 450px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--primary-theme-color-dark);
 }
 
 .privacy-container::-webkit-scrollbar {
@@ -22,6 +25,22 @@
   top: 100px;
   padding: 0.5rem 2rem;
   border-left: 1px solid hsla(0, 0%, 0%, 0.1);
+  height: 620px;
+  max-height: 620px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.privacy-body::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.privacy-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.privacy-body::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .personal-privacy-settings {

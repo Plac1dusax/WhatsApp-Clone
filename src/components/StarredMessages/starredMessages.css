@@ -1,5 +1,9 @@
 .starred-messages-container {
   width: 450px;
+  background-color: var(--primary-theme-color-dark);
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .starred-messages-header {

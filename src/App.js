@@ -30,13 +30,21 @@ function App() {
   const [communityTabActive, setCommunityTabActive] = useState(false)
   const [startCommunityActive, setStartCommunityActive] = useState(false)
   const [newChatActive, setNewChatActive] = useState(false)
+  const [starredMessagesActive, setStarredMessagesActive] = useState(false)
+  const [settingsActive, setSettingsActive] = useState(false)
+  const [notificationsActive, setNotificationsActive] = useState(false)
+  const [privacyActive, setPrivacyActive] = useState(false)
+  const [chatWallpaperActive, setChatWallpaperActive] = useState(false)
+  const [securityActive, setSecurityActive] = useState(false)
+  const [requestAccountInfoActive, setRequestAccountInfoActive] =
+    useState(false)
 
   const value = [database, setDatabase, userId, setUserId]
 
   return (
     <DatabaseContext.Provider value={value}>
       <div className="wrapper">
-        {/* <Theme /> */}
+        <Theme />
         {/* <KeyboardShortcuts /> */}
 
         <div className="friends-list-container">
@@ -49,6 +57,10 @@ function App() {
             setStartCommunityActive={setStartCommunityActive}
             newChatActive={newChatActive}
             setNewChatActive={setNewChatActive}
+            starredMessagesActive={starredMessagesActive}
+            setStarredMessagesActive={setStarredMessagesActive}
+            settingsActive={settingsActive}
+            setSettingsActive={setSettingsActive}
           />
           <ArchivedSection
             archivedActive={archivedActive}
@@ -69,13 +81,44 @@ function App() {
             setNewChatActive={setNewChatActive}
           />
           {/* <Profile /> */}
-          {/* <Settings /> */}
-          {/* <Notifications /> */}
-          {/* <Privacy /> */}
-          {/* <Security /> */}
-          {/* <ChatWallpaper /> */}
-          {/* <RequestAccountInfo /> */}
-          {/* <StarredMessages /> */}
+          <Settings
+            settingsActive={settingsActive}
+            setSettingsActive={setSettingsActive}
+            notificationsActive={notificationsActive}
+            setNotificationsActive={setNotificationsActive}
+            privacyActive={privacyActive}
+            setPrivacyActive={setPrivacyActive}
+            chatWallpaperActive={chatWallpaperActive}
+            setChatWallpaperActive={setChatWallpaperActive}
+            securityActive={securityActive}
+            setSecurityActive={setSecurityActive}
+            requestAccountInfoActive={requestAccountInfoActive}
+            setRequestAccountInfoActive={setRequestAccountInfoActive}
+          />
+          <Notifications
+            notificationsActive={notificationsActive}
+            setNotificationsActive={setNotificationsActive}
+          />
+          <Privacy
+            privacyActive={privacyActive}
+            setPrivacyActive={setPrivacyActive}
+          />
+          <Security
+            securityActive={securityActive}
+            setSecurityActive={setSecurityActive}
+          />
+          <ChatWallpaper
+            chatWallpaperActive={chatWallpaperActive}
+            setChatWallpaperActive={setChatWallpaperActive}
+          />
+          <RequestAccountInfo
+            requestAccountInfoActive={requestAccountInfoActive}
+            setRequestAccountInfoActive={setRequestAccountInfoActive}
+          />
+          <StarredMessages
+            starredMessagesActive={starredMessagesActive}
+            setStarredMessagesActive={setStarredMessagesActive}
+          />
         </div>
         <div className="direct-message-container">
           {userId ? <DirectMessage /> : <ChatSection />}

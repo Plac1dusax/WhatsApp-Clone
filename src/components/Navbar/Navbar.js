@@ -11,7 +11,13 @@ export default function Navbar(props) {
     communityTabActive,
     setCommunityTabActive,
     newChatActive,
-    setNewChatActive
+    setNewChatActive,
+    startCommunityActive,
+    setStartCommunityActive,
+    starredMessagesActive,
+    setStarredMessagesActive,
+    settingsActive,
+    setSettingsActive
   } = props
 
   function handleMoreOptionsNav(e) {
@@ -131,7 +137,15 @@ export default function Navbar(props) {
             </svg>
           </div>
           <div data-options>
-            <OptionsMenu menuArray={friendsListNavOptions} />
+            <OptionsMenu
+              startCommunityActive={startCommunityActive}
+              setStartCommunityActive={setStartCommunityActive}
+              menuArray={friendsListNavOptions}
+              starredMessagesActive={starredMessagesActive}
+              setStarredMessagesActive={setStarredMessagesActive}
+              settingsActive={settingsActive}
+              setSettingsActive={setSettingsActive}
+            />
           </div>
         </div>
       </div>

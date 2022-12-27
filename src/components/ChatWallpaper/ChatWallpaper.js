@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useRef } from "react"
 import CustomCheckbox from "../CustomCheckbox/CustomCheckbox"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import ChatWallpaperColor from "../ChatWallpaperColor/ChatWallpaperColor"
+import { v4 as uuidv4 } from "uuid"
 import "./chatWallpaper.css"
 
 const backgrounds = [
@@ -121,11 +122,35 @@ const backgrounds = [
   }
 ]
 
-export default function ChatWallpaper() {
+export default function ChatWallpaper(props) {
+  const chatWallpaperSection = useRef()
+  const { chatWallpaperActive, setChatWallpaperActive } = props
+
+  function handleChatWallpaperSectionVisibility() {
+    if (!chatWallpaperActive) {
+      chatWallpaperSection?.current?.classList?.remove("section-active")
+      chatWallpaperSection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (chatWallpaperActive) {
+      chatWallpaperSection?.current?.classList?.remove("section-deactivate")
+      chatWallpaperSection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleChatWallpaperSectionVisibility()
+
   return (
-    <div className="chat-wallpaper-container">
+    <div
+      ref={chatWallpaperSection}
+      className="chat-wallpaper-container section-deactivate"
+    >
       <div className="chat-wallpaper-header">
-        <SectionHeader header={"Set Chat Wallpaper"} />
+        <SectionHeader
+          chatWallpaperActive={chatWallpaperActive}
+          setChatWallpaperActive={setChatWallpaperActive}
+          header={"Set Chat Wallpaper"}
+        />
       </div>
       <div className="chat-wallpaper-body">
         <div className="set-doodle-background">
@@ -139,6 +164,7 @@ export default function ChatWallpaper() {
           {backgrounds.map(background => {
             return (
               <ChatWallpaperColor
+                key={uuidv4()}
                 standard={background.standard}
                 backgroundColor={background.backgroundColor}
                 selected={background.selected}

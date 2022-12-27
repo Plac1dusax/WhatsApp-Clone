@@ -1,11 +1,16 @@
-import React, { useState } from "react"
+import React, { useRef } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import SettingWithCheckbox from "../SettingWithCheckbox/SettingWithCheckbox"
 import MiniSectionHeader from "../MiniSectionHeader/MiniSectionHeader"
 import { v4 as uuidv4 } from "uuid"
 import "./notifications.css"
 
-export default function Notifications() {
+export default function Notifications({
+  notificationsActive,
+  setNotificationsActive
+}) {
+  const notificationsSection = useRef()
+
   const notificationSettings = [
     {
       primaryText: "Message notifications",
@@ -30,10 +35,31 @@ export default function Notifications() {
     }
   ]
 
+  function handleNotificationsSectionVisibility() {
+    if (!notificationsActive) {
+      notificationsSection?.current?.classList?.remove("section-active")
+      notificationsSection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (notificationsActive) {
+      notificationsSection?.current?.classList?.remove("section-deactivate")
+      notificationsSection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleNotificationsSectionVisibility()
+
   return (
-    <div className="notifications-container">
+    <div
+      ref={notificationsSection}
+      className="notifications-container section-deactivate"
+    >
       <div className="notifications-header">
-        <SectionHeader header={"Notifications"} />
+        <SectionHeader
+          notificationsActive={notificationsActive}
+          setNotificationsActive={setNotificationsActive}
+          header={"Notifications"}
+        />
       </div>
       <div className="notifications-body">
         <MiniSectionHeader text={"MESSAGES"} />

@@ -1,14 +1,39 @@
-import React from "react"
+import React, { useRef } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import "./requestAccountInfo.css"
 
-export default function RequestAccountInfo() {
+export default function RequestAccountInfo(props) {
+  const { requestAccountInfoActive, setRequestAccountInfoActive } = props
+  const requestAccountInfoSection = useRef()
+
+  function handleRequestAccountInfoSectionVisibility() {
+    if (!requestAccountInfoActive) {
+      requestAccountInfoSection?.current?.classList?.remove("section-active")
+      requestAccountInfoSection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (requestAccountInfoActive) {
+      requestAccountInfoSection?.current?.classList?.remove(
+        "section-deactivate"
+      )
+      requestAccountInfoSection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleRequestAccountInfoSectionVisibility()
   return (
-    <div className="request-account-info-container">
+    <div
+      ref={requestAccountInfoSection}
+      className="request-account-info-container section-deactivate"
+    >
       <div className="request-account-info-header">
-        <SectionHeader header={"Request Account Info"} />
+        <SectionHeader
+          header={"Request Account Info"}
+          requestAccountInfoActive={requestAccountInfoActive}
+          setRequestAccountInfoActive={setRequestAccountInfoActive}
+        />
       </div>
       <div className="request-account-info-body">
         <div className="request-account-info-icon">

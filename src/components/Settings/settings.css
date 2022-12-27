@@ -3,17 +3,23 @@
   position: absolute;
   top: 0;
   left: 0;
+  background-color: var(--primary-theme-color-dark);
 }
 
 .settings-body {
   position: relative;
   top: 100px;
-  padding: 1rem;
 }
 
 .profile {
   display: flex;
   align-items: center;
+  padding: 10px;
+}
+
+.profile:hover {
+  background-color: var(--primary-hover-dark);
+  cursor: pointer;
 }
 
 .user-name-and-about {

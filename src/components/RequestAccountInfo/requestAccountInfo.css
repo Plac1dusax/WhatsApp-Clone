@@ -1,5 +1,11 @@
 .request-account-info-container {
   width: 450px;
+  max-height: 720px;
+  height: 720px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-theme-color-dark);
 }
 
 .request-account-info-icon {

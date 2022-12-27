@@ -53,7 +53,7 @@ export default function Chat(props) {
           <PrimaryHeaderText headerType={"chat"} text={userName} />
           <Time time={time} />
         </div>
-        <Message info={info} headerType={"chat"} text={lastMessage} />
+        <Message info={info} headerType={"message"} text={lastMessage} />
       </div>
       <div data-chat-options>
         <OptionsMenu menuArray={chatOptions} />

@@ -13,7 +13,13 @@ export default function FriendsListSection(props) {
     communityTabActive,
     setCommunityTabActive,
     newChatActive,
-    setNewChatActive
+    setNewChatActive,
+    startCommunityActive,
+    setStartCommunityActive,
+    starredMessagesActive,
+    setStarredMessagesActive,
+    settingsActive,
+    setSettingsActive
   } = props
 
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
@@ -28,6 +34,12 @@ export default function FriendsListSection(props) {
               setCommunityTabActive={setCommunityTabActive}
               newChatActive={newChatActive}
               setNewChatActive={setNewChatActive}
+              startCommunityActive={startCommunityActive}
+              setStartCommunityActive={setStartCommunityActive}
+              starredMessagesActive={starredMessagesActive}
+              setStarredMessagesActive={setStarredMessagesActive}
+              settingsActive={settingsActive}
+              setSettingsActive={setSettingsActive}
               type={"friends-list"}
             />
           </div>

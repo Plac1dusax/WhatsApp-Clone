@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useRef } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import LogoAndText from "../LogoAndText/LogoAndText"
 import CustomCheckbox from "../CustomCheckbox/CustomCheckbox"
+import { v4 as uuidv4 } from "uuid"
 import "./security.css"
 
 const listItems = [
@@ -130,11 +131,34 @@ const listItems = [
   }
 ]
 
-export default function Security() {
+export default function Security(props) {
+  const { securityActive, setSecurityActive } = props
+  const securitySection = useRef()
+
+  function handleSecuritySectionVisibility() {
+    if (!securityActive) {
+      securitySection?.current?.classList?.remove("section-active")
+      securitySection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (securityActive) {
+      securitySection?.current?.classList?.remove("section-deactivate")
+      securitySection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleSecuritySectionVisibility()
   return (
-    <div className="security-container">
+    <div
+      ref={securitySection}
+      className="security-container section-deactivate"
+    >
       <div className="security-header">
-        <SectionHeader header={"Security"} />
+        <SectionHeader
+          securityActive={securityActive}
+          setSecurityActive={setSecurityActive}
+          header={"Security"}
+        />
       </div>
       <div className="security-body">
         <div className="security-icon">
@@ -168,7 +192,9 @@ export default function Security() {
           </div>
           <div className="description-area-list">
             {listItems.map(item => {
-              return <LogoAndText logo={item.logo} text={item.text} />
+              return (
+                <LogoAndText key={uuidv4()} logo={item.logo} text={item.text} />
+              )
             })}
           </div>
           <div className="learn-more">Learn more</div>

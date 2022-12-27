@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useRef } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import MiniSectionHeader from "../MiniSectionHeader/MiniSectionHeader"
 import PrivacySettings from "../PrivacySettings/PrivacySettings"
 import SettingWithCheckbox from "../SettingWithCheckbox/SettingWithCheckbox"
-
+import { v4 as uuidv4 } from "uuid"
 import "./privacy.css"
 
-export default function Privacy() {
+export default function Privacy(props) {
+  const { privacyActive, setPrivacyActive } = props
+  const privacySection = useRef()
+
   const personalSettings = [
     {
       primary: "Last seen and online",
@@ -33,10 +36,28 @@ export default function Privacy() {
     }
   ]
 
+  function handlePrivacySectionVisibility() {
+    if (!privacyActive) {
+      privacySection?.current?.classList?.remove("section-active")
+      privacySection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (privacyActive) {
+      privacySection?.current?.classList?.remove("section-deactivate")
+      privacySection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handlePrivacySectionVisibility()
+
   return (
-    <div className="privacy-container">
+    <div ref={privacySection} className="privacy-container section-deactivate">
       <div className="privacy-header">
-        <SectionHeader header={"Privacy"} />
+        <SectionHeader
+          privacyActive={privacyActive}
+          setPrivacyActive={setPrivacyActive}
+          header={"Privacy"}
+        />
       </div>
       <div className="privacy-body">
         <div className="personal-privacy-settings">
@@ -44,6 +65,7 @@ export default function Privacy() {
           {personalSettings.map(setting => {
             return (
               <PrivacySettings
+                key={uuidv4()}
                 primary={setting.primary}
                 secondary={setting.secondary}
                 border={true}
@@ -69,6 +91,7 @@ export default function Privacy() {
             if (index + 1 === array.length) {
               return (
                 <PrivacySettings
+                  key={uuidv4()}
                   primary={setting.primary}
                   secondary={setting.secondary}
                   border={false}
@@ -77,6 +100,7 @@ export default function Privacy() {
             } else {
               return (
                 <PrivacySettings
+                  key={uuidv4()}
                   primary={setting.primary}
                   secondary={setting.secondary}
                   border={true}

@@ -1,20 +1,59 @@
-import React from "react"
+import React, { useRef } from "react"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import Setting from "../Setting/Setting"
+import { v4 as uuidv4 } from "uuid"
 import "./settings.css"
 
-export default function Settings() {
+export default function Settings(props) {
+  const {
+    settingsActive,
+    setSettingsActive,
+    notificationsActive,
+    setNotificationsActive,
+    privacyActive,
+    setPrivacyActive,
+    chatWallpaperActive,
+    setChatWallpaperActive,
+    securityActive,
+    setSecurityActive,
+    requestAccountInfoActive,
+    setRequestAccountInfoActive
+  } = props
+  const settingsSection = useRef()
+
+  function handleSettingsSectionVisibility() {
+    if (!settingsActive) {
+      settingsSection?.current?.classList?.remove("section-active")
+      settingsSection?.current?.classList?.add("section-deactivate")
+    }
+
+    if (settingsActive) {
+      settingsSection?.current?.classList?.remove("section-deactivate")
+      settingsSection?.current?.classList?.add("section-active")
+    }
+  }
+
+  handleSettingsSectionVisibility()
   return (
-    <div className="settings-wrapper">
+    <div ref={settingsSection} className="settings-wrapper section-deactivate">
       <div className="settings-header">
-        <SectionHeader header={"Settings"} />
+        <SectionHeader
+          settingsActive={settingsActive}
+          setSettingsActive={setSettingsActive}
+          header={"Settings"}
+        />
       </div>
       <div className="settings-body">
         <div className="profile">
-          <ProfilePhoto navProfilePhoto={"settings"} />
+          <ProfilePhoto
+            navProfilePhoto={"settings"}
+            url={
+              "https://images.unsplash.com/photo-1596075780750-81249df16d19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+            }
+          />
           <div className="user-name-and-about">
             <PrimaryHeaderText headerType={"settings"} text={"User name"} />
             <SecondaryHeaderText headerType={"chat"} text={"About"} />
@@ -22,7 +61,23 @@ export default function Settings() {
         </div>
         <div className="settings-list">
           {settingsList.map(setting => {
-            return <Setting svg={setting.svg} name={setting.name} />
+            return (
+              <Setting
+                key={uuidv4()}
+                svg={setting.svg}
+                name={setting.name}
+                notificationsActive={notificationsActive}
+                setNotificationsActive={setNotificationsActive}
+                privacyActive={privacyActive}
+                setPrivacyActive={setPrivacyActive}
+                chatWallpaperActive={chatWallpaperActive}
+                setChatWallpaperActive={setChatWallpaperActive}
+                securityActive={securityActive}
+                setSecurityActive={setSecurityActive}
+                requestAccountInfoActive={requestAccountInfoActive}
+                setRequestAccountInfoActive={setRequestAccountInfoActive}
+              />
+            )
           })}
         </div>
       </div>

@@ -1,19 +1,9 @@
 .chat-wallpaper-container {
-  overflow: hidden;
-  overflow-y: auto;
   width: 450px;
-}
-
-.chat-wallpaper-container::-webkit-scrollbar {
-  width: 0.5vw;
-}
-
-.chat-wallpaper-container::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-color);
-}
-
-.chat-wallpaper-container::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--primary-theme-color-dark);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .chat-wallpaper-body {
@@ -22,6 +12,20 @@
   padding: 1rem;
   overflow: hidden;
   overflow-y: auto;
+  height: 620px;
+  max-height: 620px;
+}
+
+.chat-wallpaper-body::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.chat-wallpaper-body::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+.chat-wallpaper-body::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .set-doodle-background {
@@ -40,5 +44,6 @@
   row-gap: 15px;
   justify-content: center;
   align-items: center;
+  background-color: var(--primary-theme-color-dark);
   position: relative;
 }
