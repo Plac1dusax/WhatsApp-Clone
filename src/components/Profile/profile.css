@@ -1,8 +1,12 @@
 .profile-wrapper {
   width: 450px;
+  max-height: 720px;
+  height: 720px;
   position: absolute;
   left: 0;
   top: 0;
+  background-color: var(--primary-theme-color-dark);
+  z-index: 1000000;
 }
 
 .profile-body {

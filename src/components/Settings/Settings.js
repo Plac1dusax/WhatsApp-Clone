@@ -20,7 +20,9 @@ export default function Settings(props) {
     securityActive,
     setSecurityActive,
     requestAccountInfoActive,
-    setRequestAccountInfoActive
+    setRequestAccountInfoActive,
+    profileActive,
+    setProfileActive
   } = props
   const settingsSection = useRef()
 
@@ -37,6 +39,11 @@ export default function Settings(props) {
   }
 
   handleSettingsSectionVisibility()
+
+  function handleProfileClick() {
+    setProfileActive(!profileActive)
+  }
+
   return (
     <div ref={settingsSection} className="settings-wrapper section-deactivate">
       <div className="settings-header">
@@ -47,7 +54,7 @@ export default function Settings(props) {
         />
       </div>
       <div className="settings-body">
-        <div className="profile">
+        <div onClick={handleProfileClick} className="profile">
           <ProfilePhoto
             navProfilePhoto={"settings"}
             url={
@@ -76,6 +83,8 @@ export default function Settings(props) {
                 setSecurityActive={setSecurityActive}
                 requestAccountInfoActive={requestAccountInfoActive}
                 setRequestAccountInfoActive={setRequestAccountInfoActive}
+                profileActive={profileActive}
+                setProfileActive={setProfileActive}
               />
             )
           })}

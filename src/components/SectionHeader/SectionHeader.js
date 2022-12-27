@@ -26,7 +26,9 @@ export default function SectionHeader(props) {
     securityActive,
     setSecurityActive,
     requestAccountInfoActive,
-    setRequestAccountInfoActive
+    setRequestAccountInfoActive,
+    profileActive,
+    setProfileActive
   } = props
 
   function handleSectionVisibility() {
@@ -63,6 +65,9 @@ export default function SectionHeader(props) {
         break
       case "Request Account Info":
         setRequestAccountInfoActive(!requestAccountInfoActive)
+        break
+      case "Profile":
+        setProfileActive(!profileActive)
         break
     }
   }

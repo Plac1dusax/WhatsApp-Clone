@@ -15,10 +15,12 @@ export default function Setting(props) {
     securityActive,
     setSecurityActive,
     requestAccountInfoActive,
-    setRequestAccountInfoActive
+    setRequestAccountInfoActive,
+    profileActive,
+    setProfileActive
   } = props
 
-  function handleSetting() {
+  function handleSetting(e) {
     switch (name) {
       case "Notifications":
         setNotificationsActive(!notificationsActive)

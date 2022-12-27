@@ -38,6 +38,7 @@ function App() {
   const [securityActive, setSecurityActive] = useState(false)
   const [requestAccountInfoActive, setRequestAccountInfoActive] =
     useState(false)
+  const [profileActive, setProfileActive] = useState(false)
 
   const value = [database, setDatabase, userId, setUserId]
 
@@ -80,7 +81,10 @@ function App() {
             newChatActive={newChatActive}
             setNewChatActive={setNewChatActive}
           />
-          {/* <Profile /> */}
+          <Profile
+            profileActive={profileActive}
+            setProfileActive={setProfileActive}
+          />
           <Settings
             settingsActive={settingsActive}
             setSettingsActive={setSettingsActive}
@@ -94,6 +98,8 @@ function App() {
             setSecurityActive={setSecurityActive}
             requestAccountInfoActive={requestAccountInfoActive}
             setRequestAccountInfoActive={setRequestAccountInfoActive}
+            profileActive={profileActive}
+            setProfileActive={setProfileActive}
           />
           <Notifications
             notificationsActive={notificationsActive}
