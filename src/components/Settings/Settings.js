@@ -22,7 +22,11 @@ export default function Settings(props) {
     requestAccountInfoActive,
     setRequestAccountInfoActive,
     profileActive,
-    setProfileActive
+    setProfileActive,
+    keyboardShortcutsActive,
+    setKeyboardShortcutsActive,
+    themeActive,
+    setThemeActive
   } = props
   const settingsSection = useRef()
 
@@ -85,6 +89,10 @@ export default function Settings(props) {
                 setRequestAccountInfoActive={setRequestAccountInfoActive}
                 profileActive={profileActive}
                 setProfileActive={setProfileActive}
+                keyboardShortcutsActive={keyboardShortcutsActive}
+                setKeyboardShortcutsActive={setKeyboardShortcutsActive}
+                themeActive={themeActive}
+                setThemeActive={setThemeActive}
               />
             )
           })}

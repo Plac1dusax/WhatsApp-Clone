@@ -142,6 +142,7 @@ body {
   height: 95vh;
 
   display: flex;
+  justify-content: center;
 }
 
 .friends-list-container {
@@ -176,4 +177,28 @@ body {
   transform: translateX(0%);
   transition: transform 0.3s ease;
   z-index: 1000;
+}
+
+.alert-deactivate {
+  transform: scale(0) translateX(-50%) translateY(-50%);
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+  pointer-events: auto;
+}
+
+.alert-active {
+  transform: scale(1) translateX(-50%) translateY(-50%);
+  transform-origin: top left;
+  transition: transform 0.3s ease-in-out;
+  pointer-events: auto;
+}
+
+.overlay-show {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.overlay-hide {
+  visibility: hidden;
+  pointer-events: none;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./app.css"
 import FriendsListSection from "./components/FriendsListSection/FriendsListSection"
 import ChatSection from "./components/ChatSection/ChatSection"
@@ -12,8 +12,6 @@ import Notifications from "./components/Notifications/Notifications"
 import Privacy from "./components/Privacy/Privacy"
 import Security from "./components/Security/Security"
 import Theme from "./components/Theme/Theme"
-import ButtonSecondary from "./components/ButtonSecondary/ButtonSecondary"
-import ButtonPrimary from "./components/ButtonPrimary/ButtonPrimary"
 import ChatWallpaper from "./components/ChatWallpaper/ChatWallpaper"
 import RequestAccountInfo from "./components/RequestAccountInfo/RequestAccountInfo"
 import KeyboardShortcuts from "./components/KeyboardShortcuts/KeyboardShortcuts"
@@ -39,14 +37,35 @@ function App() {
   const [requestAccountInfoActive, setRequestAccountInfoActive] =
     useState(false)
   const [profileActive, setProfileActive] = useState(false)
-
+  const [keyboardShortcutsActive, setKeyboardShortcutsActive] = useState(false)
+  const [themeActive, setThemeActive] = useState(false)
+  const [theme, setTheme] = useState("dark")
   const value = [database, setDatabase, userId, setUserId]
+
+  const root = document.querySelector(":root")
+  const styles = getComputedStyle(root)
+
+  useEffect(() => {
+    if (theme === "light") {
+      handleLightTheme()
+    }
+  }, [theme])
+
+  function handleLightTheme() {}
 
   return (
     <DatabaseContext.Provider value={value}>
       <div className="wrapper">
-        <Theme />
-        {/* <KeyboardShortcuts /> */}
+        <Theme
+          themeActive={themeActive}
+          setThemeActive={setThemeActive}
+          theme={theme}
+          setTheme={setTheme}
+        />
+        <KeyboardShortcuts
+          keyboardShortcutsActive={keyboardShortcutsActive}
+          setKeyboardShortcutsActive={setKeyboardShortcutsActive}
+        />
 
         <div className="friends-list-container">
           <FriendsListSection
@@ -100,6 +119,10 @@ function App() {
             setRequestAccountInfoActive={setRequestAccountInfoActive}
             profileActive={profileActive}
             setProfileActive={setProfileActive}
+            keyboardShortcutsActive={keyboardShortcutsActive}
+            setKeyboardShortcutsActive={setKeyboardShortcutsActive}
+            themeActive={themeActive}
+            setThemeActive={setThemeActive}
           />
           <Notifications
             notificationsActive={notificationsActive}

@@ -4,7 +4,10 @@ import "./buttonSecondary.css"
 export default function ButtonSecondary({
   buttonSecondary,
   messageHistory,
-  setMessageHistory
+  setMessageHistory,
+  location,
+  themeActive,
+  setThemeActive
 }) {
   function handleButtonClick(e) {
     switch (e.target.textContent) {
@@ -19,19 +22,22 @@ export default function ButtonSecondary({
         break
     }
   }
-
   function handleMessageDelete(e) {
     deleteOutgoingMessage(e)
   }
 
   function handleCancelButton(e) {
-    const container = e.target.closest(".chat-message")
-    const alert = container.querySelector(".custom-alert")
-    const overlay = container.querySelector(".overlay")
+    if (location === "choose-theme") {
+      setThemeActive(!themeActive)
+    } else {
+      const container = e.target.closest(".chat-message")
+      const alert = container.querySelector(".custom-alert")
+      const overlay = container.querySelector(".overlay")
 
-    alert.classList.remove("custom-alert-show")
-    alert.classList.add("custom-alert-hide")
-    overlay.style.display = "none"
+      alert.classList.remove("custom-alert-show")
+      alert.classList.add("custom-alert-hide")
+      overlay.style.display = "none"
+    }
   }
 
   function deleteOutgoingMessage(e) {

@@ -17,7 +17,11 @@ export default function Setting(props) {
     requestAccountInfoActive,
     setRequestAccountInfoActive,
     profileActive,
-    setProfileActive
+    setProfileActive,
+    keyboardShortcutsActive,
+    setKeyboardShortcutsActive,
+    themeActive,
+    setThemeActive
   } = props
 
   function handleSetting(e) {
@@ -36,6 +40,12 @@ export default function Setting(props) {
         break
       case "Request Account Info":
         setRequestAccountInfoActive(!requestAccountInfoActive)
+        break
+      case "Keyboard shortcuts":
+        setKeyboardShortcutsActive(!keyboardShortcutsActive)
+        break
+      case "Theme":
+        setThemeActive(!themeActive)
         break
     }
   }

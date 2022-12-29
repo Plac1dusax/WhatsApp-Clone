@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import KeyboardShortcutsGridItem from "../KeyboardShortcutsGridItem/KeyboardShortcutsGridItem"
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary"
@@ -87,11 +87,39 @@ const keyboardShortcuts = [
   }
 ]
 
-export default function KeyboardShortcuts() {
+export default function KeyboardShortcuts(props) {
+  const { keyboardShortcutsActive, setKeyboardShortcutsActive } = props
+  const keyboardShortcutsContainer = useRef()
+  const overlay = useRef()
+
+  function handleKeyboardShortcutsVisibility() {
+    if (!keyboardShortcutsActive) {
+      keyboardShortcutsContainer?.current?.classList?.remove("alert-active")
+      keyboardShortcutsContainer?.current?.classList?.add("alert-deactivate")
+      overlay?.current?.classList?.remove("overlay-show")
+      overlay?.current?.classList?.add("overlay-hide")
+    }
+
+    if (keyboardShortcutsActive) {
+      keyboardShortcutsContainer?.current?.classList?.remove("alert-deactivate")
+      keyboardShortcutsContainer?.current?.classList?.add("alert-active")
+      overlay?.current?.classList?.remove("overlay-hide")
+      overlay?.current?.classList?.add("overlay-show")
+    }
+  }
+
+  handleKeyboardShortcutsVisibility()
+
   return (
     <>
-      <div className="overlay-keyboard-shortcuts"></div>
-      <div className="keyboard-shortcuts-container">
+      <div
+        ref={overlay}
+        className="overlay-keyboard-shortcuts overlay-hide"
+      ></div>
+      <div
+        ref={keyboardShortcutsContainer}
+        className="keyboard-shortcuts-container alert-deactivate"
+      >
         <div className="keyboard-shortcuts-header">
           <PrimaryHeaderText
             headerType={"keyboard-shortcuts"}
@@ -103,7 +131,12 @@ export default function KeyboardShortcuts() {
             <KeyboardShortcutsGridItem keyboardShortcuts={keyboardShortcuts} />
           </div>
           <div className="button">
-            <ButtonPrimary buttonPrimary={"OK"} />
+            <ButtonPrimary
+              location={"keyboard-shortcuts"}
+              keyboardShortcutsActive={keyboardShortcutsActive}
+              setKeyboardShortcutsActive={setKeyboardShortcutsActive}
+              buttonPrimary={"OK"}
+            />
           </div>
         </div>
       </div>

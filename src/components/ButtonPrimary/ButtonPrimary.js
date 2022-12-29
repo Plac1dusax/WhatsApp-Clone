@@ -3,11 +3,18 @@ import "./buttonPrimary.css"
 
 export default function ButtonPrimary(props) {
   const {
+    location,
     buttonPrimary,
     messageHistory,
     setMessageHistory,
     startCommunityActive,
-    setStartCommunityActive
+    setStartCommunityActive,
+    keyboardShortcutsActive,
+    setKeyboardShortcutsActive,
+    setTheme,
+    selectedTheme,
+    themeActive,
+    setThemeActive
   } = props
 
   function handleButtonClick(e) {
@@ -17,9 +24,15 @@ export default function ButtonPrimary(props) {
       case "START A COMMUNITY":
         handleStartCommunityVisibility()
         break
+      case "OK":
+        if (location === "keyboard-shortcuts") {
+          return setKeyboardShortcutsActive(!keyboardShortcutsActive)
+        } else if (location === "choose-theme") {
+          return handleThemeAlert()
+        }
+        break
     }
   }
-
   function handleStartCommunityVisibility() {
     setStartCommunityActive(!startCommunityActive)
   }
@@ -55,6 +68,10 @@ export default function ButtonPrimary(props) {
     setMessageHistory(newMessageHistory)
   }
 
+  function handleThemeAlert() {
+    setTheme(selectedTheme)
+    setThemeActive(!themeActive)
+  }
   return (
     <button onClick={handleButtonClick} className="button-primary" type="click">
       {buttonPrimary}
