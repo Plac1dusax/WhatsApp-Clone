@@ -28,7 +28,7 @@ export default function ChatMessage(props) {
     messageHistory,
     setMessageHistory
   } = props
-  let currentColor = "var(--star-icon)"
+  let currentColor = "var(--chat-options-arrow-color)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
   const [star, setStar] = useState(starred)
 

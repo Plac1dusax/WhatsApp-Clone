@@ -111,6 +111,7 @@
 
 .chat-options-icon-direct-outgoing {
   background-color: var(--outgoing-message);
+  color: var(--chat-options-arrow-color);
 }
 
 .message-container-direct {

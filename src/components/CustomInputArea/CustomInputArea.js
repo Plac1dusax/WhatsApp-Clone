@@ -3,7 +3,6 @@ import "./customInputArea.css"
 
 export default function CustomInputArea(props) {
   const { counter, emoji, placeholder, type, area } = props
-  let condition
 
   if (type === "community") {
     return (

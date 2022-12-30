@@ -3,23 +3,27 @@
   left: 0;
   top: 0;
   background-color: var(--primary-theme-color-dark);
+  height: 720px;
+  overflow: hidden;
+  padding: 20px 0;
 }
 
 .new-community-wrapper {
   position: relative;
-  top: 100px;
   width: 450px;
   height: 720px;
-  margin-top: 1.5rem;
+  margin-top: 100px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   background-color: var(--primary-theme-color-dark);
 }
 
 .icons-wrapper {
   position: relative;
+  max-height: 200px;
 }
 
 .add-community-background-icon {
@@ -31,16 +35,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   position: absolute;
-  bottom: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--primary-header-text-dark);
+  color: var(--community-icon);
 }
 
 .add-community-text {
-  word-wrap: nowrap;
+  word-spacing: 100000000000000px;
   text-align: center;
   font-size: 13px;
   font-weight: 300;
@@ -48,7 +50,8 @@
 }
 
 .button-wrapper {
-  margin-top: 8rem;
+  margin-top: 40px;
+  margin-bottom: 200px;
   position: relative;
   cursor: pointer;
 }
@@ -62,5 +65,5 @@
 
 .arrow-right {
   position: absolute;
-  color: var(--primary-header-text-dark);
+  color: var(--start-community-button-arrow);
 }

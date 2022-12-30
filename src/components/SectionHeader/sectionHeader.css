@@ -3,7 +3,7 @@
   width: 450px;
   height: 100px;
   z-index: 5;
-  background-color: var(--navbar-theme-color-dark);
+  background-color: var(--section-header-background);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: var(--primary-header-text-dark);
+  color: var(--section-header-text);
   font-weight: 500;
   width: 150px;
   font-size: 19px;
@@ -33,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--primary-header-text-dark);
+  color: var(--section-header-text);
   font-weight: 500;
   height: fit-content;
   min-width: 420px;
@@ -43,9 +43,14 @@
   position: absolute;
 }
 
+.section-header-title {
+  color: var(--section-header-text);
+}
+
 .section-header-arrow-left {
   cursor: pointer;
   margin-right: 1.5rem;
+  color: var(--section-header-text);
 }
 
 .section-header-title {

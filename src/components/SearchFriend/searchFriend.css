@@ -1,6 +1,7 @@
 .searchbar-area {
   display: flex;
   align-items: center;
+  background-color: var(--chat-section-dark);
 }
 
 .filter-unread-chats {

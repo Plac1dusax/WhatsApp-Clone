@@ -24,7 +24,7 @@ export default function Searchbar(props) {
       outline: "none",
 
       width: "100%",
-      marginTop: "0.2rem",
+      marginTop: "0",
       padding: "0.5rem 3rem",
       borderRadius: "0.6em"
     }

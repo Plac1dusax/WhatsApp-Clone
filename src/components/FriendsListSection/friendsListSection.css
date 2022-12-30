@@ -35,6 +35,7 @@
   width: 450px;
   overflow: hidden;
   overflow-y: auto;
+  background-color: var(--chat-section-dark);
 }
 
 .chat-section-wrapper::-webkit-scrollbar {

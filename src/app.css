@@ -55,6 +55,9 @@
   --primary-theme-color-dark: #111b21;
   --navbar-theme-color-dark: #202c33;
   --primary-nav-btn-color-dark: #aebac1;
+  --section-header-background: #202c33;
+  --section-header-text: #e9edef;
+  --chat-section-dark: #111b21;
   --searchbar-text-color-dark: #d1d7db;
   --primary-input-text-color: #d1d7db;
   --highlighted-color-dark: #00a884;
@@ -89,6 +92,8 @@
   --wallpaper-active: #667781;
   --wallpaper-hover: #3b4a54;
   --shortcut-key: #e9edef;
+  --shortcut-key-background: rgba(209, 215, 219, 0.12);
+  --shortcut-key-background-border: rgba(209, 215, 219, 0.24);
   --starred-message-primary: #d1d7db;
   --date-color: #667781;
   --primary-message: #e9edef;
@@ -120,7 +125,11 @@
   --chat-active: #2a3942;
   --reply-message-background-text: rgb(11, 20, 26);
   --reply-message-background-chat: #025144;
+  --community-icon: #e9edef;
+  --start-community-button-arrow: #e9edef;
   --deleted-message: rgb(84, 101, 111);
+  --chat-options-arrow-color: hsla(0, 0%, 100%, 0.6);
+  --app-background-stripe: #111b21;
 }
 
 body {
@@ -143,6 +152,16 @@ body {
 
   display: flex;
   justify-content: center;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: -5vh;
+  z-index: 1;
+  width: 100%;
+  height: 157px;
+  background-color: var(--app-background-stripe);
 }
 
 .friends-list-container {

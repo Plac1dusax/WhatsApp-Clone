@@ -1,4 +1,8 @@
-.input-wrapper,
+.input-wrapper {
+  position: relative;
+  margin-top: 40px;
+}
+
 .input-wrapper-profile {
   margin-top: 5rem;
   position: relative;

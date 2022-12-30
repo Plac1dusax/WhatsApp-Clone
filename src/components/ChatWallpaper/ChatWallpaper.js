@@ -6,7 +6,7 @@ import ChatWallpaperColor from "../ChatWallpaperColor/ChatWallpaperColor"
 import { v4 as uuidv4 } from "uuid"
 import "./chatWallpaper.css"
 
-const backgrounds = [
+const backgroundsDark = [
   {
     standard: true,
     backgroundColor: "var(--default-chat-wallpaper-dark)",
@@ -122,9 +122,125 @@ const backgrounds = [
   }
 ]
 
+const backgroundsLight = [
+  {
+    standard: true,
+    backgroundColor: "var(--default-chat-wallpaper-dark)",
+    selected: true
+  },
+  {
+    backgroundColor: "rgb(187, 228, 229)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(174, 216, 199)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(122, 203, 165)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(203, 218, 236)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(102, 210, 213)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(99, 189, 207)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(214, 208, 240)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(206, 206, 206)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(209, 218, 290)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(230, 225, 177)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(254, 239, 169)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(254, 210, 151)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(253, 154, 155)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(253, 103, 105)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(251, 70, 104)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(146, 32, 64)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(220, 110, 79)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(100, 77, 82)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(81, 126, 126)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(49, 144, 187)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(53, 85, 138)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(85, 98, 111)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(29, 35, 38)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(48, 30, 52)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(236, 240, 241)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(255, 254, 162)",
+    selected: false
+  },
+  {
+    backgroundColor: "rgb(231, 232, 210)",
+    selected: false
+  }
+]
+
 export default function ChatWallpaper(props) {
   const chatWallpaperSection = useRef()
-  const { chatWallpaperActive, setChatWallpaperActive } = props
+  const { chatWallpaperActive, setChatWallpaperActive, theme } = props
 
   function handleChatWallpaperSectionVisibility() {
     if (!chatWallpaperActive) {
@@ -161,16 +277,27 @@ export default function ChatWallpaper(props) {
           />
         </div>
         <div className="backgrounds-grid">
-          {backgrounds.map(background => {
-            return (
-              <ChatWallpaperColor
-                key={uuidv4()}
-                standard={background.standard}
-                backgroundColor={background.backgroundColor}
-                selected={background.selected}
-              />
-            )
-          })}
+          {theme === "dark" || theme === "system default"
+            ? backgroundsDark.map(background => {
+                return (
+                  <ChatWallpaperColor
+                    key={uuidv4()}
+                    standard={background.standard}
+                    backgroundColor={background.backgroundColor}
+                    selected={background.selected}
+                  />
+                )
+              })
+            : backgroundsLight.map(background => {
+                return (
+                  <ChatWallpaperColor
+                    key={uuidv4()}
+                    standard={background.standard}
+                    backgroundColor={background.backgroundColor}
+                    selected={background.selected}
+                  />
+                )
+              })}
         </div>
       </div>
     </div>

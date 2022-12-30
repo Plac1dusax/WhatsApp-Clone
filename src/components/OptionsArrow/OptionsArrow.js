@@ -14,7 +14,7 @@ export default function OptionsArrow() {
       enableBackground="new 0 0 18 18"
     >
       <path
-        fill="var(--options-button-dark)"
+        fill="var(--chat-options-arrow-color)"
         d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
       ></path>
     </svg>
