@@ -18,6 +18,7 @@ import KeyboardShortcuts from "./components/KeyboardShortcuts/KeyboardShortcuts"
 import StarredMessages from "./components/StarredMessages/StarredMessages"
 import DirectMessage from "./components/DirectMessage/DirectMessage"
 import chatHistory from "./chatHistory.json"
+import WallpaperPreview from "./components/WallpaperPreview/WallpaperPreview"
 
 export const DatabaseContext = React.createContext()
 
@@ -40,6 +41,8 @@ function App() {
   const [keyboardShortcutsActive, setKeyboardShortcutsActive] = useState(false)
   const [themeActive, setThemeActive] = useState(false)
   const [theme, setTheme] = useState("dark")
+  const [wallpaperColor, setWallpaperColor] = useState("#0b141a")
+  const [doodles, setDoodles] = useState(true)
   const value = [database, setDatabase, userId, setUserId]
 
   const root = document.querySelector(":root")
@@ -92,6 +95,8 @@ function App() {
     root.style.setProperty("--chat-options-arrow-color", "#8696a0")
     root.style.setProperty("--app-background-stripe", "rgb(0,168,132)")
     root.style.setProperty("--placeholder", "#3b4a54")
+    root.style.setProperty("--reply-message-background-text", "#fff")
+    root.style.setProperty("--forwarded-message", "#667781")
   }
 
   function handleDarkTheme() {
@@ -139,6 +144,8 @@ function App() {
     )
     root.style.setProperty("--app-background-stripe", "#111b21")
     root.style.setProperty("--placeholder", "#d1d7db")
+    root.style.setProperty("--reply-message-background-text", "rgb(11, 20, 26)")
+    root.style.setProperty("--forwarded-message", "hsla(0, 0%, 100%, 0.6)")
   }
 
   return (
@@ -228,6 +235,10 @@ function App() {
             chatWallpaperActive={chatWallpaperActive}
             setChatWallpaperActive={setChatWallpaperActive}
             theme={theme}
+            wallpaperColor={wallpaperColor}
+            setWallpaperColor={setWallpaperColor}
+            doodles={doodles}
+            setDoodles={setDoodles}
           />
           <RequestAccountInfo
             requestAccountInfoActive={requestAccountInfoActive}
@@ -239,7 +250,8 @@ function App() {
           />
         </div>
         <div className="direct-message-container">
-          {userId ? <DirectMessage /> : <ChatSection theme={theme} />}
+          {/* {userId ? <DirectMessage /> : <ChatSection theme={theme} />} */}
+          <WallpaperPreview />
         </div>
       </div>
     </DatabaseContext.Provider>

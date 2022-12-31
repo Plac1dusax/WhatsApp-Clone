@@ -198,6 +198,17 @@ export default function Navbar(props) {
         </div>
       </div>
     )
+  } else if (type === "wallpaper-preview") {
+    return (
+      <div className="direct-message-header-wallpaper-preview">
+        <div className="wallpaper-preview-header">
+          <PrimaryHeaderText
+            headerType={"direct-message"}
+            text={"Wallpaper Preview"}
+          />
+        </div>
+      </div>
+    )
   }
 }
 

@@ -2,7 +2,13 @@ import React from "react"
 import "./chatWallpaperColor.css"
 
 export default function ChatWallpaperColor(props) {
-  const { standard, backgroundColor, selected } = props
+  const {
+    standard,
+    backgroundColor,
+    selected,
+    wallpaperColor,
+    setWallpaperColor
+  } = props
   let styles = {}
 
   if (selected) {
@@ -20,9 +26,30 @@ export default function ChatWallpaperColor(props) {
     }
   }
 
+  function handleBackgroundChange(e) {
+    const hoveringBackground = e.target.style.backgroundColor
+    setWallpaperColor(hoveringBackground)
+  }
+
+  function handleConvertBack(e) {}
+
   if (standard) {
-    return <div style={styles} className="chat-wallpaper-color standard"></div>
+    return (
+      <div
+        onMouseEnter={handleBackgroundChange}
+        onMouseLeave={handleConvertBack}
+        style={styles}
+        className="chat-wallpaper-color standard"
+      ></div>
+    )
   } else {
-    return <div style={styles} className="chat-wallpaper-color "></div>
+    return (
+      <div
+        onMouseEnter={handleBackgroundChange}
+        onMouseLeave={handleConvertBack}
+        style={styles}
+        className="chat-wallpaper-color"
+      ></div>
+    )
   }
 }

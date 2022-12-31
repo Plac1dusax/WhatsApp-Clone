@@ -1,0 +1,23 @@
+.wallpaper-preview-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.wallpaper-preview-body {
+  display: flex;
+  background: var(--default-chat-wallpaper-dark)
+    url(../../wpBackgroundDoodle/wp-background-doodle.png) repeat;
+  background-blend-mode: overlay;
+  height: 100%;
+}
+
+.wallpaper-preview-footer {
+  width: 100%;
+  height: 62px;
+  background-color: var(--navbar-theme-color-dark);
+  z-index: 100;
+  position: absolute;
+  bottom: 0;
+}

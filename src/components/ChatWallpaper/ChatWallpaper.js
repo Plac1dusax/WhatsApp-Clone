@@ -240,7 +240,15 @@ const backgroundsLight = [
 
 export default function ChatWallpaper(props) {
   const chatWallpaperSection = useRef()
-  const { chatWallpaperActive, setChatWallpaperActive, theme } = props
+  const {
+    chatWallpaperActive,
+    setChatWallpaperActive,
+    theme,
+    wallpaperColor,
+    setWallpaperColor,
+    doodles,
+    setDoodles
+  } = props
 
   function handleChatWallpaperSectionVisibility() {
     if (!chatWallpaperActive) {
@@ -285,6 +293,8 @@ export default function ChatWallpaper(props) {
                     standard={background.standard}
                     backgroundColor={background.backgroundColor}
                     selected={background.selected}
+                    wallpaperColor={wallpaperColor}
+                    setWallpaperColor={setWallpaperColor}
                   />
                 )
               })
@@ -295,6 +305,8 @@ export default function ChatWallpaper(props) {
                     standard={background.standard}
                     backgroundColor={background.backgroundColor}
                     selected={background.selected}
+                    wallpaperColor={wallpaperColor}
+                    setWallpaperColor={setWallpaperColor}
                   />
                 )
               })}

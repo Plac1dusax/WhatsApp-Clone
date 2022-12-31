@@ -1,5 +1,6 @@
 .navbar-container {
   width: 100%;
+  max-width: 450px;
   height: 60px;
   background-color: var(--navbar-theme-color-dark);
   padding: 2rem;
@@ -98,4 +99,12 @@
   transition: transform 0.2s ease-in-out;
   visibility: visible;
   pointer-events: none;
+}
+
+.direct-message-header-wallpaper-preview {
+  background-color: var(--navbar-theme-color-dark);
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
