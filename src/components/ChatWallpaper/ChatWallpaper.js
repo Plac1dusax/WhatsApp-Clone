@@ -247,7 +247,11 @@ export default function ChatWallpaper(props) {
     wallpaperColor,
     setWallpaperColor,
     doodles,
-    setDoodles
+    setDoodles,
+    isWallpaperHovering,
+    setIsWallpaperHovering,
+    selectedWallpaper,
+    setSelectedWallpaper
   } = props
 
   function handleChatWallpaperSectionVisibility() {
@@ -295,6 +299,13 @@ export default function ChatWallpaper(props) {
                     selected={background.selected}
                     wallpaperColor={wallpaperColor}
                     setWallpaperColor={setWallpaperColor}
+                    theme={theme}
+                    backgroundsDark={backgroundsDark}
+                    backgroundsLight={backgroundsLight}
+                    isWallpaperHovering={isWallpaperHovering}
+                    setIsWallpaperHovering={setIsWallpaperHovering}
+                    selectedWallpaper={selectedWallpaper}
+                    setSelectedWallpaper={setSelectedWallpaper}
                   />
                 )
               })
@@ -307,6 +318,13 @@ export default function ChatWallpaper(props) {
                     selected={background.selected}
                     wallpaperColor={wallpaperColor}
                     setWallpaperColor={setWallpaperColor}
+                    theme={theme}
+                    backgroundsDark={backgroundsDark}
+                    backgroundsLight={backgroundsLight}
+                    isWallpaperHovering={isWallpaperHovering}
+                    setIsWallpaperHovering={setIsWallpaperHovering}
+                    selectedWallpaper={selectedWallpaper}
+                    setSelectedWallpaper={setSelectedWallpaper}
                   />
                 )
               })}

@@ -42,11 +42,13 @@ function App() {
   const [themeActive, setThemeActive] = useState(false)
   const [theme, setTheme] = useState("dark")
   const [wallpaperColor, setWallpaperColor] = useState("#0b141a")
+  const [isWallpaperHovering, setIsWallpaperHovering] = useState(false)
+  const [selectedWallpaper, setSelectedWallpaper] = useState(
+    "var(--default-chat-wallpaper-dark)"
+  )
   const [doodles, setDoodles] = useState(true)
   const value = [database, setDatabase, userId, setUserId]
-
   const root = document.querySelector(":root")
-  const styles = getComputedStyle(root)
 
   useEffect(() => {
     if (theme === "light") {
@@ -239,6 +241,10 @@ function App() {
             setWallpaperColor={setWallpaperColor}
             doodles={doodles}
             setDoodles={setDoodles}
+            isWallpaperHovering={isWallpaperHovering}
+            setIsWallpaperHovering={setIsWallpaperHovering}
+            selectedWallpaper={selectedWallpaper}
+            setSelectedWallpaper={setSelectedWallpaper}
           />
           <RequestAccountInfo
             requestAccountInfoActive={requestAccountInfoActive}
@@ -251,7 +257,11 @@ function App() {
         </div>
         <div className="direct-message-container">
           {/* {userId ? <DirectMessage /> : <ChatSection theme={theme} />} */}
-          <WallpaperPreview />
+          <WallpaperPreview
+            isWallpaperHovering={isWallpaperHovering}
+            setIsWallpaperHovering={setIsWallpaperHovering}
+            wallpaperColor={wallpaperColor}
+          />
         </div>
       </div>
     </DatabaseContext.Provider>
