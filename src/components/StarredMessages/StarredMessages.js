@@ -1,14 +1,16 @@
 import React, { useRef } from "react"
 import SectionHeader from "../SectionHeader/SectionHeader"
 import StarredMessage from "../StarredMessage/StarredMessage"
+import { v4 as uuidv4 } from "uuid"
 import "./starredMessages.css"
 
 export default function StarredMessages({
   starredMessagesActive,
-  setStarredMessagesActive
+  setStarredMessagesActive,
+  starredMessage,
+  setStarredMessage
 }) {
   const starredMessagesSection = useRef()
-
   function handleStarredMessagesSectionVisibility() {
     if (!starredMessagesActive) {
       starredMessagesSection?.current?.classList?.remove("section-active")
@@ -37,8 +39,22 @@ export default function StarredMessages({
         />
       </div>
       <div className="starred-messages-body">
-        <StarredMessage reply={false} />
-        <StarredMessage reply={true} />
+        {starredMessage
+          ? starredMessage.map(message => {
+              return (
+                <StarredMessage
+                  key={uuidv4()}
+                  reply={message.reply}
+                  profilePhotoURL={message.profilePhoto}
+                  name={message.name}
+                  message={message.starredMessageInfo[0].message}
+                  status={message.starredMessageInfo[0].status}
+                  time={message.starredMessageInfo[0].time}
+                  type={message.starredMessageInfo[0].type}
+                />
+              )
+            })
+          : null}
         <div className="information-for-older-messages">
           Use WhatsApp on your phone to see older chats and messages.
         </div>

@@ -3,20 +3,22 @@ import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import ChatMessage from "../ChatMessage/ChatMessage"
 import "./starredMessage.css"
 
-export default function StarredMessage({ reply }) {
+export default function StarredMessage(props) {
+  const { reply, profilePhotoURL, name, message, status, time, type } = props
+
   return (
     <div className="starred-message-container">
       <div className="starred-message-header">
         <div className="person-and-group-info-container">
           <div className="starred-message-profile-picture">
-            <ProfilePhoto navProfilePhoto={"starred"} />
+            <ProfilePhoto navProfilePhoto={"starred"} url={profilePhotoURL} />
           </div>
-          <div className="starred-message-person-name">Random Name</div>
+          <div className="starred-message-person-name">{name}</div>
           <span className="mini-arrow-right"></span>
-          <div className="starred-message-group-name">Random Group</div>
+          <div className="starred-message-group-name">You</div>
         </div>
         <div className="date-and-arrow-container">
-          <div className="date">Friday</div>
+          <div className="date">{time}</div>
           <div className="chat-arrow">
             <svg
               viewBox="0 0 10 21"
@@ -37,7 +39,12 @@ export default function StarredMessage({ reply }) {
         </div>
       </div>
       <div className="starred-message-body">
-        <ChatMessage reply={reply} />
+        <ChatMessage
+          reply={reply}
+          message={message}
+          status={status}
+          type={type}
+        />
       </div>
     </div>
   )

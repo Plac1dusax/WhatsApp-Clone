@@ -26,7 +26,9 @@ export default function ChatMessage(props) {
     database,
     selectedUserName,
     messageHistory,
-    setMessageHistory
+    setMessageHistory,
+    starredMessage,
+    setStarredMessage
   } = props
   let currentColor = "var(--chat-options-arrow-color)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
@@ -560,20 +562,32 @@ export default function ChatMessage(props) {
     const selectedUserMessages = database.filter(user => {
       return user.id === userId
     })
-
-    const starredMessage = selectedUserMessages[0]?.messages?.filter?.(
+    const starredMessageInfo = selectedUserMessages[0]?.messages?.filter?.(
       message => {
         return message.id === container.id
       }
     )
 
-    if (starredMessage[0].starred === "false") {
-      starredMessage[0].starred = "true"
+    if (starredMessageInfo[0].starred === "false") {
+      starredMessageInfo[0].starred = "true"
       setStar(prevStar => (prevStar = "true"))
     } else {
-      starredMessage[0].starred = "false"
+      starredMessageInfo[0].starred = "false"
       setStar(prevStar => (prevStar = "false"))
     }
+
+    let starredMessageDetails
+
+    if (starredMessageInfo[0].starred === "true") {
+      starredMessageDetails = {
+        name: selectedUserMessages?.[0]?.userName,
+        profilePhoto: selectedUserMessages?.[0]?.userProfilePhoto,
+        reply: starredMessageInfo?.[0]?.reply,
+        starredMessageInfo: starredMessageInfo
+      }
+    }
+
+    setStarredMessage([...starredMessage, starredMessageDetails])
   }
 
   function handleChatReply(e) {

@@ -5,7 +5,7 @@ import "./wallpaperPreview.css"
 export default function WallpaperPreview(props) {
   const { wallpaperColor, doodles, setDoodles } = props
   let styles = {}
-  console.log(doodles)
+
   if (!doodles) {
     styles = {
       display: "flex",

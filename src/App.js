@@ -47,6 +47,7 @@ function App() {
     "var(--default-chat-wallpaper-dark)"
   )
   const [doodles, setDoodles] = useState(true)
+  const [starredMessage, setStarredMessage] = useState([])
   const value = [database, setDatabase, userId, setUserId]
   const root = document.querySelector(":root")
 
@@ -253,6 +254,8 @@ function App() {
           <StarredMessages
             starredMessagesActive={starredMessagesActive}
             setStarredMessagesActive={setStarredMessagesActive}
+            starredMessage={starredMessage}
+            setStarredMessage={setStarredMessage}
           />
         </div>
         <div className="direct-message-container">
@@ -267,6 +270,8 @@ function App() {
               selectedWallpaper={selectedWallpaper}
               doodles={doodles}
               setDoodles={setDoodles}
+              starredMessage={starredMessage}
+              setStarredMessage={setStarredMessage}
             />
           ) : (
             <ChatSection theme={theme} />

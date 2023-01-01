@@ -7,7 +7,13 @@ import { DatabaseContext } from "../../App"
 import "./directMessage.css"
 
 export default function DirectMessage(props) {
-  const { selectedWallpaper, doodles, setDoodles } = props
+  const {
+    selectedWallpaper,
+    doodles,
+    setDoodles,
+    starredMessage,
+    setStarredMessage
+  } = props
   const [replyMessage, setReplyMessage] = useState([])
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
   const [messageHistory, setMessageHistory] = useState([...database])
@@ -32,8 +38,6 @@ export default function DirectMessage(props) {
   const [renderMessages, setRenderMessages] = useState([
     ...selectedUser.messages
   ])
-
-  const [starredMessage, setStarredMessage] = useState(starredMessages)
 
   if (doodles) {
     directBodyStyles = {
@@ -64,7 +68,6 @@ export default function DirectMessage(props) {
       height: "100%"
     }
   }
-
   useEffect(() => {
     setRenderMessages([...selectedUser.messages])
   }, [userId])
@@ -102,6 +105,7 @@ export default function DirectMessage(props) {
                   selectedUserName={selectedUserName}
                   userId={userId}
                   database={database}
+                  starredMessage={starredMessage}
                   setStarredMessage={setStarredMessage}
                   messageHistory={messageHistory}
                   setMessageHistory={setMessageHistory}
@@ -126,6 +130,7 @@ export default function DirectMessage(props) {
                   setReplyMessage={setReplyMessage}
                   userId={userId}
                   database={database}
+                  starredMessage={starredMessage}
                   setStarredMessage={setStarredMessage}
                   messageHistory={messageHistory}
                   setMessageHistory={setMessageHistory}
