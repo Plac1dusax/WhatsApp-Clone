@@ -256,12 +256,21 @@ function App() {
           />
         </div>
         <div className="direct-message-container">
-          {/* {userId ? <DirectMessage /> : <ChatSection theme={theme} />} */}
-          <WallpaperPreview
-            isWallpaperHovering={isWallpaperHovering}
-            setIsWallpaperHovering={setIsWallpaperHovering}
-            wallpaperColor={wallpaperColor}
-          />
+          {chatWallpaperActive ? (
+            <WallpaperPreview
+              wallpaperColor={wallpaperColor}
+              doodles={doodles}
+              setDoodles={setDoodles}
+            />
+          ) : userId ? (
+            <DirectMessage
+              selectedWallpaper={selectedWallpaper}
+              doodles={doodles}
+              setDoodles={setDoodles}
+            />
+          ) : (
+            <ChatSection theme={theme} />
+          )}
         </div>
       </div>
     </DatabaseContext.Provider>

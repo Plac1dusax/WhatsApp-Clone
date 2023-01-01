@@ -26,7 +26,9 @@ export default function Settings(props) {
     keyboardShortcutsActive,
     setKeyboardShortcutsActive,
     themeActive,
-    setThemeActive
+    setThemeActive,
+    wallpaperPreviewActive,
+    setWallpaperPreviewActive
   } = props
   const settingsSection = useRef()
 

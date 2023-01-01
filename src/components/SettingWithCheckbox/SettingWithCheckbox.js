@@ -5,7 +5,8 @@ import CustomCheckbox from "../CustomCheckbox/CustomCheckbox"
 import "./settingWithCheckbox.css"
 
 export default function SettingWithCheckbox(props) {
-  const { primaryText, secondaryText, hide, ischecked, relative } = props
+  const { location, primaryText, secondaryText, hide, ischecked, relative } =
+    props
 
   if (hide) {
     return (
@@ -26,7 +27,11 @@ export default function SettingWithCheckbox(props) {
             />
           </div>
           <div className="setting-with-checkbox-checkbox">
-            <CustomCheckbox className="a" ischecked={ischecked} />
+            <CustomCheckbox
+              location={"notifications"}
+              className="a"
+              ischecked={ischecked}
+            />
           </div>
         </div>
       </div>
@@ -50,7 +55,11 @@ export default function SettingWithCheckbox(props) {
             />
           </div>
           <div className="setting-with-checkbox-checkbox">
-            <CustomCheckbox className="a" ischecked={ischecked} />
+            <CustomCheckbox
+              location={"notifications"}
+              className="a"
+              ischecked={ischecked}
+            />
           </div>
         </div>
       </div>

@@ -6,11 +6,12 @@ import { v4 as uuidv4 } from "uuid"
 import { DatabaseContext } from "../../App"
 import "./directMessage.css"
 
-export default function DirectMessage() {
+export default function DirectMessage(props) {
+  const { selectedWallpaper, doodles, setDoodles } = props
   const [replyMessage, setReplyMessage] = useState([])
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
-
   const [messageHistory, setMessageHistory] = useState([...database])
+  let directBodyStyles
 
   const selectedMessage = database.filter(messages => {
     return messages.id === userId
@@ -34,6 +35,36 @@ export default function DirectMessage() {
 
   const [starredMessage, setStarredMessage] = useState(starredMessages)
 
+  if (doodles) {
+    directBodyStyles = {
+      display: "flex",
+      flexDirection: "column-reverse",
+      backgroundColor: `${selectedWallpaper}`,
+      backgroundImage:
+        "url(../../wpBackgroundDoodle/wp-background-doodle.png) repeat",
+      backgroundBlendMode: "overlay",
+      position: "relative",
+      padding: "40px",
+      gap: "20px",
+      overflow: "hidden",
+      overflowY: "auto",
+      height: "100%"
+    }
+  } else {
+    directBodyStyles = {
+      display: "flex",
+      flexDirection: "column-reverse",
+      background: `${selectedWallpaper} url(../../wpBackgroundDoodle/wp-background-doodle.png) repeat`,
+      backgroundBlendMode: "overlay",
+      position: "relative",
+      padding: "40px",
+      gap: "20px",
+      overflow: "hidden",
+      overflowY: "auto",
+      height: "100%"
+    }
+  }
+
   useEffect(() => {
     setRenderMessages([...selectedUser.messages])
   }, [userId])
@@ -50,8 +81,7 @@ export default function DirectMessage() {
           userProfilePhoto={userProfilePhotoURL}
         />
       </div>
-      <div className="direct-message-body">
-        <div className="doodle"></div>
+      <div style={directBodyStyles} className="direct-message-body">
         {renderMessages.map(message => {
           if (message.type === "incoming") {
             return (

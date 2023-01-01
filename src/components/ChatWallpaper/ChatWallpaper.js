@@ -282,7 +282,12 @@ export default function ChatWallpaper(props) {
       </div>
       <div className="chat-wallpaper-body">
         <div className="set-doodle-background">
-          <CustomCheckbox />
+          <CustomCheckbox
+            location={"chat-wallpaper"}
+            ischecked={true}
+            doodles={doodles}
+            setDoodles={setDoodles}
+          />
           <SecondaryHeaderText
             headerType={"chat"}
             text={"Add WhatsApp Doodles"}

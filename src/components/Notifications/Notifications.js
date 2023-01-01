@@ -67,6 +67,7 @@ export default function Notifications({
           return (
             <SettingWithCheckbox
               key={uuidv4()}
+              location={"notifications"}
               primaryText={setting.primaryText}
               secondaryText={setting.secondaryText}
               hide={setting.hide}

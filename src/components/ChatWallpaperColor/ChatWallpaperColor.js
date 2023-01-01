@@ -33,8 +33,6 @@ export default function ChatWallpaperColor(props) {
     }
   }
 
-  let selectedBackground = document.querySelector("[data-selected]")
-
   function handleBackgroundChange(e) {
     if (theme === "dark" || theme === "system default") {
       backgroundsDark.filter(background => {
