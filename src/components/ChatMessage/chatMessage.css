@@ -50,6 +50,13 @@
   transform: rotate(270deg);
 }
 
+.chat-bubble-arrow-outgoing-starred {
+  position: absolute;
+  color: var(--outgoing-message);
+  left: -7px;
+  top: -0;
+}
+
 .replied-message {
   padding: 0.3em;
   padding-top: 0;

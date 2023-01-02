@@ -4,7 +4,16 @@ import ChatMessage from "../ChatMessage/ChatMessage"
 import "./starredMessage.css"
 
 export default function StarredMessage(props) {
-  const { reply, profilePhotoURL, name, message, status, time, type } = props
+  const {
+    reply,
+    profilePhotoURL,
+    name,
+    message,
+    status,
+    time,
+    type,
+    repliedMessage
+  } = props
 
   return (
     <div className="starred-message-container">
@@ -40,10 +49,12 @@ export default function StarredMessage(props) {
       </div>
       <div className="starred-message-body">
         <ChatMessage
+          location={"starred-message"}
           reply={reply}
           message={message}
           status={status}
-          type={type}
+          origin={type}
+          repliedMessage={repliedMessage}
         />
       </div>
     </div>

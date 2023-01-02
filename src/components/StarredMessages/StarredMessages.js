@@ -41,16 +41,20 @@ export default function StarredMessages({
       <div className="starred-messages-body">
         {starredMessage
           ? starredMessage.map(message => {
+              console.log(message)
               return (
                 <StarredMessage
                   key={uuidv4()}
-                  reply={message.reply}
-                  profilePhotoURL={message.profilePhoto}
-                  name={message.name}
-                  message={message.starredMessageInfo[0].message}
-                  status={message.starredMessageInfo[0].status}
-                  time={message.starredMessageInfo[0].time}
-                  type={message.starredMessageInfo[0].type}
+                  reply={message?.reply}
+                  profilePhotoURL={message?.profilePhoto}
+                  name={message?.name}
+                  message={message?.starredMessageInfo[0]?.message}
+                  repliedMessage={
+                    message?.starredMessageInfo[0]?.repliedMessage
+                  }
+                  status={message?.starredMessageInfo[0]?.status}
+                  time={message?.starredMessageInfo[0]?.time}
+                  type={message?.starredMessageInfo[0]?.type}
                 />
               )
             })

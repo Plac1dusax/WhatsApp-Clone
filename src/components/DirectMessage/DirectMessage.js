@@ -90,6 +90,7 @@ export default function DirectMessage(props) {
             return (
               <div className={"incoming-message"} key={uuidv4()}>
                 <ChatMessage
+                  location={"direct-message"}
                   id={message.id}
                   origin={message.type}
                   message={message.message}
@@ -116,6 +117,7 @@ export default function DirectMessage(props) {
             return (
               <div className={"outgoing-message"} key={uuidv4()}>
                 <ChatMessage
+                  location={"direct-message"}
                   id={message.id}
                   origin={message.type}
                   message={message.message}
