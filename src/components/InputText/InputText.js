@@ -37,7 +37,7 @@ export default function InputText({
           starred: "false"
         }
       }
-      console.log(messageHistory)
+
       const newMessageHistory = [...messageHistory]
 
       const selectedPerson = newMessageHistory.find(history => {

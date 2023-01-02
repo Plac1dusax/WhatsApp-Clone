@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import Navbar from "../Navbar/Navbar"
 import Archived from "../Archived/Archived"
 import SearchFriend from "../SearchFriend/SearchFriend"
@@ -19,11 +19,12 @@ export default function FriendsListSection(props) {
     starredMessagesActive,
     setStarredMessagesActive,
     settingsActive,
-    setSettingsActive
+    setSettingsActive,
+    messageHistory,
+    setMessageHistory
   } = props
 
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
-
   return (
     <>
       <div className="friends-list-section-wrapper">
@@ -52,10 +53,11 @@ export default function FriendsListSection(props) {
             archivedActive={archivedActive}
             setArchivedActive={setArchivedActive}
           />
-          {database.map(data => {
-            const lastMessage = data.messages[data.messages.length - 1].message
-            const messageStatus = data.messages[data.messages.length - 1].status
-            const lastMessageTime = data.messages[data.messages.length - 1].time
+          {messageHistory.map(data => {
+            const lastMessage = data.messages[0].message
+            const messageStatus = data.messages[0].status
+            const lastMessageTime = data.messages[0].time
+            const deleted = data.messages[0].delete
             const userName = data.userName
             const profilePhotoUrl = data.userProfilePhoto
             const id = data.id
@@ -71,6 +73,7 @@ export default function FriendsListSection(props) {
                 time={lastMessageTime}
                 userId={userId}
                 setUserId={setUserId}
+                deleted={deleted}
               />
             )
           })}

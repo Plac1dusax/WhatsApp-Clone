@@ -12,13 +12,13 @@ export default function DirectMessage(props) {
     doodles,
     setDoodles,
     starredMessage,
-    setStarredMessage
+    setStarredMessage,
+    messageHistory,
+    setMessageHistory
   } = props
   const [replyMessage, setReplyMessage] = useState([])
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
-  const [messageHistory, setMessageHistory] = useState([...database])
   let directBodyStyles
-
   const selectedMessage = database.filter(messages => {
     return messages.id === userId
   })

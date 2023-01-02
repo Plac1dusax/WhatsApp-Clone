@@ -591,7 +591,6 @@ export default function ChatMessage(props) {
     } else if (starredMessageInfo[0].starred === "false") {
       setStarredMessage(previous => {
         return previous.filter(messages => {
-          console.log(messages)
           return messages.starredMessageInfo[0].id !== starredMessageInfo[0].id
         })
       })

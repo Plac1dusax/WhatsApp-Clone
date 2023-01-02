@@ -24,6 +24,7 @@ export const DatabaseContext = React.createContext()
 
 function App() {
   const [database, setDatabase] = useState([...chatHistory])
+  const [messageHistory, setMessageHistory] = useState([...database])
   const [userId, setUserId] = useState(null)
   const [archivedActive, setArchivedActive] = useState(false)
   const [communityTabActive, setCommunityTabActive] = useState(false)
@@ -179,6 +180,8 @@ function App() {
             setStarredMessagesActive={setStarredMessagesActive}
             settingsActive={settingsActive}
             setSettingsActive={setSettingsActive}
+            messageHistory={messageHistory}
+            setMessageHistory={setMessageHistory}
           />
           <ArchivedSection
             archivedActive={archivedActive}
@@ -272,6 +275,8 @@ function App() {
               setDoodles={setDoodles}
               starredMessage={starredMessage}
               setStarredMessage={setStarredMessage}
+              messageHistory={messageHistory}
+              setMessageHistory={setMessageHistory}
             />
           ) : (
             <ChatSection theme={theme} />
