@@ -8,6 +8,8 @@ import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import Gif from "../Gif/Gif"
 import ReactionEmojiContainer from "../ReactionEmojiContainer/ReactionEmojiContainer"
 import Sticker from "../Sticker/Sticker"
+import { ReactComponent as RecentIconSticker } from "../../icons/recent-icon-sticker.svg"
+import { ReactComponent as StickerStoreIcon } from "../../icons/sticker-store-icon.svg"
 
 function ReactionsContainer() {
   const [searchedGifs, setSearchedGifs] = useState([])
@@ -183,17 +185,7 @@ function ReactionsContainer() {
       <div className="reaction-sticker">
         <div className="sticker-headers-wrapper">
           <div className="sticker-header recent" onClick={handleStickerHeaders}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="recent-icon-svg"
-            >
-              <path
-                d="M20.538 11.975a8.563 8.563 0 1 0-17.126 0 8.563 8.563 0 0 0 17.126 0Zm1.412 0c0 5.509-4.466 9.975-9.975 9.975C6.465 21.95 2 17.484 2 11.975 2 6.465 6.466 2 11.975 2c5.509 0 9.975 4.466 9.975 9.975Zm-9.832-5.27v5.692l4.386 2.627a.706.706 0 1 1-.725 1.212l-5.073-3.04v-6.49a.706.706 0 1 1 1.412 0Z"
-                fill="currentColor"
-              ></path>
-            </svg>
+            <RecentIconSticker />
           </div>
           <div className="sticker-header love" onClick={handleStickerHeaders}>
             <SecondaryHeaderText headerType={"sticker-header"} text={"LOVE"} />
@@ -229,25 +221,7 @@ function ReactionsContainer() {
             className="sticker-header sticker-store"
             onClick={handleStickerHeaders}
           >
-            <svg
-              viewBox="0 0 24 24"
-              height="24"
-              width="24"
-              preserveAspectRatio="xMidYMid meet"
-              fill="none"
-              className="sticker-store-icon"
-            >
-              <path
-                d="M20.5847 12C20.5847 7.2588 16.7412 3.41533 12 3.41533C7.2588 3.41533 3.41533 7.2588 3.41533 12C3.41533 16.7412 7.2588 20.5847 12     20.5847C16.7412 20.5847 20.5847 16.7412 20.5847 12ZM22 12C22 17.5229 17.5229 22 12 22C6.47713 22 2 17.5229 2 12C2 6.47713 6.47713 2 12     2C17.5229 2 22 6.47713 22 12Z"
-                fill="currentColor"
-              ></path>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12 7C12.3866 7 12.7 7.31025 12.7 7.70318L12.6988 11.3H16.2968C16.6463 11.3 16.9363 11.563     16.9908 11.8892L17 12C17 12.3866 16.6898 12.7 16.2968 12.7L12.6988 12.6988L12.7 16.2968C12.7 16.6463 12.437 16.9363 12.1108 16.9908L12     17C11.6134 17 11.3 16.6898 11.3 16.2968V12.6988L7.70318 12.7C7.35366 12.7 7.0637 12.437 7.0092 12.1108L7 12C7 11.6134 7.31025 11.3 7.70318     11.3H11.3V7.70318C11.3 7.35366 11.563 7.0637 11.8892 7.0092L12 7Z"
-                fill="currentColor"
-              ></path>
-            </svg>
+            <StickerStoreIcon />
           </div>
           <div className="sticker-header-border"></div>
         </div>

@@ -1,6 +1,7 @@
 import React from "react"
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import ChatMessage from "../ChatMessage/ChatMessage"
+import { ReactComponent as ChatArrowIcon } from "../../icons/chat-arrow-icon.svg"
 import "./starredMessage.css"
 
 export default function StarredMessage(props) {
@@ -29,21 +30,7 @@ export default function StarredMessage(props) {
         <div className="date-and-arrow-container">
           <div className="date">{time}</div>
           <div className="chat-arrow">
-            <svg
-              viewBox="0 0 10 21"
-              height="21"
-              width="10"
-              preserveAspectRatio="xMidYMid meet"
-              version="1.1"
-              x="0px"
-              y="0px"
-              enableBackground="new 0 0 10 21"
-            >
-              <path
-                fill="currentColor"
-                d="M1,15.75l5.2-5.2L1,5.35l1.5-1.5l6.5,6.7l-6.6,6.6L1,15.75z"
-              ></path>
-            </svg>
+            <ChatArrowIcon />
           </div>
         </div>
       </div>

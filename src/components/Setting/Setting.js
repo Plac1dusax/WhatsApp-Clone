@@ -52,10 +52,7 @@ export default function Setting(props) {
 
   return (
     <div onClick={handleSetting} className="setting-wrapper">
-      <div
-        className="setting-svg"
-        dangerouslySetInnerHTML={{ __html: svg }}
-      ></div>
+      <div className="setting-svg">{svg}</div>
       <PrimaryHeaderText headerType={"chat"} text={name} />
     </div>
   )

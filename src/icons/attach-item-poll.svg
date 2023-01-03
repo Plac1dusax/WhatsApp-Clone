@@ -1,0 +1,37 @@
+  <svg width="53" height="53" viewBox="0 0 53 53" fill="none">
+                    <circle
+                      cx="26.5"
+                      cy="26.5"
+                      r="26.5"
+                      fill="#02A698"
+                    ></circle>
+                    <path
+                      opacity=".15"
+                      d="M26.5 0C11.864 0 0 11.864 0 26.5h53C53 11.864 41.136 0 26.5 0Z"
+                      fill="#111B21"
+                    ></path>
+                    <rect
+                      x="15.705"
+                      y="26.604"
+                      width="5.941"
+                      height="9.505"
+                      rx="1.211"
+                      fill="#fff"
+                    ></rect>
+                    <rect
+                      x="24.021"
+                      y="14.723"
+                      width="5.941"
+                      height="21.386"
+                      rx="1.211"
+                      fill="#fff"
+                    ></rect>
+                    <rect
+                      x="32.338"
+                      y="21.85"
+                      width="5.941"
+                      height="14.257"
+                      rx="1.211"
+                      fill="#fff"
+                    ></rect>
+                  </svg>

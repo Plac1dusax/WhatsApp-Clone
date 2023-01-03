@@ -7,6 +7,13 @@ import { v4 as uuidv4 } from "uuid"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
 import RepliedMessage from "../RepliedMessage/RepliedMessage"
 import CustomAlert from "../CustomAlert/CustomAlert"
+import { ReactComponent as ChatBubble } from "../../icons/chat-bubble.svg"
+import { ReactComponent as ChatOptionsArrowDark } from "../../icons/chat-options-arrow-dark.svg"
+import { ReactComponent as StarIconDark } from "../../icons/star-icon-dark.svg"
+import { ReactComponent as EmojiButtonIncoming } from "../../icons/emoji-button-incoming.svg"
+import { ReactComponent as EmojiButtonOutgoing } from "../../icons/emoji-button-outgoing.svg"
+import { ReactComponent as MoreEmojisIcon } from "../../icons/more-emojis-icon.svg"
+import { ReactComponent as DeletedIcon } from "../../icons/deleted-icon.svg"
 import "./chatMessage.css"
 
 export default function ChatMessage(props) {
@@ -630,59 +637,19 @@ export default function ChatMessage(props) {
         >
           <div className="chat-message-incoming-wrapper">
             <div className="chat-bubble-arrow">
-              <svg viewBox="0 0 8 13" width="10" height="16">
-                <path
-                  opacity=".13"
-                  fill="#0000000"
-                  d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                ></path>
-                <path
-                  fill="currentColor"
-                  d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                ></path>
-              </svg>
+              <ChatBubble />
             </div>
             <div className="chat-message-wrapper-direct">
               <div
                 onClick={handleChatOptions}
                 className="chat-options-icon-direct"
               >
-                <svg
-                  viewBox="0 0 18 18"
-                  height="18"
-                  width="18"
-                  preserveAspectRatio="xMidYMid meet"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  enableBackground="new 0 0 18 18"
-                >
-                  <path
-                    fill={currentColor}
-                    d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                  ></path>
-                </svg>
+                <ChatOptionsArrowDark />
               </div>
               <div className="message-container-direct">
                 <div className="message">{message}</div>
                 <div className="star-icon-and-time">
-                  {star === "true" ? (
-                    <svg
-                      viewBox="0 0 16 15"
-                      height="15"
-                      width="16"
-                      preserveAspectRatio="xMidYMid meet"
-                      version="1.1"
-                      x="0px"
-                      y="0px"
-                      enableBackground="new 0 0 16 15"
-                    >
-                      <path
-                        fill={currentColor}
-                        d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                      ></path>
-                    </svg>
-                  ) : null}
+                  {star === "true" ? <StarIconDark /> : null}
 
                   <Time time={time} />
                 </div>
@@ -692,20 +659,7 @@ export default function ChatMessage(props) {
             <div data-emojis className="emojis-incoming">
               <div className="emojis-incoming-content">
                 <div onClick={showEmojiWrapper} className="emojis-button">
-                  <svg
-                    viewBox="0 0 15 15"
-                    width="15"
-                    preserveAspectRatio="xMidYMid meet"
-                    fill="none"
-                    className="incoming-message-reaction-icon reaction-button-icon"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 7.5C0 11.6305 3.36946 15 7.5 15C11.6527 15 15 11.6305 15 7.5C15 3.36946 11.6305 0 7.5 0C3.36946 0 0 3.36946 0 7.5ZM10.995 8.69333C11.1128 8.67863 11.2219 8.66503 11.3211 8.65309C11.61 8.63028 11.8076 8.91918 11.6784 9.13965C10.8573 10.6374 9.29116 11.793 7.50455 11.793C5.71794 11.793 4.15181 10.6602 3.33072 9.16246C3.18628 8.91918 3.37634 8.63028 3.66524 8.65309C3.79123 8.66749 3.93521 8.68511 4.09426 8.70457C4.94292 8.80842 6.22074 8.96479 7.48174 8.96479C8.81855 8.96479 10.1378 8.80025 10.995 8.69333ZM5.41405 7.37207C6.05761 7.37207 6.60923 6.72851 6.60923 6.02978C6.60923 5.30348 6.05761 4.6875 5.41405 4.6875C4.77048 4.6875 4.21886 5.33106 4.21886 6.02978C4.20967 6.75609 4.77048 7.37207 5.41405 7.37207ZM10.7807 6.05619C10.7807 6.74114 10.24 7.37201 9.60912 7.37201C8.97825 7.37201 8.4375 6.76818 8.4375 6.05619C8.4375 5.37124 8.97825 4.74037 9.60912 4.74037C10.24 4.74037 10.7807 5.34421 10.7807 6.05619Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
+                  <EmojiButtonIncoming />
                 </div>
                 <div
                   onClick={handleReactionClick}
@@ -725,17 +679,7 @@ export default function ChatMessage(props) {
                     className="more-emojis-button"
                   >
                     <div className="more-emojis-icon-wrapper">
-                      <svg
-                        viewBox="0 0 18 18"
-                        width="18"
-                        preserveAspectRatio="xMidYMid meet"
-                        fill="none"
-                      >
-                        <path
-                          d="M0.779492 9.77945C0.345435 9.34539 0.354642 8.64524 0.789127 8.21075C1.00194 7.99794 1.27674 7.88259 1.57806 7.90017L7.88829 7.87934L7.90025 1.57797C7.89154 1.26779 7.99803 1.00185 8.21083 0.789044C8.64532 0.354559 9.32774 0.363086 9.7618 0.797143C9.99211 1.02746 10.0895 1.2667 10.0805 1.59463L10.0862 7.89598L16.4053 7.90173C16.7598 7.90156 16.9991 7.99893 17.2116 8.21153C17.6457 8.64558 17.6542 9.34573 17.2197 9.78022C17.0069 9.99302 16.7499 10.0906 16.4308 10.0908L10.1117 10.1028L10.0998 16.4041C10.1085 16.7143 10.002 16.9803 9.78031 17.2019C9.34582 17.6364 8.64567 17.6456 8.20275 17.2027C7.97244 16.9724 7.87508 16.6977 7.8841 16.3875L7.8872 10.095L1.60356 10.107C1.27564 10.116 1.00981 10.0098 0.779492 9.77945Z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
+                      <MoreEmojisIcon />
                     </div>
                   </div>
                 </div>
@@ -773,59 +717,19 @@ export default function ChatMessage(props) {
         >
           <div className="chat-message-incoming-wrapper">
             <div className="chat-bubble-arrow">
-              <svg viewBox="0 0 8 13" width="10" height="16">
-                <path
-                  opacity=".13"
-                  fill="#0000000"
-                  d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                ></path>
-                <path
-                  fill="currentColor"
-                  d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                ></path>
-              </svg>
+              <ChatBubble />
             </div>
             <div className="chat-message-wrapper-direct">
               <div
                 onClick={handleChatOptions}
                 className="chat-options-icon-direct"
               >
-                <svg
-                  viewBox="0 0 18 18"
-                  height="18"
-                  width="18"
-                  preserveAspectRatio="xMidYMid meet"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  enableBackground="new 0 0 18 18"
-                >
-                  <path
-                    fill={currentColor}
-                    d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                  ></path>
-                </svg>
+                <ChatOptionsArrowDark />
               </div>
               <div className="message-container-direct">
                 <div className="message">{message}</div>
                 <div className="star-icon-and-time">
-                  {star === "true" ? (
-                    <svg
-                      viewBox="0 0 16 15"
-                      height="15"
-                      width="16"
-                      preserveAspectRatio="xMidYMid meet"
-                      version="1.1"
-                      x="0px"
-                      y="0px"
-                      enableBackground="new 0 0 16 15"
-                    >
-                      <path
-                        fill={currentColor}
-                        d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                      ></path>
-                    </svg>
-                  ) : null}
+                  {star === "true" ? <StarIconDark /> : null}
 
                   <Time time={time} />
                 </div>
@@ -872,57 +776,20 @@ export default function ChatMessage(props) {
                   />
                 )}
                 <div className="chat-bubble-arrow-outgoing">
-                  <svg viewBox="0 0 8 13" width="10" height="16">
-                    <path
-                      opacity=".13"
-                      fill="#0000000"
-                      d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                    ></path>
-                    <path
-                      fill="currentColor"
-                      d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                    ></path>
-                  </svg>
+                  <ChatBubble />
                 </div>
                 <div className="chat-message-wrapper-direct replied-ongoing-message">
                   <div
                     onClick={handleChatOptions}
                     className="chat-options-icon-direct-outgoing"
                   >
-                    <svg
-                      viewBox="0 0 18 18"
-                      height="18"
-                      width="18"
-                      preserveAspectRatio="xMidYMid meet"
-                      version="1.1"
-                      x="0px"
-                      y="0px"
-                      enableBackground="new 0 0 18 18"
-                    >
-                      <path
-                        fill={currentColor}
-                        d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                      ></path>
-                    </svg>
+                    <ChatOptionsArrowDark />
                   </div>
                   {deleted === "true" ? (
                     <div className="deleted-message-container">
                       <div className="deleted-message-wrapper">
                         <div className="deleted-icon">
-                          <svg
-                            viewBox="0 0 24 24"
-                            height="24"
-                            width="24"
-                            preserveAspectRatio="xMidYMid meet"
-                            fill="none"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M7.75897 6.43054C8.93584 5.533 10.4057 5 12 5C15.866 5 19 8.13401 19 12C19 13.5943 18.467 15.0642 17.5695 16.241L7.75897 6.43054ZM6.35707 7.85707C5.50399 9.01706 5 10.4497 5 12C5 15.866 8.13401 19 12 19C13.5503 19 14.9829 18.496 16.1429 17.6429L6.35707 7.85707ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
+                          <DeletedIcon />
                         </div>
                         <div className="deleted-message">
                           You deleted this message
@@ -934,23 +801,7 @@ export default function ChatMessage(props) {
                     <div className="message-container-direct">
                       <div className="message">{message}</div>
                       <div className="star-icon-and-time">
-                        {star === "true" ? (
-                          <svg
-                            viewBox="0 0 16 15"
-                            height="15"
-                            width="16"
-                            preserveAspectRatio="xMidYMid meet"
-                            version="1.1"
-                            x="0px"
-                            y="0px"
-                            enableBackground="new 0 0 16 15"
-                          >
-                            <path
-                              fill={currentColor}
-                              d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                            ></path>
-                          </svg>
-                        ) : null}
+                        {star === "true" ? <StarIconDark /> : null}
 
                         {deleted === "true" ? null : <Time time={time} />}
                         <div className="message-status">
@@ -964,20 +815,7 @@ export default function ChatMessage(props) {
                 <div data-emojis className="emojis-outgoing">
                   <div className="emojis-outgoing-content">
                     <div onClick={showEmojiWrapper} className="emojis-button">
-                      <svg
-                        viewBox="0 0 15 15"
-                        width="15"
-                        preserveAspectRatio="xMidYMid meet"
-                        fill="none"
-                        className="outgoing-message-reaction-icon reaction-button-icon"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M0 7.5C0 11.6305 3.36946 15 7.5 15C11.6527 15 15 11.6305 15 7.5C15 3.36946 11.6305 0 7.5 0C3.36946 0 0 3.36946 0 7.5ZM10.995 8.69333C11.1128 8.67863 11.2219 8.66503 11.3211 8.65309C11.61 8.63028 11.8076 8.91918 11.6784 9.13965C10.8573 10.6374 9.29116 11.793 7.50455 11.793C5.71794 11.793 4.15181 10.6602 3.33072 9.16246C3.18628 8.91918 3.37634 8.63028 3.66524 8.65309C3.79123 8.66749 3.93521 8.68511 4.09426 8.70457C4.94292 8.80842 6.22074 8.96479 7.48174 8.96479C8.81855 8.96479 10.1378 8.80025 10.995 8.69333ZM5.41405 7.37207C6.05761 7.37207 6.60923 6.72851 6.60923 6.02978C6.60923 5.30348 6.05761 4.6875 5.41405 4.6875C4.77048 4.6875 4.21886 5.33106 4.21886 6.02978C4.20967 6.75609 4.77048 7.37207 5.41405 7.37207ZM10.7807 6.05619C10.7807 6.74114 10.24 7.37201 9.60912 7.37201C8.97825 7.37201 8.4375 6.76818 8.4375 6.05619C8.4375 5.37124 8.97825 4.74037 9.60912 4.74037C10.24 4.74037 10.7807 5.34421 10.7807 6.05619Z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
+                      <EmojiButtonOutgoing />
                     </div>
                     <div
                       onClick={handleReactionClick}
@@ -997,17 +835,7 @@ export default function ChatMessage(props) {
                         className="more-emojis-button"
                       >
                         <div className="more-emojis-icon-wrapper">
-                          <svg
-                            viewBox="0 0 18 18"
-                            width="18"
-                            preserveAspectRatio="xMidYMid meet"
-                            fill="none"
-                          >
-                            <path
-                              d="M0.779492 9.77945C0.345435 9.34539 0.354642 8.64524 0.789127 8.21075C1.00194 7.99794 1.27674 7.88259 1.57806 7.90017L7.88829 7.87934L7.90025 1.57797C7.89154 1.26779 7.99803 1.00185 8.21083 0.789044C8.64532 0.354559 9.32774 0.363086 9.7618 0.797143C9.99211 1.02746 10.0895 1.2667 10.0805 1.59463L10.0862 7.89598L16.4053 7.90173C16.7598 7.90156 16.9991 7.99893 17.2116 8.21153C17.6457 8.64558 17.6542 9.34573 17.2197 9.78022C17.0069 9.99302 16.7499 10.0906 16.4308 10.0908L10.1117 10.1028L10.0998 16.4041C10.1085 16.7143 10.002 16.9803 9.78031 17.2019C9.34582 17.6364 8.64567 17.6456 8.20275 17.2027C7.97244 16.9724 7.87508 16.6977 7.8841 16.3875L7.8872 10.095L1.60356 10.107C1.27564 10.116 1.00981 10.0098 0.779492 9.77945Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
+                          <MoreEmojisIcon />
                         </div>
                       </div>
                     </div>
@@ -1057,57 +885,20 @@ export default function ChatMessage(props) {
           >
             <div className="chat-message-outgoing-wrapper">
               <div className="chat-bubble-arrow-outgoing">
-                <svg viewBox="0 0 8 13" width="10" height="16">
-                  <path
-                    opacity=".13"
-                    fill="#0000000"
-                    d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                  ></path>
-                </svg>
+                <ChatBubble />
               </div>
               <div className="chat-message-wrapper-direct">
                 <div
                   onClick={handleChatOptions}
                   className="chat-options-icon-direct-outgoing"
                 >
-                  <svg
-                    viewBox="0 0 18 18"
-                    height="18"
-                    width="18"
-                    preserveAspectRatio="xMidYMid meet"
-                    version="1.1"
-                    x="0px"
-                    y="0px"
-                    enableBackground="new 0 0 18 18"
-                  >
-                    <path
-                      fill={currentColor}
-                      d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                    ></path>
-                  </svg>
+                  <ChatOptionsArrowDark />
                 </div>
                 {deleted === "true" ? (
                   <div className="deleted-message-container">
                     <div className="deleted-message-wrapper">
                       <div className="deleted-icon">
-                        <svg
-                          viewBox="0 0 24 24"
-                          height="24"
-                          width="24"
-                          preserveAspectRatio="xMidYMid meet"
-                          fill="none"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M7.75897 6.43054C8.93584 5.533 10.4057 5 12 5C15.866 5 19 8.13401 19 12C19 13.5943 18.467 15.0642 17.5695 16.241L7.75897 6.43054ZM6.35707 7.85707C5.50399 9.01706 5 10.4497 5 12C5 15.866 8.13401 19 12 19C13.5503 19 14.9829 18.496 16.1429 17.6429L6.35707 7.85707ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
+                        <DeletedIcon />
                       </div>
                       <div data-delete className="deleted-message">
                         You deleted this message
@@ -1119,23 +910,7 @@ export default function ChatMessage(props) {
                   <div className="message-container-direct">
                     <div className="message">{message}</div>
                     <div className="star-icon-and-time">
-                      {star === "true" ? (
-                        <svg
-                          viewBox="0 0 16 15"
-                          height="15"
-                          width="16"
-                          preserveAspectRatio="xMidYMid meet"
-                          version="1.1"
-                          x="0px"
-                          y="0px"
-                          enableBackground="new 0 0 16 15"
-                        >
-                          <path
-                            fill={currentColor}
-                            d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                          ></path>
-                        </svg>
-                      ) : null}
+                      {star === "true" ? <StarIconDark /> : null}
 
                       {deleted === "true" ? null : <Time time={time} />}
                       <div className="message-status">
@@ -1150,20 +925,7 @@ export default function ChatMessage(props) {
                 {deleted === "true" ? null : (
                   <div className="emojis-outgoing-content">
                     <div onClick={showEmojiWrapper} className="emojis-button">
-                      <svg
-                        viewBox="0 0 15 15"
-                        width="15"
-                        preserveAspectRatio="xMidYMid meet"
-                        fill="none"
-                        className="outgoing-message-reaction-icon reaction-button-icon"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M0 7.5C0 11.6305 3.36946 15 7.5 15C11.6527 15 15 11.6305 15 7.5C15 3.36946 11.6305 0 7.5 0C3.36946 0 0 3.36946 0 7.5ZM10.995 8.69333C11.1128 8.67863 11.2219 8.66503 11.3211 8.65309C11.61 8.63028 11.8076 8.91918 11.6784 9.13965C10.8573 10.6374 9.29116 11.793 7.50455 11.793C5.71794 11.793 4.15181 10.6602 3.33072 9.16246C3.18628 8.91918 3.37634 8.63028 3.66524 8.65309C3.79123 8.66749 3.93521 8.68511 4.09426 8.70457C4.94292 8.80842 6.22074 8.96479 7.48174 8.96479C8.81855 8.96479 10.1378 8.80025 10.995 8.69333ZM5.41405 7.37207C6.05761 7.37207 6.60923 6.72851 6.60923 6.02978C6.60923 5.30348 6.05761 4.6875 5.41405 4.6875C4.77048 4.6875 4.21886 5.33106 4.21886 6.02978C4.20967 6.75609 4.77048 7.37207 5.41405 7.37207ZM10.7807 6.05619C10.7807 6.74114 10.24 7.37201 9.60912 7.37201C8.97825 7.37201 8.4375 6.76818 8.4375 6.05619C8.4375 5.37124 8.97825 4.74037 9.60912 4.74037C10.24 4.74037 10.7807 5.34421 10.7807 6.05619Z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
+                      <EmojiButtonOutgoing />
                     </div>
                     <div
                       onClick={handleReactionClick}
@@ -1183,17 +945,7 @@ export default function ChatMessage(props) {
                         className="more-emojis-button"
                       >
                         <div className="more-emojis-icon-wrapper">
-                          <svg
-                            viewBox="0 0 18 18"
-                            width="18"
-                            preserveAspectRatio="xMidYMid meet"
-                            fill="none"
-                          >
-                            <path
-                              d="M0.779492 9.77945C0.345435 9.34539 0.354642 8.64524 0.789127 8.21075C1.00194 7.99794 1.27674 7.88259 1.57806 7.90017L7.88829 7.87934L7.90025 1.57797C7.89154 1.26779 7.99803 1.00185 8.21083 0.789044C8.64532 0.354559 9.32774 0.363086 9.7618 0.797143C9.99211 1.02746 10.0895 1.2667 10.0805 1.59463L10.0862 7.89598L16.4053 7.90173C16.7598 7.90156 16.9991 7.99893 17.2116 8.21153C17.6457 8.64558 17.6542 9.34573 17.2197 9.78022C17.0069 9.99302 16.7499 10.0906 16.4308 10.0908L10.1117 10.1028L10.0998 16.4041C10.1085 16.7143 10.002 16.9803 9.78031 17.2019C9.34582 17.6364 8.64567 17.6456 8.20275 17.2027C7.97244 16.9724 7.87508 16.6977 7.8841 16.3875L7.8872 10.095L1.60356 10.107C1.27564 10.116 1.00981 10.0098 0.779492 9.77945Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
+                          <MoreEmojisIcon />
                         </div>
                       </div>
                     </div>
@@ -1260,57 +1012,20 @@ export default function ChatMessage(props) {
                   />
                 )}
                 <div className="chat-bubble-arrow-outgoing-starred">
-                  <svg viewBox="0 0 8 13" width="10" height="16">
-                    <path
-                      opacity=".13"
-                      fill="#0000000"
-                      d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                    ></path>
-                    <path
-                      fill="currentColor"
-                      d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                    ></path>
-                  </svg>
+                  <ChatBubble />
                 </div>
                 <div className="chat-message-wrapper-direct replied-ongoing-message">
                   <div
                     onClick={handleChatOptions}
                     className="chat-options-icon-direct-outgoing"
                   >
-                    <svg
-                      viewBox="0 0 18 18"
-                      height="18"
-                      width="18"
-                      preserveAspectRatio="xMidYMid meet"
-                      version="1.1"
-                      x="0px"
-                      y="0px"
-                      enableBackground="new 0 0 18 18"
-                    >
-                      <path
-                        fill={currentColor}
-                        d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                      ></path>
-                    </svg>
+                    <ChatOptionsArrowDark />
                   </div>
                   {deleted === "true" ? (
                     <div className="deleted-message-container">
                       <div className="deleted-message-wrapper">
                         <div className="deleted-icon">
-                          <svg
-                            viewBox="0 0 24 24"
-                            height="24"
-                            width="24"
-                            preserveAspectRatio="xMidYMid meet"
-                            fill="none"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M7.75897 6.43054C8.93584 5.533 10.4057 5 12 5C15.866 5 19 8.13401 19 12C19 13.5943 18.467 15.0642 17.5695 16.241L7.75897 6.43054ZM6.35707 7.85707C5.50399 9.01706 5 10.4497 5 12C5 15.866 8.13401 19 12 19C13.5503 19 14.9829 18.496 16.1429 17.6429L6.35707 7.85707ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
+                          <DeletedIcon />
                         </div>
                         <div className="deleted-message">
                           You deleted this message
@@ -1322,23 +1037,7 @@ export default function ChatMessage(props) {
                     <div className="message-container-direct">
                       <div className="message">{message}</div>
                       <div className="star-icon-and-time">
-                        {star === "true" ? (
-                          <svg
-                            viewBox="0 0 16 15"
-                            height="15"
-                            width="16"
-                            preserveAspectRatio="xMidYMid meet"
-                            version="1.1"
-                            x="0px"
-                            y="0px"
-                            enableBackground="new 0 0 16 15"
-                          >
-                            <path
-                              fill={currentColor}
-                              d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                            ></path>
-                          </svg>
-                        ) : null}
+                        {star === "true" ? <StarIconDark /> : null}
 
                         {deleted === "true" ? null : <Time time={time} />}
                         <div className="message-status">
@@ -1390,57 +1089,20 @@ export default function ChatMessage(props) {
           >
             <div className="chat-message-outgoing-wrapper">
               <div className="chat-bubble-arrow-outgoing-starred">
-                <svg viewBox="0 0 8 13" width="10" height="16">
-                  <path
-                    opacity=".13"
-                    fill="#0000000"
-                    d="M1.533 3.568 8 12.193V1H2.812C1.042 1 .474 2.156 1.533 3.568z"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M1.533 2.568 8 11.193V0H2.812C1.042 0 .474 1.156 1.533 2.568z"
-                  ></path>
-                </svg>
+                <ChatBubble />
               </div>
               <div className="chat-message-wrapper-direct">
                 <div
                   onClick={handleChatOptions}
                   className="chat-options-icon-direct-outgoing"
                 >
-                  <svg
-                    viewBox="0 0 18 18"
-                    height="18"
-                    width="18"
-                    preserveAspectRatio="xMidYMid meet"
-                    version="1.1"
-                    x="0px"
-                    y="0px"
-                    enableBackground="new 0 0 18 18"
-                  >
-                    <path
-                      fill={currentColor}
-                      d="M3.3,4.6L9,10.3l5.7-5.7l1.6,1.6L9,13.4L1.7,6.2L3.3,4.6z"
-                    ></path>
-                  </svg>
+                  <ChatOptionsArrowDark />
                 </div>
                 {deleted === "true" ? (
                   <div className="deleted-message-container">
                     <div className="deleted-message-wrapper">
                       <div className="deleted-icon">
-                        <svg
-                          viewBox="0 0 24 24"
-                          height="24"
-                          width="24"
-                          preserveAspectRatio="xMidYMid meet"
-                          fill="none"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M7.75897 6.43054C8.93584 5.533 10.4057 5 12 5C15.866 5 19 8.13401 19 12C19 13.5943 18.467 15.0642 17.5695 16.241L7.75897 6.43054ZM6.35707 7.85707C5.50399 9.01706 5 10.4497 5 12C5 15.866 8.13401 19 12 19C13.5503 19 14.9829 18.496 16.1429 17.6429L6.35707 7.85707ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
+                        <DeletedIcon />
                       </div>
                       <div data-delete className="deleted-message">
                         You deleted this message
@@ -1452,23 +1114,7 @@ export default function ChatMessage(props) {
                   <div className="message-container-direct">
                     <div className="message">{message}</div>
                     <div className="star-icon-and-time">
-                      {star === "true" ? (
-                        <svg
-                          viewBox="0 0 16 15"
-                          height="15"
-                          width="16"
-                          preserveAspectRatio="xMidYMid meet"
-                          version="1.1"
-                          x="0px"
-                          y="0px"
-                          enableBackground="new 0 0 16 15"
-                        >
-                          <path
-                            fill={currentColor}
-                            d="M8.3,10.2l-2.5,1.7c-0.3,0.2-0.8-0.1-0.7-0.5L6,8.6c0.1-0.2,0-0.4-0.2-0.5L3.5,6.3C3.1,6,3.3,5.5,3.7,5.5 l3-0.1c0.2,0,0.3-0.1,0.4-0.3l1-2.8c0.1-0.4,0.7-0.4,0.8,0l1,2.8c0.1,0.2,0.2,0.3,0.4,0.3l3,0.1c0.4,0,0.6,0.5,0.3,0.8l-2.4,1.8 C11.1,8.2,11,8.4,11,8.6l0.9,2.9c0.1,0.4-0.3,0.7-0.7,0.5l-2.5-1.7C8.6,10.1,8.4,10.1,8.3,10.2z"
-                          ></path>
-                        </svg>
-                      ) : null}
+                      {star === "true" ? <StarIconDark /> : null}
 
                       {deleted === "true" ? null : <Time time={time} />}
                       <div className="message-status">
