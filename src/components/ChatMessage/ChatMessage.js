@@ -9,7 +9,9 @@ import RepliedMessage from "../RepliedMessage/RepliedMessage"
 import CustomAlert from "../CustomAlert/CustomAlert"
 import { ReactComponent as ChatBubble } from "../../icons/chat-bubble.svg"
 import { ReactComponent as ChatOptionsArrowDark } from "../../icons/chat-options-arrow-dark.svg"
+import { ReactComponent as ChatOptionsArrowLight } from "../../icons/chat-options-arrow-light.svg"
 import { ReactComponent as StarIconDark } from "../../icons/star-icon-dark.svg"
+import { ReactComponent as StarIconLight } from "../../icons/star-icon-light.svg"
 import { ReactComponent as EmojiButtonIncoming } from "../../icons/emoji-button-incoming.svg"
 import { ReactComponent as EmojiButtonOutgoing } from "../../icons/emoji-button-outgoing.svg"
 import { ReactComponent as MoreEmojisIcon } from "../../icons/more-emojis-icon.svg"
@@ -36,7 +38,8 @@ export default function ChatMessage(props) {
     messageHistory,
     setMessageHistory,
     starredMessage,
-    setStarredMessage
+    setStarredMessage,
+    theme
   } = props
   let currentColor = "var(--chat-options-arrow-color)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
@@ -644,12 +647,22 @@ export default function ChatMessage(props) {
                 onClick={handleChatOptions}
                 className="chat-options-icon-direct"
               >
-                <ChatOptionsArrowDark />
+                {theme === "dark" || theme === "system-default" ? (
+                  <ChatOptionsArrowDark />
+                ) : (
+                  <ChatOptionsArrowLight />
+                )}
               </div>
               <div className="message-container-direct">
                 <div className="message">{message}</div>
                 <div className="star-icon-and-time">
-                  {star === "true" ? <StarIconDark /> : null}
+                  {star === "true" ? (
+                    theme === "dark" || theme === "system-default" ? (
+                      <StarIconDark />
+                    ) : (
+                      <StarIconLight />
+                    )
+                  ) : null}
 
                   <Time time={time} />
                 </div>
@@ -724,12 +737,22 @@ export default function ChatMessage(props) {
                 onClick={handleChatOptions}
                 className="chat-options-icon-direct"
               >
-                <ChatOptionsArrowDark />
+                {theme === "dark" || theme === "system-default" ? (
+                  <ChatOptionsArrowDark />
+                ) : (
+                  <ChatOptionsArrowLight />
+                )}
               </div>
               <div className="message-container-direct">
                 <div className="message">{message}</div>
                 <div className="star-icon-and-time">
-                  {star === "true" ? <StarIconDark /> : null}
+                  {star === "true" ? (
+                    theme === "dark" || theme === "system-default" ? (
+                      <StarIconDark />
+                    ) : (
+                      <StarIconLight />
+                    )
+                  ) : null}
 
                   <Time time={time} />
                 </div>
@@ -801,7 +824,13 @@ export default function ChatMessage(props) {
                     <div className="message-container-direct">
                       <div className="message">{message}</div>
                       <div className="star-icon-and-time">
-                        {star === "true" ? <StarIconDark /> : null}
+                        {star === "true" ? (
+                          theme === "dark" ? (
+                            <StarIconDark />
+                          ) : (
+                            <StarIconLight />
+                          )
+                        ) : null}
 
                         {deleted === "true" ? null : <Time time={time} />}
                         <div className="message-status">
@@ -892,7 +921,11 @@ export default function ChatMessage(props) {
                   onClick={handleChatOptions}
                   className="chat-options-icon-direct-outgoing"
                 >
-                  <ChatOptionsArrowDark />
+                  {theme === "dark" || theme === "system-default" ? (
+                    <ChatOptionsArrowDark />
+                  ) : (
+                    <ChatOptionsArrowLight />
+                  )}
                 </div>
                 {deleted === "true" ? (
                   <div className="deleted-message-container">
@@ -910,7 +943,13 @@ export default function ChatMessage(props) {
                   <div className="message-container-direct">
                     <div className="message">{message}</div>
                     <div className="star-icon-and-time">
-                      {star === "true" ? <StarIconDark /> : null}
+                      {star === "true" ? (
+                        theme === "dark" || theme === "system-default" ? (
+                          <StarIconDark />
+                        ) : (
+                          <StarIconLight />
+                        )
+                      ) : null}
 
                       {deleted === "true" ? null : <Time time={time} />}
                       <div className="message-status">
@@ -1019,7 +1058,11 @@ export default function ChatMessage(props) {
                     onClick={handleChatOptions}
                     className="chat-options-icon-direct-outgoing"
                   >
-                    <ChatOptionsArrowDark />
+                    {theme === "dark" || theme === "system-default" ? (
+                      <ChatOptionsArrowDark />
+                    ) : (
+                      <ChatOptionsArrowLight />
+                    )}
                   </div>
                   {deleted === "true" ? (
                     <div className="deleted-message-container">
@@ -1037,7 +1080,13 @@ export default function ChatMessage(props) {
                     <div className="message-container-direct">
                       <div className="message">{message}</div>
                       <div className="star-icon-and-time">
-                        {star === "true" ? <StarIconDark /> : null}
+                        {star === "true" ? (
+                          theme === "dark" || theme === "system-default" ? (
+                            <StarIconDark />
+                          ) : (
+                            <StarIconLight />
+                          )
+                        ) : null}
 
                         {deleted === "true" ? null : <Time time={time} />}
                         <div className="message-status">
@@ -1096,7 +1145,11 @@ export default function ChatMessage(props) {
                   onClick={handleChatOptions}
                   className="chat-options-icon-direct-outgoing"
                 >
-                  <ChatOptionsArrowDark />
+                  {theme === "dark" || theme === "system-default" ? (
+                    <ChatOptionsArrowDark />
+                  ) : (
+                    <ChatOptionsArrowLight />
+                  )}
                 </div>
                 {deleted === "true" ? (
                   <div className="deleted-message-container">
@@ -1114,7 +1167,13 @@ export default function ChatMessage(props) {
                   <div className="message-container-direct">
                     <div className="message">{message}</div>
                     <div className="star-icon-and-time">
-                      {star === "true" ? <StarIconDark /> : null}
+                      {star === "true" ? (
+                        theme === "dark" || theme === "system default" ? (
+                          <StarIconDark />
+                        ) : (
+                          <StarIconLight />
+                        )
+                      ) : null}
 
                       {deleted === "true" ? null : <Time time={time} />}
                       <div className="message-status">

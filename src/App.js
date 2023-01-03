@@ -101,6 +101,7 @@ function App() {
     root.style.setProperty("--placeholder", "#3b4a54")
     root.style.setProperty("--reply-message-background-text", "#fff")
     root.style.setProperty("--forwarded-message", "#667781")
+    root.style.setProperty("--starred-message-selected-background", "#f0f2f5")
   }
 
   function handleDarkTheme() {
@@ -150,6 +151,7 @@ function App() {
     root.style.setProperty("--placeholder", "#d1d7db")
     root.style.setProperty("--reply-message-background-text", "rgb(11, 20, 26)")
     root.style.setProperty("--forwarded-message", "hsla(0, 0%, 100%, 0.6)")
+    root.style.setProperty("--starred-message-selected-background", "#0c1317")
   }
 
   return (
@@ -277,6 +279,7 @@ function App() {
               setStarredMessage={setStarredMessage}
               messageHistory={messageHistory}
               setMessageHistory={setMessageHistory}
+              theme={theme}
             />
           ) : (
             <ChatSection theme={theme} />

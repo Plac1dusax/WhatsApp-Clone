@@ -14,7 +14,8 @@ export default function DirectMessage(props) {
     starredMessage,
     setStarredMessage,
     messageHistory,
-    setMessageHistory
+    setMessageHistory,
+    theme
   } = props
   const [replyMessage, setReplyMessage] = useState([])
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
@@ -110,6 +111,7 @@ export default function DirectMessage(props) {
                   setStarredMessage={setStarredMessage}
                   messageHistory={messageHistory}
                   setMessageHistory={setMessageHistory}
+                  theme={theme}
                 />
               </div>
             )
@@ -136,6 +138,7 @@ export default function DirectMessage(props) {
                   setStarredMessage={setStarredMessage}
                   messageHistory={messageHistory}
                   setMessageHistory={setMessageHistory}
+                  theme={theme}
                 />
               </div>
             )
