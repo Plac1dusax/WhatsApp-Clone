@@ -30,7 +30,7 @@ export default function Chat(props) {
       setUserId(id)
     }
   }
-  console.log(deleted)
+
   useEffect(() => {
     const elements = [...document.querySelectorAll("[data-id]")]
     const selectedElement = elements.filter(el => {

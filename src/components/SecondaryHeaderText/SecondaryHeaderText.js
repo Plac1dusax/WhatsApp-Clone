@@ -96,6 +96,14 @@ export default function SecondaryHeaderText(props) {
     }
 
     renderText = text
+  } else if (headerType === "empty-archived-section") {
+    style = {
+      color: "var(--secondary-header-light-text-color-dark)",
+      fontSize: "16px",
+      fontWeight: "500"
+    }
+
+    renderText = text
   }
 
   return <div style={style}>{renderText}</div>

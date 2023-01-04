@@ -2,7 +2,24 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 450px;
+  min-width: 450px;
+  height: 720px;
   background-color: var(--primary-theme-color-dark);
+}
+
+.archived-section-container-empty {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  min-width: 450px;
+  height: 720px;
+  background-color: var(--primary-theme-color-dark);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .archived-section-nav {
@@ -34,6 +51,25 @@
   height: 615px;
   overflow: hidden;
   overflow-y: auto;
+}
+
+.no-archived-chats-icon-wrapper {
+  background-color: var(--no-archived-chats-icon-background);
+  border-radius: 50%;
+  color: var(--no-archived-chats-icon);
+  width: 160px;
+  height: 160px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-archived-chats-icon-and-notification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .archived-chats-list::-webkit-scrollbar {

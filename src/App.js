@@ -25,6 +25,7 @@ export const DatabaseContext = React.createContext()
 function App() {
   const [database, setDatabase] = useState([...chatHistory])
   const [messageHistory, setMessageHistory] = useState([...database])
+  const [archivedMessages, setArchivedMessages] = useState([])
   const [userId, setUserId] = useState(null)
   const [archivedActive, setArchivedActive] = useState(false)
   const [communityTabActive, setCommunityTabActive] = useState(false)
@@ -188,6 +189,8 @@ function App() {
           <ArchivedSection
             archivedActive={archivedActive}
             setArchivedActive={setArchivedActive}
+            archivedMessages={archivedMessages}
+            setArchivedMessages={setArchivedMessages}
           />
           <CommunitiesSection
             communityTabActive={communityTabActive}

@@ -131,6 +131,8 @@
   --deleted-message: rgb(84, 101, 111);
   --chat-options-arrow-color: hsla(0, 0%, 100%, 0.6);
   --app-background-stripe: #111b21;
+  --no-archived-chats-icon-background: #182229;
+  --no-archived-chats-icon: #727a7e;
 }
 
 body {
