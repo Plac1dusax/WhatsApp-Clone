@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import PrimaryHeaderText from "../PrimaryHeaderText/PrimaryHeaderText"
 import OptionsMenu from "../OptionsMenu/OptionsMenu"
@@ -46,6 +46,26 @@ export default function Navbar(props) {
       optionsMenu.classList.add("more-options-btn-options-hide")
     }
   }
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleHideMoreOptions)
+
+    function handleHideMoreOptions(e) {
+      const moreOptionsButton = document.querySelector(".more-options-btn")
+      const optionsMenu = document.querySelector("[data-options]")
+
+      if (!e.target.matches(".more-options-btn")) {
+        optionsMenu.classList.remove("more-options-btn-options-show")
+        optionsMenu.classList.add("more-options-btn-options-hide")
+        moreOptionsButton.classList.remove("more-options-btn-selected")
+        moreOptionsButton.classList.add("more-options-btn-not-selected")
+      }
+    }
+
+    return () => {
+      document.body.removeEventListener("click", handleHideMoreOptions)
+    }
+  }, [])
 
   function handleShowCommunitySection() {
     setCommunityTabActive(!communityTabActive)

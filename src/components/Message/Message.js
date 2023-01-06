@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./message.css"
 import SecondaryHeaderText from "../SecondaryHeaderText/SecondaryHeaderText"
 import MessageInfo from "../MessageInfo/MessageInfo"
@@ -53,6 +53,34 @@ export default function Message(props) {
       menu.classList.remove("chat-options-show-down")
     })
   }
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleHideChatOptions)
+
+    const chatOptionsMenu = [
+      ...document.querySelectorAll("[data-chat-options]")
+    ]
+
+    function handleHideChatOptions(e) {
+      if (e.target.matches("[data-options-arrow]")) return
+
+      if (chatOptionsMenu.length > 0) {
+        chatOptionsMenu.map(menu => {
+          if (menu.classList.contains("chat-options-show-up")) {
+            menu.classList.remove("chat-options-show-up")
+            menu.classList.add("chat-options-hide-up")
+          } else if (menu.classList.contains("chat-options-show-down")) {
+            menu.classList.remove("chat-options-show-down")
+            menu.classList.add("chat-options-hide-down")
+          }
+        })
+      }
+    }
+
+    return () => {
+      document.body.removeEventListener("click", handleHideChatOptions)
+    }
+  }, [])
 
   return (
     <div className="message-wrapper">
