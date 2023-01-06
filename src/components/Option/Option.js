@@ -34,7 +34,7 @@ export default function Option(props) {
 
   return (
     <div onClick={handleOptionButton} className="option-wrapper">
-      <SecondaryHeaderText headerType={"option"} text={option} />
+      <SecondaryHeaderText headerType={"option"} text={option} option={true} />
     </div>
   )
 }

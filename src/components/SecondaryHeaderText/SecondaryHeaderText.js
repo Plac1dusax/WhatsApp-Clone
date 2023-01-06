@@ -1,5 +1,5 @@
 export default function SecondaryHeaderText(props) {
-  const { headerType, text } = props
+  const { headerType, text, option } = props
 
   let style = {}
   let renderText = ""
@@ -106,5 +106,9 @@ export default function SecondaryHeaderText(props) {
     renderText = text
   }
 
-  return <div style={style}>{renderText}</div>
+  return (
+    <div className={option ? "option-text" : ""} style={style}>
+      {renderText}
+    </div>
+  )
 }

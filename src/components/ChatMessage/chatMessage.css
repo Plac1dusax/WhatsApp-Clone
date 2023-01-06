@@ -121,6 +121,14 @@
   color: var(--chat-options-arrow-color);
 }
 
+.chat-options-icon-direct > svg {
+  pointer-events: none;
+}
+
+.chat-options-icon-direct-outgoing > svg {
+  pointer-events: none;
+}
+
 .message-container-direct {
   display: flex;
   justify-content: space-between;

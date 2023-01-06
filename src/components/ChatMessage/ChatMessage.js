@@ -41,9 +41,165 @@ export default function ChatMessage(props) {
     setStarredMessage,
     theme
   } = props
-  let currentColor = "var(--chat-options-arrow-color)"
   const [commonEmojis, setCommonEmojis] = useState(wrapperEmojis)
   const [star, setStar] = useState(starred)
+
+  useEffect(() => {
+    const optionMenus = [...document.querySelectorAll("[data-option-menu]")]
+
+    function handleBodyClick(e) {
+      if (
+        e.target.classList.contains("option-text") ||
+        e.target.matches(".chat-options-icon-direct-outgoing") ||
+        e.target.matches(".chat-options-icon-direct")
+      ) {
+        return
+      } else {
+        const activeMenus = optionMenus.filter(menu => {
+          if (
+            !menu.classList.contains("options-menu") &&
+            !menu.classList.contains("options-menu-outgoing-up-hide") &&
+            !menu.classList.contains("options-menu-outgoing-down-hide") &&
+            !menu.classList.contains("options-menu-incoming-up-hide") &&
+            !menu.classList.contains("options-menu-incoming-down-hide")
+          ) {
+            return menu
+          } else {
+            return null
+          }
+        })
+
+        if (activeMenus.length > 0) {
+          const className = activeMenus[0].classList.toString()
+          handleOptionsMenuHide(className, activeMenus)
+        }
+      }
+    }
+
+    function handleOptionsMenuHide(className, activeMenus) {
+      switch (className) {
+        case "options-menu-outgoing-down":
+          activeMenus[0].classList.remove("options-menu-outgoing-down")
+          activeMenus[0].classList.add("options-menu-outgoing-down-hide")
+          break
+        case "options-menu-outgoing-up":
+          activeMenus[0].classList.remove("options-menu-outgoing-up")
+          activeMenus[0].classList.add("options-menu-outgoing-up-hide")
+          break
+        case "options-menu-incoming-down":
+          activeMenus[0].classList.remove("options-menu-incoming-down")
+          activeMenus[0].classList.add("options-menu-incoming-down-hide")
+          break
+        case "options-menu-incoming-up":
+          activeMenus[0].classList.remove("options-menu-incoming-up")
+          activeMenus[0].classList.add("options-menu-incoming-up-hide")
+          break
+      }
+    }
+
+    document.body.addEventListener("click", handleBodyClick)
+
+    return () => {
+      document.body.removeEventListener("click", handleBodyClick)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleBodyClick)
+
+    function handleBodyClick(e) {
+      const emojiReactionWrappers = [
+        ...document.querySelectorAll(".emoji-reactions-wrapper")
+      ]
+      const activeWrapper = emojiReactionWrappers.filter(wrapper => {
+        return wrapper.classList.contains("wrapper-active")
+      })
+
+      const emojiGrids = [...document.querySelectorAll(".emojis-list")]
+
+      const activeGrid = emojiGrids.filter(grid => {
+        if (
+          grid.classList.contains("show-emojis-list-bottom-right") ||
+          grid.classList.contains("show-emojis-list-bottom-left") ||
+          grid.classList.contains("show-emojis-list-top-right") ||
+          grid.classList.contains("show-emojis-list-top-left")
+        ) {
+          return grid
+        }
+      })
+
+      const emojisButtons = [...document.querySelectorAll(".emojis-button")]
+
+      if (
+        !e.target.matches(".emoji-wrapper") &&
+        !e.target.matches(".show-emojis-button") &&
+        !e.target.matches(".reaction-button-icon") &&
+        !e.target.matches(".emojis-container-message-chat") &&
+        !e.target.matches(".reaction-icon-chat") &&
+        !e.target.matches(".more-emojis-icon-wrapper") &&
+        !e.target.matches(".emojis-grid")
+      ) {
+        handleHideWrappers(activeWrapper)
+        handleHideEmojiGrids(activeGrid)
+        hideEmojisButton(emojisButtons)
+      }
+    }
+
+    function handleHideWrappers(activeWrapper) {
+      if (activeWrapper.length > 0) {
+        if (activeWrapper[0].classList.contains("show-wrapper-top-outgoing")) {
+          activeWrapper[0].classList.remove("wrapper-active")
+          activeWrapper[0].classList.remove("show-wrapper-top-outgoing")
+        } else if (
+          activeWrapper[0].classList.contains("show-wrapper-top-incoming")
+        ) {
+          activeWrapper[0].classList.remove("wrapper-active")
+          activeWrapper[0].classList.remove("show-wrapper-top-incoming")
+        } else if (
+          activeWrapper[0].classList.contains("show-wrapper-bottom-outgoing")
+        ) {
+          activeWrapper[0].classList.remove("wrapper-active")
+          activeWrapper[0].classList.remove("show-wrapper-bottom-outgoing")
+        } else if (
+          activeWrapper[0].classList.contains("show-wrapper-bottom-incoming")
+        ) {
+          activeWrapper[0].classList.remove("wrapper-active")
+          activeWrapper[0].classList.remove("show-wrapper-bottom-incoming")
+        }
+      }
+    }
+
+    function handleHideEmojiGrids(activeGrid) {
+      if (activeGrid.length > 0) {
+        if (activeGrid[0].classList.contains("show-emojis-list-bottom-right")) {
+          activeGrid[0].classList.remove("show-emojis-list-bottom-right")
+        } else if (
+          activeGrid[0].classList.contains("show-emojis-list-bottom-left")
+        ) {
+          activeGrid[0].classList.remove("show-emojis-list-bottom-left")
+        } else if (
+          activeGrid[0].classList.contains("show-emojis-list-top-right")
+        ) {
+          activeGrid[0].classList.remove("show-emojis-list-top-right")
+        } else if (
+          activeGrid[0].classList.contains("show-emojis-list-top-left")
+        ) {
+          activeGrid[0].classList.remove("show-emojis-list-top-left")
+        }
+      }
+    }
+
+    function hideEmojisButton(emojiButtons) {
+      return emojiButtons.map(button => {
+        button.classList.remove("show-emojis-button")
+        button.classList.add("hide-emojis-button")
+      })
+    }
+
+    return () => {
+      document.body.removeEventListener("click", handleBodyClick)
+    }
+  }, [])
 
   useEffect(() => {
     if (commonEmojis.length === 7) {
