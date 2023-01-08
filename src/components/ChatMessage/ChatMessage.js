@@ -147,24 +147,26 @@ export default function ChatMessage(props) {
 
     function handleHideWrappers(activeWrapper) {
       if (activeWrapper.length > 0) {
+        activeWrapper[0].classList.remove("wrapper-active")
+
         if (activeWrapper[0].classList.contains("show-wrapper-top-outgoing")) {
-          activeWrapper[0].classList.remove("wrapper-active")
           activeWrapper[0].classList.remove("show-wrapper-top-outgoing")
+          activeWrapper[0].classList.add("hide-wrapper-top-outgoing")
         } else if (
           activeWrapper[0].classList.contains("show-wrapper-top-incoming")
         ) {
-          activeWrapper[0].classList.remove("wrapper-active")
           activeWrapper[0].classList.remove("show-wrapper-top-incoming")
+          activeWrapper[0].classList.add("hide-wrapper-top-incoming")
         } else if (
           activeWrapper[0].classList.contains("show-wrapper-bottom-outgoing")
         ) {
-          activeWrapper[0].classList.remove("wrapper-active")
           activeWrapper[0].classList.remove("show-wrapper-bottom-outgoing")
+          activeWrapper[0].classList.add("hide-wrapper-bottom-outgoing")
         } else if (
           activeWrapper[0].classList.contains("show-wrapper-bottom-incoming")
         ) {
-          activeWrapper[0].classList.remove("wrapper-active")
           activeWrapper[0].classList.remove("show-wrapper-bottom-incoming")
+          activeWrapper[0].classList.add("hide-wrapper-bottom-incoming")
         }
       }
     }
@@ -246,6 +248,22 @@ export default function ChatMessage(props) {
     })
   }
 
+  function hideEmojiWrappers(wrapper) {
+    if (wrapper.classList.contains("show-wrapper-top-incoming")) {
+      wrapper.classList.remove("show-wrapper-top-incoming")
+      wrapper.classList.add("hide-wrapper-top-incoming")
+    } else if (wrapper.classList.contains("show-wrapper-bottom-incoming")) {
+      wrapper.classList.remove("show-wrapper-bottom-incoming")
+      wrapper.classList.add("hide-wrapper-bottom-incoming")
+    } else if (wrapper.classList.contains("show-wrapper-top-outgoing")) {
+      wrapper.classList.remove("show-wrapper-top-outgoing")
+      wrapper.classList.add("hide-wrapper-top-outgoing")
+    } else if (wrapper.classList.contains("show-wrapper-bottom-outgoing")) {
+      wrapper.classList.remove("show-wrapper-bottom-outgoing")
+      wrapper.classList.add("hide-wrapper-bottom-outgoing")
+    }
+  }
+
   function showEmojiButtonIcon(clickedButton, emojiWrapper) {
     const emojiButtons = [...document.querySelectorAll(".emojis-button")]
     emojiButtons.forEach(button => {
@@ -271,9 +289,17 @@ export default function ChatMessage(props) {
     const type = "incoming"
 
     if (emojisWrapper.classList.contains("wrapper-active")) {
-      emojisWrapper.classList.remove("show-wrapper-top-incoming")
-      emojisWrapper.classList.remove("show-wrapper-bottom-incoming")
       emojisWrapper.classList.remove("wrapper-active")
+
+      if (emojisWrapper.classList.contains("show-wrapper-top-incoming")) {
+        emojisWrapper.classList.remove("show-wrapper-top-incoming")
+        emojisWrapper.classList.add("hide-wrapper-top-incoming")
+      } else if (
+        emojisWrapper.classList.contains("show-wrapper-bottom-incoming")
+      ) {
+        emojisWrapper.classList.remove("show-wrapper-bottom-incoming")
+        emojisWrapper.classList.add("hide-wrapper-bottom-incoming")
+      }
     } else {
       handleWrapperLocation(e, mainContainer, emojisWrapper, type)
     }
@@ -286,11 +312,17 @@ export default function ChatMessage(props) {
     const type = "outgoing"
 
     if (emojisWrapper.classList.contains("wrapper-active")) {
-      emojisWrapper.classList.remove("show-wrapper-top-outgoing")
-      emojisWrapper.classList.remove("show-wrapper-bottom-outgoing")
-      emojisWrapper.classList.remove("show-wrapper-top-incoming")
-      emojisWrapper.classList.remove("show-wrapper-bottom-incoming")
       emojisWrapper.classList.remove("wrapper-active")
+
+      if (emojisWrapper.classList.contains("show-wrapper-top-outgoing")) {
+        emojisWrapper.classList.remove("show-wrapper-top-outgoing")
+        emojisWrapper.classList.add("hide-wrapper-top-outgoing")
+      } else if (
+        emojisWrapper.classList.contains("show-wrapper-bottom-outgoing")
+      ) {
+        emojisWrapper.classList.remove("show-wrapper-bottom-outgoing")
+        emojisWrapper.classList.add("hide-wrapper-bottom-outgoing")
+      }
     } else {
       handleWrapperLocation(e, mainContainer, emojisWrapper, type)
     }
@@ -300,23 +332,26 @@ export default function ChatMessage(props) {
     let bounds = mainContainer.getBoundingClientRect()
     let y = e.clientY - bounds.top
 
+    emojisWrapper.classList.remove("hide-wrapper-top-incoming")
+    emojisWrapper.classList.remove("hide-wrapper-bottom-incoming")
+    emojisWrapper.classList.remove("hide-wrapper-top-outgoing")
+    emojisWrapper.classList.remove("hide-wrapper-bottom-outgoing")
+
+    emojisWrapper.classList.add("wrapper-active")
+
     if (type === "incoming") {
       if (y <= 109) {
         emojisWrapper.classList.add("show-wrapper-bottom-incoming")
         emojisWrapper.classList.add("active-reaction")
-        emojisWrapper.classList.add("wrapper-active")
       } else if (y > 109) {
         emojisWrapper.classList.add("show-wrapper-top-incoming")
         emojisWrapper.classList.add("active-reaction")
-        emojisWrapper.classList.add("wrapper-active")
       }
     } else if (type === "outgoing") {
       if (y <= 109) {
         emojisWrapper.classList.add("show-wrapper-bottom-outgoing")
-        emojisWrapper.classList.add("wrapper-active")
       } else if (y > 109) {
         emojisWrapper.classList.add("show-wrapper-top-outgoing")
-        emojisWrapper.classList.add("wrapper-active")
       }
     }
 
@@ -333,21 +368,14 @@ export default function ChatMessage(props) {
 
     if (type === "incoming") {
       unusedWrappers.forEach(wrapper => {
-        wrapper.classList.remove("show-wrapper-top-incoming")
-        wrapper.classList.remove("show-wrapper-bottom-incoming")
-        wrapper.classList.remove("show-wrapper-top-outgoing")
-        wrapper.classList.remove("show-wrapper-bottom-outgoing")
         wrapper.classList.remove("wrapper-active")
-        wrapper.classList.add("hide-emojis-wrapper")
+
+        hideEmojiWrappers(wrapper)
       })
     } else if (type === "outgoing") {
       unusedWrappers.forEach(wrapper => {
-        wrapper.classList.remove("show-wrapper-top-incoming")
-        wrapper.classList.remove("show-wrapper-bottom-incoming")
-        wrapper.classList.remove("show-wrapper-top-outgoing")
-        wrapper.classList.remove("show-wrapper-bottom-outgoing")
         wrapper.classList.remove("wrapper-active")
-        wrapper.classList.add("hide-emojis-wrapper")
+        hideEmojiWrappers(wrapper)
       })
     }
   }
@@ -459,15 +487,10 @@ export default function ChatMessage(props) {
       }
     }
 
-    reactionsWrapper.classList.remove("show-wrapper-top-incoming")
-    reactionsWrapper.classList.remove("show-wrapper-bottom-incoming")
-    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
-    reactionsWrapper.classList.remove("show-wrapper-top-outgoing")
-    reactionsWrapper.classList.remove("wrapper-active")
-    reactionsWrapper.classList.add("hide-emojis-wrapper")
-
     emojisButton.classList.remove("show-emojis-button")
     emojisButton.classList.add("hide-emojis-button")
+
+    hideEmojiWrappers(reactionsWrapper)
   }
 
   function handleEmojiGrid(e) {
