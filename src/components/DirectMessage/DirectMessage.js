@@ -17,8 +17,9 @@ export default function DirectMessage(props) {
     setMessageHistory,
     theme
   } = props
-  const [replyMessage, setReplyMessage] = useState([])
   const [database, setDatabase, userId, setUserId] = useContext(DatabaseContext)
+  const [replyMessage, setReplyMessage] = useState([])
+
   let directBodyStyles
   const selectedMessage = database.filter(messages => {
     return messages.id === userId
@@ -36,9 +37,9 @@ export default function DirectMessage(props) {
 
   const userProfilePhotoURL = selectedUser.userProfilePhoto
 
-  const [renderMessages, setRenderMessages] = useState([
-    ...selectedUser.messages
-  ])
+  const [renderMessages, setRenderMessages] = useState(
+    [...selectedUser.messages].reverse()
+  )
 
   if (doodles) {
     directBodyStyles = {
@@ -70,11 +71,11 @@ export default function DirectMessage(props) {
     }
   }
   useEffect(() => {
-    setRenderMessages([...selectedUser.messages])
+    setRenderMessages([...selectedUser.messages].reverse())
   }, [userId])
 
   useEffect(() => {
-    setRenderMessages([...selectedUser.messages])
+    setRenderMessages([...selectedUser.messages].reverse())
   }, [messageHistory])
 
   return (

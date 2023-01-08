@@ -57,7 +57,7 @@ export default function Chat(props) {
           <Message info={info} headerType={"message"} text={lastMessage} />
         ) : (
           <div className="deleted-message-container">
-            <div className="deleted-message-wrapper">
+            <div className="deleted-message-wrapper-friends-list">
               <div className="deleted-icon">
                 <svg
                   viewBox="0 0 24 24"

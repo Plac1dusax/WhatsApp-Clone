@@ -95,6 +95,22 @@
   z-index: 1;
 }
 
+.deleted-message-wrapper-friends-list {
+  display: flex;
+  align-items: flex-end;
+  font-style: italic;
+  font-size: 14.2px;
+  width: fit-content;
+  height: fit-content;
+  max-height: 40px;
+  color: var(--deleted-message);
+}
+
+.deleted-message {
+  align-self: center;
+  margin: 0 8px;
+}
+
 @keyframes slide {
   0% {
     transform: translateX(10px);

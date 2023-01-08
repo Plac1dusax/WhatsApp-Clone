@@ -54,10 +54,10 @@ export default function FriendsListSection(props) {
             setArchivedActive={setArchivedActive}
           />
           {messageHistory.map(data => {
-            const lastMessage = data.messages[0].message
-            const messageStatus = data.messages[0].status
-            const lastMessageTime = data.messages[0].time
-            const deleted = data.messages[0].delete
+            const lastMessage = data.messages[data.messages.length - 1].message
+            const messageStatus = data.messages[data.messages.length - 1].status
+            const lastMessageTime = data.messages[data.messages.length - 1].time
+            const deleted = data.messages[data.messages.length - 1].delete
             const userName = data.userName
             const profilePhotoUrl = data.userProfilePhoto
             const id = data.id

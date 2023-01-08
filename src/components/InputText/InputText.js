@@ -46,7 +46,7 @@ export default function InputText({
         return history.id === selectedUserId
       })
 
-      selectedPerson.messages = [message, ...selectedPerson.messages]
+      selectedPerson.messages = [...selectedPerson.messages, message]
 
       newMessageHistory.find(history => {
         return history.id === selectedUserId
