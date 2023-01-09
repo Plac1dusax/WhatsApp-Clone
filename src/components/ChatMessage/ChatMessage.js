@@ -141,7 +141,9 @@ export default function ChatMessage(props) {
         !e.target.matches("svg") &&
         !e.target.matches("input") &&
         !e.target.matches(".emoji-container-message-chat") &&
-        !e.target.matches(".emojis-header")
+        !e.target.matches(".emojis-header") &&
+        !e.target.matches(".option-wrapper") &&
+        !e.target.matches(".option-text")
       ) {
         handleHideWrappers(activeWrapper)
         handleHideEmojiGrids(activeGrid)
@@ -350,7 +352,6 @@ export default function ChatMessage(props) {
     emojisWrapper.classList.remove("hide-wrapper-bottom-outgoing")
 
     emojisWrapper.classList.add("wrapper-active")
-
     if (type === "incoming") {
       if (y <= 109) {
         emojisWrapper.classList.add("show-wrapper-bottom-incoming")
