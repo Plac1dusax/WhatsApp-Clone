@@ -137,7 +137,11 @@ export default function ChatMessage(props) {
         !e.target.matches(".emojis-container-message-chat") &&
         !e.target.matches(".reaction-icon-chat") &&
         !e.target.matches(".more-emojis-icon-wrapper") &&
-        !e.target.matches(".emojis-grid")
+        !e.target.matches(".emojis-grid") &&
+        !e.target.matches("svg") &&
+        !e.target.matches("input") &&
+        !e.target.matches(".emoji-container-message-chat") &&
+        !e.target.matches(".emojis-header")
       ) {
         handleHideWrappers(activeWrapper)
         handleHideEmojiGrids(activeGrid)
@@ -175,18 +179,22 @@ export default function ChatMessage(props) {
       if (activeGrid.length > 0) {
         if (activeGrid[0].classList.contains("show-emojis-list-bottom-right")) {
           activeGrid[0].classList.remove("show-emojis-list-bottom-right")
+          activeGrid[0].classList.add("hide-emojis-list-bottom-right")
         } else if (
           activeGrid[0].classList.contains("show-emojis-list-bottom-left")
         ) {
           activeGrid[0].classList.remove("show-emojis-list-bottom-left")
+          activeGrid[0].classList.add("hide-emojis-list-bottom-left")
         } else if (
           activeGrid[0].classList.contains("show-emojis-list-top-right")
         ) {
           activeGrid[0].classList.remove("show-emojis-list-top-right")
+          activeGrid[0].classList.add("hide-emojis-list-top-right")
         } else if (
           activeGrid[0].classList.contains("show-emojis-list-top-left")
         ) {
           activeGrid[0].classList.remove("show-emojis-list-top-left")
+          activeGrid[0].classList.add("hide-emojis-list-top-left")
         }
       }
     }
@@ -245,6 +253,10 @@ export default function ChatMessage(props) {
       grid.classList.remove("show-emojis-list-bottom-left")
       grid.classList.remove("show-emojis-list-bottom-right")
       grid.classList.remove("show-emojis-list-top-right")
+      grid.classList.remove("hide-emojis-list-top-left")
+      grid.classList.remove("hide-emojis-list-bottom-left")
+      grid.classList.remove("hide-emojis-list-bottom-right")
+      grid.classList.remove("hide-emojis-list-top-right")
     })
   }
 
@@ -396,11 +408,17 @@ export default function ChatMessage(props) {
         emojisGridWrapper.classList.remove("show-emojis-list-top-left")
         emojisGridWrapper.classList.remove("show-emojis-list-bottom-left")
         emojisGridWrapper.classList.remove("show-emojis-list-bottom-right")
+        emojisGridWrapper.classList.remove("hide-emojis-list-top-left")
+        emojisGridWrapper.classList.remove("hide-emojis-list-bottom-left")
+        emojisGridWrapper.classList.remove("hide-emojis-list-bottom-right")
         emojisGridWrapper.classList.toggle("show-emojis-list-top-right")
       } else if (yValue < 336) {
         emojisGridWrapper.classList.remove("show-emojis-list-top-left")
         emojisGridWrapper.classList.remove("show-emojis-list-bottom-left")
         emojisGridWrapper.classList.remove("show-emojis-list-top-right")
+        emojisGridWrapper.classList.remove("hide-emojis-list-top-left")
+        emojisGridWrapper.classList.remove("hide-emojis-list-bottom-left")
+        emojisGridWrapper.classList.remove("hide-emojis-list-top-right")
         emojisGridWrapper.classList.toggle("show-emojis-list-bottom-right")
       }
     } else if (xValue >= 1100) {
@@ -408,11 +426,17 @@ export default function ChatMessage(props) {
         emojisGridWrapper.classList.remove("show-emojis-list-top-right")
         emojisGridWrapper.classList.remove("show-emojis-list-bottom-left")
         emojisGridWrapper.classList.remove("show-emojis-list-bottom-right")
+        emojisGridWrapper.classList.remove("hide-emojis-list-top-right")
+        emojisGridWrapper.classList.remove("hide-emojis-list-bottom-left")
+        emojisGridWrapper.classList.remove("hide-emojis-list-bottom-right")
         emojisGridWrapper.classList.toggle("show-emojis-list-top-left")
       } else if (yValue < 336) {
         emojisGridWrapper.classList.remove("show-emojis-list-top-left")
         emojisGridWrapper.classList.remove("show-emojis-list-top-right")
         emojisGridWrapper.classList.remove("show-emojis-list-bottom-right")
+        emojisGridWrapper.classList.remove("hide-emojis-list-top-left")
+        emojisGridWrapper.classList.remove("hide-emojis-list-top-right")
+        emojisGridWrapper.classList.remove("hide-emojis-list-bottom-right")
         emojisGridWrapper.classList.toggle("show-emojis-list-bottom-left")
       }
     }
@@ -432,10 +456,19 @@ export default function ChatMessage(props) {
     })
 
     unnecessaryGrids.forEach(grid => {
-      grid.classList.remove("show-emojis-list-top-left")
-      grid.classList.remove("show-emojis-list-bottom-left")
-      grid.classList.remove("show-emojis-list-bottom-right")
-      grid.classList.remove("show-emojis-list-top-right")
+      if (grid.classList.contains("show-emojis-list-top-left")) {
+        grid.classList.remove("show-emojis-list-top-left")
+        grid.classList.add("hide-emojis-list-top-left")
+      } else if (grid.classList.contains("show-emojis-list-top-right")) {
+        grid.classList.remove("show-emojis-list-top-right")
+        grid.classList.add("hide-emojis-list-top-right")
+      } else if (grid.classList.contains("show-emojis-list-bottom-left")) {
+        grid.classList.remove("show-emojis-list-bottom-left")
+        grid.classList.add("hide-emojis-list-bottom-left")
+      } else if (grid.classList.contains("show-emojis-list-bottom-right")) {
+        grid.classList.remove("show-emojis-list-bottom-right")
+        grid.classList.add("hide-emojis-list-bottom-right")
+      }
     })
   }
 

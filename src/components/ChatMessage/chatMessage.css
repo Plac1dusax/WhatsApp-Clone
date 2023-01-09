@@ -333,15 +333,11 @@
 }
 
 .emojis-list {
-  visibility: hidden;
-  pointer-events: none;
   transform: scale(0);
   position: absolute;
 }
 
 .show-emojis-list {
-  visibility: visible;
-  pointer-events: auto;
   z-index: 10;
   transform: scale(1);
   transform-origin: top left;
@@ -349,8 +345,6 @@
 }
 
 .show-emojis-list-bottom-right {
-  visibility: visible;
-  pointer-events: auto;
   left: 20px;
   z-index: 10;
   transform: scale(1);
@@ -359,8 +353,6 @@
 }
 
 .show-emojis-list-bottom-left {
-  visibility: visible;
-  pointer-events: auto;
   left: -370px;
   z-index: 10;
   transform: scale(1);
@@ -369,8 +361,6 @@
 }
 
 .show-emojis-list-top-right {
-  visibility: visible;
-  pointer-events: auto;
   left: 20px;
   top: -300px;
   z-index: 10;
@@ -380,12 +370,44 @@
 }
 
 .show-emojis-list-top-left {
-  visibility: visible;
-  pointer-events: auto;
   left: -370px;
   top: -300px;
   z-index: 10;
   transform: scale(1);
+  transform-origin: 300px 300px;
+  transition: transform ease-in-out 0.5s;
+}
+
+.hide-emojis-list-bottom-right {
+  left: 20px;
+  z-index: 10;
+  transform: scale(0);
+  transform-origin: bottom right;
+  transition: transform ease-in-out 0.5s;
+}
+
+.hide-emojis-list-bottom-left {
+  left: -370px;
+  z-index: 10;
+  transform: scale(0);
+  transform-origin: 370px;
+  transition: transform ease-in-out 0.5s;
+}
+
+.hide-emojis-list-top-right {
+  left: 20px;
+  top: -300px;
+  z-index: 10;
+  transform: scale(0);
+  transform-origin: 0 300px;
+  transition: transform ease-in-out 0.5s;
+}
+
+.hide-emojis-list-top-left {
+  left: -370px;
+  top: -300px;
+  z-index: 10;
+  transform: scale(0);
   transform-origin: 300px 300px;
   transition: transform ease-in-out 0.5s;
 }
