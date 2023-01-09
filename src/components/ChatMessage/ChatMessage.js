@@ -426,12 +426,9 @@ export default function ChatMessage(props) {
     })
 
     emojiWrappers.forEach(wrapper => {
-      wrapper.classList.remove("show-wrapper-top-incoming")
-      wrapper.classList.remove("show-wrapper-bottom-incoming")
-      wrapper.classList.remove("show-wrapper-top-outgoing")
-      wrapper.classList.remove("show-wrapper-top-outgoing")
       wrapper.classList.remove("wrapper-active")
       wrapper.classList.add("hide-emojis-wrapper")
+      hideEmojiWrappers(wrapper)
     })
 
     unnecessaryGrids.forEach(grid => {
