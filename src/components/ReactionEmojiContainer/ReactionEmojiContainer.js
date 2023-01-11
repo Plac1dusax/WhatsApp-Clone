@@ -158,6 +158,20 @@ function ReactionEmojiContainer({ type }) {
     }
   }
 
+  function handleEmojisClick(e) {
+    if (type === "text") {
+      const mainContainer = e.target.closest(".direct-message-container")
+
+      const userInput = mainContainer.querySelector(".dm-input")
+
+      if (e.target.classList.contains("emoji-wrapper")) {
+        userInput.value = `${userInput.value}${e.target.textContent}`
+      }
+
+      return userInput
+    }
+  }
+
   function handleReactionIconClick(e) {
     const emojisContainer = document.querySelector(".emojis-container")
 
@@ -372,7 +386,9 @@ function ReactionEmojiContainer({ type }) {
             type={"emoji-search"}
           />
         </div>
-        <div className="searched-emojis">{renderSearchedEmojis()}</div>
+        <div onClick={handleEmojisClick} className="searched-emojis">
+          {renderSearchedEmojis()}
+        </div>
         <div onScroll={handleEmojiScroll} className="emojis-container">
           <EmojiGrid
             type={"text"}

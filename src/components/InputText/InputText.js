@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { v4 as uuidv4 } from "uuid"
 import "./inputText.css"
 
@@ -66,6 +66,7 @@ export default function InputText({
         className="dm-input"
         type={"text"}
         placeholder={"Type a message"}
+        autoFocus
       ></input>
     )
   }
