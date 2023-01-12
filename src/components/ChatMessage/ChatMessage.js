@@ -721,12 +721,14 @@ export default function ChatMessage(props) {
         const alert = container.querySelector(".custom-alert")
         const overlay = container.querySelector(".overlay")
 
+        alert.classList.remove("custom-alert-hide")
         alert.classList.add("custom-alert-show")
         overlay.style.display = "block"
       } else if (container.getAttribute("data-incoming") === "true") {
         const alert = container.querySelector(".custom-alert")
         const overlay = container.querySelector(".overlay")
 
+        alert.classList.remove("custom-alert-hide")
         alert.classList.add("custom-alert-show")
         overlay.style.display = "block"
       }
