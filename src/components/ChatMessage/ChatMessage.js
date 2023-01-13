@@ -628,7 +628,7 @@ export default function ChatMessage(props) {
     })
 
     if (origin === "incoming") {
-      if (yPositionCalc >= 1.5) {
+      if (yPositionCalc >= 1.6) {
         optionsMenu.classList.remove("options-menu")
         if (optionsMenu.classList.contains("options-menu-incoming-down")) {
           optionsMenu.classList.remove("options-menu-incoming-down")
@@ -637,7 +637,7 @@ export default function ChatMessage(props) {
           optionsMenu.classList.remove("options-menu-incoming-down-hide")
           optionsMenu.classList.add("options-menu-incoming-down")
         }
-      } else if (yPositionCalc < 1.5) {
+      } else if (yPositionCalc < 1.6) {
         optionsMenu.classList.remove("options-menu")
         if (optionsMenu.classList.contains("options-menu-incoming-up")) {
           optionsMenu.classList.remove("options-menu-incoming-up")
@@ -650,7 +650,7 @@ export default function ChatMessage(props) {
     }
 
     if (origin === "outgoing") {
-      if (yPositionCalc >= 1.5) {
+      if (yPositionCalc >= 1.7) {
         optionsMenu.classList.remove("options-menu")
         if (optionsMenu.classList.contains("options-menu-outgoing-down")) {
           optionsMenu.classList.remove("options-menu-outgoing-down")
@@ -659,7 +659,7 @@ export default function ChatMessage(props) {
           optionsMenu.classList.remove("options-menu-outgoing-down-hide")
           optionsMenu.classList.add("options-menu-outgoing-down")
         }
-      } else if (yPositionCalc < 1.5) {
+      } else if (yPositionCalc < 1.7) {
         optionsMenu.classList.remove("options-menu")
         if (optionsMenu.classList.contains("options-menu-outgoing-up")) {
           optionsMenu.classList.remove("options-menu-outgoing-up")

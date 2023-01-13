@@ -51,7 +51,8 @@ export default function DirectMessage(props) {
       backgroundBlendMode: "overlay",
       position: "relative",
       padding: "40px",
-      gap: "20px",
+      paddingBottom: "15px",
+      gap: "5px",
       overflow: "hidden",
       overflowY: "auto",
       height: "100%"
@@ -64,7 +65,8 @@ export default function DirectMessage(props) {
       backgroundBlendMode: "overlay",
       position: "relative",
       padding: "40px",
-      gap: "20px",
+      paddingBottom: "15px",
+      gap: "5px",
       overflow: "hidden",
       overflowY: "auto",
       height: "100%"
